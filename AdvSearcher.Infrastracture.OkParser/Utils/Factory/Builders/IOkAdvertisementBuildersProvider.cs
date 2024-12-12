@@ -1,0 +1,25 @@
+using AdvSearcher.Core.Entities.Advertisements.Abstractions;
+using AdvSearcher.Core.Entities.ServiceUrls;
+using HtmlAgilityPack;
+using RestSharp;
+
+namespace AdvSearcher.Infrastracture.OkParser.Utils.Factory.Builders;
+
+public interface IOkAdvertisementBuildersProvider
+{
+    public IOkAdvertisementBuilder<string> GetContentBuilder(
+        IOkAdvertisementBuilder<string> builder,
+        RestClient client,
+        HtmlDocument document
+    );
+
+    public IOkAdvertisementBuilder<string> GetUrlBuilder(HtmlNode node, ServiceUrl url);
+    public IOkAdvertisementBuilder<string> GetIdBuilder(IOkAdvertisementBuilder<string> builder);
+    public IOkAdvertisementBuilder<List<string>> GetAttachmentsBuilder(HtmlDocument document);
+    public IOkAdvertisementBuilder<string> GetPublisherBuilder(HtmlNode node);
+
+    public IOkAdvertisementBuilder<DateOnly> GetDateOnlyBuilder(
+        HtmlNode node,
+        IAdvertisementDateConverter<OkParser> converter
+    );
+}

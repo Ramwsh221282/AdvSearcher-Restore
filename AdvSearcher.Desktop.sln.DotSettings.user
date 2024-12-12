@@ -1,0 +1,37 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AExceptionDispatchInfo_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003Fbd1d5c50194fea68ff3559c160230b0ab50f5acf4ce3061bffd6d62958e2182_003FExceptionDispatchInfo_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/ActualSeverity/@EntryValue">INFO</s:String>
+	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/FiltersState/=CodeStyle/@EntryIndexedValue">On</s:String>
+	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/FiltersState/=NamingFilter/@EntryIndexedValue">On</s:String>
+	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/FiltersState/=SpellingFilter/@EntryIndexedValue">Off</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=29d0e583_002D946e_002D429c_002D9233_002Ddbf5c3a2f048/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestCianParserSinglePage" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AAD94D48-FAE8-4233-B09A-AE8BAD06540E::net9.0::AdvSearcher.CianParser.Tests.CianParserTests.TestCianParserSinglePage&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2abc0ad4_002D233f_002D4540_002D84c1_002Dc46a50376cdf/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestCianParserSinglePage #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Category&gt;CianParser&lt;/Category&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	
+	
+	
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=afc68f05_002D1047_002D464d_002Da3a3_002Da8b957a73145/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestVkParsingOneUrl #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::D71FFFBE-7354-493D-ACFA-CB34FF7C852B::net9.0::AdvSearcher.VKParser.Tests.Tests.InternalVkParserTests.TestVkParsingOneUrl&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+    &lt;Category&gt;OkParser&lt;/Category&gt;&#xD;
+    &lt;Category&gt;CianParser&lt;/Category&gt;&#xD;
+  &lt;/Or&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f6785538_002D7385_002D43af_002Dbe40_002Dee72f7506f74/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests in category 'OkParser'" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Category&gt;OkParser&lt;/Category&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fbf841fc_002Dd6df_002D427d_002Db1f8_002D769fd0018ad4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestCianParserSinglePage #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AAD94D48-FAE8-4233-B09A-AE8BAD06540E::net9.0::AdvSearcher.CianParser.Tests.CianParserTests.TestCianParserSinglePage&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fd2b3429_002Dbc04_002D4e8c_002Da488_002De9210ef8ce19/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests in category 'CianParser'" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Category&gt;CianParser&lt;/Category&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

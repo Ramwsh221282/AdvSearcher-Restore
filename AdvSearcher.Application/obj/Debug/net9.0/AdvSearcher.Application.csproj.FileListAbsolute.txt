@@ -1,0 +1,15 @@
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\obj\Debug\net9.0\AdvSearcher.Application.csproj.AssemblyReference.cache
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\obj\Debug\net9.0\AdvSearcher.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\obj\Debug\net9.0\AdvSearcher.Application.AssemblyInfoInputs.cache
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\obj\Debug\net9.0\AdvSearcher.Application.AssemblyInfo.cs
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\obj\Debug\net9.0\AdvSearcher.Application.csproj.CoreCompileInputs.cache
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\bin\Debug\net9.0\AdvSearcher.Application.deps.json
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\bin\Debug\net9.0\AdvSearcher.Application.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\bin\Debug\net9.0\AdvSearcher.Application.pdb
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\bin\Debug\net9.0\AdvSearcher.Core.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\bin\Debug\net9.0\AdvSearcher.Core.pdb
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\obj\Debug\net9.0\AdvSearc.72E620C5.Up2Date
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\obj\Debug\net9.0\AdvSearcher.Application.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\obj\Debug\net9.0\refint\AdvSearcher.Application.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\obj\Debug\net9.0\AdvSearcher.Application.pdb
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\obj\Debug\net9.0\ref\AdvSearcher.Application.dll

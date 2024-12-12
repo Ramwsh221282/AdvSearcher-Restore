@@ -1,0 +1,11 @@
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Core\bin\Debug\net9.0\AdvSearcher.Core.deps.json
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Core\bin\Debug\net9.0\AdvSearcher.Core.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Core\bin\Debug\net9.0\AdvSearcher.Core.pdb
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Core\obj\Debug\net9.0\AdvSearcher.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Core\obj\Debug\net9.0\AdvSearcher.Core.AssemblyInfoInputs.cache
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Core\obj\Debug\net9.0\AdvSearcher.Core.AssemblyInfo.cs
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Core\obj\Debug\net9.0\AdvSearcher.Core.csproj.CoreCompileInputs.cache
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Core\obj\Debug\net9.0\AdvSearcher.Core.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Core\obj\Debug\net9.0\refint\AdvSearcher.Core.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Core\obj\Debug\net9.0\AdvSearcher.Core.pdb
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Core\obj\Debug\net9.0\ref\AdvSearcher.Core.dll
