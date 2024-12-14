@@ -13,3 +13,4 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Appli
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\obj\Debug\net9.0\refint\AdvSearcher.Application.dll
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\obj\Debug\net9.0\AdvSearcher.Application.pdb
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\obj\Debug\net9.0\ref\AdvSearcher.Application.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Application\obj\Debug\net9.0\AdvSearcher.Application.sourcelink.json

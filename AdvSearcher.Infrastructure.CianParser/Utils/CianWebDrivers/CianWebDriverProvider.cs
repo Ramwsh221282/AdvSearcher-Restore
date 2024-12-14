@@ -16,7 +16,6 @@ public sealed class CianWebDriverProvider
         CleanFromChromeProcesses();
         if (!CheckForChromeDriver())
             DownloadChromeDriver();
-        //CheckDriverFolders();
 
         var service = ChromeDriverService.CreateDefaultService();
         service.HideCommandPromptWindow = true;

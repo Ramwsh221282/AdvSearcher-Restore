@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdvSearcher.Desktop")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+021e6a0b33831cb09e383fc27c64fd533a5bc667")]
 [assembly: System.Reflection.AssemblyProductAttribute("AdvSearcher.Desktop")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AdvSearcher.Desktop")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -119,3 +119,4 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianP
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianParser.Tests\obj\Debug\net9.0\AdvSearcher.CianParser.Tests.pdb
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianParser.Tests\obj\Debug\net9.0\AdvSearcher.CianParser.Tests.genruntimeconfig.cache
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianParser.Tests\obj\Debug\net9.0\ref\AdvSearcher.CianParser.Tests.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianParser.Tests\obj\Debug\net9.0\AdvSearcher.CianParser.Tests.sourcelink.json

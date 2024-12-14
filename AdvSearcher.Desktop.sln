@@ -20,6 +20,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvSearcher.Infrastructure.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvSearcher.CianParser.Tests", "AdvSearcher.CianParser.Tests\AdvSearcher.CianParser.Tests.csproj", "{AAD94D48-FAE8-4233-B09A-AE8BAD06540E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvSearcher.Infrastructure.Avito", "AdvSearcher.Infrastructure.Avito\AdvSearcher.Infrastructure.Avito.csproj", "{FB8BD56E-B102-4B23-B26A-00D88BCA2D22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvSearcher.AvitoParser.Tests", "AdvSearcher.AvitoParser.Tests\AdvSearcher.AvitoParser.Tests.csproj", "{2E255DE3-D547-4B5A-BBAD-AEEBB49A7866}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,5 +70,13 @@ Global
 		{AAD94D48-FAE8-4233-B09A-AE8BAD06540E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAD94D48-FAE8-4233-B09A-AE8BAD06540E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAD94D48-FAE8-4233-B09A-AE8BAD06540E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB8BD56E-B102-4B23-B26A-00D88BCA2D22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB8BD56E-B102-4B23-B26A-00D88BCA2D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB8BD56E-B102-4B23-B26A-00D88BCA2D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB8BD56E-B102-4B23-B26A-00D88BCA2D22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E255DE3-D547-4B5A-BBAD-AEEBB49A7866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E255DE3-D547-4B5A-BBAD-AEEBB49A7866}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E255DE3-D547-4B5A-BBAD-AEEBB49A7866}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E255DE3-D547-4B5A-BBAD-AEEBB49A7866}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
