@@ -5,7 +5,7 @@ using AdvSearcher.Infrastructure.CianParser.Utils.Converters.Components;
 
 namespace AdvSearcher.Infrastructure.CianParser.Utils.Converters;
 
-public sealed class CianDateConverter : IAdvertisementDateConverter<CianParser>
+internal sealed class CianDateConverter : IAdvertisementDateConverter<CianParser>
 {
     private readonly List<ICianDateConverterComponent> _components = [];
 

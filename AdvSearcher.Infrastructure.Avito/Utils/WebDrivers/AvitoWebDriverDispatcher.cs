@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace AdvSearcher.Infrastructure.Avito.Utils.WebDrivers;
 
-public class AvitoWebDriverDispatcher(IServiceScopeFactory factory) : IAvitoWebDriverDispatcher
+internal class AvitoWebDriverDispatcher(IServiceScopeFactory factory) : IAvitoWebDriverDispatcher
 {
     public async Task HandleCommand<TCommand>(TCommand command, IWebDriver driver)
         where TCommand : IAvitoWebDriverCommand<TCommand>

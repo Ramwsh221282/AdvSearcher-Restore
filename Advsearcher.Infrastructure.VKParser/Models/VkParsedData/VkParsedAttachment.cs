@@ -2,7 +2,7 @@ using AdvSearcher.Application.Abstractions.Parsers;
 
 namespace Advsearcher.Infrastructure.VKParser.Models.VkParsedData;
 
-public sealed record VkParsedAttachment : IParsedAttachment
+internal sealed record VkParsedAttachment : IParsedAttachment
 {
     public string Url { get; init; }
 

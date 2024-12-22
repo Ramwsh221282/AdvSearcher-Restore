@@ -11,13 +11,13 @@ using AdvSearcher.Infrastracture.OkParser.Utils.OkWebDriver;
 
 namespace AdvSearcher.Infrastracture.OkParser;
 
-public sealed class OkParser(
+internal sealed class OkParser(
     OkWebDriverProvider provider,
     IOkWebDriverDispatcher dispatcher,
     IOkAdvertisementBuildersProvider builders,
     IAdvertisementDateConverter<OkParser> converter,
     IOkHttpClientProvider httpProvider
-) : IParser<OkParser>
+) : IParser<OkParserService>
 {
     private readonly List<IParserResponse> _results = [];
 

@@ -5,7 +5,7 @@ using AdvSearcher.Infrastructure.Avito.Utils.Converters.Components;
 
 namespace AdvSearcher.Infrastructure.Avito.Utils.Converters;
 
-public sealed class AvitoDateConverter : IAdvertisementDateConverter<AvitoParser>
+internal sealed class AvitoDateConverter : IAdvertisementDateConverter<AvitoParser>
 {
     private readonly List<IAvitoDateConverterComponent> _components = [];
 

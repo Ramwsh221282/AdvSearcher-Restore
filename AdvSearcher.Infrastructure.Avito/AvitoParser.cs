@@ -6,11 +6,11 @@ using AdvSearcher.Infrastructure.Avito.Utils.WebDrivers;
 
 namespace AdvSearcher.Infrastructure.Avito;
 
-public sealed class AvitoParser(
+internal sealed class AvitoParser(
     AvitoWebDriverProvider provider,
     IAvitoWebDriverDispatcher driverDispatcher,
     IAdvertisementDateConverter<AvitoParser> converter
-) : IParser<AvitoParser>
+) : IParser<AvitoParserService>
 {
     private readonly List<IParserResponse> _results = [];
 
@@ -21,6 +21,7 @@ public sealed class AvitoParser(
         var items = await method.ExecuteMethod(driver, url);
         var factory = new AvitoAdvertisementsFactory(driver);
         await factory.Construct(converter, items.Value);
+        _results.AddRange(factory.Results);
         return true;
     }
 

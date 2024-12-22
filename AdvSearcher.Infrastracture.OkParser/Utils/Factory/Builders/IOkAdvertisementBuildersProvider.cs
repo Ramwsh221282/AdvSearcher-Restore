@@ -5,7 +5,7 @@ using RestSharp;
 
 namespace AdvSearcher.Infrastracture.OkParser.Utils.Factory.Builders;
 
-public interface IOkAdvertisementBuildersProvider
+internal interface IOkAdvertisementBuildersProvider
 {
     public IOkAdvertisementBuilder<string> GetContentBuilder(
         IOkAdvertisementBuilder<string> builder,

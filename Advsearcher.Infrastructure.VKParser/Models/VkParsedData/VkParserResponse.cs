@@ -3,7 +3,7 @@ using Advsearcher.Infrastructure.VKParser.Components.VkParserResponses;
 
 namespace Advsearcher.Infrastructure.VKParser.Models.VkParsedData;
 
-public record VkParserResponse : IParserResponse
+internal record VkParserResponse : IParserResponse
 {
     public IParsedAdvertisement Advertisement { get; }
     public IParsedAttachment[] Attachments { get; }

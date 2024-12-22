@@ -121,3 +121,4 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.OkPar
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.OkParser.Tests\obj\Debug\net9.0\Advsearcher.OkParser.Tests.pdb
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.OkParser.Tests\obj\Debug\net9.0\Advsearcher.OkParser.Tests.genruntimeconfig.cache
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.OkParser.Tests\obj\Debug\net9.0\ref\Advsearcher.OkParser.Tests.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.OkParser.Tests\obj\Debug\net9.0\Advsearcher.OkParser.Tests.sourcelink.json

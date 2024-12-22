@@ -7,7 +7,7 @@ using WebDriverManager.DriverConfigs.Impl;
 
 namespace AdvSearcher.Infrastructure.CianParser.Utils.CianWebDrivers;
 
-public sealed class CianWebDriverProvider
+internal sealed class CianWebDriverProvider
 {
     private const string DriverFileName = "chromedriver.exe";
 

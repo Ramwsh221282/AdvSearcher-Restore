@@ -2,7 +2,7 @@ using AdvSearcher.Application.Abstractions.Parsers;
 
 namespace Advsearcher.Infrastructure.VKParser.Models.VkParsedData;
 
-public sealed record VkParsedPublisher : IParsedPublisher
+internal sealed record VkParsedPublisher : IParsedPublisher
 {
     public string Id { get; init; }
     public string Info { get; set; }

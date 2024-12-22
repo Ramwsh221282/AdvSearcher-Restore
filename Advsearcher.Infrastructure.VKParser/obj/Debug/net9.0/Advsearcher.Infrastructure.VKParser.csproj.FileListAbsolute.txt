@@ -15,3 +15,4 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.Infra
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.Infrastructure.VKParser\obj\Debug\net9.0\refint\Advsearcher.Infrastructure.VKParser.dll
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.Infrastructure.VKParser\obj\Debug\net9.0\Advsearcher.Infrastructure.VKParser.pdb
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.Infrastructure.VKParser\obj\Debug\net9.0\ref\Advsearcher.Infrastructure.VKParser.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.Infrastructure.VKParser\obj\Debug\net9.0\Advsearcher.Infrastructure.VKParser.sourcelink.json

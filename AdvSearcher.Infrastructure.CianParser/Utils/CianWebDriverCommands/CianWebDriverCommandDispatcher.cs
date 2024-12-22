@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace AdvSearcher.Infrastructure.CianParser.Utils.CianWebDriverCommands;
 
-public sealed class CianWebDriverCommandDispatcher(IServiceScopeFactory factory)
+internal sealed class CianWebDriverCommandDispatcher(IServiceScopeFactory factory)
     : ICianWebDriverCommandDispatcher
 {
     public async Task Dispatch<TCommand>(TCommand command, IWebDriver driver)

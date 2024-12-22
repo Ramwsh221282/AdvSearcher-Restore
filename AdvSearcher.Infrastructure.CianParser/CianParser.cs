@@ -9,11 +9,11 @@ using AdvSearcher.Infrastructure.CianParser.Utils.Factories;
 
 namespace AdvSearcher.Infrastructure.CianParser;
 
-public sealed class CianParser(
+internal sealed class CianParser(
     CianWebDriverProvider driverProvider,
     ICianWebDriverCommandDispatcher dispatcher,
     IAdvertisementDateConverter<CianParser> converter
-) : IParser<CianParser>
+) : IParser<CianParserService>
 {
     private readonly List<IParserResponse> _results = [];
 

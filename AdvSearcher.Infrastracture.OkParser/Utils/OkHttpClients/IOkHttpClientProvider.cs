@@ -2,7 +2,7 @@ using RestSharp;
 
 namespace AdvSearcher.Infrastracture.OkParser.Utils.OkHttpClients;
 
-public interface IOkHttpClientProvider
+internal interface IOkHttpClientProvider
 {
     RestClient Provide();
 }

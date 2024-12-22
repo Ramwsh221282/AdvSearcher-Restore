@@ -1,7 +1,6 @@
 using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Entities.ServiceUrls.ValueObjects;
-using Advsearcher.Infrastructure.VKParser;
 using Advsearcher.Infrastructure.VKParser.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -22,8 +21,10 @@ public class InternalVkParserTests
     [Test, Order(1)]
     public async Task TestVkParsingOneUrl()
     {
+        Console.WriteLine("Слово");
+
         var provider = _service.BuildServiceProvider();
-        var parser = provider.GetRequiredService<IParser<VkParser>>();
+        var parser = provider.GetRequiredService<IParser<VkParserService>>();
         var mode = ServiceUrlMode.Loadable;
         var urlValue = ServiceUrlValue.Create("https://vk.com/les_gorod");
         var url = ServiceUrl.Create(urlValue, mode);

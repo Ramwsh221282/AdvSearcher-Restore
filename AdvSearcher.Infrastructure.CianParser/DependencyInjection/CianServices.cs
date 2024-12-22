@@ -17,7 +17,7 @@ public static class CianServices
             .AddSingleton<CianWebDriverProvider>()
             .AddSingleton<ICianWebDriverCommandDispatcher, CianWebDriverCommandDispatcher>()
             .AddSingleton<IAdvertisementDateConverter<CianParser>, CianDateConverter>()
-            .AddScoped<IParser<CianParser>, CianParser>()
+            .AddScoped<IParser<CianParserService>, CianParser>()
             .AddTransient<ICianWebDriverCommand<ScrollToBottomCommand>, ScrollToBottomCommand>()
             .AddTransient<ICianWebDriverCommand<ScrollToTopCommand>, ScrollToTopCommand>();
         return services;

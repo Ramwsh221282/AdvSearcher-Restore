@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace AdvSearcher.Infrastracture.OkParser.Utils.OkWebDriver;
 
-public interface IOkWebDriverDispatcher
+internal interface IOkWebDriverDispatcher
 {
     Task Dispatch<TCommand>(TCommand command, IWebDriver driver)
         where TCommand : IOkDriverCommand<TCommand>;

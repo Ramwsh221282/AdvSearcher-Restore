@@ -25,9 +25,7 @@ public class OkParserTest
         var urlValue = ServiceUrlValue.Create("https://ok.ru/group/70000006132389/topics");
         var url = ServiceUrl.Create(urlValue, mode);
         var provider = _services.BuildServiceProvider();
-        var parser = provider.GetRequiredService<
-            IParser<AdvSearcher.Infrastracture.OkParser.OkParser>
-        >();
+        var parser = provider.GetRequiredService<IParser<OkParserService>>();
         await parser.ParseData(url);
         var results = parser.Results;
         Assert.That(results, Is.Not.Empty);

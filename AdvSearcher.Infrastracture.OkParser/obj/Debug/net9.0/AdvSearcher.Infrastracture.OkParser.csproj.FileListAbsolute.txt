@@ -18,3 +18,4 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infra
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infrastracture.OkParser\obj\Debug\net9.0\refint\AdvSearcher.Infrastracture.OkParser.dll
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infrastracture.OkParser\obj\Debug\net9.0\AdvSearcher.Infrastracture.OkParser.pdb
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infrastracture.OkParser\obj\Debug\net9.0\ref\AdvSearcher.Infrastracture.OkParser.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infrastracture.OkParser\obj\Debug\net9.0\AdvSearcher.Infrastracture.OkParser.sourcelink.json

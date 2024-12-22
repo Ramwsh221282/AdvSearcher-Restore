@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace AdvSearcher.Infrastructure.Avito.Utils.WebDrivers;
 
-public interface IAvitoWebDriverDispatcher
+internal interface IAvitoWebDriverDispatcher
 {
     Task HandleCommand<TCommand>(TCommand command, IWebDriver driver)
         where TCommand : IAvitoWebDriverCommand<TCommand>;

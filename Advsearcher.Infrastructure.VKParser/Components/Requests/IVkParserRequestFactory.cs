@@ -3,7 +3,7 @@ using RestSharp;
 
 namespace Advsearcher.Infrastructure.VKParser.Components.Requests;
 
-public interface IVkParserRequestFactory
+internal interface IVkParserRequestFactory
 {
     internal IVkParserRequest CreateVkPostOwnerRequest(
         RestClient client,

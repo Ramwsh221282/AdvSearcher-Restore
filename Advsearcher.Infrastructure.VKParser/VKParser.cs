@@ -12,12 +12,12 @@ using RestSharp;
 
 namespace Advsearcher.Infrastructure.VKParser;
 
-public sealed class VkParser(
+internal sealed class VkParser(
     IVkHttpSender sender,
     IVkOptionsProvider optionsProvider,
     IVkParserRequestFactory factory,
     IAdvertisementDateConverter<VkParser> converter
-) : IParser<VkParser>
+) : IParser<VkParserService>
 {
     private VkAdvertisementsFactory? _factory;
 

@@ -12,7 +12,7 @@ public static class VkParserServices
     public static IServiceCollection AddVkParser(this IServiceCollection services)
     {
         services = services
-            .AddScoped<IParser<VkParser>, VkParser>()
+            .AddScoped<IParser<VkParserService>, VkParser>()
             .AddSingleton<IVkHttpSender, VkHttpSender>()
             .AddSingleton<IVkOptionsProvider, TestVkOptionsProvider>()
             .AddSingleton<IAdvertisementDateConverter<VkParser>, VkDateConverter>()

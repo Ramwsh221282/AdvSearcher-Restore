@@ -2,7 +2,7 @@ using AdvSearcher.Core.Entities.ServiceUrls;
 
 namespace Advsearcher.Infrastructure.VKParser.Components;
 
-public class VkRequestParameters
+internal class VkRequestParameters
 {
     public string BaseUrl { get; init; }
     public string ScreenName { get; init; }

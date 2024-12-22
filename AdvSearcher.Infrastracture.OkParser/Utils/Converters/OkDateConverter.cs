@@ -5,7 +5,7 @@ using AdvSearcher.Infrastracture.OkParser.Utils.Converters.Components;
 
 namespace AdvSearcher.Infrastracture.OkParser.Utils.Converters;
 
-public class OkDateConverter : IAdvertisementDateConverter<OkParser>
+internal class OkDateConverter : IAdvertisementDateConverter<OkParser>
 {
     private readonly List<IOkDateConverter> _converters = [];
 

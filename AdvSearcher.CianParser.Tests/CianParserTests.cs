@@ -27,7 +27,7 @@ public class CianParserTests
         );
         var serviceUrl = ServiceUrl.Create(url, mode);
         var provider = _services.BuildServiceProvider();
-        var parser = provider.GetRequiredService<IParser<Infrastructure.CianParser.CianParser>>();
+        var parser = provider.GetRequiredService<IParser<CianParserService>>();
         await parser.ParseData(serviceUrl);
         var items = parser.Results;
         Assert.That(items, Is.Not.Empty);

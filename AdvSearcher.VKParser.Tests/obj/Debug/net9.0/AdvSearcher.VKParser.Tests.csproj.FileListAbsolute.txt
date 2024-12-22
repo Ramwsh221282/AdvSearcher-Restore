@@ -112,3 +112,4 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKPar
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\obj\Debug\net9.0\AdvSearcher.VKParser.Tests.pdb
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\obj\Debug\net9.0\AdvSearcher.VKParser.Tests.genruntimeconfig.cache
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\obj\Debug\net9.0\ref\AdvSearcher.VKParser.Tests.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\obj\Debug\net9.0\AdvSearcher.VKParser.Tests.sourcelink.json

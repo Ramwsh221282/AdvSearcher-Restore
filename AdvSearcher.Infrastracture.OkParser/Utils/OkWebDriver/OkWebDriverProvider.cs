@@ -7,7 +7,7 @@ using WebDriverManager.DriverConfigs.Impl;
 
 namespace AdvSearcher.Infrastracture.OkParser.Utils.OkWebDriver;
 
-public sealed class OkWebDriverProvider
+internal sealed class OkWebDriverProvider
 {
     private const string DriverFileName = "chromedriver.exe";
 

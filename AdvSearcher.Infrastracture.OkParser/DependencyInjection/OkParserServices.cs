@@ -24,7 +24,7 @@ public static class OkParserServices
             .AddSingleton<OkWebDriverProvider>()
             .AddTransient<IOkDriverCommand<ScrollToBottomCommand>, ScrollToBottomCommand>()
             .AddTransient<IOkDriverQuery<ExtractHtmlQuery, string>, ExtractHtmlQuery>()
-            .AddScoped<IParser<OkParser>, OkParser>();
+            .AddScoped<IParser<OkParserService>, OkParser>();
         return services;
     }
 }

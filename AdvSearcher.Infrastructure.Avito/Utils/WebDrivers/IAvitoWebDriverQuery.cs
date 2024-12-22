@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace AdvSearcher.Infrastructure.Avito.Utils.WebDrivers;
 
-public interface IAvitoWebDriverQuery<TQuery, TResult>
+internal interface IAvitoWebDriverQuery<TQuery, TResult>
 {
     Task<Result<TResult>> Execute(IWebDriver driver);
 }
