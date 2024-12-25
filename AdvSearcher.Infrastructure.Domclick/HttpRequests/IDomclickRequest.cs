@@ -1,6 +1,8 @@
+using RestSharp;
+
 namespace AdvSearcher.Infrastructure.Domclick.HttpRequests;
 
-public interface IDomclickRequest
+internal interface IDomclickRequest
 {
-    
+    public RestRequest Request { get; }
 }

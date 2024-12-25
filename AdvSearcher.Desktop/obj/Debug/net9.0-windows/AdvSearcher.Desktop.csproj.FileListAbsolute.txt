@@ -18,3 +18,4 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Deskt
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Desktop\obj\Debug\net9.0-windows\AdvSearcher.Desktop.pdb
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Desktop\obj\Debug\net9.0-windows\AdvSearcher.Desktop.genruntimeconfig.cache
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Desktop\obj\Debug\net9.0-windows\ref\AdvSearcher.Desktop.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Desktop\obj\Debug\net9.0-windows\AdvSearcher.Desktop.sourcelink.json

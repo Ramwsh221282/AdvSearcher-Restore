@@ -101,3 +101,4 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Core.
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Core.Tests\obj\Debug\net9.0\AdvSearcher.Core.Tests.pdb
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Core.Tests\obj\Debug\net9.0\AdvSearcher.Core.Tests.genruntimeconfig.cache
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Core.Tests\obj\Debug\net9.0\ref\AdvSearcher.Core.Tests.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Core.Tests\obj\Debug\net9.0\AdvSearcher.Core.Tests.sourcelink.json

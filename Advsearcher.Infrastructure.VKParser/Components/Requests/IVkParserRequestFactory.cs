@@ -1,25 +1,15 @@
-using Advsearcher.Infrastructure.VKParser.Components.VkParserResponses;
-using RestSharp;
+using AdvSearcher.Parser.SDK.HttpParsing;
 
 namespace Advsearcher.Infrastructure.VKParser.Components.Requests;
 
 internal interface IVkParserRequestFactory
 {
-    internal IVkParserRequest CreateVkPostOwnerRequest(
-        RestClient client,
-        VkOptions options,
-        VkPublisher publisher
-    );
+    internal IHttpRequest CreateVkPostOwnerRequest(VkOptions options, string id);
 
-    internal IVkParserRequest CreateVkGroupOwnerIdRequest(
-        RestClient client,
+    internal IHttpRequest CreateVkGroupOwnerIdRequest(
         VkOptions options,
         VkRequestParameters parameters
     );
 
-    internal IVkParserRequest CreateWallPostRequest(
-        RestClient client,
-        VkOptions options,
-        VkGroupInfo info
-    );
+    internal IHttpRequest CreateWallPostRequest(VkOptions options, VkGroupInfo info);
 }

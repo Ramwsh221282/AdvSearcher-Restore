@@ -19,7 +19,7 @@ internal sealed record OkParsedAdvertisement : IParsedAdvertisement
         Date = date;
     }
 
-    public static Result<OkParsedAdvertisement> Create(
+    public static Result<IParsedAdvertisement> Create(
         string? id,
         string? url,
         string? content,

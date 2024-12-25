@@ -9,7 +9,7 @@ namespace AdvSearcher.Infrastructure.Avito;
 internal sealed class AvitoParser(
     AvitoWebDriverProvider provider,
     IAvitoWebDriverDispatcher driverDispatcher,
-    IAdvertisementDateConverter<AvitoParser> converter
+    IAdvertisementDateConverter<AvitoParserService> converter
 ) : IParser<AvitoParserService>
 {
     private readonly List<IParserResponse> _results = [];

@@ -16,3 +16,8 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.Infra
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.Infrastructure.VKParser\obj\Debug\net9.0\Advsearcher.Infrastructure.VKParser.pdb
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.Infrastructure.VKParser\obj\Debug\net9.0\ref\Advsearcher.Infrastructure.VKParser.dll
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.Infrastructure.VKParser\obj\Debug\net9.0\Advsearcher.Infrastructure.VKParser.sourcelink.json
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.Infrastructure.VKParser\bin\Debug\net9.0\selenium-manager\linux\selenium-manager
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.Infrastructure.VKParser\bin\Debug\net9.0\selenium-manager\macos\selenium-manager
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.Infrastructure.VKParser\bin\Debug\net9.0\selenium-manager\windows\selenium-manager.exe
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.Infrastructure.VKParser\bin\Debug\net9.0\AdvSearcher.Parser.SDK.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\Advsearcher.Infrastructure.VKParser\bin\Debug\net9.0\AdvSearcher.Parser.SDK.pdb

@@ -1,3 +1,7 @@
+using AdvSearcher.Application.Abstractions.Parsers;
+using AdvSearcher.Application.Utils;
+using AdvSearcher.Core.Tools;
+
 namespace AdvSearcher.Infrastructure.Avito.Utils.Converters.Components;
 
 internal sealed class AvitoFromMonthConverter : IAvitoDateConverterComponent
@@ -19,39 +23,42 @@ internal sealed class AvitoFromMonthConverter : IAvitoDateConverterComponent
             { 12, "дек" },
         };
 
-    private readonly int _matchedMonth = 0;
+    public IAvitoDateConverterComponent? Next { get; }
 
-    public bool CanConvert { get; }
+    public AvitoFromMonthConverter(IAvitoDateConverterComponent? next = null) => Next = next;
 
-    public AvitoFromMonthConverter(string? stringDate)
+    public Result<DateOnly> Convert(string stringDate)
     {
         if (string.IsNullOrWhiteSpace(stringDate))
-        {
-            CanConvert = false;
-            return;
-        }
+            return ParserErrors.CantConvertDate;
+        if (HasAnyMonthSample(stringDate, out int matchedMonth))
+            return GetDateOfMatchedMonth(matchedMonth, stringDate);
+        return Next?.Convert(stringDate) ?? ParserErrors.CantConvertDate;
+    }
 
-        ReadOnlySpan<string> words = stringDate.Split(' ');
+    private bool HasAnyMonthSample(string stringDate, out int matchedMonth)
+    {
+        matchedMonth = 0;
+        ReadOnlySpan<string> words = stringDate.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         foreach (var word in words)
         {
-            foreach (var pattern in Dates)
+            foreach (var date in Dates)
             {
-                if (word.Contains(pattern.Value))
+                if (word.StartsWith(date.Value, StringComparison.OrdinalIgnoreCase))
                 {
-                    _matchedMonth = pattern.Key;
-                    CanConvert = true;
-                    return;
+                    matchedMonth = date.Key;
+                    return true;
                 }
             }
         }
+
+        return false;
     }
 
-    public DateOnly Convert(string stringDate)
+    private DateOnly GetDateOfMatchedMonth(int matchedMonth, string stringDate)
     {
-        var date = DateTime.Now;
-        var year = date.Year;
-        var day = date.Day;
-        var result = new DateTime(year, _matchedMonth, day);
-        return DateOnly.FromDateTime(result);
+        int year = DateTime.Now.Year;
+        int day = stringDate.Split(' ')[0].ExtractAllDigitsFromString();
+        return new DateOnly(year, matchedMonth, day);
     }
 }

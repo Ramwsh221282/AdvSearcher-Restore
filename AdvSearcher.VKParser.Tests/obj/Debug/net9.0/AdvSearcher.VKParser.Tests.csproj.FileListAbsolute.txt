@@ -113,3 +113,13 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKPar
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\obj\Debug\net9.0\AdvSearcher.VKParser.Tests.genruntimeconfig.cache
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\obj\Debug\net9.0\ref\AdvSearcher.VKParser.Tests.dll
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\obj\Debug\net9.0\AdvSearcher.VKParser.Tests.sourcelink.json
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\bin\Debug\net9.0\selenium-manager\linux\selenium-manager
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\bin\Debug\net9.0\selenium-manager\macos\selenium-manager
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\bin\Debug\net9.0\selenium-manager\windows\selenium-manager.exe
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\bin\Debug\net9.0\AngleSharp.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\bin\Debug\net9.0\WebDriver.Support.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\bin\Debug\net9.0\WebDriver.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\bin\Debug\net9.0\ICSharpCode.SharpZipLib.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\bin\Debug\net9.0\WebDriverManager.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\bin\Debug\net9.0\AdvSearcher.Parser.SDK.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\bin\Debug\net9.0\AdvSearcher.Parser.SDK.pdb

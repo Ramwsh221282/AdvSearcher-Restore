@@ -9,8 +9,6 @@ namespace AdvSearcher.Infrastructure.CianParser.Utils.CianWebDrivers;
 
 internal sealed class CianWebDriverProvider
 {
-    private const string DriverFileName = "chromedriver.exe";
-
     public IWebDriver BuildWebDriver()
     {
         CleanFromChromeProcesses();

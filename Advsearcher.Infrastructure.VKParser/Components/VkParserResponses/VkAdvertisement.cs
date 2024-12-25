@@ -20,7 +20,7 @@ internal sealed class VkAdvertisement : IParsedAdvertisement
         Url = url;
     }
 
-    public static Result<VkAdvertisement> Create(
+    public static Result<IParsedAdvertisement> Create(
         JToken json,
         VkGroupInfo info,
         IAdvertisementDateConverter<VkParser> converter

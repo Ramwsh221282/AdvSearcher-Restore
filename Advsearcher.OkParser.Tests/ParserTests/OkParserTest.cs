@@ -2,6 +2,7 @@ using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Entities.ServiceUrls.ValueObjects;
 using AdvSearcher.Infrastracture.OkParser.DependencyInjection;
+using AdvSearcher.Parser.SDK.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Advsearcher.OkParser.Tests.ParserTests;
@@ -15,7 +16,7 @@ public class OkParserTest
     public OkParserTest()
     {
         _services = new ServiceCollection();
-        _services = _services.AddOkParser();
+        _services = _services.AddParserSDK().AddOkParser();
     }
 
     [Test, Order(1)]

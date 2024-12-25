@@ -1,5 +1,6 @@
 using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Tools;
+using AdvSearcher.Parser.SDK.HttpParsing;
 using HtmlAgilityPack;
 using RestSharp;
 
@@ -7,7 +8,7 @@ namespace AdvSearcher.Infrastracture.OkParser.Utils.Factory.Builders;
 
 internal sealed class OkContentBuilder(
     IOkAdvertisementBuilder<string> builder,
-    RestClient client,
+    IHttpClient client,
     HtmlDocument document
 ) : IOkAdvertisementBuilder<string>
 {
@@ -30,13 +31,13 @@ internal sealed class OkContentBuilder(
 
     private async Task CreateHtmlDocument(string url)
     {
-        var request = new RestRequest(url);
+        IHttpRequest request = new OkGetContentRequest(url);
         RestResponse? response = null;
         while (response == null)
         {
             try
             {
-                response = await client.ExecuteAsync(request);
+                response = await client.Instance.ExecuteAsync(request.Request);
             }
             catch
             {
@@ -44,5 +45,16 @@ internal sealed class OkContentBuilder(
             }
         }
         document.LoadHtml(response.Content);
+    }
+}
+
+internal sealed class OkGetContentRequest : IHttpRequest
+{
+    public RestRequest Request => _request;
+    private readonly RestRequest _request;
+
+    public OkGetContentRequest(string url)
+    {
+        _request = new RestRequest(url);
     }
 }

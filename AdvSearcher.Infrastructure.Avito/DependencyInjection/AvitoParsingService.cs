@@ -18,7 +18,7 @@ public static class AvitoParsingService
             .AddTransient<IAvitoWebDriverCommand<ScrollToBottomCommand>, ScrollToBottomCommand>()
             .AddTransient<IAvitoWebDriverQuery<ExtractHtmlQuery, string>, ExtractHtmlQuery>()
             .AddScoped<IParser<AvitoParserService>, AvitoParser>()
-            .AddSingleton<IAdvertisementDateConverter<AvitoParser>, AvitoDateConverter>();
+            .AddSingleton<IAdvertisementDateConverter<AvitoParserService>, AvitoDateConverter>();
         return services;
     }
 }

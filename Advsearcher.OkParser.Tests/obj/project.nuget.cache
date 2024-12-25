@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Yxxylt2jMo0=",
+  "dgSpecHash": "KuZHuQzrv/o=",
   "success": true,
   "projectFilePath": "C:\\Users\\Ramwsh\\Desktop\\AdvSearcherRestore\\AdvSearcher.Desktop\\Advsearcher.OkParser.Tests\\Advsearcher.OkParser.Tests.csproj",
   "expectedPackageFiles": [
@@ -23,10 +23,10 @@
     "C:\\Users\\Ramwsh\\.nuget\\packages\\nunit\\4.2.2\\nunit.4.2.2.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\nunit.analyzers\\4.3.0\\nunit.analyzers.4.3.0.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\nunit3testadapter\\4.6.0\\nunit3testadapter.4.6.0.nupkg.sha512",
-    "C:\\Users\\Ramwsh\\.nuget\\packages\\restsharp\\112.1.0\\restsharp.112.1.0.nupkg.sha512",
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\restsharp\\112.1.1-alpha.0.4\\restsharp.112.1.1-alpha.0.4.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\selenium.support\\4.27.0\\selenium.support.4.27.0.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\selenium.webdriver\\4.27.0\\selenium.webdriver.4.27.0.nupkg.sha512",
-    "C:\\Users\\Ramwsh\\.nuget\\packages\\selenium.webdriver.chromedriver\\132.0.6834.3200-beta\\selenium.webdriver.chromedriver.132.0.6834.3200-beta.nupkg.sha512",
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\selenium.webdriver.chromedriver\\132.0.6834.5700-beta\\selenium.webdriver.chromedriver.132.0.6834.5700-beta.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\sharpziplib\\1.4.2\\sharpziplib.1.4.2.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512",
     "C:\\Users\\Ramwsh\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",

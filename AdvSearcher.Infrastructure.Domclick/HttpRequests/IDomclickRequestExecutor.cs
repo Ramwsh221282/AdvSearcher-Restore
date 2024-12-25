@@ -1,6 +1,6 @@
 namespace AdvSearcher.Infrastructure.Domclick.HttpRequests;
 
-public interface IDomclickRequestExecutor
+internal interface IDomclickRequestExecutor : IDisposable
 {
-    
+    Task<string?> ExecuteAsync(IDomclickRequest request);
 }

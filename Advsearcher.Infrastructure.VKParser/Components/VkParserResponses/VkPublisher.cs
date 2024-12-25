@@ -1,38 +1,33 @@
+using System.Text;
+using System.Text.RegularExpressions;
 using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Tools;
-using Advsearcher.Infrastructure.VKParser.Components.Requests;
-using Newtonsoft.Json.Linq;
-using RestSharp;
 
 namespace Advsearcher.Infrastructure.VKParser.Components.VkParserResponses;
 
 internal sealed class VkPublisher : IParsedPublisher
 {
-    public string Id { get; init; }
     public string Info { get; set; } = string.Empty;
 
-    private VkPublisher(string id) => Id = id;
-
-    public async Task<Result<bool>> InitializeName(
-        IVkParserRequestFactory factory,
-        RestClient client,
-        VkOptions options
-    )
+    public static Result<IParsedPublisher> Create(string id, string postOwnerResponse)
     {
-        var request = factory.CreateVkPostOwnerRequest(client, options, this);
-        var name = await request.ExecuteAsync();
-        if (string.IsNullOrWhiteSpace(name))
-            return new Error("Не удалось получить данные об авторе поста ВК");
-        Info = name;
-        return true;
+        string names = ExtractNames(postOwnerResponse);
+        StringBuilder infoBuilder = new StringBuilder(names).AppendLine(id);
+        return new VkPublisher() { Info = infoBuilder.ToString() };
     }
 
-    public static Result<VkPublisher> Create(JToken token)
+    private static string ExtractNames(string data) =>
+        $"{ExtractFirstName(data)} {ExtractLastName(data)}";
+
+    private static string ExtractFirstName(string data)
     {
-        var fromIdToken = token["from_id"];
-        if (fromIdToken == null)
-            return new Error("Не удалось получить ИД автора поста");
-        var id = fromIdToken.ToString();
-        return new VkPublisher(id);
+        var match = new Regex("\"first_name\"\\s*:\\s*\"(.*?)\"").Match(data);
+        return match.Groups[1].Value;
+    }
+
+    private static string ExtractLastName(string data)
+    {
+        var match = new Regex("\"last_name\"\\s*:\\s*\"(.*?)\"").Match(data);
+        return match.Groups[1].Value;
     }
 }

@@ -10,11 +10,6 @@ internal sealed record OkParsedPublisher : IParsedPublisher
 
     private OkParsedPublisher(string info) => Info = info;
 
-    public static Result<OkParsedPublisher> Create(string? info)
-    {
-        if (string.IsNullOrWhiteSpace(info))
-            return PublisherErrors.InfoEmpty;
-
-        return new OkParsedPublisher(info);
-    }
+    public static Result<IParsedPublisher> Create(Result<string> info) =>
+        info.IsFailure ? PublisherErrors.InfoEmpty : new OkParsedPublisher(info);
 }

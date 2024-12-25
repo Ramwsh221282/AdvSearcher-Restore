@@ -1,33 +1,34 @@
+using AdvSearcher.Application.Abstractions.Parsers;
+using AdvSearcher.Core.Tools;
+
 namespace AdvSearcher.Infrastructure.Avito.Utils.Converters.Components;
 
 internal sealed class AvitoFromHourConverterComponent : IAvitoDateConverterComponent
 {
     private const string HourSample = "час";
+    public IAvitoDateConverterComponent? Next { get; }
 
-    public bool CanConvert { get; }
+    public AvitoFromHourConverterComponent(IAvitoDateConverterComponent? next = null) =>
+        Next = next;
 
-    public AvitoFromHourConverterComponent(string? stringDate)
+    public Result<DateOnly> Convert(string stringDate)
     {
         if (string.IsNullOrWhiteSpace(stringDate))
-        {
-            CanConvert = false;
-            return;
-        }
-
-        ReadOnlySpan<string> words = stringDate.Split(' ');
-        foreach (var word in words)
-        {
-            if (word.Contains(HourSample))
-            {
-                CanConvert = true;
-                break;
-            }
-        }
+            return ParserErrors.CantConvertDate;
+        if (HasHourSample(stringDate))
+            return DateOnly.FromDateTime(DateTime.Now);
+        return Next?.Convert(stringDate) ?? ParserErrors.CantConvertDate;
     }
 
-    public DateOnly Convert(string stringDate)
+    private bool HasHourSample(string stringDate)
     {
-        var date = DateTime.Now;
-        return DateOnly.FromDateTime(date);
+        ReadOnlySpan<string> words = stringDate.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        foreach (string word in words)
+        {
+            if (word.StartsWith(HourSample, StringComparison.OrdinalIgnoreCase))
+                return true;
+        }
+
+        return false;
     }
 }

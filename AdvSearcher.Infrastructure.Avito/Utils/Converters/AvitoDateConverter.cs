@@ -5,30 +5,23 @@ using AdvSearcher.Infrastructure.Avito.Utils.Converters.Components;
 
 namespace AdvSearcher.Infrastructure.Avito.Utils.Converters;
 
-internal sealed class AvitoDateConverter : IAdvertisementDateConverter<AvitoParser>
+internal sealed class AvitoDateConverter : IAdvertisementDateConverter<AvitoParserService>
 {
-    private readonly List<IAvitoDateConverterComponent> _components = [];
+    private readonly IAvitoDateConverterComponent _component;
+
+    public AvitoDateConverter()
+    {
+        _component = new AvitoFromHourConverterComponent(
+            new AvitoFromDayConverterComponent(
+                new AvitoFromWeekConverterComponent(new AvitoFromMonthConverter())
+            )
+        );
+    }
 
     public Result<DateOnly> Convert(string? stringDate)
     {
-        FillComponentsIfEmpty(stringDate);
-        foreach (var component in _components)
-        {
-            if (component.CanConvert)
-                return component.Convert(stringDate!);
-        }
-
-        return ParserErrors.CantConvertDate;
-    }
-
-    private void FillComponentsIfEmpty(string? stringDate)
-    {
-        if (_components.Count != 0)
-            return;
-
-        _components.Add(new AvitoFromDayConverterComponent(stringDate));
-        _components.Add(new AvitoFromHourConverterComponent(stringDate));
-        _components.Add(new AvitoFromWeekConverterComponent(stringDate));
-        _components.Add(new AvitoFromMonthConverter(stringDate));
+        return string.IsNullOrWhiteSpace(stringDate)
+            ? ParserErrors.CantConvertDate
+            : _component.Convert(stringDate);
     }
 }

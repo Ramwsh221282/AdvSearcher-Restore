@@ -16,6 +16,18 @@ internal sealed class AvitoParsingMethod(IAvitoWebDriverDispatcher dispatcher)
     )
     {
         await driver.Navigate().GoToUrlAsync(url.Url.Value);
+        await Scroll(driver);
+        var html = await ExtractHtml(driver);
+        if (html.IsFailure)
+            return html.Error;
+        var items = CreateItems(html.Value);
+        if (items.IsFailure)
+            return items.Error;
+        return FilterFromIncorrect(items);
+    }
+
+    private async Task Scroll(IWebDriver driver)
+    {
         bool isScrolled = false;
         while (!isScrolled)
         {
@@ -29,16 +41,17 @@ internal sealed class AvitoParsingMethod(IAvitoWebDriverDispatcher dispatcher)
                 // ignored
             }
         }
-        var html = await dispatcher.HandleQuery<ExtractHtmlQuery, string>(
-            new ExtractHtmlQuery(),
-            driver
-        );
-        if (html.IsFailure)
-            return html.Error;
-        var catalogue = new AvitoCatalogue(html.Value);
-        var items = AvitoCatalogueItem.CreateFromCatalogue(catalogue);
-        if (items.IsFailure)
-            return items.Error;
-        return items.Value.Where(i => i.IsCorrect).ToList();
     }
+
+    private async Task<Result<string>> ExtractHtml(IWebDriver driver) =>
+        await dispatcher.HandleQuery<ExtractHtmlQuery, string>(new ExtractHtmlQuery(), driver);
+
+    private Result<AvitoCatalogueItem[]> CreateItems(string html)
+    {
+        var catalogue = new AvitoCatalogue(html);
+        return AvitoCatalogueItem.CreateFromCatalogue(catalogue);
+    }
+
+    private List<AvitoCatalogueItem> FilterFromIncorrect(AvitoCatalogueItem[] items) =>
+        items.Where(i => i.IsCorrect).ToList();
 }

@@ -2,6 +2,7 @@ using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Entities.ServiceUrls.ValueObjects;
 using Advsearcher.Infrastructure.VKParser.DependencyInjection;
+using AdvSearcher.Parser.SDK.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdvSearcher.VKParser.Tests.Tests;
@@ -15,7 +16,7 @@ public class InternalVkParserTests
     public InternalVkParserTests()
     {
         _service = new ServiceCollection();
-        _service = _service.AddVkParser();
+        _service.AddParserSDK().AddVkParser();
     }
 
     [Test, Order(1)]

@@ -1,6 +1,6 @@
 namespace AdvSearcher.Infrastructure.Domclick.InternalModels;
 
-public interface IDomclickFetchingResultFactory
+internal interface IDomclickFetchingResultFactory
 {
-    
+    List<DomclickFetchResult> Create(string response);
 }

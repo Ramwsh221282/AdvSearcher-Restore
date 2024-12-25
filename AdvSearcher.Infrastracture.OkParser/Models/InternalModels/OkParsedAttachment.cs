@@ -10,7 +10,7 @@ internal sealed record OkParsedAttachment : IParsedAttachment
 
     private OkParsedAttachment(string url) => Url = url;
 
-    public static Result<OkParsedAttachment> Create(string? url) =>
+    public static Result<IParsedAttachment> Create(string? url) =>
         string.IsNullOrWhiteSpace(url)
             ? AdvertisementAttachmentErrors.UrlEmpty
             : new OkParsedAttachment(url);

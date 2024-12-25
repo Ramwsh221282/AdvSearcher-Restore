@@ -1,8 +1,11 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AExceptionDispatchInfo_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003Fbd1d5c50194fea68ff3559c160230b0ab50f5acf4ce3061bffd6d62958e2182_003FExceptionDispatchInfo_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
-	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/ActualSeverity/@EntryValue">INFO</s:String>
-	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/FiltersState/=CodeStyle/@EntryIndexedValue">On</s:String>
-	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/FiltersState/=NamingFilter/@EntryIndexedValue">On</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AMethodBaseInvoker_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003F69ba5438e03a0e3a5d2f133f37405f9e32f9e0abb1fbe0a8cb7145514ff85f_003FMethodBaseInvoker_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AProcess_002EWindows_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003Fe4b93d8bba7294f6676125d63f2c965fc3e4293b7fac7f8460a64f1950f84d9_003FProcess_002EWindows_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AWebDriver_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FDecompilerCache_003Fdecompiler_003Ffb1f7ba6660f4022b99fef8d8c9356204f2000_003Ff6_003Fa618b0be_003FWebDriver_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/ActualSeverity/@EntryValue">WARNING</s:String>
+	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/FiltersState/=CodeStyle/@EntryIndexedValue">Off</s:String>
+	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/FiltersState/=NamingFilter/@EntryIndexedValue">Off</s:String>
 	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/FiltersState/=SpellingFilter/@EntryIndexedValue">Off</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1e13b803_002D1f4c_002D4087_002D85a3_002D9140fddf6915/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests in category 'AvitoParser'" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Category&gt;AvitoParser&lt;/Category&gt;&#xD;
@@ -18,6 +21,15 @@
     &lt;Category&gt;AvitoParser&lt;/Category&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=407d7f1b_002De424_002D4ab5_002D80af_002Ddcad6b0e8908/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests in category 'Domclick'" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Category&gt;OkParser&lt;/Category&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5ce865e1_002De592_002D44da_002D8d8f_002Da9281c9285ae/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests in category 'AvitoParser' #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Category&gt;AvitoParser&lt;/Category&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9bbbd397_002Dab5a_002D465c_002D8a3b_002Db5015e73e4b5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests in category 'AvitoParser' #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Category&gt;AvitoParser&lt;/Category&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	
 	
 	
@@ -29,6 +41,9 @@
     &lt;Category&gt;OkParser&lt;/Category&gt;&#xD;
     &lt;Category&gt;CianParser&lt;/Category&gt;&#xD;
   &lt;/Or&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c48fc733_002Dfbbc_002D4314_002D9bb1_002D90ed6c489faf/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests in category 'Domclick' #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Category&gt;InternalVkTests&lt;/Category&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f6785538_002D7385_002D43af_002Dbe40_002Dee72f7506f74/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests in category 'OkParser'" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Category&gt;OkParser&lt;/Category&gt;&#xD;
@@ -42,15 +57,17 @@
     &lt;Category&gt;OkParser&lt;/Category&gt;&#xD;
     &lt;Category&gt;CianParser&lt;/Category&gt;&#xD;
     &lt;Category&gt;AvitoParser&lt;/Category&gt;&#xD;
+    &lt;Category&gt;Domclick&lt;/Category&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fd2b3429_002Dbc04_002D4e8c_002Da488_002De9210ef8ce19/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests in category 'CianParser'" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fd2b3429_002Dbc04_002D4e8c_002Da488_002De9210ef8ce19/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests in category 'CianParser'" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Or&gt;&#xD;
     &lt;Category&gt;CianParser&lt;/Category&gt;&#xD;
     &lt;TestAncestor&gt;&#xD;
       &lt;TestId&gt;NUnit3x::2E255DE3-D547-4B5A-BBAD-AEEBB49A7866::net9.0::AdvSearcher.AvitoParser.Tests.Tests.AvitoParsingTests&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
     &lt;Category&gt;InternalVkTests&lt;/Category&gt;&#xD;
+    &lt;Category&gt;Domclick&lt;/Category&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestRunner/SpawnedProcessesKnownList/=chromedriver_002Eexe/@EntryIndexedValue">KillOrphaned</s:String></wpf:ResourceDictionary>

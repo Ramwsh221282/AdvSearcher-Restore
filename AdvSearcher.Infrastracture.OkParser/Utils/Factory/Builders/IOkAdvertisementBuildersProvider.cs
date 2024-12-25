@@ -1,7 +1,7 @@
 using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Entities.ServiceUrls;
+using AdvSearcher.Parser.SDK.HttpParsing;
 using HtmlAgilityPack;
-using RestSharp;
 
 namespace AdvSearcher.Infrastracture.OkParser.Utils.Factory.Builders;
 
@@ -9,7 +9,7 @@ internal interface IOkAdvertisementBuildersProvider
 {
     public IOkAdvertisementBuilder<string> GetContentBuilder(
         IOkAdvertisementBuilder<string> builder,
-        RestClient client,
+        IHttpClient client,
         HtmlDocument document
     );
 

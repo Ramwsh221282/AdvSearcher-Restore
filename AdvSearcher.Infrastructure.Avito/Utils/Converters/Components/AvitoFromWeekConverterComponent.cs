@@ -1,48 +1,44 @@
-using System.Text;
+using AdvSearcher.Application.Abstractions.Parsers;
+using AdvSearcher.Application.Utils;
+using AdvSearcher.Core.Tools;
 
 namespace AdvSearcher.Infrastructure.Avito.Utils.Converters.Components;
 
 internal sealed class AvitoFromWeekConverterComponent : IAvitoDateConverterComponent
 {
     private const string WeekSample = "недел";
+    public IAvitoDateConverterComponent? Next { get; }
 
-    public bool CanConvert { get; }
+    public AvitoFromWeekConverterComponent(IAvitoDateConverterComponent? next = null) =>
+        Next = next;
 
-    public AvitoFromWeekConverterComponent(string? stringDate)
+    public Result<DateOnly> Convert(string stringDate)
     {
         if (string.IsNullOrWhiteSpace(stringDate))
-        {
-            CanConvert = false;
-            return;
-        }
-
-        ReadOnlySpan<string> words = stringDate.Split(' ');
-        foreach (var word in words)
-        {
-            if (word.Contains(WeekSample))
-            {
-                CanConvert = true;
-                break;
-            }
-        }
+            return ParserErrors.CantConvertDate;
+        if (HasWeekSample(stringDate))
+            return GetDateWithWeekDifference(stringDate);
+        return Next?.Convert(stringDate) ?? ParserErrors.CantConvertDate;
     }
 
-    public DateOnly Convert(string stringDate)
+    private bool HasWeekSample(string stringDate)
     {
-        var numericCharacters = new StringBuilder();
-        ReadOnlySpan<string> words = stringDate.Split(' ');
+        ReadOnlySpan<string> words = stringDate.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         foreach (var word in words)
         {
-            ReadOnlySpan<char> symbols = word.AsSpan();
-            foreach (var symbol in symbols)
+            if (word.StartsWith(WeekSample, StringComparison.OrdinalIgnoreCase))
             {
-                if (char.IsDigit(symbol))
-                    numericCharacters.Append(symbol);
+                return true;
             }
         }
-        int weeksCount = int.Parse(numericCharacters.ToString());
-        var date = DateTime.Now;
-        date = date.AddDays(-weeksCount * 7);
-        return DateOnly.FromDateTime(date);
+
+        return false;
+    }
+
+    private DateOnly GetDateWithWeekDifference(string stringDate)
+    {
+        int difference = stringDate.ExtractAllDigitsFromString() * 7;
+        DateTime current = DateTime.Now;
+        return DateOnly.FromDateTime(current.AddDays(-difference));
     }
 }

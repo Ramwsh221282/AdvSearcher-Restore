@@ -1,4 +1,7 @@
+using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Entities.ServiceUrls;
+using AdvSearcher.Core.Entities.ServiceUrls.ValueObjects;
+using AdvSearcher.Core.Tools;
 
 namespace Advsearcher.Infrastructure.VKParser.Components;
 
@@ -7,9 +10,16 @@ internal class VkRequestParameters
     public string BaseUrl { get; init; }
     public string ScreenName { get; init; }
 
-    public VkRequestParameters(ServiceUrl url)
+    private VkRequestParameters(ServiceUrl url)
     {
         BaseUrl = url.Url.Value;
         ScreenName = new Uri(BaseUrl).AbsolutePath.Trim('/');
+    }
+
+    public static Result<VkRequestParameters> Create(ServiceUrl url)
+    {
+        if (url.Mode == ServiceUrlMode.Publicatable)
+            return ParserErrors.UrlIsNotForLoading;
+        return new VkRequestParameters(url);
     }
 }

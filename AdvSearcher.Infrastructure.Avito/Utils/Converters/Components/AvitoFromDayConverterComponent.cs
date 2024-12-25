@@ -1,49 +1,42 @@
-using System.Text;
+using AdvSearcher.Application.Abstractions.Parsers;
+using AdvSearcher.Application.Utils;
+using AdvSearcher.Core.Tools;
 
 namespace AdvSearcher.Infrastructure.Avito.Utils.Converters.Components;
 
 internal sealed class AvitoFromDayConverterComponent : IAvitoDateConverterComponent
 {
-    private const string DaySample1 = "ден";
-    private const string DaySample2 = "дня";
-    private const string DaySample3 = "дне";
+    private static readonly string[] Samples = ["ден", "дня", "дне"];
 
-    public bool CanConvert { get; }
+    public IAvitoDateConverterComponent? Next { get; }
 
-    public AvitoFromDayConverterComponent(string? stringDate)
+    public AvitoFromDayConverterComponent(IAvitoDateConverterComponent? next = null) => Next = next;
+
+    public Result<DateOnly> Convert(string stringDate)
     {
         if (string.IsNullOrWhiteSpace(stringDate))
-        {
-            CanConvert = false;
-            return;
-        }
-
-        ReadOnlySpan<string> words = stringDate.Split(' ');
-        foreach (var word in words)
-        {
-            if (word.Contains(DaySample1) || word.Contains(DaySample2) || word.Contains(DaySample3))
-            {
-                CanConvert = true;
-                break;
-            }
-        }
+            return ParserErrors.CantConvertDate;
+        if (HasAnySample(stringDate))
+            return GetDateWithOneDayDifference(stringDate);
+        return Next?.Convert(stringDate) ?? ParserErrors.CantConvertDate;
     }
 
-    public DateOnly Convert(string stringDate)
+    private bool HasAnySample(string stringDate)
     {
-        StringBuilder numericCharacters = new StringBuilder();
-        ReadOnlySpan<string> words = stringDate.Split(' ');
-        foreach (var word in words)
+        ReadOnlySpan<string> words = stringDate.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        foreach (string word in words)
         {
-            ReadOnlySpan<char> symbols = word.AsSpan();
-            foreach (var symbol in symbols)
-            {
-                if (char.IsDigit(symbol))
-                    numericCharacters.Append(symbol);
-            }
+            if (Samples.Any(sample => word.StartsWith(sample, StringComparison.OrdinalIgnoreCase)))
+                return true;
         }
-        var day = int.Parse(numericCharacters.ToString());
-        var date = DateTime.Now.AddDays(-day);
-        return DateOnly.FromDateTime(date);
+
+        return false;
+    }
+
+    private DateOnly GetDateWithOneDayDifference(string stringDate)
+    {
+        DateTime current = DateTime.Now;
+        int dayDifference = stringDate.ExtractAllDigitsFromString();
+        return DateOnly.FromDateTime(current.AddDays(-dayDifference));
     }
 }

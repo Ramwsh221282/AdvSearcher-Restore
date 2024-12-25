@@ -1,23 +1,13 @@
 using AdvSearcher.Application.Abstractions.Parsers;
-using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Entities.ServiceUrls;
-using AdvSearcher.Core.Entities.ServiceUrls.ValueObjects;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Infrastracture.OkParser.Utils.Factory;
-using AdvSearcher.Infrastracture.OkParser.Utils.Factory.Builders;
 using AdvSearcher.Infrastracture.OkParser.Utils.Materials;
-using AdvSearcher.Infrastracture.OkParser.Utils.OkHttpClients;
-using AdvSearcher.Infrastracture.OkParser.Utils.OkWebDriver;
 
 namespace AdvSearcher.Infrastracture.OkParser;
 
-internal sealed class OkParser(
-    OkWebDriverProvider provider,
-    IOkWebDriverDispatcher dispatcher,
-    IOkAdvertisementBuildersProvider builders,
-    IAdvertisementDateConverter<OkParser> converter,
-    IOkHttpClientProvider httpProvider
-) : IParser<OkParserService>
+internal sealed class OkParser(OkHtmlExtractor extractor, OkAdvertisementsFactory factory)
+    : IParser<OkParserService>
 {
     private readonly List<IParserResponse> _results = [];
 
@@ -25,21 +15,10 @@ internal sealed class OkParser(
 
     public async Task<Result<bool>> ParseData(ServiceUrl url)
     {
-        if (url.Mode != ServiceUrlMode.Loadable)
-            return ParserErrors.UrlIsNotForLoading;
-
-        using var driver = provider.BuildWebDriver();
-        var method = new OkParsingMethod(driver, dispatcher);
-
-        var html = await method.ExtractPageHtml(url);
-        if (string.IsNullOrWhiteSpace(html))
-            return ParserErrors.HtmlEmpty;
-
-        var nodes = new OkTopicNodes(html);
-
-        var factory = new OkAdvertisementsFactory(url, nodes);
-        await factory.Construct(builders, converter, httpProvider);
-        _results.AddRange(factory.Results);
+        Result<string> html = await extractor.Extract(url);
+        OkTopicNodes nodes = new OkTopicNodes(html);
+        List<IParserResponse> responses = await factory.Construct(url, nodes);
+        _results.AddRange(responses);
         return true;
     }
 }
