@@ -1,7 +1,7 @@
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Entities.ServiceUrls.ValueObjects;
 using AdvSearcher.Core.Tools;
+using AdvSearcher.Parser.SDK.Contracts;
 
 namespace Advsearcher.Infrastructure.VKParser.Components;
 

@@ -1,7 +1,7 @@
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Entities.ServiceUrls.ValueObjects;
 using AdvSearcher.Infrastracture.OkParser.DependencyInjection;
+using AdvSearcher.Parser.SDK.Contracts;
 using AdvSearcher.Parser.SDK.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 

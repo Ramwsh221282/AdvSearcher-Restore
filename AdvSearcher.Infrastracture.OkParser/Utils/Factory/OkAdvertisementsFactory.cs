@@ -1,4 +1,3 @@
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Tools;
@@ -6,6 +5,7 @@ using AdvSearcher.Infrastracture.OkParser.Models.ExternalModels;
 using AdvSearcher.Infrastracture.OkParser.Models.InternalModels;
 using AdvSearcher.Infrastracture.OkParser.Utils.Factory.Builders;
 using AdvSearcher.Infrastracture.OkParser.Utils.Materials;
+using AdvSearcher.Parser.SDK.Contracts;
 using AdvSearcher.Parser.SDK.HttpParsing;
 using HtmlAgilityPack;
 

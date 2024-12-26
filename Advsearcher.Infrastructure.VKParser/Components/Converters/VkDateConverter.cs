@@ -1,9 +1,8 @@
-using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Tools;
 
 namespace Advsearcher.Infrastructure.VKParser.Components.Converters;
 
-internal sealed class VkDateConverter : IAdvertisementDateConverter<VkParser>
+internal sealed class VkDateConverter
 {
     public Result<DateOnly> Convert(string? stringDate)
     {

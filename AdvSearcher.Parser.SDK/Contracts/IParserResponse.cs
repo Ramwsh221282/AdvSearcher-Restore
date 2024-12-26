@@ -1,4 +1,4 @@
-namespace AdvSearcher.Application.Abstractions.Parsers;
+namespace AdvSearcher.Parser.SDK.Contracts;
 
 public interface IParserResponse
 {

@@ -1,7 +1,7 @@
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Entities.ServiceUrls.ValueObjects;
 using AdvSearcher.Core.Tools;
+using AdvSearcher.Parser.SDK.Contracts;
 using AdvSearcher.Parser.SDK.WebDriverParsing;
 using AdvSearcher.Parser.SDK.WebDriverParsing.CommonCommands.NavigateOnPage;
 using AdvSearcher.Parser.SDK.WebDriverParsing.CommonCommands.ScrollToBottom;

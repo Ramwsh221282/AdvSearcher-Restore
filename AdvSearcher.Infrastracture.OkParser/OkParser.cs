@@ -1,8 +1,8 @@
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Infrastracture.OkParser.Utils.Factory;
 using AdvSearcher.Infrastracture.OkParser.Utils.Materials;
+using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastracture.OkParser;
 

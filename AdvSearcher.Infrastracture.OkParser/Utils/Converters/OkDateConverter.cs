@@ -1,7 +1,7 @@
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Infrastracture.OkParser.Utils.Converters.Components;
+using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastracture.OkParser.Utils.Converters;
 

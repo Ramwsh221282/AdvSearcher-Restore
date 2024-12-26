@@ -123,3 +123,4 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKPar
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\bin\Debug\net9.0\WebDriverManager.dll
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\bin\Debug\net9.0\AdvSearcher.Parser.SDK.dll
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\bin\Debug\net9.0\AdvSearcher.Parser.SDK.pdb
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.VKParser.Tests\bin\Debug\net9.0\HtmlAgilityPack.dll

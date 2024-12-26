@@ -1,7 +1,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Tools;
+using AdvSearcher.Parser.SDK.Contracts;
 
 namespace Advsearcher.Infrastructure.VKParser.Components.VkParserResponses;
 
@@ -11,8 +11,9 @@ internal sealed class VkPublisher : IParsedPublisher
 
     public static Result<IParsedPublisher> Create(string id, string postOwnerResponse)
     {
-        string names = ExtractNames(postOwnerResponse);
-        StringBuilder infoBuilder = new StringBuilder(names).AppendLine(id);
+        StringBuilder infoBuilder = new StringBuilder()
+            .AppendLine(id)
+            .AppendLine(ExtractNames(postOwnerResponse));
         return new VkPublisher() { Info = infoBuilder.ToString() };
     }
 

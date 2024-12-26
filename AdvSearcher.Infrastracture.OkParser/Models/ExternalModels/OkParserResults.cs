@@ -1,4 +1,4 @@
-using AdvSearcher.Application.Abstractions.Parsers;
+using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastracture.OkParser.Models.ExternalModels;
 

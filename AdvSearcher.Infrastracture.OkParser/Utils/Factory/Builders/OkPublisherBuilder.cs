@@ -1,5 +1,5 @@
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Tools;
+using AdvSearcher.Parser.SDK.Contracts;
 using HtmlAgilityPack;
 
 namespace AdvSearcher.Infrastracture.OkParser.Utils.Factory.Builders;

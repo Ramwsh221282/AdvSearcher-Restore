@@ -1,7 +1,7 @@
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Entities.ServiceUrls.ValueObjects;
 using Advsearcher.Infrastructure.VKParser.DependencyInjection;
+using AdvSearcher.Parser.SDK.Contracts;
 using AdvSearcher.Parser.SDK.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -22,8 +22,6 @@ public class InternalVkParserTests
     [Test, Order(1)]
     public async Task TestVkParsingOneUrl()
     {
-        Console.WriteLine("Слово");
-
         var provider = _service.BuildServiceProvider();
         var parser = provider.GetRequiredService<IParser<VkParserService>>();
         var mode = ServiceUrlMode.Loadable;

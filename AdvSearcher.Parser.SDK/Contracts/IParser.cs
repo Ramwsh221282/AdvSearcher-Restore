@@ -1,7 +1,7 @@
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Tools;
 
-namespace AdvSearcher.Application.Abstractions.Parsers;
+namespace AdvSearcher.Parser.SDK.Contracts;
 
 public abstract record ParserService;
 

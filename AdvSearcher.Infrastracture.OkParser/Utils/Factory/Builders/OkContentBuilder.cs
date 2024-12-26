@@ -1,5 +1,5 @@
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Tools;
+using AdvSearcher.Parser.SDK.Contracts;
 using AdvSearcher.Parser.SDK.HttpParsing;
 using HtmlAgilityPack;
 using RestSharp;

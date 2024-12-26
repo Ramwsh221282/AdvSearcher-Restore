@@ -1,8 +1,8 @@
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Infrastracture.OkParser.Utils.Converters;
 using AdvSearcher.Infrastracture.OkParser.Utils.Factory;
 using AdvSearcher.Infrastracture.OkParser.Utils.Factory.Builders;
+using AdvSearcher.Parser.SDK.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdvSearcher.Infrastracture.OkParser.DependencyInjection;

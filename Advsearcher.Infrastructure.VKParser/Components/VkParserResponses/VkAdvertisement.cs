@@ -1,6 +1,6 @@
-using AdvSearcher.Application.Abstractions.Parsers;
-using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Tools;
+using Advsearcher.Infrastructure.VKParser.Components.Converters;
+using AdvSearcher.Parser.SDK.Contracts;
 using Newtonsoft.Json.Linq;
 
 namespace Advsearcher.Infrastructure.VKParser.Components.VkParserResponses;
@@ -23,7 +23,7 @@ internal sealed class VkAdvertisement : IParsedAdvertisement
     public static Result<IParsedAdvertisement> Create(
         JToken json,
         VkGroupInfo info,
-        IAdvertisementDateConverter<VkParser> converter
+        VkDateConverter converter
     )
     {
         var idToken = json["id"];

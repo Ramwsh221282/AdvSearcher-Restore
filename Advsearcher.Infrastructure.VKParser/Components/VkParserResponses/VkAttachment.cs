@@ -1,5 +1,5 @@
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Tools;
+using AdvSearcher.Parser.SDK.Contracts;
 using Newtonsoft.Json.Linq;
 
 namespace Advsearcher.Infrastructure.VKParser.Components.VkParserResponses;

@@ -1,6 +1,6 @@
 using AdvSearcher.Core.Tools;
 
-namespace AdvSearcher.Application.Abstractions.Parsers;
+namespace AdvSearcher.Parser.SDK.Contracts;
 
 public static class ParserErrors
 {

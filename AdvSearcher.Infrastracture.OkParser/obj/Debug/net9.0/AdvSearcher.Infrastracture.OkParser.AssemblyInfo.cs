@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdvSearcher.Infrastracture.OkParser")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a52c28e93a46b82ef82049a0d538621808c155cd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49cb56df04626fef5b1a974433bbd4a79f12b8c9")]
 [assembly: System.Reflection.AssemblyProductAttribute("AdvSearcher.Infrastracture.OkParser")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AdvSearcher.Infrastracture.OkParser")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
