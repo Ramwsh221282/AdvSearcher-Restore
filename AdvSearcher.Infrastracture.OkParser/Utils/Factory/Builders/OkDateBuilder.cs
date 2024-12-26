@@ -1,12 +1,12 @@
 using System.Text;
-using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Tools;
+using AdvSearcher.Infrastracture.OkParser.Utils.Converters;
 using AdvSearcher.Parser.SDK.Contracts;
 using HtmlAgilityPack;
 
 namespace AdvSearcher.Infrastracture.OkParser.Utils.Factory.Builders;
 
-internal sealed class OkDateBuilder(HtmlNode node, IAdvertisementDateConverter<OkParser> converter)
+internal sealed class OkDateBuilder(HtmlNode node, OkDateConverter converter)
     : IOkAdvertisementBuilder<DateOnly>
 {
     private const string Path = ".//div[@class='feed_date']";

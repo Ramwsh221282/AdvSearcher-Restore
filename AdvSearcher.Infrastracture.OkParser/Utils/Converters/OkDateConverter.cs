@@ -1,11 +1,10 @@
-using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Infrastracture.OkParser.Utils.Converters.Components;
 using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastracture.OkParser.Utils.Converters;
 
-internal class OkDateConverter : IAdvertisementDateConverter<OkParser>
+internal class OkDateConverter
 {
     private readonly List<IOkDateConverter> _converters = [];
 

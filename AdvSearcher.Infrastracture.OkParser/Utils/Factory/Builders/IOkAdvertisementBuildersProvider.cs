@@ -1,5 +1,5 @@
-using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Entities.ServiceUrls;
+using AdvSearcher.Infrastracture.OkParser.Utils.Converters;
 using AdvSearcher.Parser.SDK.HttpParsing;
 using HtmlAgilityPack;
 
@@ -20,6 +20,6 @@ internal interface IOkAdvertisementBuildersProvider
 
     public IOkAdvertisementBuilder<DateOnly> GetDateOnlyBuilder(
         HtmlNode node,
-        IAdvertisementDateConverter<OkParser> converter
+        OkDateConverter converter
     );
 }

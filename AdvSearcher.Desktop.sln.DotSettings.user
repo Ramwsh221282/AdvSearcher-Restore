@@ -50,7 +50,10 @@
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c48fc733_002Dfbbc_002D4314_002D9bb1_002D90ed6c489faf/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests in category 'Domclick' #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Category&gt;InternalVkTests&lt;/Category&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;Category&gt;InternalVkTests&lt;/Category&gt;&#xD;
+    &lt;Category&gt;OkParser&lt;/Category&gt;&#xD;
+  &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f6785538_002D7385_002D43af_002Dbe40_002Dee72f7506f74/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests in category 'OkParser'" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Category&gt;OkParser&lt;/Category&gt;&#xD;

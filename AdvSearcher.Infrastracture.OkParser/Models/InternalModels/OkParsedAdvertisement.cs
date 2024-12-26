@@ -1,4 +1,3 @@
-using AdvSearcher.Core.Entities.Advertisements.Errors;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Parser.SDK.Contracts;
 
@@ -20,21 +19,20 @@ internal sealed record OkParsedAdvertisement : IParsedAdvertisement
     }
 
     public static Result<IParsedAdvertisement> Create(
-        string? id,
-        string? url,
-        string? content,
-        DateOnly date
+        Result<string> id,
+        Result<string> url,
+        Result<string> content,
+        Result<DateOnly> date
     )
     {
-        if (string.IsNullOrWhiteSpace(id))
-            return AdvertisementErrors.EmptyId;
-
-        if (string.IsNullOrWhiteSpace(url))
-            return AdvertisementErrors.EmptyUrl;
-
-        if (string.IsNullOrWhiteSpace(content))
-            return AdvertisementErrors.ContentEmpty;
-
+        if (id.IsFailure)
+            return id.Error;
+        if (url.IsFailure)
+            return url.Error;
+        if (content.IsFailure)
+            return content.Error;
+        if (date.IsFailure)
+            return date.Error;
         return new OkParsedAdvertisement(id, url, content, date);
     }
 }
