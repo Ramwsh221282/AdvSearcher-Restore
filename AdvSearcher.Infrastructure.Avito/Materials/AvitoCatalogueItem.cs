@@ -1,6 +1,6 @@
 using System.Text;
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Tools;
+using AdvSearcher.Parser.SDK.Contracts;
 using HtmlAgilityPack;
 
 namespace AdvSearcher.Infrastructure.Avito.Materials;

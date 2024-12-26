@@ -1,18 +1,18 @@
 using AdvSearcher.Core.Tools;
-using AdvSearcher.Infrastructure.Avito.Utils.WebDrivers;
+using AdvSearcher.Parser.SDK.WebDriverParsing;
 using OpenQA.Selenium;
 
 namespace AdvSearcher.Infrastructure.Avito.Utils.WebDriverQueries.GetAllDivElements;
 
 internal sealed class GetAllDivElementsQuery
-    : IAvitoWebDriverQuery<GetAllDivElementsQuery, IEnumerable<IWebElement>>
+    : IWebDriverQuery<GetAllDivElementsQuery, Result<IEnumerable<IWebElement>>>
 {
     private const string TagName = "div";
     private readonly IWebElement _dialog;
 
     public GetAllDivElementsQuery(IWebElement dialog) => _dialog = dialog;
 
-    public async Task<Result<IEnumerable<IWebElement>>> Execute(IWebDriver driver)
+    public async Task<Result<IEnumerable<IWebElement>>> ExecuteAsync(WebDriverProvider provider)
     {
         IReadOnlyCollection<IWebElement>? allDivElements = _dialog.FindElements(
             By.TagName(TagName)

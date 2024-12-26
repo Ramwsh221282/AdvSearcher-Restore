@@ -1,6 +1,6 @@
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Infrastructure.Avito.Materials;
+using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastructure.Avito.Models.InternalModels;
 

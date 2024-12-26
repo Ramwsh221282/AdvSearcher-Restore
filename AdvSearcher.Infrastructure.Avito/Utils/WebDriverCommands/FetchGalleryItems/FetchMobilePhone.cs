@@ -7,50 +7,50 @@ using AdvSearcher.Infrastructure.Avito.Utils.WebDriverQueries.GetSellerDialogEle
 using AdvSearcher.Infrastructure.Avito.Utils.WebDriverQueries.GetSellerInfoText;
 using AdvSearcher.Infrastructure.Avito.Utils.WebDriverQueries.GetSellerPhoneNumber;
 using AdvSearcher.Infrastructure.Avito.Utils.WebDriverQueries.IsSellerHomeowner;
-using AdvSearcher.Infrastructure.Avito.Utils.WebDrivers;
+using AdvSearcher.Parser.SDK.WebDriverParsing;
 using OpenQA.Selenium;
 
 namespace AdvSearcher.Infrastructure.Avito.Utils.WebDriverCommands.FetchGalleryItems;
 
 internal sealed class FetchMobilePhone(AvitoCatalogueItem item)
-    : IAvitoWebDriverCommand<FetchMobilePhone>
+    : IWebDriverCommand<FetchMobilePhone>
 {
-    public async Task Execute(IWebDriver driver)
+    public async Task ExecuteAsync(WebDriverProvider provider)
     {
-        Result<IWebElement> phoneButton = await new GetPhoneButtonQuery().Execute(driver);
+        Result<IWebElement> phoneButton = await new GetPhoneButtonQuery().ExecuteAsync(provider);
         if (phoneButton.IsFailure)
             return;
         phoneButton.Value.Click();
         await Task.Delay(TimeSpan.FromSeconds(1));
 
-        Result<IWebElement> popupElement = await new GetPopupElementQuery().Execute(driver);
+        Result<IWebElement> popupElement = await new GetPopupElementQuery().ExecuteAsync(provider);
         if (popupElement.IsFailure)
             return;
 
         Result<IWebElement> dialog = await new GetSellerDialogElementQuery(
             popupElement.Value
-        ).Execute(driver);
+        ).ExecuteAsync(provider);
         if (dialog.IsFailure)
             return;
 
         Result<IEnumerable<IWebElement>> allDivElements = await new GetAllDivElementsQuery(
             dialog.Value
-        ).Execute(driver);
+        ).ExecuteAsync(provider);
         if (allDivElements.IsFailure)
             return;
 
         Result<bool> isNotHomeowner = await new IsSellerHomeownerQuery(
             allDivElements.Value
-        ).Execute(driver);
+        ).ExecuteAsync(provider);
         if (isNotHomeowner.Value)
             return;
 
         Result<string> sellerInfoText = await new GetSellerInfoTextQuery(
             allDivElements.Value
-        ).Execute(driver);
+        ).ExecuteAsync(provider);
         if (sellerInfoText.IsFailure)
             return;
 
-        await new GetSellerPhoneNumberQuery(item, sellerInfoText.Value).Execute(driver);
+        await new GetSellerPhoneNumberQuery(item, sellerInfoText.Value).ExecuteAsync(provider);
     }
 }

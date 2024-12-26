@@ -1,22 +1,26 @@
 using AdvSearcher.Core.Tools;
-using AdvSearcher.Infrastructure.Avito.Utils.WebDrivers;
+using AdvSearcher.Parser.SDK.WebDriverParsing;
 using OpenQA.Selenium;
 
 namespace AdvSearcher.Infrastructure.Avito.Utils.WebDriverQueries.GetPopupElement;
 
-internal sealed class GetPopupElementQuery : IAvitoWebDriverQuery<GetPopupElementQuery, IWebElement>
+internal sealed class GetPopupElementQuery
+    : IWebDriverQuery<GetPopupElementQuery, Result<IWebElement>>
 {
     private const string XPath = ".//*[@data-marker='item-popup/popup']";
 
-    public async Task<Result<IWebElement>> Execute(IWebDriver driver)
+    public async Task<Result<IWebElement>> ExecuteAsync(WebDriverProvider provider)
     {
+        if (provider.Instance == null)
+            return new Error("No web driver instance created");
+
         IWebElement? popup = null;
         int popupTries = 0;
         while (popup == null && popupTries <= 50)
         {
             try
             {
-                popup = driver.FindElement(By.XPath(XPath));
+                popup = provider.Instance.FindElement(By.XPath(XPath));
             }
             catch
             {

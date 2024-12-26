@@ -1,6 +1,6 @@
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Application.Utils;
 using AdvSearcher.Core.Tools;
+using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastructure.Avito.Utils.Converters.Components;
 

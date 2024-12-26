@@ -1,9 +1,7 @@
-using AdvSearcher.Application.Abstractions.Parsers;
-using AdvSearcher.Core.Entities.Advertisements.Abstractions;
+using AdvSearcher.Infrastructure.Avito.AvitoParserChain;
+using AdvSearcher.Infrastructure.Avito.AvitoParserChain.Nodes;
 using AdvSearcher.Infrastructure.Avito.Utils.Converters;
-using AdvSearcher.Infrastructure.Avito.Utils.WebDriverCommands.ScrollToBottom;
-using AdvSearcher.Infrastructure.Avito.Utils.WebDriverQueries.ExtractHtml;
-using AdvSearcher.Infrastructure.Avito.Utils.WebDrivers;
+using AdvSearcher.Parser.SDK.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdvSearcher.Infrastructure.Avito.DependencyInjection;
@@ -13,12 +11,20 @@ public static class AvitoParsingService
     public static IServiceCollection AddAvitoParsingServices(this IServiceCollection services)
     {
         services = services
-            .AddSingleton<AvitoWebDriverProvider>()
-            .AddScoped<IAvitoWebDriverDispatcher, AvitoWebDriverDispatcher>()
-            .AddTransient<IAvitoWebDriverCommand<ScrollToBottomCommand>, ScrollToBottomCommand>()
-            .AddTransient<IAvitoWebDriverQuery<ExtractHtmlQuery, string>, ExtractHtmlQuery>()
-            .AddScoped<IParser<AvitoParserService>, AvitoParser>()
-            .AddSingleton<IAdvertisementDateConverter<AvitoParserService>, AvitoDateConverter>();
+            .AddTransient<IParser<AvitoParserService>, AvitoParser>()
+            .AddTransient<AvitoDateConverter>()
+            .AddTransient<AvitoParserPipeLine>()
+            .AddTransient<IAvitoChainNode>(p =>
+            {
+                AvitoParserPipeLine pipeLine = p.GetRequiredService<AvitoParserPipeLine>();
+                IAvitoChainNode factoryNode = new ConstructAvitoResponseNode(pipeLine);
+                IAvitoChainNode itemsNode = new InitializeAvitoCatalogueItemPhoneAndPhotosNode(
+                    pipeLine,
+                    factoryNode
+                );
+                IAvitoChainNode catalogueNode = new ExtractAvitoCatalogueNode(pipeLine, itemsNode);
+                return catalogueNode;
+            });
         return services;
     }
 }

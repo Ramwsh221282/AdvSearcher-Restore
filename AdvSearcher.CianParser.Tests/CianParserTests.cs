@@ -1,7 +1,8 @@
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Entities.ServiceUrls.ValueObjects;
 using AdvSearcher.Infrastructure.CianParser.DependencyInjection;
+using AdvSearcher.Parser.SDK.Contracts;
+using AdvSearcher.Parser.SDK.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdvSearcher.CianParser.Tests;
@@ -15,7 +16,7 @@ public class CianParserTests
     public CianParserTests()
     {
         _services = new ServiceCollection();
-        _services.AddCianParser();
+        _services.AddParserSDK().AddCianParser();
     }
 
     [Test, Order(1)]

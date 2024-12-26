@@ -19,3 +19,5 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infra
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infrastructure.CianParser\obj\Debug\net9.0\AdvSearcher.Infrastructure.CianParser.pdb
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infrastructure.CianParser\obj\Debug\net9.0\ref\AdvSearcher.Infrastructure.CianParser.dll
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infrastructure.CianParser\obj\Debug\net9.0\AdvSearcher.Infrastructure.CianParser.sourcelink.json
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infrastructure.CianParser\bin\Debug\net9.0\AdvSearcher.Parser.SDK.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infrastructure.CianParser\bin\Debug\net9.0\AdvSearcher.Parser.SDK.pdb

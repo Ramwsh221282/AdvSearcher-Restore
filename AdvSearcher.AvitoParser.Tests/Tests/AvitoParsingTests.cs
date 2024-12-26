@@ -1,9 +1,8 @@
-using AdvSearcher.Application.Abstractions.Parsers;
-using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Entities.ServiceUrls.ValueObjects;
-using AdvSearcher.Core.Tools;
 using AdvSearcher.Infrastructure.Avito.DependencyInjection;
+using AdvSearcher.Parser.SDK.Contracts;
+using AdvSearcher.Parser.SDK.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdvSearcher.AvitoParser.Tests.Tests;
@@ -17,36 +16,10 @@ public sealed class AvitoParsingTests
     public AvitoParsingTests()
     {
         _services = new ServiceCollection();
-        _services.AddAvitoParsingServices();
+        _services.AddParserSDK().AddAvitoParsingServices();
     }
 
     [Test, Order(1)]
-    public void TestDateConversion()
-    {
-        var provider = _services.BuildServiceProvider();
-        IAdvertisementDateConverter<AvitoParserService> dateConverter = provider.GetRequiredService<
-            IAdvertisementDateConverter<AvitoParserService>
-        >();
-
-        List<(Result<DateOnly>, string)> dates = [];
-        List<string> stringDates = [];
-        stringDates.Add("7 дней назад");
-        stringDates.Add("3 дня назад");
-        stringDates.Add("1 неделю назад");
-        stringDates.Add("2 недели назад");
-        stringDates.Add("3 недели назад");
-        stringDates.Add("25 ноября");
-        stringDates.Add("23 ноября");
-        stringDates.Add("8 ноября");
-
-        foreach (var dateString in stringDates)
-        {
-            dates.Add((dateConverter.Convert(dateString), dateString));
-        }
-        Assert.That(dates.Select(d => d.Item1).Where(d => d.IsFailure).Count(), Is.EqualTo(0));
-    }
-
-    [Test, Order(2)]
     public async Task InvokeSinglePageParsing()
     {
         const string pageUrl =

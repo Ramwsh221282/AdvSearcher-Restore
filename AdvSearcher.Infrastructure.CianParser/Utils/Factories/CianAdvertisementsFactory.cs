@@ -1,24 +1,27 @@
-using AdvSearcher.Application.Abstractions.Parsers;
-using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Infrastructure.CianParser.Materials.CianComponents;
 using AdvSearcher.Infrastructure.CianParser.Models.ExternalModels;
 using AdvSearcher.Infrastructure.CianParser.Models.InternalModels;
+using AdvSearcher.Infrastructure.CianParser.Utils.Converters;
+using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastructure.CianParser.Utils.Factories;
 
-internal sealed class CianAdvertisementsFactory(
-    List<CianAdvertisementCard> cards,
-    IAdvertisementDateConverter<CianParser> converter
-)
+internal sealed class CianAdvertisementsFactory
 {
-    private readonly List<IParserResponse> _results = [];
+    private readonly CianAdvertisementCard[] _cards;
+    private readonly CianDateConverter _converter;
 
-    public IReadOnlyCollection<IParserResponse> Results => _results;
-
-    public void Construct()
+    public CianAdvertisementsFactory(CianAdvertisementCard[] cards, CianDateConverter converter)
     {
-        foreach (var card in cards)
+        _cards = cards;
+        _converter = converter;
+    }
+
+    public IEnumerable<IParserResponse> Construct()
+    {
+        List<IParserResponse> responses = new List<IParserResponse>();
+        foreach (var card in _cards)
         {
             var publisher = TryCreatePublisher(card);
             if (publisher.IsFailure)
@@ -35,8 +38,9 @@ internal sealed class CianAdvertisementsFactory(
                 attachments.ToArray(),
                 publisher.Value
             );
-            _results.Add(response);
+            responses.Add(response);
         }
+        return responses;
     }
 
     private Result<IParsedPublisher> TryCreatePublisher(CianAdvertisementCard card) =>
@@ -44,7 +48,7 @@ internal sealed class CianAdvertisementsFactory(
 
     private Result<IParsedAdvertisement> TryCreateAdvertisement(CianAdvertisementCard card)
     {
-        var date = converter.Convert(card.Details.DateDescription);
+        var date = _converter.Convert(card.Details.DateDescription);
         if (date.IsFailure)
             return date.Error;
         var id = card.Details.Id;

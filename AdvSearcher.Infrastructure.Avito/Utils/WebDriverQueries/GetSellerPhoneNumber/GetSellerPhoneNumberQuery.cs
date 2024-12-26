@@ -2,13 +2,14 @@ using System.Text;
 using System.Text.RegularExpressions;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Infrastructure.Avito.Materials;
-using AdvSearcher.Infrastructure.Avito.Utils.WebDrivers;
+using AdvSearcher.Parser.SDK.WebDriverParsing;
+using AdvSearcher.Parser.SDK.WebDriverParsing.CommonCommands.NavigateOnPage;
 using OpenQA.Selenium;
 
 namespace AdvSearcher.Infrastructure.Avito.Utils.WebDriverQueries.GetSellerPhoneNumber;
 
 internal sealed class GetSellerPhoneNumberQuery
-    : IAvitoWebDriverQuery<GetSellerPhoneNumberQuery, string>
+    : IWebDriverQuery<GetSellerPhoneNumberQuery, Result<string>>
 {
     private const string MainPhoneGetUrl = "https://m.avito.ru/api/1/items/";
     private const string SecretKey = "/phone?key=af0deccbgcgidddjgnvljitntccdduijhdinfgjgfjir";
@@ -22,10 +23,13 @@ internal sealed class GetSellerPhoneNumberQuery
         _sellerInfoText = sellerInfoText;
     }
 
-    public async Task<Result<string>> Execute(IWebDriver driver)
+    public async Task<Result<string>> ExecuteAsync(WebDriverProvider provider)
     {
-        await NavigateToPhonePage(driver);
-        IWebElement jsonInfoContainer = GetJsonInfoContainer(driver);
+        await NavigateToPhonePage(provider);
+        IWebElement? jsonInfoContainer = GetJsonInfoContainer(provider);
+        if (jsonInfoContainer == null)
+            return new Error("Json info container not found");
+
         var match = Regex.Match(
             jsonInfoContainer.GetAttribute("innerHTML"),
             "\"Позвонить на\\s*(.*?)\""
@@ -43,23 +47,28 @@ internal sealed class GetSellerPhoneNumberQuery
         return new Error("Can't get seller info phone number");
     }
 
-    private async Task NavigateToPhonePage(IWebDriver driver)
+    private async Task NavigateToPhonePage(WebDriverProvider provider)
     {
         StringBuilder phoneNavigationLinkBuilder = new StringBuilder();
         phoneNavigationLinkBuilder.Append(MainPhoneGetUrl);
         phoneNavigationLinkBuilder.Append(_item.Id);
         phoneNavigationLinkBuilder.Append(SecretKey);
-        await driver.Navigate().GoToUrlAsync(phoneNavigationLinkBuilder.ToString());
+        await new NavigateOnPageCommand(phoneNavigationLinkBuilder.ToString()).ExecuteAsync(
+            provider
+        );
     }
 
-    private IWebElement GetJsonInfoContainer(IWebDriver driver)
+    private IWebElement? GetJsonInfoContainer(WebDriverProvider provider)
     {
-        IWebElement jsonInfoContainer = null;
+        if (provider.Instance == null)
+            return null;
+
+        IWebElement? jsonInfoContainer = null;
         while (jsonInfoContainer == null)
         {
             try
             {
-                jsonInfoContainer = driver.FindElement(By.TagName(Tag));
+                jsonInfoContainer = provider.Instance.FindElement(By.TagName(Tag));
             }
             catch
             {

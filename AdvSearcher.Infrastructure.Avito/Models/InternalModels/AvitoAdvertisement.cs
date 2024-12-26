@@ -1,7 +1,8 @@
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Infrastructure.Avito.Materials;
+using AdvSearcher.Infrastructure.Avito.Utils.Converters;
+using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastructure.Avito.Models.InternalModels;
 
@@ -22,7 +23,7 @@ internal sealed record AvitoAdvertisement : IParsedAdvertisement
 
     public static Result<IParsedAdvertisement> Create(
         AvitoCatalogueItem item,
-        IAdvertisementDateConverter<AvitoParserService> converter
+        AvitoDateConverter converter
     )
     {
         if (string.IsNullOrWhiteSpace(item.Id))

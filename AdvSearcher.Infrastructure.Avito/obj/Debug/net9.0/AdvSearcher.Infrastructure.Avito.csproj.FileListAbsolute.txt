@@ -19,3 +19,5 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infra
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infrastructure.Avito\obj\Debug\net9.0\refint\AdvSearcher.Infrastructure.Avito.dll
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infrastructure.Avito\obj\Debug\net9.0\AdvSearcher.Infrastructure.Avito.pdb
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infrastructure.Avito\obj\Debug\net9.0\ref\AdvSearcher.Infrastructure.Avito.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infrastructure.Avito\bin\Debug\net9.0\AdvSearcher.Parser.SDK.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Infrastructure.Avito\bin\Debug\net9.0\AdvSearcher.Parser.SDK.pdb

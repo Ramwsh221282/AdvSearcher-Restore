@@ -1,6 +1,8 @@
 namespace AdvSearcher.Infrastructure.CianParser.CianParserChains;
 
-public interface ICianParserChain
+internal interface ICianParserChain
 {
-    
+    CianParserPipeLine PipeLine { get; }
+    ICianParserChain? Next { get; }
+    Task ExecuteAsync();
 }

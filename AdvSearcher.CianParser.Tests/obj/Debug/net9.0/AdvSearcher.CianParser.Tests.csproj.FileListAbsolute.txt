@@ -120,3 +120,7 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianP
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianParser.Tests\obj\Debug\net9.0\AdvSearcher.CianParser.Tests.genruntimeconfig.cache
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianParser.Tests\obj\Debug\net9.0\ref\AdvSearcher.CianParser.Tests.dll
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianParser.Tests\obj\Debug\net9.0\AdvSearcher.CianParser.Tests.sourcelink.json
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianParser.Tests\bin\Debug\net9.0\HtmlAgilityPack.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianParser.Tests\bin\Debug\net9.0\RestSharp.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianParser.Tests\bin\Debug\net9.0\AdvSearcher.Parser.SDK.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianParser.Tests\bin\Debug\net9.0\AdvSearcher.Parser.SDK.pdb

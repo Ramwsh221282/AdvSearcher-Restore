@@ -1,11 +1,10 @@
-using AdvSearcher.Application.Abstractions.Parsers;
-using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Infrastructure.CianParser.Utils.Converters.Components;
+using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastructure.CianParser.Utils.Converters;
 
-internal sealed class CianDateConverter : IAdvertisementDateConverter<CianParser>
+internal sealed class CianDateConverter
 {
     private readonly List<ICianDateConverterComponent> _components = [];
 

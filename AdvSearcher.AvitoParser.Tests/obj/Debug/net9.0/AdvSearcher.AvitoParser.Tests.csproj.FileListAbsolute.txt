@@ -121,3 +121,6 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.Avito
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.AvitoParser.Tests\obj\Debug\net9.0\AdvSearcher.AvitoParser.Tests.pdb
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.AvitoParser.Tests\obj\Debug\net9.0\AdvSearcher.AvitoParser.Tests.genruntimeconfig.cache
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.AvitoParser.Tests\obj\Debug\net9.0\ref\AdvSearcher.AvitoParser.Tests.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.AvitoParser.Tests\bin\Debug\net9.0\RestSharp.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.AvitoParser.Tests\bin\Debug\net9.0\AdvSearcher.Parser.SDK.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.AvitoParser.Tests\bin\Debug\net9.0\AdvSearcher.Parser.SDK.pdb

@@ -1,11 +1,11 @@
 using AdvSearcher.Infrastructure.Avito.Materials;
-using AdvSearcher.Infrastructure.Avito.Utils.WebDrivers;
+using AdvSearcher.Parser.SDK.WebDriverParsing;
 using OpenQA.Selenium;
 
 namespace AdvSearcher.Infrastructure.Avito.Utils.WebDriverCommands.FetchGalleryItems;
 
 internal sealed class FetchGalleryItemsCommand(AvitoCatalogueItem item)
-    : IAvitoWebDriverCommand<FetchGalleryItemsCommand>
+    : IWebDriverCommand<FetchGalleryItemsCommand>
 {
     private const string GalleryItemsPath = "//*[@data-marker='item-view/gallery']";
     private const string LiAttribute = "li";
@@ -14,7 +14,7 @@ internal sealed class FetchGalleryItemsCommand(AvitoCatalogueItem item)
     private const string ImgTag = "img";
     private const string SrcTag = "src";
 
-    public async Task Execute(IWebDriver driver)
+    public async Task ExecuteAsync(WebDriverProvider provider)
     {
         IWebElement galleryItemsElement = null;
         int gallerySearchingTries = 0;
@@ -22,7 +22,7 @@ internal sealed class FetchGalleryItemsCommand(AvitoCatalogueItem item)
         {
             try
             {
-                galleryItemsElement = driver.FindElement(By.XPath(GalleryItemsPath));
+                galleryItemsElement = provider.Instance.FindElement(By.XPath(GalleryItemsPath));
             }
             catch
             {

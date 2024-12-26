@@ -1,29 +1,23 @@
-using AdvSearcher.Application.Abstractions.Parsers;
-using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Tools;
-using AdvSearcher.Infrastructure.Avito.Utils.WebDrivers;
+using AdvSearcher.Infrastructure.Avito.AvitoParserChain;
+using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastructure.Avito;
 
-internal sealed class AvitoParser(
-    AvitoWebDriverProvider provider,
-    IAvitoWebDriverDispatcher driverDispatcher,
-    IAdvertisementDateConverter<AvitoParserService> converter
-) : IParser<AvitoParserService>
+internal sealed class AvitoParser : IParser<AvitoParserService>
 {
     private readonly List<IParserResponse> _results = [];
+    private readonly IAvitoChainNode _node;
+    public IReadOnlyCollection<IParserResponse> Results => _results;
+
+    public AvitoParser(IAvitoChainNode node) => _node = node;
 
     public async Task<Result<bool>> ParseData(ServiceUrl url)
     {
-        using var driver = provider.BuildWebDriver();
-        var method = new AvitoParsingMethod(driverDispatcher);
-        var items = await method.ExecuteMethod(driver, url);
-        var factory = new AvitoAdvertisementsFactory(driver);
-        await factory.Construct(converter, items.Value);
-        _results.AddRange(factory.Results);
+        _node.Pipeline.SetServiceUrl(url);
+        await _node.ExecuteAsync();
+        _results.AddRange(_node.Pipeline.Responses);
         return true;
     }
-
-    public IReadOnlyCollection<IParserResponse> Results => _results;
 }

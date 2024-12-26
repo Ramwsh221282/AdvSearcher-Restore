@@ -1,47 +1,23 @@
-using AdvSearcher.Application.Abstractions.Parsers;
-using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Tools;
-using AdvSearcher.Infrastructure.CianParser.Materials.CianComponents;
-using AdvSearcher.Infrastructure.CianParser.Utils.CianWebDriverCommands;
-using AdvSearcher.Infrastructure.CianParser.Utils.CianWebDrivers;
-using AdvSearcher.Infrastructure.CianParser.Utils.Factories;
+using AdvSearcher.Infrastructure.CianParser.CianParserChains;
+using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastructure.CianParser;
 
-internal sealed class CianParser(
-    CianWebDriverProvider driverProvider,
-    ICianWebDriverCommandDispatcher dispatcher,
-    IAdvertisementDateConverter<CianParser> converter
-) : IParser<CianParserService>
+internal sealed class CianParser : IParser<CianParserService>
 {
     private readonly List<IParserResponse> _results = [];
+    private readonly ICianParserChain _chain;
+    public IReadOnlyCollection<IParserResponse> Results => _results;
+
+    public CianParser(ICianParserChain chain) => _chain = chain;
 
     public async Task<Result<bool>> ParseData(ServiceUrl url)
     {
-        var cards = await GetCardsFromWebDriverScraping(url);
-        var advertisements = GetConstructedResponseFromFactory(cards);
-        if (advertisements.Count == 0)
-            return ParserErrors.NoAdvertisementsParsed;
-        _results.AddRange(advertisements);
+        _chain.PipeLine.SetServiceUrl(url);
+        await _chain.ExecuteAsync();
+        _results.AddRange(_chain.PipeLine.Responses);
         return true;
     }
-
-    private async Task<List<CianAdvertisementCard>> GetCardsFromWebDriverScraping(ServiceUrl url)
-    {
-        using var driver = driverProvider.BuildWebDriver();
-        var method = new CianParsingMethod(url);
-        return await method.BuildAdvertisementCards(driver, dispatcher);
-    }
-
-    private IReadOnlyCollection<IParserResponse> GetConstructedResponseFromFactory(
-        List<CianAdvertisementCard> cards
-    )
-    {
-        var factory = new CianAdvertisementsFactory(cards, converter);
-        factory.Construct();
-        return factory.Results;
-    }
-
-    public IReadOnlyCollection<IParserResponse> Results => _results;
 }

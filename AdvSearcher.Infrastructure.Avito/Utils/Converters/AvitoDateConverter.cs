@@ -1,11 +1,10 @@
-using AdvSearcher.Application.Abstractions.Parsers;
-using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Infrastructure.Avito.Utils.Converters.Components;
+using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastructure.Avito.Utils.Converters;
 
-internal sealed class AvitoDateConverter : IAdvertisementDateConverter<AvitoParserService>
+internal sealed class AvitoDateConverter
 {
     private readonly IAvitoDateConverterComponent _component;
 
