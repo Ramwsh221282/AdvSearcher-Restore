@@ -1,12 +1,14 @@
 using AdvSearcher.Infrastructure.Domclick.InternalModels;
+using AdvSearcher.Parser.SDK.HttpParsing;
 using Newtonsoft.Json.Linq;
 
 namespace AdvSearcher.Infrastructure.Domclick.HttpRequests;
 
 internal sealed class DomclickPageRequestSender
 {
-    private readonly IDomclickRequestExecutor _executor;
     private readonly IDomclickFetchingResultFactory _factory;
+    private readonly DomclickRequestHandler _handler;
+    private readonly string _qratorValue;
     private int _offset = 20;
     private int _maxCount;
     private readonly List<DomclickFetchResult> _results = [];
@@ -14,40 +16,32 @@ internal sealed class DomclickPageRequestSender
     public IReadOnlyCollection<DomclickFetchResult> Results => _results;
 
     public DomclickPageRequestSender(
-        IDomclickRequestExecutor executor,
-        IDomclickFetchingResultFactory factory
+        IDomclickFetchingResultFactory factory,
+        DomclickRequestHandler handler,
+        string qratorValue
     )
     {
-        _executor = executor;
         _factory = factory;
+        _handler = handler;
+        _qratorValue = qratorValue;
     }
 
     public async Task ConstructFetchResults()
     {
-        bool flag = true;
-        try
+        bool IsNotFirstFetch = true;
+        while (true)
         {
-            while (true)
+            if (this._offset + 20 < this._maxCount || IsNotFirstFetch)
             {
-                if (this._offset + 20 < this._maxCount || flag)
-                {
-                    flag = false;
-                    IDomclickRequest request = new DomclickGetPageRequest(_offset);
-                    string? response = await _executor.ExecuteAsync(request);
-                    await Task.Delay(TimeSpan.FromSeconds(5));
-                    UpdateMaxCount(response);
-                    UpdateOffset();
-                    ConstructFetchResultsFromResponse(response);
-                }
-                else
-                    break;
+                IHttpRequest request = new DomclickGetPageRequest(_qratorValue, _offset);
+                string response = await _handler.ForceExecuteAsync(request);
+                UpdateMaxCount(response);
+                UpdateOffset();
+                ConstructFetchResultsFromResponse(response);
+                IsNotFirstFetch = false;
             }
-
-            _executor.Dispose();
-        }
-        catch
-        {
-            _executor.Dispose();
+            else
+                break;
         }
     }
 

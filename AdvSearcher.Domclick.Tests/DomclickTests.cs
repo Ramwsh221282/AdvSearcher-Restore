@@ -1,5 +1,6 @@
-using AdvSearcher.Application.Abstractions.Parsers;
 using AdvSearcher.Infrastructure.Domclick.DependencyInjection;
+using AdvSearcher.Parser.SDK.Contracts;
+using AdvSearcher.Parser.SDK.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdvSearcher.Domclick.Tests;
@@ -13,7 +14,7 @@ public class DomclickTests
     public DomclickTests()
     {
         _services = new ServiceCollection();
-        _services = _services.AddDomclickParsingServices();
+        _services = _services.AddParserSDK().AddDomclickParsingServices();
     }
 
     [Test, Order(1)]

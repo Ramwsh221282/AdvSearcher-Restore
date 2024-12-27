@@ -24,3 +24,4 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\ConsoleForTests\b
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\ConsoleForTests\bin\Debug\net9.0\Newtonsoft.Json.dll
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\ConsoleForTests\bin\Debug\net9.0\ICSharpCode.SharpZipLib.dll
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\ConsoleForTests\bin\Debug\net9.0\WebDriverManager.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\ConsoleForTests\bin\Debug\net9.0\RestSharp.dll

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdvSearcher.Domclick.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ad054a85151610607c87d0308058d1ac3ae9b188")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a623d3291fc8e95baee4291eea820a6c3675631")]
 [assembly: System.Reflection.AssemblyProductAttribute("AdvSearcher.Domclick.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AdvSearcher.Domclick.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

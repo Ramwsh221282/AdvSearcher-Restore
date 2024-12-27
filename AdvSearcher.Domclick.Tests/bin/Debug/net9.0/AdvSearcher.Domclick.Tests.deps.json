@@ -31,6 +31,14 @@
         }
       },
       "coverlet.collector/6.0.2": {},
+      "HtmlAgilityPack/1.11.71": {
+        "runtime": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
+            "assemblyVersion": "1.11.71.0",
+            "fileVersion": "1.11.71.0"
+          }
+        }
+      },
       "Microsoft.CodeCoverage/17.11.1": {
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {
@@ -410,6 +418,7 @@
           }
         }
       },
+      "Selenium.WebDriver.ChromeDriver/132.0.6834.5700-beta": {},
       "SharpZipLib/1.4.2": {
         "runtime": {
           "lib/net6.0/ICSharpCode.SharpZipLib.dll": {
@@ -465,14 +474,28 @@
       "AdvSearcher.Infrastructure.Domclick/1.0.0": {
         "dependencies": {
           "AdvSearcher.Application": "1.0.0",
+          "AdvSearcher.Parser.SDK": "1.0.0"
+        },
+        "runtime": {
+          "AdvSearcher.Infrastructure.Domclick.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "AdvSearcher.Parser.SDK/1.0.0": {
+        "dependencies": {
+          "AdvSearcher.Application": "1.0.0",
+          "HtmlAgilityPack": "1.11.71",
           "Newtonsoft.Json": "13.0.3",
           "RestSharp": "112.1.1-alpha.0.4",
           "Selenium.Support": "4.27.0",
           "Selenium.WebDriver": "4.27.0",
+          "Selenium.WebDriver.ChromeDriver": "132.0.6834.5700-beta",
           "WebDriverManager": "2.17.4"
         },
         "runtime": {
-          "AdvSearcher.Infrastructure.Domclick.dll": {
+          "AdvSearcher.Parser.SDK.dll": {
             "assemblyVersion": "1.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -499,6 +522,13 @@
       "sha512": "sha512-bJShQ6uWRTQ100ZeyiMqcFlhP7WJ+bCuabUs885dJiBEzMsJMSFr7BOyeCw4rgvQokteGi5rKQTlkhfQPUXg2A==",
       "path": "coverlet.collector/6.0.2",
       "hashPath": "coverlet.collector.6.0.2.nupkg.sha512"
+    },
+    "HtmlAgilityPack/1.11.71": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HlEThQBnob4/29DIiyrPSYlGXXSZUtOH7571PRev+yu8FW8n5pdxqHyun+PMm17cp3ovCrxFhXedC+1HUSdRMA==",
+      "path": "htmlagilitypack/1.11.71",
+      "hashPath": "htmlagilitypack.1.11.71.nupkg.sha512"
     },
     "Microsoft.CodeCoverage/17.11.1": {
       "type": "package",
@@ -633,6 +663,13 @@
       "path": "selenium.webdriver/4.27.0",
       "hashPath": "selenium.webdriver.4.27.0.nupkg.sha512"
     },
+    "Selenium.WebDriver.ChromeDriver/132.0.6834.5700-beta": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ysa+eiQi9Yg77/zC4MeSEWURifwLp4Y02ArEIi5n2KfXeK5SCNazkzMNVwRBGHAF4PAhm9gPFvP/W3tRCHrAJA==",
+      "path": "selenium.webdriver.chromedriver/132.0.6834.5700-beta",
+      "hashPath": "selenium.webdriver.chromedriver.132.0.6834.5700-beta.nupkg.sha512"
+    },
     "SharpZipLib/1.4.2": {
       "type": "package",
       "serviceable": true,
@@ -686,6 +723,11 @@
       "sha512": ""
     },
     "AdvSearcher.Infrastructure.Domclick/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AdvSearcher.Parser.SDK/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

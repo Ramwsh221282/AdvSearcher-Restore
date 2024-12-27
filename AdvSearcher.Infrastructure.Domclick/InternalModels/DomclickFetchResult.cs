@@ -8,14 +8,16 @@ internal sealed class DomclickFetchResult
     public string Id { get; init; } = string.Empty;
     public string[] PhotoUrls { get; init; }
     public string Description { get; init; }
-    public bool IsAgent { get; init; }
+    public bool IsAgent { get; private set; }
     public string SourceUrl { get; init; } = string.Empty;
     public DateOnly PublishedDate { get; init; }
     public string Price { get; init; }
     public string PhoneNumber { get; set; } = string.Empty;
+    public string FullName { get; init; }
 
     public DomclickFetchResult(JToken json)
     {
+        FullName = ExtractFullName(json);
         JToken? pathJson = json["path"];
         if (pathJson != null)
             this.SourceUrl = pathJson.ToString();
@@ -24,10 +26,14 @@ internal sealed class DomclickFetchResult
             this.Id = idJson.ToString();
         this.PhotoUrls = ExtractPhotoUrls(json);
         this.Description = ExtractDescription(json);
-        this.IsAgent = CheckIfAgent(json);
+        if (CheckIsAgent(json) || CheckIsAgency(json) || CheckIsCompany(json))
+            this.IsAgent = true;
         PublishedDate = ExtractDate(json);
         Price = ExtractPrice(json);
+        int bpoint = 0;
     }
+
+    public void MarkAsAgent() => IsAgent = true;
 
     private string[] ExtractPhotoUrls(JToken json)
     {
@@ -40,7 +46,7 @@ internal sealed class DomclickFetchResult
             return photosJson
                 .Select(p =>
                     new StringBuilder("https://img.dmclk.ru")
-                        .Append(p["url"]!.ToString())
+                        .Append(p["url"]!.Value<string>())
                         .ToString()
                 )
                 .ToArray();
@@ -51,19 +57,88 @@ internal sealed class DomclickFetchResult
         }
     }
 
-    private bool CheckIfAgent(JToken json)
+    private string ExtractFullName(JToken json)
+    {
+        JToken? sellerPart = json["seller"];
+        if (sellerPart is null)
+            return string.Empty;
+        JToken? agentPart = sellerPart["agent"];
+        if (agentPart is null)
+            return string.Empty;
+        JToken? fullNamePart = agentPart["fullName"];
+        if (fullNamePart is null)
+            return string.Empty;
+        string? value = fullNamePart.Value<string>();
+        return value ?? string.Empty;
+    }
+
+    private bool CheckIsCompany(JToken json)
     {
         try
         {
-            JToken? agentJson = json["isAgent"];
-            if (agentJson == null)
+            JToken? sellerPart = json["seller"];
+            if (sellerPart == null)
                 return false;
-            string agentInfo = agentJson.ToString();
-            return string.Equals(
-                    agentJson["isAgency"]!.ToString(),
-                    "true",
-                    StringComparison.OrdinalIgnoreCase
-                ) || string.Equals(agentInfo, "true", StringComparison.OrdinalIgnoreCase);
+            JToken? companyPart = sellerPart["company"];
+            if (companyPart == null)
+                return false;
+            bool hasValues = companyPart.HasValues;
+            if (hasValues)
+                return true;
+
+            return false;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    private bool CheckIsAgency(JToken json)
+    {
+        try
+        {
+            JToken? sellerPart = json["seller"];
+            if (sellerPart == null)
+                return false;
+            JToken? agentPart = sellerPart["agent"];
+            if (agentPart == null)
+                return false;
+            JToken? agencyPart = agentPart["isAgency"];
+            if (agencyPart == null)
+                return false;
+            string? value = agencyPart.Value<string>();
+            if (string.IsNullOrWhiteSpace(value))
+                return false;
+            if (value.Equals("true", StringComparison.OrdinalIgnoreCase))
+                return true;
+            return false;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    private bool CheckIsAgent(JToken json)
+    {
+        try
+        {
+            JToken? sellerPart = json["seller"];
+            if (sellerPart == null)
+                return false;
+            JToken? agentPart = sellerPart["agent"];
+            if (agentPart == null)
+                return false;
+            JToken? isAgent = agentPart["isAgent"];
+            if (isAgent == null)
+                return false;
+            string? value = isAgent.Value<string>();
+            if (string.IsNullOrWhiteSpace(value))
+                return false;
+            if (value.Equals("true", StringComparison.OrdinalIgnoreCase))
+                return true;
+            return false;
         }
         catch
         {

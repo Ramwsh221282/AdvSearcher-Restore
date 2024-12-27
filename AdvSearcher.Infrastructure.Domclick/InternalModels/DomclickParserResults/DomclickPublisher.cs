@@ -1,5 +1,6 @@
-using AdvSearcher.Application.Abstractions.Parsers;
+using System.Text;
 using AdvSearcher.Core.Tools;
+using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastructure.Domclick.InternalModels.DomclickParserResults;
 
@@ -13,6 +14,9 @@ internal sealed record DomclickPublisher : IParsedPublisher
     {
         if (string.IsNullOrWhiteSpace(result.PhoneNumber))
             return ParserErrors.CantParsePublisher;
-        return new DomclickPublisher(result.PhoneNumber);
+        StringBuilder stringBuilder = new StringBuilder()
+            .AppendLine(result.FullName)
+            .AppendLine(result.PhoneNumber);
+        return new DomclickPublisher(stringBuilder.ToString());
     }
 }

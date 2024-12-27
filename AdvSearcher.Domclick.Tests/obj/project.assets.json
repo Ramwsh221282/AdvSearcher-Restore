@@ -24,6 +24,19 @@
           "build/netstandard2.0/coverlet.collector.targets": {}
         }
       },
+      "HtmlAgilityPack/1.11.71": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
+            "related": ".deps.json;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
+            "related": ".deps.json;.pdb;.xml"
+          }
+        }
+      },
       "Microsoft.CodeCoverage/17.11.1": {
         "type": "package",
         "compile": {
@@ -538,6 +551,12 @@
           "buildTransitive/Selenium.WebDriver.targets": {}
         }
       },
+      "Selenium.WebDriver.ChromeDriver/132.0.6834.5700-beta": {
+        "type": "package",
+        "build": {
+          "build/_._": {}
+        }
+      },
       "SharpZipLib/1.4.2": {
         "type": "package",
         "compile": {
@@ -677,17 +696,33 @@
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "AdvSearcher.Application": "1.0.0",
-          "Newtonsoft.Json": "13.0.3",
-          "RestSharp": "112.1.1-alpha.0.4",
-          "Selenium.Support": "4.27.0",
-          "Selenium.WebDriver": "4.27.0",
-          "WebDriverManager": "2.17.4"
+          "AdvSearcher.Parser.SDK": "1.0.0"
         },
         "compile": {
           "bin/placeholder/AdvSearcher.Infrastructure.Domclick.dll": {}
         },
         "runtime": {
           "bin/placeholder/AdvSearcher.Infrastructure.Domclick.dll": {}
+        }
+      },
+      "AdvSearcher.Parser.SDK/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AdvSearcher.Application": "1.0.0",
+          "HtmlAgilityPack": "1.11.71",
+          "Newtonsoft.Json": "13.0.3",
+          "RestSharp": "112.1.1-alpha.0.4",
+          "Selenium.Support": "4.27.0",
+          "Selenium.WebDriver": "4.27.0",
+          "Selenium.WebDriver.ChromeDriver": "132.0.6834.5700-beta",
+          "WebDriverManager": "2.17.4"
+        },
+        "compile": {
+          "bin/placeholder/AdvSearcher.Parser.SDK.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AdvSearcher.Parser.SDK.dll": {}
         }
       }
     }
@@ -786,6 +821,55 @@
         "coverlet-icon.png",
         "coverlet.collector.6.0.2.nupkg.sha512",
         "coverlet.collector.nuspec"
+      ]
+    },
+    "HtmlAgilityPack/1.11.71": {
+      "sha512": "HlEThQBnob4/29DIiyrPSYlGXXSZUtOH7571PRev+yu8FW8n5pdxqHyun+PMm17cp3ovCrxFhXedC+1HUSdRMA==",
+      "type": "package",
+      "path": "htmlagilitypack/1.11.71",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "htmlagilitypack.1.11.71.nupkg.sha512",
+        "htmlagilitypack.nuspec",
+        "lib/Net35/HtmlAgilityPack.dll",
+        "lib/Net35/HtmlAgilityPack.pdb",
+        "lib/Net35/HtmlAgilityPack.xml",
+        "lib/Net40-client/HtmlAgilityPack.dll",
+        "lib/Net40-client/HtmlAgilityPack.pdb",
+        "lib/Net40-client/HtmlAgilityPack.xml",
+        "lib/Net40/HtmlAgilityPack.XML",
+        "lib/Net40/HtmlAgilityPack.dll",
+        "lib/Net40/HtmlAgilityPack.pdb",
+        "lib/Net45/HtmlAgilityPack.XML",
+        "lib/Net45/HtmlAgilityPack.dll",
+        "lib/Net45/HtmlAgilityPack.pdb",
+        "lib/NetCore45/HtmlAgilityPack.XML",
+        "lib/NetCore45/HtmlAgilityPack.dll",
+        "lib/NetCore45/HtmlAgilityPack.pdb",
+        "lib/netstandard1.3/HtmlAgilityPack.deps.json",
+        "lib/netstandard1.3/HtmlAgilityPack.dll",
+        "lib/netstandard1.3/HtmlAgilityPack.pdb",
+        "lib/netstandard1.3/HtmlAgilityPack.xml",
+        "lib/netstandard1.6/HtmlAgilityPack.deps.json",
+        "lib/netstandard1.6/HtmlAgilityPack.dll",
+        "lib/netstandard1.6/HtmlAgilityPack.pdb",
+        "lib/netstandard1.6/HtmlAgilityPack.xml",
+        "lib/netstandard2.0/HtmlAgilityPack.deps.json",
+        "lib/netstandard2.0/HtmlAgilityPack.dll",
+        "lib/netstandard2.0/HtmlAgilityPack.pdb",
+        "lib/netstandard2.0/HtmlAgilityPack.xml",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.XML",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.dll",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.pdb",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.XML",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.pdb",
+        "lib/uap10.0/HtmlAgilityPack.XML",
+        "lib/uap10.0/HtmlAgilityPack.dll",
+        "lib/uap10.0/HtmlAgilityPack.pdb",
+        "lib/uap10.0/HtmlAgilityPack.pri",
+        "readme.md"
       ]
     },
     "Microsoft.CodeCoverage/17.11.1": {
@@ -1499,6 +1583,30 @@
         "selenium.webdriver.nuspec"
       ]
     },
+    "Selenium.WebDriver.ChromeDriver/132.0.6834.5700-beta": {
+      "sha512": "ysa+eiQi9Yg77/zC4MeSEWURifwLp4Y02ArEIi5n2KfXeK5SCNazkzMNVwRBGHAF4PAhm9gPFvP/W3tRCHrAJA==",
+      "type": "package",
+      "path": "selenium.webdriver.chromedriver/132.0.6834.5700-beta",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "build/DefinePropertiesChromeDriver.targets",
+        "build/Selenium.WebDriver.ChromeDriver.targets",
+        "driver/linux64/LICENSE.chromedriver",
+        "driver/linux64/chromedriver",
+        "driver/mac64/LICENSE.chromedriver",
+        "driver/mac64/chromedriver",
+        "driver/mac64arm/LICENSE.chromedriver",
+        "driver/mac64arm/chromedriver",
+        "driver/win32/LICENSE.chromedriver",
+        "driver/win32/chromedriver.exe",
+        "nupkg-icon.png",
+        "selenium.webdriver.chromedriver.132.0.6834.5700-beta.nupkg.sha512",
+        "selenium.webdriver.chromedriver.nuspec"
+      ]
+    },
     "SharpZipLib/1.4.2": {
       "sha512": "yjj+3zgz8zgXpiiC3ZdF/iyTBbz2fFvMxZFEBPUcwZjIvXOf37Ylm+K58hqMfIBt5JgU/Z2uoUS67JmTLe973A==",
       "type": "package",
@@ -1714,6 +1822,11 @@
       "type": "project",
       "path": "../AdvSearcher.Infrastructure.Domclick/AdvSearcher.Infrastructure.Domclick.csproj",
       "msbuildProject": "../AdvSearcher.Infrastructure.Domclick/AdvSearcher.Infrastructure.Domclick.csproj"
+    },
+    "AdvSearcher.Parser.SDK/1.0.0": {
+      "type": "project",
+      "path": "../AdvSearcher.Parser.SDK/AdvSearcher.Parser.SDK.csproj",
+      "msbuildProject": "../AdvSearcher.Parser.SDK/AdvSearcher.Parser.SDK.csproj"
     }
   },
   "projectFileDependencyGroups": {

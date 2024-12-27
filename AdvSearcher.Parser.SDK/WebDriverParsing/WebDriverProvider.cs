@@ -30,6 +30,17 @@ public class WebDriverProvider : IDisposable
         );
     }
 
+    public void InstantiateNewWebDriver(string url)
+    {
+        CleanFromChromeProcesses();
+        CleanFromChromeDriverProcesses();
+        InstantiateNewChromeProcess(url);
+        _webDriver = new ChromeDriver(
+            options: _options.ChromeOptions,
+            chromeDriverDirectory: _fileManager.WebDriverPath
+        );
+    }
+
     public void Dispose()
     {
         _process?.Kill();
@@ -39,6 +50,13 @@ public class WebDriverProvider : IDisposable
     private void InstantiateNewChromeProcess()
     {
         const string argument = "--remote-debugging-port=8888";
+        _process = Process.Start(_fileManager.OriginalChromePath, argument);
+        WaitForProcessStart();
+    }
+
+    private void InstantiateNewChromeProcess(string url)
+    {
+        string argument = $"--remote-debugging-port=8888 {url}";
         _process = Process.Start(_fileManager.OriginalChromePath, argument);
         WaitForProcessStart();
     }

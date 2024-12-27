@@ -1,14 +1,15 @@
+using AdvSearcher.Parser.SDK.HttpParsing;
 using RestSharp;
 
 namespace AdvSearcher.Infrastructure.Domclick.HttpRequests;
 
-internal sealed class DomclickGetPageRequest : IDomclickRequest
+internal sealed class DomclickGetPageRequest : IHttpRequest
 {
     private readonly RestRequest _request;
 
     public RestRequest Request => _request;
 
-    public DomclickGetPageRequest(int offset = 20)
+    public DomclickGetPageRequest(string qraturValue, int offset = 20)
     {
         _request = new RestRequest();
         string url =
@@ -28,9 +29,6 @@ internal sealed class DomclickGetPageRequest : IDomclickRequest
         );
         this._request.AddHeader("sec-ch-ua-mobile", "?0");
         this._request.AddHeader("sec-ch-ua-platform", "\"Windows\"");
-        this._request.AddHeader(
-            "Cookie",
-            "qrator_ssid2=v2.0.1725723333.116.b2a6b22aNnRYfOq9|Bv1ukfg5QPc0D9SG|IJjHlEozZVSBaXHfVZd0ZsDSPF+dlWotHLG8Grq5pNyRFxEDNbN6r34wV7gYxygbIwWFLMcrZxJt+kRHP7m/GKvgie92gIkd5OTEH+hgQA85ENlzyoqhotLRyU0gGvTyeTxkF58b5WBG0Ha905AybaiR8Diq4IkqSvSWn/NqaOM=-hfgjTVjfoTEXzj5H/Af3HlFjBO4="
-        );
+        this._request.AddHeader("Cookie", qraturValue);
     }
 }
