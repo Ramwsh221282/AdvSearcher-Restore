@@ -17,7 +17,7 @@ public static class OkParserServices
             .AddTransient<OkDateConverter>()
             .AddTransient<OkParserPipeLine>()
             .AddTransient<IOkAdvertisementBuildersProvider, OkAdvertisementBuilderProvider>()
-            .AddTransient<IParser<OkParserService>, OkParser>()
+            .AddTransient<IParser, OkParser>()
             .AddTransient<IOkParserChain>(p =>
             {
                 OkParserPipeLine pipeLine = p.GetRequiredService<OkParserPipeLine>();

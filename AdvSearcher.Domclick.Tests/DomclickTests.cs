@@ -21,9 +21,7 @@ public class DomclickTests
     public async Task TestDomclick()
     {
         IServiceProvider provider = _services.BuildServiceProvider();
-        IParser<DomclickParserService> parser = provider.GetRequiredService<
-            IParser<DomclickParserService>
-        >();
+        IParser parser = provider.GetRequiredService<IParser>();
         await parser.ParseData(null!);
         IReadOnlyCollection<IParserResponse> responses = parser.Results;
         Assert.That(responses, Is.Not.Empty);

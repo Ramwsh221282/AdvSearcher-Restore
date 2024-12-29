@@ -5,7 +5,7 @@ using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastructure.CianParser;
 
-internal sealed class CianParser : IParser<CianParserService>
+internal sealed class CianParser : IParser
 {
     private readonly List<IParserResponse> _results = [];
     private readonly ICianParserChain _chain;

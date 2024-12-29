@@ -53,6 +53,14 @@
           }
         }
       },
+      "Microsoft.Extensions.DependencyModel/8.0.2": {
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyModel.dll": {
+            "assemblyVersion": "8.0.0.2",
+            "fileVersion": "8.0.1024.46610"
+          }
+        }
+      },
       "Microsoft.Extensions.Logging/9.0.0": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "9.0.0",
@@ -120,6 +128,18 @@
           }
         }
       },
+      "Scrutor/5.1.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.0",
+          "Microsoft.Extensions.DependencyModel": "8.0.2"
+        },
+        "runtime": {
+          "lib/net8.0/Scrutor.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
       "Selenium.Support/4.27.0": {
         "dependencies": {
           "Selenium.WebDriver": "4.27.0"
@@ -139,7 +159,7 @@
           }
         }
       },
-      "Selenium.WebDriver.ChromeDriver/132.0.6834.5700-beta": {},
+      "Selenium.WebDriver.ChromeDriver/130.0.6723.11600": {},
       "SharpZipLib/1.4.2": {
         "runtime": {
           "lib/net6.0/ICSharpCode.SharpZipLib.dll": {
@@ -156,7 +176,7 @@
       },
       "System.Security.Principal.Windows/5.0.0": {},
       "System.Text.Encoding.CodePages/8.0.0": {},
-      "WebDriverManager/2.17.4": {
+      "WebDriverManager/2.17.5": {
         "dependencies": {
           "AngleSharp": "1.1.2",
           "Microsoft.Win32.Registry": "5.0.0",
@@ -165,8 +185,8 @@
         },
         "runtime": {
           "lib/netstandard2.1/WebDriverManager.dll": {
-            "assemblyVersion": "2.17.4.0",
-            "fileVersion": "2.17.4.0"
+            "assemblyVersion": "2.17.5.0",
+            "fileVersion": "2.17.5.0"
           }
         }
       },
@@ -197,10 +217,11 @@
           "HtmlAgilityPack": "1.11.71",
           "Newtonsoft.Json": "13.0.3",
           "RestSharp": "112.1.1-alpha.0.4",
+          "Scrutor": "5.1.0",
           "Selenium.Support": "4.27.0",
           "Selenium.WebDriver": "4.27.0",
-          "Selenium.WebDriver.ChromeDriver": "132.0.6834.5700-beta",
-          "WebDriverManager": "2.17.4"
+          "Selenium.WebDriver.ChromeDriver": "130.0.6723.11600",
+          "WebDriverManager": "2.17.5"
         },
         "runtime": {
           "AdvSearcher.Parser.SDK.dll": {
@@ -244,6 +265,13 @@
       "sha512": "sha512-+6f2qv2a3dLwd5w6JanPIPs47CxRbnk+ZocMJUhv9NxP88VlOcJYZs9jY+MYSjxvady08bUZn6qgiNh7DadGgg==",
       "path": "microsoft.extensions.dependencyinjection.abstractions/9.0.0",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyModel/8.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mUBDZZRgZrSyFOsJ2qJJ9fXfqd/kXJwf3AiDoqLD9m6TjY5OO/vLNOb9fb4juC0487eq4hcGN/M2Rh/CKS7QYw==",
+      "path": "microsoft.extensions.dependencymodel/8.0.2",
+      "hashPath": "microsoft.extensions.dependencymodel.8.0.2.nupkg.sha512"
     },
     "Microsoft.Extensions.Logging/9.0.0": {
       "type": "package",
@@ -301,6 +329,13 @@
       "path": "restsharp/112.1.1-alpha.0.4",
       "hashPath": "restsharp.112.1.1-alpha.0.4.nupkg.sha512"
     },
+    "Scrutor/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-E+jpEv58Kx6jNGdox41sdIMyweB1Es3mReiK7IfUe1bsK4wnXNROUdfppBDuyTMf4/rKvwb2WBxYoOTRNJWLow==",
+      "path": "scrutor/5.1.0",
+      "hashPath": "scrutor.5.1.0.nupkg.sha512"
+    },
     "Selenium.Support/4.27.0": {
       "type": "package",
       "serviceable": true,
@@ -315,12 +350,12 @@
       "path": "selenium.webdriver/4.27.0",
       "hashPath": "selenium.webdriver.4.27.0.nupkg.sha512"
     },
-    "Selenium.WebDriver.ChromeDriver/132.0.6834.5700-beta": {
+    "Selenium.WebDriver.ChromeDriver/130.0.6723.11600": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ysa+eiQi9Yg77/zC4MeSEWURifwLp4Y02ArEIi5n2KfXeK5SCNazkzMNVwRBGHAF4PAhm9gPFvP/W3tRCHrAJA==",
-      "path": "selenium.webdriver.chromedriver/132.0.6834.5700-beta",
-      "hashPath": "selenium.webdriver.chromedriver.132.0.6834.5700-beta.nupkg.sha512"
+      "sha512": "sha512-gxx04YuxzgB5saoCOdTfPUmQTYHX1akEYjDynSUsoaDGbXyl+JIdhiG7B+d/tiDbtGw+GneU6xSnEbMD/IkfLw==",
+      "path": "selenium.webdriver.chromedriver/130.0.6723.11600",
+      "hashPath": "selenium.webdriver.chromedriver.130.0.6723.11600.nupkg.sha512"
     },
     "SharpZipLib/1.4.2": {
       "type": "package",
@@ -350,12 +385,12 @@
       "path": "system.text.encoding.codepages/8.0.0",
       "hashPath": "system.text.encoding.codepages.8.0.0.nupkg.sha512"
     },
-    "WebDriverManager/2.17.4": {
+    "WebDriverManager/2.17.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Gseye/0QFH/njpNAhpsWZwa1zsB6iG/TxoANZkAJBMZ2hjpm/y3HyLop7JHXKZ3joHhgMFfJEYLbUmUS+jhK6A==",
-      "path": "webdrivermanager/2.17.4",
-      "hashPath": "webdrivermanager.2.17.4.nupkg.sha512"
+      "sha512": "sha512-gxCxFF+SxBdb1/oC0WNIPZkxT/WsfKcw4rHsB266f/fJbEmvsEIn/CodTreDIdgkB1nPlRK4qw7SE0wIcKyiBQ==",
+      "path": "webdrivermanager/2.17.5",
+      "hashPath": "webdrivermanager.2.17.5.nupkg.sha512"
     },
     "AdvSearcher.Application/1.0.0": {
       "type": "project",

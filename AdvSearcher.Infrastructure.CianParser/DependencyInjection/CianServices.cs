@@ -13,7 +13,7 @@ public static class CianServices
         services = services
             .AddTransient<CianDateConverter>()
             .AddTransient<CianParserPipeLine>()
-            .AddScoped<IParser<CianParserService>, CianParser>()
+            .AddScoped<IParser, CianParser>()
             .AddTransient<ICianParserChain>(p =>
             {
                 CianParserPipeLine pipeLine = p.GetRequiredService<CianParserPipeLine>();

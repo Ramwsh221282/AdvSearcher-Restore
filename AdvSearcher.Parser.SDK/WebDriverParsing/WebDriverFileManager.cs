@@ -6,19 +6,13 @@ namespace AdvSearcher.Parser.SDK.WebDriverParsing;
 
 public sealed class WebDriverFileManager
 {
-    public string OriginalChromePath { get; init; }
+    public string OriginalChromePath { get; set; } = string.Empty;
     public string WebDriverPath { get; private set; } = string.Empty;
 
     public bool IsChromeInstalled => File.Exists(OriginalChromePath);
     public bool IsWebDriverInstalled => File.Exists(WebDriverPath);
 
-    public WebDriverFileManager(
-        string chromePath = @"C:\Program Files\Google\Chrome\Application\chrome.exe"
-    )
-    {
-        OriginalChromePath = chromePath;
-        SetWebDriverPathMOK();
-    }
+    public WebDriverFileManager() => SetWebDriverPathMOK();
 
     public void DownloadAndSetupChromeDriver()
     {
@@ -28,8 +22,9 @@ public sealed class WebDriverFileManager
         );
     }
 
+    // TODO: Remove method once web driver binaries management created.
     private void SetWebDriverPathMOK()
     {
-        WebDriverPath = @"C:\Program Files\Google\Chrome\Application\chromedriver.exe";
+        OriginalChromePath = @"C:\Program Files\Google\Chrome\Application\chrome.exe";
     }
 }

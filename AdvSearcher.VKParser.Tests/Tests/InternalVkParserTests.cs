@@ -23,7 +23,7 @@ public class InternalVkParserTests
     public async Task TestVkParsingOneUrl()
     {
         var provider = _service.BuildServiceProvider();
-        var parser = provider.GetRequiredService<IParser<VkParserService>>();
+        var parser = provider.GetRequiredService<IParser>();
         var mode = ServiceUrlMode.Loadable;
         var urlValue = ServiceUrlValue.Create("https://vk.com/les_gorod");
         var url = ServiceUrl.Create(urlValue, mode);

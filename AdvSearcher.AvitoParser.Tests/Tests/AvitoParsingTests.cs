@@ -28,7 +28,7 @@ public sealed class AvitoParsingTests
         var urlValue = ServiceUrlValue.Create(pageUrl);
         var url = ServiceUrl.Create(urlValue, mode);
         var provider = _services.BuildServiceProvider();
-        var parser = provider.GetRequiredService<IParser<AvitoParserService>>();
+        var parser = provider.GetRequiredService<IParser>();
         await parser.ParseData(url);
         Assert.That(parser.Results, Is.Not.Empty);
     }

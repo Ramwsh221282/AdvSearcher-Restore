@@ -124,3 +124,5 @@ C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianP
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianParser.Tests\bin\Debug\net9.0\RestSharp.dll
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianParser.Tests\bin\Debug\net9.0\AdvSearcher.Parser.SDK.dll
 C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianParser.Tests\bin\Debug\net9.0\AdvSearcher.Parser.SDK.pdb
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianParser.Tests\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\AdvSearcher.CianParser.Tests\bin\Debug\net9.0\Scrutor.dll

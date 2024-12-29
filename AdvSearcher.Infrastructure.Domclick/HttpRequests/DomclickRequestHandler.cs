@@ -15,6 +15,23 @@ internal sealed class DomclickRequestHandler
 
     public async Task<string> ExecuteAsync(IHttpRequest request)
     {
+        var result = await _httpClient.Instance.ExecuteAsync(request.Request);
+        var cookies = result.Cookies;
+        var headers = result.Headers;
+
+        var bytes = await _httpClient.Instance.DownloadStreamAsync(request.Request);
+        if (bytes != null)
+        {
+            using (bytes)
+            {
+                using (StreamReader reader = new StreamReader(bytes))
+                {
+                    string text = reader.ReadToEnd();
+                    int bpoint = 0;
+                }
+            }
+        }
+
         await _httpService.Execute(_httpClient, request);
         return _httpService.Result;
     }

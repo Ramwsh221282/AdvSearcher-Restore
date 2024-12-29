@@ -5,7 +5,7 @@ using AdvSearcher.Parser.SDK.Contracts;
 
 namespace Advsearcher.Infrastructure.VKParser;
 
-internal sealed class VkParser : IParser<VkParserService>
+internal sealed class VkParser : IParser
 {
     private readonly IVkParserNode _chainedNode;
     private readonly List<IParserResponse> _results = [];

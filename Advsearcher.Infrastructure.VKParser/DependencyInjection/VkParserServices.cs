@@ -1,6 +1,5 @@
 using Advsearcher.Infrastructure.VKParser.Components.Converters;
 using Advsearcher.Infrastructure.VKParser.Components.Requests;
-using Advsearcher.Infrastructure.VKParser.Components.Responses;
 using Advsearcher.Infrastructure.VKParser.Components.VkParserChain;
 using Advsearcher.Infrastructure.VKParser.Components.VkParserChain.Nodes;
 using AdvSearcher.Parser.SDK.Contracts;
@@ -16,7 +15,7 @@ public static class VkParserServices
         services = services
             .AddTransient<VkDateConverter>()
             .AddTransient<VkParserPipeLine>()
-            .AddTransient<IParser<VkParserService>, VkParser>()
+            .AddTransient<IParser, VkParser>()
             .AddTransient<IVkOptionsProvider, TestVkOptionsProvider>()
             .AddTransient<IVkParserRequestFactory, VkParserRequestFactory>()
             .AddTransient<IVkParserNode>(p =>

@@ -11,7 +11,7 @@ public static class AvitoParsingService
     public static IServiceCollection AddAvitoParsingServices(this IServiceCollection services)
     {
         services = services
-            .AddTransient<IParser<AvitoParserService>, AvitoParser>()
+            .AddTransient<IParser, AvitoParser>()
             .AddTransient<AvitoDateConverter>()
             .AddTransient<AvitoParserPipeLine>()
             .AddTransient<IAvitoChainNode>(p =>

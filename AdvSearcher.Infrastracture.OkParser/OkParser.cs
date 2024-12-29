@@ -5,7 +5,7 @@ using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastracture.OkParser;
 
-internal sealed class OkParser : IParser<OkParserService>
+internal sealed class OkParser : IParser
 {
     private readonly List<IParserResponse> _results = [];
     private readonly IOkParserChain _chain;

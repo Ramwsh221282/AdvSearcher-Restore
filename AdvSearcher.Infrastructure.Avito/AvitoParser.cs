@@ -5,7 +5,7 @@ using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastructure.Avito;
 
-internal sealed class AvitoParser : IParser<AvitoParserService>
+internal sealed class AvitoParser : IParser
 {
     private readonly List<IParserResponse> _results = [];
     private readonly IAvitoChainNode _node;

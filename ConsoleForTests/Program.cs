@@ -1,39 +1,258 @@
-﻿using System.Diagnostics;
+﻿using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using Newtonsoft.Json.Linq;
 using RestSharp;
-using WebDriverManager;
-using WebDriverManager.DriverConfigs.Impl;
-using WebDriverManager.Helpers;
 
 namespace ConsoleForTests
 {
-    public class WebDriverCookies
+    public class DomclickApi : IDisposable
     {
-        public string Name { get; set; } = string.Empty;
-        public string Value { get; set; } = string.Empty;
-        public string Domain { get; set; } = string.Empty;
-        public string Path { get; set; } = string.Empty;
+        private readonly List<DomclickCatalogueFetchResult> _results = [];
+        private RestClient _client = null!;
+        private const string Sault = "ad65f331b02b90d868cbdd660d82aba0";
+        System.Net.CookieCollection _cookies = new System.Net.CookieCollection();
+        private string researchApiToken = string.Empty;
+        const string phonePattern = @"""phone""\s*:\s*""(?<phone>[^""]+)""";
+        const string tokenPattern = @"""result""\s*:\s*""(?<result>[^""]+)""";
+        private static readonly Regex phoneRegex = new Regex(phonePattern, RegexOptions.Compiled);
+        private static readonly Regex tokenRegex = new Regex(tokenPattern, RegexOptions.Compiled);
 
-        public static string CreateCookieHeaderFromList(List<WebDriverCookies> cookies)
+        public DomclickApi()
         {
-            WebDriverCookies[] filtered = cookies
-                .Where(c => c.Domain.Contains(".domclick.ru"))
-                .ToArray();
-            StringBuilder sb = new StringBuilder();
-            foreach (var cookie in filtered)
+            ServicePointManager.ServerCertificateValidationCallback += (
+                sender,
+                certificate,
+                chain,
+                sslPolicyErrors
+            ) =>
             {
-                sb.Append(CreateCookieForm(cookie));
-            }
-            return sb.ToString().Trim();
+                return true;
+            };
+            UpdateRestClient();
+            // GetAsync("https://api.domclick.ru/core/no-auth-zone/api/v1/ensure_session").Wait();
+            // GetAsync("https://ipoteka.domclick.ru/mobile/v1/feature_toggles").Wait();
         }
 
-        private static string CreateCookieForm(WebDriverCookies cookie)
+        private void UpdateRestClient()
         {
-            string form = $"{cookie.Name}={cookie.Value}; ";
-            return form;
+            _client = new RestClient();
+            _client.AddDefaultHeader("X-Service", "true");
+            _client.AddDefaultHeader("Connection", "Keep-Alive");
+            _client.AddDefaultHeader(
+                "User-Agent",
+                "Android; 12; Google; google_pixel_5; 8.72.0; 8720006; ; NONAUTH"
+            );
+        }
+
+        public async Task EnsureSessionAsync() =>
+            await GetAsync("https://api.domclick.ru/core/no-auth-zone/api/v1/ensure_session");
+
+        public async Task EnsureNsSessionAsync() =>
+            GetAsync("https://ipoteka.domclick.ru/mobile/v1/feature_toggles");
+
+        private async Task<string> GetAsync(string url)
+        {
+            UpdateHeaders(url);
+            var request = new RestRequest(url, Method.Get);
+            var response = await _client.ExecuteAsync(request);
+            Console.WriteLine(string.Join("\n", _client.DefaultParameters));
+            if (response.Cookies != null)
+            {
+                foreach (System.Net.Cookie cookie in response.Cookies)
+                {
+                    _cookies.Add(cookie);
+                }
+                var d = response.Cookies.First();
+            }
+            else
+            {
+                Console.WriteLine("Cookies are null");
+            }
+            return response.Content;
+        }
+
+        public async Task InitializeResults()
+        {
+            foreach (var result in _results)
+            {
+                await GetResearchApiToken(result);
+                await GetPhoneNumber(result);
+                Thread.Sleep(5000);
+                Console.WriteLine("Advertisement completed");
+            }
+        }
+
+        public async Task GetItemsFromCatalogue()
+        {
+            DomclickCatalogueFetchResultFactory factory = new();
+            int limit = 0;
+            int offset = 0;
+            bool isNotFirstFetch = true;
+            while (true)
+            {
+                if (offset + 20 < limit || isNotFirstFetch)
+                {
+                    string url = CreateCatalogueItemsRequestUrl(offset);
+                    UpdateHeaders(url);
+                    var request = new RestRequest(url, Method.Get);
+                    foreach (System.Net.Cookie cookie in _cookies)
+                    {
+                        request = request.AddCookie(
+                            cookie.Name,
+                            cookie.Value,
+                            cookie.Path,
+                            cookie.Domain
+                        );
+                    }
+                    var response = await _client.ExecuteAsync(request);
+                    string content = response.Content;
+                    if (!string.IsNullOrEmpty(content))
+                    {
+                        offset = UpdateOffset(offset);
+                        if (!isNotFirstFetch)
+                        {
+                            limit = UpdateMaxCount(content, limit);
+                        }
+                        isNotFirstFetch = false;
+                        _results.AddRange(factory.Create(content));
+                        Console.WriteLine("Catalogue results added");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Items from catalogue response is terminated");
+                        break;
+                    }
+                    Thread.Sleep(5000);
+                }
+                else
+                    break;
+            }
+        }
+
+        private string CreateCatalogueItemsRequestUrl(int offset)
+        {
+            string url =
+                $"https://bff-search-web.domclick.ru/api/offers/v1?address=6b2a4aad-bd39-4982-9ee0-2cc25449964b&offset={offset}&limit=20&sort=qi&sort_dir=desc&deal_type=sale&category=living&offer_type=flat&offer_type=layout&aids=650885&sort_by_tariff_date=1";
+            return url;
+        }
+
+        public async Task GetResearchApiToken(DomclickCatalogueFetchResult result)
+        {
+            string url = $"https://bff-search-web.domclick.ru/api/phone/token/v1/{result.Id}";
+            UpdateHeaders(url);
+            RestRequest request = new RestRequest(url, Method.Get)
+                .AddHeader("Accept", "application/json, text/plain, */*")
+                .AddHeader("Referer", "https://krasnoyarsk.domclick.ru/");
+            foreach (System.Net.Cookie cookie in _cookies)
+            {
+                request = request.AddCookie(cookie.Name, cookie.Value, cookie.Path, cookie.Domain);
+            }
+            var response = await _client.ExecuteAsync(request);
+            if (!string.IsNullOrWhiteSpace(response.Content))
+            {
+                researchApiToken = ExtractToken(response.Content);
+                Console.WriteLine(researchApiToken);
+            }
+            else
+            {
+                Console.WriteLine("No research API token found.");
+            }
+        }
+
+        public async Task GetPhoneNumber(DomclickCatalogueFetchResult result)
+        {
+            string url = $"https://bff-search-web.domclick.ru/api/phone/get/v3/{result.Id}";
+            UpdateHeaders(url);
+            RestRequest request = new RestRequest(url, Method.Get)
+                .AddHeader("referer", "https://krasnoyarsk.domclick.ru/")
+                .AddHeader("research-api-token", researchApiToken);
+            foreach (System.Net.Cookie cookie in _cookies)
+            {
+                request = request.AddCookie(cookie.Name, cookie.Value, cookie.Path, cookie.Domain);
+            }
+            var response = await _client.ExecuteAsync(request);
+            if (!string.IsNullOrWhiteSpace(response.Content))
+            {
+                string phone = ExtractPhone(response.Content);
+                Console.WriteLine(phone);
+                result.PhoneNumber = phone;
+            }
+            else
+            {
+                Console.WriteLine("No phone found.");
+            }
+        }
+
+        private int UpdateOffset(int currentOffset)
+        {
+            return currentOffset += 20;
+        }
+
+        private int UpdateMaxCount(string? response, int currentLimit)
+        {
+            if (string.IsNullOrWhiteSpace(response))
+                return currentLimit;
+            if (currentLimit != 0)
+                return currentLimit;
+            JObject jsonObject = JObject.Parse(response);
+            JToken? result = jsonObject["result"];
+            if (result == null)
+                return currentLimit;
+            JToken? pagination = result["pagination"];
+            if (pagination == null)
+                return currentLimit;
+            JToken? total = pagination["total"];
+            if (total == null)
+                return currentLimit;
+            currentLimit = int.Parse(total.ToString());
+            return currentLimit;
+        }
+
+        private void UpdateHeaders(string url)
+        {
+            string timestamp = ((int)DateTimeOffset.UtcNow.ToUnixTimeSeconds()).ToString();
+            string hash = ComputeMD5Hash(Sault + url + timestamp);
+            UpdateRestClient();
+            _client.AddDefaultHeader("Timestamp", timestamp);
+            _client.AddDefaultHeader("Hash", $"v1:{hash}");
+        }
+
+        private string ComputeMD5Hash(string input)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in hashBytes)
+                {
+                    sb.Append(b.ToString("x2"));
+                }
+                return sb.ToString();
+            }
+        }
+
+        private static string ExtractPhone(string response)
+        {
+            if (string.IsNullOrWhiteSpace(response))
+                return string.Empty;
+            Match match = phoneRegex.Match(response);
+            return match.Success ? match.Groups["phone"].Value : string.Empty;
+        }
+
+        private static string ExtractToken(string response)
+        {
+            if (string.IsNullOrWhiteSpace(response))
+                return string.Empty;
+            Match match = tokenRegex.Match(response);
+            return match.Success ? match.Groups["result"].Value : string.Empty;
+        }
+
+        public void Dispose()
+        {
+            _client.Dispose();
         }
     }
 
@@ -41,134 +260,19 @@ namespace ConsoleForTests
     {
         static void Main()
         {
-            string result = new DriverManager().SetUpDriver(
-                new ChromeConfig(),
-                VersionResolveStrategy.MatchingBrowser
-            );
-
-            CleanFromChromeProcesses();
-            CleanFromChromeDriverProcesses();
-
-            const string chromePath = @"C:\Program Files\Google\Chrome\Application\chrome.exe";
-            const string chromeDriverPath =
-                @"C:\Program Files\Google\Chrome\Application\chromedriver.exe";
-
-            const string argument = "--remote-debugging-port=8888 https://krasnoyarsk.domclick.ru";
-            var process = Process.Start(chromePath, argument);
-
-            while (true)
-            {
-                if (Process.GetProcessesByName("chrome").Length == 0)
-                    continue;
-                break;
-            }
-
-            var options = new ChromeOptions();
-            options.DebuggerAddress = "127.0.0.1:8888";
-            IWebDriver driver = new ChromeDriver(
-                chromeDriverDirectory: chromeDriverPath,
-                options: options
-            );
-            driver
-                .Navigate()
-                .GoToUrl("https://krasnoyarsk.domclick.ru/card/sale__flat__2062607424");
-
-            List<WebDriverCookies> cookies = [];
-            cookies = driver
-                .Manage()
-                .Cookies.AllCookies.Select(cookie => new WebDriverCookies()
-                {
-                    Name = cookie.Name,
-                    Value = cookie.Value,
-                    Domain = cookie.Domain,
-                    Path = cookie.Path,
-                })
-                .ToList();
-
-            string cookieHeaderValue = WebDriverCookies.CreateCookieHeaderFromList(cookies);
-
-            const string UserAgent =
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
-            var requestOptions = new RestClientOptions() { UserAgent = UserAgent };
-            var _instance = new RestClient(requestOptions);
-
-            string requestUrl = "https://offer-card.domclick.ru/api/v3/public_request/2062607424";
-            var tokenRequest = new RestRequest(requestUrl)
-                .AddHeader("Accept", "application/json, text/plan, */*")
-                .AddHeader("Accept-Language", "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7")
-                .AddHeader("Connection", "keep-alive")
-                .AddHeader("Cookie", cookieHeaderValue)
-                .AddHeader("Origin", "https://krasnoyarsk.domclick.ru")
-                .AddHeader("Referer", "https://krasnoyarsk.domclick.ru/")
-                .AddHeader("Sec-Fetch-Dest", "empty")
-                .AddHeader("Sec-Fetch-Mode", "cors")
-                .AddHeader("Sec-Fetch-Site", "same-site")
-                .AddHeader(
-                    "sec-ch-ua",
-                    "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\""
-                )
-                .AddHeader("sec-ch-ua-mobile", "?0")
-                .AddHeader("sec-ch-ua-platform", "\"Windows\"");
-
-            var tokenResponse = _instance.ExecuteAsync(tokenRequest).Result;
-            Thread.Sleep(5000);
-            string? Content = tokenResponse.Content;
-            string token = ExtractToken(Content);
-
-            var phoneRequest = new RestRequest(
-                "https://offer-card.domclick.ru/api/v3/offers/phone/2062607424"
-            )
-                .AddHeader("Accept", "application/json, text/plain, */*")
-                .AddHeader("Accept-Language", "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7")
-                .AddHeader("Connection", "keep-alive")
-                .AddHeader("Cookie", cookieHeaderValue)
-                .AddHeader("Origin", "https://krasnoyarsk.domclick.ru")
-                .AddHeader("Referer", "https://krasnoyarsk.domclick.ru/")
-                .AddHeader("Sec-Fetch-Dest", "empty")
-                .AddHeader("Sec-Fetch-Mode", "cors")
-                .AddHeader("Sec-Fetch-Site", "same-site")
-                .AddHeader("research-api-token", token)
-                .AddHeader(
-                    "sec-ch-ua",
-                    "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\""
-                )
-                .AddHeader("sec-ch-ua-mobile", "?0")
-                .AddHeader("sec-ch-ua-platform", "\"Windows\"");
-            RestResponse response = _instance.ExecuteAsync(phoneRequest).Result;
-            string? phoneContent = response.Content;
-            int bpoint = 0;
+            Test().Wait();
         }
 
-        static string ExtractToken(string? json)
+        static async Task Test()
         {
-            if (string.IsNullOrWhiteSpace(json))
-                return string.Empty;
-
-            string pattern = @"""token""\s*:\s*""(?<token>[^""]+)""";
-            Regex regex = new Regex(pattern);
-            Match match = regex.Match(json);
-
-            if (match.Success)
+            using (DomclickApi api = new DomclickApi())
             {
-                return match.Groups["token"].Value; // Возврат найденного токена
-            }
-
-            return string.Empty; // Если токен не найден
-        }
-
-        static void CleanFromChromeProcesses()
-        {
-            foreach (var process in Process.GetProcessesByName("chrome"))
-            {
-                process.Kill();
-            }
-        }
-
-        static void CleanFromChromeDriverProcesses()
-        {
-            foreach (var process in Process.GetProcessesByName("chromedriver"))
-            {
-                process.Kill();
+                // await api.GetResearchApiToken();
+                // await api.GetPhoneNumber();
+                await api.EnsureSessionAsync();
+                await api.EnsureNsSessionAsync();
+                await api.GetItemsFromCatalogue();
+                await api.InitializeResults();
             }
         }
     }

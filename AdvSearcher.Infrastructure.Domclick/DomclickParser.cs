@@ -5,7 +5,7 @@ using AdvSearcher.Parser.SDK.Contracts;
 
 namespace AdvSearcher.Infrastructure.Domclick;
 
-internal sealed class DomclickParser : IParser<DomclickParserService>
+internal sealed class DomclickParser : IParser
 {
     private readonly IDomclickParserChain _chain;
     private readonly List<IParserResponse> _results = [];

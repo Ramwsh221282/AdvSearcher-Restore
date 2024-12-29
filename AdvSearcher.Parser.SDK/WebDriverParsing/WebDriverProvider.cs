@@ -6,73 +6,34 @@ namespace AdvSearcher.Parser.SDK.WebDriverParsing;
 
 public class WebDriverProvider : IDisposable
 {
-    private readonly WebDriverFileManager _fileManager;
-    private readonly WebDriverOptionsManager _options;
+    public WebDriverFileManager FileManager { get; }
+    public WebDriverOptionsManager Options { get; }
 
-    private Process? _process;
     private IWebDriver? _webDriver;
     public IWebDriver? Instance => _webDriver;
 
     public WebDriverProvider()
     {
-        _fileManager = new WebDriverFileManager();
-        _options = new WebDriverOptionsManager();
+        FileManager = new WebDriverFileManager();
+        Options = new WebDriverOptionsManager();
     }
 
     public void InstantiateNewWebDriver()
     {
+        ChromeDriverService service = ChromeDriverService.CreateDefaultService();
+        service.HideCommandPromptWindow = true;
         CleanFromChromeProcesses();
         CleanFromChromeDriverProcesses();
-        InstantiateNewChromeProcess();
-        _webDriver = new ChromeDriver(
-            options: _options.ChromeOptions,
-            chromeDriverDirectory: _fileManager.WebDriverPath
-        );
+        _webDriver = new ChromeDriver(service, Options.ChromeOptions);
     }
 
-    public void InstantiateNewWebDriver(string url)
-    {
-        CleanFromChromeProcesses();
-        CleanFromChromeDriverProcesses();
-        InstantiateNewChromeProcess(url);
-        _webDriver = new ChromeDriver(
-            options: _options.ChromeOptions,
-            chromeDriverDirectory: _fileManager.WebDriverPath
-        );
-    }
-
-    public void Dispose()
-    {
-        _process?.Kill();
-        _webDriver?.Dispose();
-    }
-
-    private void InstantiateNewChromeProcess()
-    {
-        const string argument = "--remote-debugging-port=8888";
-        _process = Process.Start(_fileManager.OriginalChromePath, argument);
-        WaitForProcessStart();
-    }
-
-    private void InstantiateNewChromeProcess(string url)
-    {
-        string argument = $"--remote-debugging-port=8888 {url}";
-        _process = Process.Start(_fileManager.OriginalChromePath, argument);
-        WaitForProcessStart();
-    }
-
-    private void WaitForProcessStart()
-    {
-        while (true)
-        {
-            if (Process.GetProcessesByName("chrome").Length == 0)
-                continue;
-            break;
-        }
-    }
+    public void Dispose() => _webDriver?.Dispose();
 
     private void CleanFromChromeProcesses()
     {
+        Process[] processes = Process.GetProcessesByName("chrome");
+        if (!processes.Any())
+            return;
         foreach (var process in Process.GetProcessesByName("chrome"))
         {
             process.Kill();
@@ -81,6 +42,9 @@ public class WebDriverProvider : IDisposable
 
     private void CleanFromChromeDriverProcesses()
     {
+        Process[] processes = Process.GetProcessesByName("chromedriver");
+        if (!processes.Any())
+            return;
         foreach (var process in Process.GetProcessesByName("chromedriver"))
         {
             process.Kill();
