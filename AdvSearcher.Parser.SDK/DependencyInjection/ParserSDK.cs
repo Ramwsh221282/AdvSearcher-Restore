@@ -24,12 +24,13 @@ public static class ParserSDK
             .AddTransient<WebDriverDispatcher>()
             .AddTransient<IWebDriverCommand<ScrollToBottomCommand>, ScrollToBottomCommand>()
             .AddTransient<IWebDriverCommand<NavigateOnPageCommand>, NavigateOnPageCommand>()
-            .AddTransient<IWebDriverCommand<ScrollToTopCommand>, ScrollToTopCommand>();
-        //services = services.AddParserPlugins();
+            .AddTransient<IWebDriverCommand<ScrollToTopCommand>, ScrollToTopCommand>()
+            .AddSingleton<ParserConsoleLogger>();
+        services = services.AddParserPlugins();
         return services;
     }
 
-    public static IServiceCollection AddParserPlugins(this IServiceCollection services)
+    private static IServiceCollection AddParserPlugins(this IServiceCollection services)
     {
         if (!Directory.Exists(Path))
             return services;
@@ -38,18 +39,27 @@ public static class ParserSDK
             .GetFiles(Path, "*.dll")
             .Select(Assembly.LoadFrom)
             .ToArray();
-        services = services
-            .Scan(x =>
-                x.FromAssemblies(assemblies)
-                    .AddClasses(classes => classes.AssignableTo(typeof(IParser)))
-                    .AsSelfWithInterfaces()
-                    .WithTransientLifetime()
-            )
-            .AddTransient<ParserProvider>(p =>
+        services = services.Scan(x =>
+            x.FromAssemblies(assemblies)
+                .AddClasses(classes => classes.AssignableTo<IParserDIServicesInitializer>())
+                .AsSelfWithInterfaces()
+                .WithScopedLifetime()
+        );
+        var provider = services.BuildServiceProvider();
+        using (var scope = provider.CreateScope())
+        {
+            var parserDiProviders =
+                scope.ServiceProvider.GetServices<IParserDIServicesInitializer>();
+            foreach (var diProvider in parserDiProviders)
+            {
+                services = diProvider.ModifyServices(services);
+            }
+            services.AddTransient<ParserProvider>(p =>
             {
                 IEnumerable<IParser> parsers = p.GetServices<IParser>();
                 return new ParserProvider(parsers);
             });
+        }
         return services;
     }
 }

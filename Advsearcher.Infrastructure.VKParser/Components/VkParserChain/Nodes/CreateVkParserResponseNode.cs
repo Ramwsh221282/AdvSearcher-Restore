@@ -3,6 +3,7 @@ using Advsearcher.Infrastructure.VKParser.Components.Converters;
 using Advsearcher.Infrastructure.VKParser.Components.Requests;
 using Advsearcher.Infrastructure.VKParser.Components.VkParserResponses;
 using Advsearcher.Infrastructure.VKParser.Models.VkParsedData;
+using AdvSearcher.Parser.SDK;
 using AdvSearcher.Parser.SDK.Contracts;
 using AdvSearcher.Parser.SDK.HttpParsing;
 using Newtonsoft.Json.Linq;
@@ -16,6 +17,7 @@ internal sealed class CreateVkParserResponseNode : IVkParserNode
     private readonly IHttpService _httpService;
     private readonly IHttpClient _httpClient;
     private readonly IVkParserRequestFactory _factory;
+    private readonly ParserConsoleLogger _logger;
     public VkParserPipeLine PipeLine => _pipeLine;
     public IVkParserNode? Next { get; }
 
@@ -24,6 +26,7 @@ internal sealed class CreateVkParserResponseNode : IVkParserNode
         IHttpService service,
         IHttpClient client,
         IVkParserRequestFactory factory,
+        ParserConsoleLogger logger,
         IVkParserNode? next = null
     )
     {
@@ -32,13 +35,18 @@ internal sealed class CreateVkParserResponseNode : IVkParserNode
         _httpService = service;
         _httpClient = client;
         _factory = factory;
+        _logger = logger;
         Next = next;
     }
 
     public async Task ExecuteAsync()
     {
+        _logger.Log("Creating VkParser Responses");
         if (_pipeLine.ItemsJson == null)
+        {
+            _logger.Log("Json items were null");
             return;
+        }
         foreach (var json in _pipeLine.ItemsJson.Items)
         {
             Result<IParsedAdvertisement> advertisement = CreateAdvertisement(json);
@@ -46,15 +54,30 @@ internal sealed class CreateVkParserResponseNode : IVkParserNode
             IParsedAttachment[] attachments = CreateAttachments(json);
             AppendInResultsCollection(advertisement, publisher, attachments);
         }
+        _logger.Log($"Vk Parser Responses constructed. Count: {_pipeLine.Responses.Count}");
         if (Next != null)
+        {
+            _logger.Log("Executing next chain");
             await Next.ExecuteAsync();
+        }
     }
 
     private Result<IParsedAdvertisement> CreateAdvertisement(JToken json)
     {
+        _logger.Log("Creating VK Advertisement");
         if (_pipeLine.GroupInfo == null)
+        {
+            _logger.Log("Group info was null");
             return new Error("No group info found");
-        return VkAdvertisement.Create(json, _pipeLine.GroupInfo, _converter);
+        }
+
+        Result<IParsedAdvertisement> advertisement = VkAdvertisement.Create(
+            json,
+            _pipeLine.GroupInfo,
+            _converter
+        );
+        _logger.Log($"Created Vk Advertisement");
+        return advertisement;
     }
 
     private async Task<Result<IParsedPublisher>> CreatePublisher(JToken json)
@@ -62,10 +85,15 @@ internal sealed class CreateVkParserResponseNode : IVkParserNode
         Result<string> id = ExtractId(json);
         Result<string> postOwnerResponse = await GetPostOwnerResponse(id);
         if (id.IsFailure)
+        {
+            _logger.Log($"Publisher error: {id.Error}");
             return id.Error;
+        }
         if (postOwnerResponse.IsFailure)
             return postOwnerResponse.Error;
-        return VkPublisher.Create(id, postOwnerResponse);
+        Result<IParsedPublisher> publisher = VkPublisher.Create(id, postOwnerResponse);
+        _logger.Log($"Created Vk Publisher: {publisher.Value.Info}");
+        return publisher;
     }
 
     private Result<string> ExtractId(JToken json)
@@ -104,6 +132,7 @@ internal sealed class CreateVkParserResponseNode : IVkParserNode
             return;
         if (publisher.IsFailure)
             return;
+        _logger.Log("Adding Vk advertisement");
         _pipeLine.AddResponse(
             new VkParserResponse(advertisement.Value, attachments, publisher.Value)
         );

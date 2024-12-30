@@ -11,9 +11,11 @@ public sealed class ParserProvider
         _parsers = parsers.ToArray();
     }
 
-    public IParser? GetParser(string parserName)
+    public IParser GetParser(string parserName)
     {
         IParser? parser = _parsers.FirstOrDefault(p => p.GetType().Name == parserName);
+        if (parser == null)
+            throw new Exception($"No parser found with name: {parserName}");
         return parser;
     }
 }

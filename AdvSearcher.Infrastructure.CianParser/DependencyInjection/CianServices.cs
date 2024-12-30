@@ -1,14 +1,15 @@
 using AdvSearcher.Infrastructure.CianParser.CianParserChains;
 using AdvSearcher.Infrastructure.CianParser.CianParserChains.Nodes;
 using AdvSearcher.Infrastructure.CianParser.Utils.Converters;
+using AdvSearcher.Parser.SDK;
 using AdvSearcher.Parser.SDK.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdvSearcher.Infrastructure.CianParser.DependencyInjection;
 
-public static class CianServices
+public class CianServices : IParserDIServicesInitializer
 {
-    public static IServiceCollection AddCianParser(this IServiceCollection services)
+    public IServiceCollection ModifyServices(IServiceCollection services)
     {
         services = services
             .AddTransient<CianDateConverter>()
@@ -17,20 +18,28 @@ public static class CianServices
             .AddTransient<ICianParserChain>(p =>
             {
                 CianParserPipeLine pipeLine = p.GetRequiredService<CianParserPipeLine>();
-                ICianParserChain constructNode = new ConstructResponseNode(pipeLine);
+                ParserConsoleLogger logger = p.GetRequiredService<ParserConsoleLogger>();
+                ICianParserChain constructNode = new ConstructResponseNode(pipeLine, logger);
                 ICianParserChain initializeCardsNode = new InitializeCianAdvertisementCardsNode(
                     pipeLine,
+                    logger,
                     constructNode
                 );
                 ICianParserChain cardElementsNode = new SetCardElementsNode(
                     pipeLine,
+                    logger,
                     initializeCardsNode
                 );
                 ICianParserChain wrapperNode = new SetCardsWrapperElementNode(
                     pipeLine,
+                    logger,
                     cardElementsNode
                 );
-                ICianParserChain openPage = new OpenCianCataloguePageNode(pipeLine, wrapperNode);
+                ICianParserChain openPage = new OpenCianCataloguePageNode(
+                    pipeLine,
+                    logger,
+                    wrapperNode
+                );
                 return openPage;
             });
         return services;

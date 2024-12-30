@@ -2,15 +2,16 @@ using Advsearcher.Infrastructure.VKParser.Components.Converters;
 using Advsearcher.Infrastructure.VKParser.Components.Requests;
 using Advsearcher.Infrastructure.VKParser.Components.VkParserChain;
 using Advsearcher.Infrastructure.VKParser.Components.VkParserChain.Nodes;
+using AdvSearcher.Parser.SDK;
 using AdvSearcher.Parser.SDK.Contracts;
 using AdvSearcher.Parser.SDK.HttpParsing;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Advsearcher.Infrastructure.VKParser.DependencyInjection;
 
-public static class VkParserServices
+public class VkParserServices : IParserDIServicesInitializer
 {
-    public static IServiceCollection AddVkParser(this IServiceCollection services)
+    public IServiceCollection ModifyServices(IServiceCollection services)
     {
         services = services
             .AddTransient<VkDateConverter>()
@@ -25,12 +26,14 @@ public static class VkParserServices
                 IHttpClient httpClient = p.GetRequiredService<IHttpClient>();
                 IVkParserRequestFactory requestFactory =
                     p.GetRequiredService<IVkParserRequestFactory>();
+                ParserConsoleLogger logger = p.GetRequiredService<ParserConsoleLogger>();
 
                 IVkParserNode responseNode = new CreateVkParserResponseNode(
                     pipeLine,
                     httpService,
                     httpClient,
-                    requestFactory
+                    requestFactory,
+                    logger
                 );
 
                 IVkParserNode itemJsonNode = new CreateVkItemsJsonNode(
@@ -38,6 +41,7 @@ public static class VkParserServices
                     httpClient,
                     httpService,
                     requestFactory,
+                    logger,
                     responseNode
                 );
 
@@ -45,11 +49,13 @@ public static class VkParserServices
                     pipeLine,
                     httpService,
                     httpClient,
+                    logger,
                     itemJsonNode
                 );
 
                 IVkParserNode parametersNode = new CreateRequestParametersNode(
                     pipeLine,
+                    logger,
                     groupInfoNode
                 );
 
