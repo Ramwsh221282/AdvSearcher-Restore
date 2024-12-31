@@ -1,0 +1,254 @@
+[ {
+    "type" : "spreadContainer",
+    "content" : {
+      "priority" : "right",
+      "interItemSpacing" : 10,
+      "id" : "mainSpreadContainer",
+      "leftChildren" : [ {
+        "type" : "verticalContainer",
+        "content" : {
+          "children" : [ {
+            "type" : "flexContainer",
+            "content" : {
+              "id" : "priceFlexContainerRich",
+              "children" : [ {
+                "type" : "label",
+                "content" : {
+                  "id" : "priceLabelRich",
+                  "layout" : {
+                    "contentMode" : "fitContent"
+                  },
+                  "numberOfLines" : 1,
+                  "tokens" : [ {
+                    "type" : "text",
+                    "title" : "5 490 000 ₽",
+                    "overridenAttributes" : {
+                      "font" : {
+                        "style" : "headingLarge",
+                        "color" : {
+                          "value" : "",
+                          "valueName" : "black"
+                        }
+                      }
+                    }
+                  } ]
+                }
+              }, {
+                "type" : "verticalContainer",
+                "content" : {
+                  "children" : [ {
+                    "type" : "label",
+                    "content" : {
+                      "id" : "normalizedPriceLabelRich",
+                      "layout" : {
+                        "contentMode" : "fitContent"
+                      },
+                      "numberOfLines" : 1,
+                      "tokens" : [ {
+                        "type" : "text",
+                        "title" : "88 548 ₽ за м²",
+                        "overridenAttributes" : {
+                          "font" : {
+                            "style" : "bodySmall",
+                            "color" : {
+                              "value" : "",
+                              "valueName" : "gray48"
+                            }
+                          }
+                        }
+                      } ]
+                    }
+                  } ],
+                  "margin" : {
+                    "bottom" : 2
+                  },
+                  "horizontalAlignment" : "center",
+                  "id" : "normalizedPriceVerticalContainerRich"
+                }
+              } ],
+              "margin" : {
+                "top" : 5,
+                "bottom" : 2
+              },
+              "layout" : {
+                "contentMode" : "fitContent"
+              },
+              "horizontalInterItemSpacing" : 6,
+              "verticalAlignment" : "bottom",
+              "horizontalAlignment" : "left"
+            }
+          }, {
+            "type" : "spacing",
+            "content" : {
+              "height" : 2,
+              "id" : "titleLabelTopOffsetRich"
+            }
+          }, {
+            "type" : "label",
+            "content" : {
+              "id" : "titleLabelRich",
+              "layout" : {
+                "contentMode" : "fitContent"
+              },
+              "numberOfLines" : 2,
+              "tokens" : [ {
+                "type" : "text",
+                "title" : "3-к. квартира, 62 м², 5/5 эт.",
+                "overridenAttributes" : {
+                  "font" : {
+                    "style" : "bodyDense",
+                    "color" : {
+                      "value" : "",
+                      "valueName" : "black"
+                    }
+                  }
+                }
+              } ]
+            }
+          }, {
+            "type" : "spacing",
+            "content" : {
+              "height" : 3,
+              "id" : "titleLabelBottomOffsetRich"
+            }
+          }, {
+            "type" : "dockingBadgeBar",
+            "content" : {
+              "id" : "dockingBadgeBarId",
+              "theme" : "avitoRe23",
+              "size" : "small",
+              "badges" : [ {
+                "text" : "Проверено в Росреестре",
+                "customBadgeType" : {
+                  "textColor" : {
+                    "value" : "#000000",
+                    "valueDark" : "#E3E3E3",
+                    "valueName" : ""
+                  },
+                  "backgroundColor" : {
+                    "value" : "#EBEAE8",
+                    "valueDark" : "#2E2E2E",
+                    "valueName" : ""
+                  }
+                },
+                "startEdgeType" : "flag",
+                "endEdgeType" : "pipka"
+              } ]
+            }
+          }, {
+            "type" : "label",
+            "content" : {
+              "id" : "addressLabel",
+              "layout" : {
+                "contentMode" : "fitContent"
+              },
+              "numberOfLines" : 2,
+              "tokens" : [ {
+                "type" : "text",
+                "title" : "ул. Победы, 6А",
+                "overridenAttributes" : {
+                  "font" : {
+                    "style" : "bodySmall",
+                    "color" : {
+                      "value" : "",
+                      "valueName" : "gray48"
+                    }
+                  }
+                }
+              } ]
+            }
+          }, {
+            "type" : "hiddenLink",
+            "content" : {
+              "id" : "houseLink",
+              "link" : "https://m.avito.ru/lesosibirsk/kvartiry/prodam/vtorichka/house/ul._pobedy_6a/1429805-ASgBAgECA0SSA8YQ5geMUubIE9rErgEBRdwHDyJ1bC5fcG9iZWR5XzZhIg?context="
+            }
+          }, {
+            "type" : "hiddenLink",
+            "content" : {
+              "id" : "streetLink",
+              "link" : "https://m.avito.ru/lesosibirsk/kvartiry/prodam/vtorichka/street/ulitsa_pobedy/87113-ASgBAgECA0SSA8YQ5geMUujIE5LRCgFF3AcPInVsaXRzYV9wb2JlZHki?context="
+            }
+          }, {
+            "type" : "label",
+            "content" : {
+              "id" : "dateLabelRich",
+              "layout" : {
+                "contentMode" : "fitContent"
+              },
+              "numberOfLines" : 2,
+              "tokens" : [ {
+                "type" : "text",
+                "title" : "25 августа 2022",
+                "overridenAttributes" : {
+                  "font" : {
+                    "style" : "bodySmall",
+                    "color" : {
+                      "value" : "",
+                      "valueName" : "gray48"
+                    }
+                  }
+                }
+              } ]
+            }
+          } ],
+          "horizontalAlignment" : "left",
+          "id" : "leftChildrenVerticalContainer"
+        }
+      } ],
+      "rightChildren" : [ {
+        "type" : "verticalContainer",
+        "content" : {
+          "interItemSpacing" : 3,
+          "children" : [ {
+            "type" : "phoneButton",
+            "content" : {
+              "id" : "smallPhoneButton",
+              "style" : "snippetGreenIconLarge",
+              "layoutMode" : "byContentSize",
+              "localIcon" : {
+                "name" : "richCall24"
+              },
+              "actions" : [ {
+                "type" : "openLink",
+                "params" : {
+                  "link" : "ru.avito://1/phone/get?context=H4sIAAAAAAAA_wF7AIT_YTozOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiJ4c1N3MlpEM0UwM3EzeWZSIjtzOjU6Inhfc2d0IjtzOjQwOiIxYTY3NGI0N2M5MWNmNDkyOGFhN2NlYTk4NWJkM2I3NDNlZjQ4OWE2Ijt9nedR9nsAAAA&itemId=2540551779"
+                }
+              } ]
+            }
+          }, {
+            "type" : "button",
+            "content" : {
+              "id" : "chatButton",
+              "style" : "snippetBlueIconLarge",
+              "localIcon" : {
+                "name" : "richChat24"
+              },
+              "layoutMode" : "byContentSize",
+              "actions" : [ {
+                "type" : "openLink",
+                "params" : {
+                  "link" : "ru.avito://1/item/channel/create?context=H4sIAAAAAAAA_wF7AIT_YTozOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiJ4c1N3MlpEM0UwM3EzeWZSIjtzOjU6Inhfc2d0IjtzOjQwOiIxYTY3NGI0N2M5MWNmNDkyOGFhN2NlYTk4NWJkM2I3NDNlZjQ4OWE2Ijt9nedR9nsAAAA&itemId=2540551779&source=serp-item"
+                }
+              } ]
+            }
+          }, {
+            "type" : "favoriteButton",
+            "content" : {
+              "id" : "favoriteButtonRich",
+              "style" : "large",
+              "size" : {
+                "width" : 36,
+                "height" : 36
+              }
+            }
+          } ],
+          "margin" : {
+            "top" : 3
+          },
+          "horizontalAlignment" : "right",
+          "id" : "rightChildrenVerticalContainer"
+        }
+      } ]
+    }
+  } ]

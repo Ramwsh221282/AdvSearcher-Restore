@@ -35,6 +35,12 @@ internal sealed class CreateVkItemsJsonNode : IVkParserNode
 
     public async Task ExecuteAsync()
     {
+        if (!_pipeLine.AreTokensCorrect)
+        {
+            _logger.Log("Vk tokens are not correct. Stopping process.");
+            return;
+        }
+
         _logger.Log("Creating Vk Items json from wall.");
         if (_pipeLine.GroupInfo == null)
         {

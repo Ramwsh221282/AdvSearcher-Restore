@@ -17,11 +17,27 @@ internal sealed class FetchMobilePhone(AvitoCatalogueItem item)
 {
     public async Task ExecuteAsync(WebDriverProvider provider)
     {
-        Result<IWebElement> phoneButton = await new GetPhoneButtonQuery().ExecuteAsync(provider);
-        if (phoneButton.IsFailure)
-            return;
-        phoneButton.Value.Click();
-        await Task.Delay(TimeSpan.FromSeconds(1));
+        int clickTimes = 0;
+        int maxClickTimes = 50;
+        bool isClicked = false;
+        while (clickTimes < maxClickTimes && !isClicked)
+        {
+            try
+            {
+                Result<IWebElement> phoneButton = await new GetPhoneButtonQuery().ExecuteAsync(
+                    provider
+                );
+                if (phoneButton.IsFailure)
+                    return;
+                phoneButton.Value.Click();
+                isClicked = true;
+                await Task.Delay(TimeSpan.FromSeconds(5));
+            }
+            catch
+            {
+                clickTimes++;
+            }
+        }
 
         Result<IWebElement> popupElement = await new GetPopupElementQuery().ExecuteAsync(provider);
         if (popupElement.IsFailure)
@@ -50,7 +66,6 @@ internal sealed class FetchMobilePhone(AvitoCatalogueItem item)
         ).ExecuteAsync(provider);
         if (sellerInfoText.IsFailure)
             return;
-
         await new GetSellerPhoneNumberQuery(item, sellerInfoText.Value).ExecuteAsync(provider);
     }
 }

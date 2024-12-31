@@ -14,9 +14,23 @@ internal sealed class GetPhoneButtonQuery
         if (provider.Instance == null)
             return new Error("No web driver instnace");
 
-        IWebElement phonebutton = provider.Instance.FindElement(By.XPath(PhoneButtonCardPath));
-        return phonebutton == null
+        int tries = 100;
+        int current = 0;
+        IWebElement phoneButton = null!;
+        while (current < tries && phoneButton == null)
+        {
+            try
+            {
+                phoneButton = provider.Instance.FindElement(By.XPath(PhoneButtonCardPath));
+            }
+            catch
+            {
+                current++;
+            }
+        }
+
+        return phoneButton == null
             ? new Error("Phone button element not fount")
-            : await Task.FromResult(Result<IWebElement>.Success(phonebutton));
+            : await Task.FromResult(Result<IWebElement>.Success(phoneButton));
     }
 }

@@ -17,7 +17,7 @@ public class VkParserServices : IParserDIServicesInitializer
             .AddTransient<VkDateConverter>()
             .AddTransient<VkParserPipeLine>()
             .AddTransient<IParser, VkParser>()
-            .AddTransient<IVkOptionsProvider, TestVkOptionsProvider>()
+            .AddTransient<IVkOptionsProvider, VkOptionsProvider>()
             .AddTransient<IVkParserRequestFactory, VkParserRequestFactory>()
             .AddTransient<IVkParserNode>(p =>
             {

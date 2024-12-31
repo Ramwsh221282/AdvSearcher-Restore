@@ -260,7 +260,42 @@ namespace ConsoleForTests
     {
         static void Main()
         {
-            Test().Wait();
+            //Test().Wait();
+            string data = File.ReadAllText("avito.json");
+            JToken[] token = JArray.Parse(data).ToArray();
+            JToken first = token[0]["content"];
+            JToken leftChildren = first["leftChildren"];
+            JToken[] elements = leftChildren.ToArray();
+            JToken container = elements.First();
+            JToken content = container["content"];
+            JToken[] childrens = content["children"].ToArray();
+            childrens = childrens.Where(c => c["type"].Value<string>() == "label").ToArray();
+            foreach (var child in childrens)
+            {
+                JToken label = child["content"];
+                JToken id = label["id"];
+                if (id.Value<string>() == "addressLabel")
+                {
+                    JArray attributes = (JArray)label["tokens"];
+                    for (int index = 0; index < attributes.Count; index++)
+                    {
+                        JToken addressTitle = attributes[index]["title"];
+                        Console.WriteLine(addressTitle.Value<string>());
+                    }
+                    int a = 0;
+                }
+
+                if (id.Value<string>() == "dateLabelRich")
+                {
+                    JArray attributes = (JArray)label["tokens"];
+                    for (int index = 0; index < attributes.Count; index++)
+                    {
+                        JToken addressTitle = attributes[index]["title"];
+                        Console.WriteLine(addressTitle.Value<string>());
+                    }
+                    int a = 0;
+                }
+            }
         }
 
         static async Task Test()
@@ -269,10 +304,10 @@ namespace ConsoleForTests
             {
                 // await api.GetResearchApiToken();
                 // await api.GetPhoneNumber();
-                await api.EnsureSessionAsync();
-                await api.EnsureNsSessionAsync();
-                await api.GetItemsFromCatalogue();
-                await api.InitializeResults();
+                // await api.EnsureSessionAsync();
+                // await api.EnsureNsSessionAsync();
+                // await api.GetItemsFromCatalogue();
+                // await api.InitializeResults();
             }
         }
     }

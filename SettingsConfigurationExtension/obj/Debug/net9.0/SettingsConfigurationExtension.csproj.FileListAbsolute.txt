@@ -1,0 +1,15 @@
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\SettingsConfigurationExtension\bin\Debug\net9.0\SettingsConfigurationExtension.exe
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\SettingsConfigurationExtension\bin\Debug\net9.0\SettingsConfigurationExtension.deps.json
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\SettingsConfigurationExtension\bin\Debug\net9.0\SettingsConfigurationExtension.runtimeconfig.json
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\SettingsConfigurationExtension\bin\Debug\net9.0\SettingsConfigurationExtension.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\SettingsConfigurationExtension\bin\Debug\net9.0\SettingsConfigurationExtension.pdb
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\SettingsConfigurationExtension\obj\Debug\net9.0\SettingsConfigurationExtension.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\SettingsConfigurationExtension\obj\Debug\net9.0\SettingsConfigurationExtension.AssemblyInfoInputs.cache
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\SettingsConfigurationExtension\obj\Debug\net9.0\SettingsConfigurationExtension.AssemblyInfo.cs
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\SettingsConfigurationExtension\obj\Debug\net9.0\SettingsConfigurationExtension.csproj.CoreCompileInputs.cache
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\SettingsConfigurationExtension\obj\Debug\net9.0\SettingsConfigurationExtension.sourcelink.json
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\SettingsConfigurationExtension\obj\Debug\net9.0\SettingsConfigurationExtension.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\SettingsConfigurationExtension\obj\Debug\net9.0\refint\SettingsConfigurationExtension.dll
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\SettingsConfigurationExtension\obj\Debug\net9.0\SettingsConfigurationExtension.pdb
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\SettingsConfigurationExtension\obj\Debug\net9.0\SettingsConfigurationExtension.genruntimeconfig.cache
+C:\Users\Ramwsh\Desktop\AdvSearcherRestore\AdvSearcher.Desktop\SettingsConfigurationExtension\obj\Debug\net9.0\ref\SettingsConfigurationExtension.dll

@@ -32,6 +32,12 @@ internal sealed class CreateVkGroupInfoNode : IVkParserNode
 
     public async Task ExecuteAsync()
     {
+        if (!_pipeLine.AreTokensCorrect)
+        {
+            _logger.Log("Vk tokens are not correct. Stopping process.");
+            return;
+        }
+
         _logger.Log("Creating VK group info.");
         if (_pipeLine.Parameters == null)
         {

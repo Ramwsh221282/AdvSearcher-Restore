@@ -23,6 +23,13 @@ internal sealed class CreateRequestParametersNode : IVkParserNode
 
     public async Task ExecuteAsync()
     {
+        _pipeLine.InstantiateOptions();
+        if (!_pipeLine.AreTokensCorrect)
+        {
+            _logger.Log("Vk tokens are not correct. Stopping process.");
+            return;
+        }
+
         _logger.Log("Creating request parameters");
         if (_pipeLine.ServiceUrl == null)
         {

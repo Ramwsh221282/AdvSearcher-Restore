@@ -19,15 +19,29 @@ public sealed class ScrollToBottomCommand
             return;
 
         var executor = (IJavaScriptExecutor)provider.Instance;
-        var initialHeight = (long)executor.ExecuteScript(GetCurrentHeightScript);
-        while (true)
+        try
         {
-            provider.Instance.ExecuteJavaScript(ScrollToBottomScript);
-            await Task.Delay(1000);
-            var currentHeigth = (long)executor.ExecuteScript(GetCurrentHeightScript);
-            if (IsEndOfPage(ref initialHeight, ref currentHeigth))
-                break;
-            initialHeight = currentHeigth;
+            bool isScrolled = false;
+            long initialHeight = (long)executor.ExecuteScript(GetCurrentHeightScript);
+            while (!isScrolled)
+            {
+                while (true)
+                {
+                    provider.Instance.ExecuteJavaScript(ScrollToBottomScript);
+                    await Task.Delay(1000);
+                    var currentHeigth = (long)executor.ExecuteScript(GetCurrentHeightScript);
+                    if (IsEndOfPage(ref initialHeight, ref currentHeigth))
+                    {
+                        isScrolled = true;
+                        break;
+                    }
+                    initialHeight = currentHeigth;
+                }
+            }
+        }
+        catch
+        {
+            // ignored
         }
     }
 

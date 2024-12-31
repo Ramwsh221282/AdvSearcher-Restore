@@ -7,13 +7,14 @@ namespace Advsearcher.Infrastructure.VKParser.Components.VkParserChain;
 internal sealed class VkParserPipeLine
 {
     private readonly List<IParserResponse> _responses = [];
+    private readonly IVkOptionsProvider _optionsProvider;
     public IReadOnlyCollection<IParserResponse> Responses => _responses;
 
     private ServiceUrl? _serviceUrl;
     public ServiceUrl? ServiceUrl => _serviceUrl;
 
-    private readonly VkOptions _options;
-    public VkOptions Options => _options;
+    private VkOptions? _options;
+    public VkOptions? Options => _options;
 
     private VkRequestParameters? _parameters;
     public VkRequestParameters? Parameters => _parameters;
@@ -24,9 +25,21 @@ internal sealed class VkParserPipeLine
     private VkItemsJson? _itemsJson;
     public VkItemsJson? ItemsJson => _itemsJson;
 
+    public bool AreTokensCorrect =>
+        _options != null
+        && !string.IsNullOrWhiteSpace(_options.ServiceAccessToken)
+        && !string.IsNullOrWhiteSpace(_options.OAuthAccessToken);
+
     public VkParserPipeLine(IVkOptionsProvider optionsProvider)
     {
-        _options = optionsProvider.Provide();
+        _optionsProvider = optionsProvider;
+    }
+
+    public void InstantiateOptions()
+    {
+        if (_options != null)
+            return;
+        _options = _optionsProvider.Provide();
     }
 
     public void SetParameters(VkRequestParameters parameters)

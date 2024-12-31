@@ -34,10 +34,17 @@ internal sealed class InitializeAvitoCatalogueItemPhoneAndPhotosNode : IAvitoCha
         {
             await new NavigateOnPageCommand(catalogueItem.UrlInfo).ExecuteAsync(_pipeLine.Provider);
             _logger.Log("Navigated on page. Starting fetching gallery");
-            await new FetchGalleryItemsCommand(catalogueItem).ExecuteAsync(_pipeLine.Provider);
-            _logger.Log("Gallery fetched. Starting fetching mobile phone");
             await new FetchMobilePhone(catalogueItem).ExecuteAsync(_pipeLine.Provider);
             _logger.Log("Mobile phone fetched.");
+            if (string.IsNullOrWhiteSpace(catalogueItem.PublisherInfo))
+            {
+                _logger.Log("No publisher was provided or is agent. Skipping.");
+                continue;
+            }
+            await new NavigateOnPageCommand(catalogueItem.UrlInfo).ExecuteAsync(_pipeLine.Provider);
+            _logger.Log("Navigated on page. Starting fetching gallery");
+            await new FetchGalleryItemsCommand(catalogueItem).ExecuteAsync(_pipeLine.Provider);
+            _logger.Log("Gallery fetched. Starting fetching mobile phone");
         }
         _pipeLine.Provider.Dispose();
         _logger.Log("Web driver instance was disposed.");
