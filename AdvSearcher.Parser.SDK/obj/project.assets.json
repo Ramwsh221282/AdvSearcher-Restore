@@ -373,7 +373,8 @@
         "dependencies": {
           "AdvSearcher.Core": "1.0.0",
           "Microsoft.Extensions.DependencyInjection": "9.0.0",
-          "Microsoft.Extensions.Logging": "9.0.0"
+          "Microsoft.Extensions.Logging": "9.0.0",
+          "Scrutor": "5.1.0"
         },
         "compile": {
           "bin/placeholder/AdvSearcher.Application.dll": {}
@@ -1126,7 +1127,6 @@
       "HtmlAgilityPack >= 1.11.71",
       "Newtonsoft.Json >= 13.0.3",
       "RestSharp >= 112.1.1-alpha.0.4",
-      "Scrutor >= 5.1.0",
       "Selenium.Support >= 4.27.0",
       "Selenium.WebDriver >= 4.27.0",
       "Selenium.WebDriver.ChromeDriver >= 130.0.6723.11600",
@@ -1200,10 +1200,6 @@
           "RestSharp": {
             "target": "Package",
             "version": "[112.1.1-alpha.0.4, )"
-          },
-          "Scrutor": {
-            "target": "Package",
-            "version": "[5.1.0, )"
           },
           "Selenium.Support": {
             "target": "Package",

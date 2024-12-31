@@ -63,6 +63,10 @@
             "Microsoft.Extensions.Logging": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "Scrutor": {
+              "target": "Package",
+              "version": "[5.1.0, )"
             }
           },
           "imports": [

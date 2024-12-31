@@ -1,39 +1,31 @@
 using AdvSearcher.Core.Entities.ServiceUrls.ValueObjects;
-using AdvSearcher.Core.Tools;
 
 namespace AdvSearcher.Core.Entities.ServiceUrls;
 
 public sealed class ServiceUrl
 {
-    public delegate Task<Result<ServiceUrl>> ServiceUrlCreatedHandler(ServiceUrl serviceUrl);
-    private event ServiceUrlCreatedHandler? OnServiceUrlCreate;
-
-    public int Id { get; init; }
-    public ServiceUrlValue Url { get; init; }
+    public ServiceUrlId Id { get; init; }
+    public ServiceUrlValue Value { get; init; }
     public ServiceUrlMode Mode { get; init; }
+    public ServiceUrlService Service { get; init; }
 
-    private ServiceUrl(ServiceUrlValue url, ServiceUrlMode mode)
+    public ServiceUrl(ServiceUrlValue value, ServiceUrlMode mode, ServiceUrlService service)
     {
-        Url = url;
+        Value = value;
         Mode = mode;
+        Service = service;
     }
 
-    public static ServiceUrl Create(ServiceUrlValue url, ServiceUrlMode mode)
+    public override bool Equals(object? obj)
     {
-        var serviceUrl = new ServiceUrl(url, mode);
-        return serviceUrl;
+        if (obj == null)
+            return false;
+        if (obj is not ServiceUrl serviceUrl)
+            return false;
+        return this.Value == serviceUrl.Value
+            && this.Mode == serviceUrl.Mode
+            && serviceUrl.Service == this.Service;
     }
 
-    public static async Task<Result<ServiceUrl>> Create(
-        ServiceUrlValue url,
-        ServiceUrlMode mode,
-        ServiceUrlCreatedHandler handler
-    )
-    {
-        var serviceUrl = Create(url, mode);
-        serviceUrl.OnServiceUrlCreate += handler;
-        var result = await serviceUrl.OnServiceUrlCreate!.Invoke(serviceUrl);
-        serviceUrl.OnServiceUrlCreate -= handler;
-        return result;
-    }
+    public override int GetHashCode() => HashCode.Combine(Id, Value, Mode);
 }
