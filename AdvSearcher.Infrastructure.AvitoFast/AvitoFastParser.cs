@@ -3,6 +3,7 @@ using AdvSearcher.Core.Entities.ServiceUrls.ValueObjects;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Infrastructure.AvitoFast.Steps;
 using AdvSearcher.Parser.SDK.Contracts;
+using AdvSearcher.Parser.SDK.Filtering;
 
 namespace AdvSearcher.Infrastructure.AvitoFast;
 
@@ -14,7 +15,10 @@ internal sealed class AvitoFastParser : IParser
 
     public AvitoFastParser(IAvitoFastParserStep step) => _step = step;
 
-    public async Task<Result<bool>> ParseData(ServiceUrl url)
+    public async Task<Result<bool>> ParseData(
+        ServiceUrl url,
+        List<ParserFilterOption>? options = null
+    )
     {
         if (url.Mode == ServiceUrlMode.Publicatable)
             return false;

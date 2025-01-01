@@ -1,6 +1,7 @@
 using AdvSearcher.Core.Entities.ServiceUrls;
 using Advsearcher.Infrastructure.VKParser.Components.Responses;
 using AdvSearcher.Parser.SDK.Contracts;
+using AdvSearcher.Parser.SDK.Filtering;
 
 namespace Advsearcher.Infrastructure.VKParser.Components.VkParserChain;
 
@@ -24,6 +25,8 @@ internal sealed class VkParserPipeLine
 
     private VkItemsJson? _itemsJson;
     public VkItemsJson? ItemsJson => _itemsJson;
+
+    public List<ParserFilterOption> FilterOptions { get; set; } = [];
 
     public bool AreTokensCorrect =>
         _options != null

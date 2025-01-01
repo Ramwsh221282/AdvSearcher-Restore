@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdvSearcher.AvitoParser.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8571ff4e1b75137a675cc8b4906e7dc5b943e79a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da703096c3a88d602d6f37c9d8bc4fdbf8a086e4")]
 [assembly: System.Reflection.AssemblyProductAttribute("AdvSearcher.AvitoParser.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AdvSearcher.AvitoParser.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

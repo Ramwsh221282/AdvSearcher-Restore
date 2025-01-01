@@ -1,4 +1,3 @@
-using System.Text;
 using System.Text.RegularExpressions;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Parser.SDK.Contracts;
@@ -9,12 +8,10 @@ internal sealed class VkPublisher : IParsedPublisher
 {
     public string Info { get; set; } = string.Empty;
 
-    public static Result<IParsedPublisher> Create(string id, string postOwnerResponse)
+    public static Result<IParsedPublisher> Create(string postOwnerResponse)
     {
-        StringBuilder infoBuilder = new StringBuilder()
-            .AppendLine(id)
-            .AppendLine(ExtractNames(postOwnerResponse));
-        return new VkPublisher() { Info = infoBuilder.ToString() };
+        string info = ExtractNames(postOwnerResponse);
+        return new VkPublisher() { Info = info };
     }
 
     private static string ExtractNames(string data) =>

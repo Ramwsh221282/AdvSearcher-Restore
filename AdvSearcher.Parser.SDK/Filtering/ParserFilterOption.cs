@@ -19,50 +19,60 @@ public sealed record ParserFilterWithCachedAdvertisements(
     IEnumerable<CachedAdvertisement> CachedAdvertisements
 ) : ParserFilterOption;
 
-// filter option with all 3 above.
-public sealed record ParserFilterOptionCompleted(List<ParserFilterOption> Options)
-    : ParserFilterOption;
-
-// filter option without any filtering mode.
-public sealed record ParserFilterOptionEmpty : ParserFilterOption;
-
-public static class ParserFilterOptionExtensions
+public static class ParserFilterExtensions
 {
-    // static factory method to create parser filter option.
-    public static ParserFilterOption Create(
+    public static List<ParserFilterOption> CreateOptionsList(
         DateOnly startDate = default,
         DateOnly endDate = default,
-        IEnumerable<Publisher>? Publishers = null,
-        IEnumerable<CachedAdvertisement>? Cached = null
+        IEnumerable<Publisher>? ignoredPublishers = null,
+        IEnumerable<CachedAdvertisement>? cached = null
     )
     {
         List<ParserFilterOption> options = [];
         if (startDate != default && endDate != default)
             options.Add(new ParserFilterWithDate(startDate, endDate));
-        if (Publishers != null)
-            options.Add(new ParserFilterWithIgnoreNames(Publishers));
-        if (Cached != null)
-            options.Add(new ParserFilterWithCachedAdvertisements(Cached));
-        return options.Any()
-            ? new ParserFilterOptionCompleted(options)
-            : new ParserFilterOptionEmpty();
+        if (ignoredPublishers != null)
+            options.Add(new ParserFilterWithIgnoreNames(ignoredPublishers));
+        if (cached != null)
+            options.Add(new ParserFilterWithCachedAdvertisements(cached));
+        return options;
     }
 
-    // extension method to match filter option with visitor. Visitor is a contract that each service that needs to be used with filter should implement.
-    public static bool IsMatchingFilter(
-        this ParserFilterOption option,
-        IParserFilterOptionVisitor visitor
-    )
+    public static bool BelongsPeriod(this DateOnly date, DateOnly startDate, DateOnly endDate)
     {
-        bool matching = option switch
-        {
-            ParserFilterWithDate date => visitor.MatchesFilterOption(date),
-            ParserFilterWithIgnoreNames ignoreNames => visitor.MatchesFilterOption(ignoreNames),
-            ParserFilterWithCachedAdvertisements cachedAdvertisements =>
-                visitor.MatchesFilterOption(cachedAdvertisements),
-            ParserFilterOptionEmpty => false,
-            _ => false,
-        };
-        return matching;
+        if (startDate == default || endDate == default)
+            return false;
+        return date >= startDate && date <= endDate;
     }
+}
+
+public sealed class ParserFilter
+{
+    private readonly List<ParserFilterOption> _options;
+
+    public ParserFilter(List<ParserFilterOption> options) => _options = options;
+
+    public bool IsMatchingFilters(IParserFilterVisitor visitor)
+    {
+        foreach (ParserFilterOption option in _options)
+        {
+            bool result = option switch
+            {
+                ParserFilterWithDate date => visitor.Visit(date),
+                ParserFilterWithIgnoreNames ignoreNames => visitor.Visit(ignoreNames),
+                ParserFilterWithCachedAdvertisements cached => visitor.Visit(cached),
+                _ => true,
+            };
+            if (!result)
+                return false;
+        }
+        return true;
+    }
+}
+
+public interface IParserFilterVisitor
+{
+    bool Visit(ParserFilterWithDate filter);
+    bool Visit(ParserFilterWithIgnoreNames filter);
+    bool Visit(ParserFilterWithCachedAdvertisements filter);
 }

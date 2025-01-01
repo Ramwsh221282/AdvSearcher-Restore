@@ -1,5 +1,6 @@
 ﻿using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Entities.ServiceUrls.ValueObjects;
+using AdvSearcher.Parser.SDK.ConsoleTests.ConsoleTestsVk;
 using AdvSearcher.Parser.SDK.Contracts;
 using AdvSearcher.Parser.SDK.DependencyInjection;
 using AdvSearcher.Parser.SDK.Options;
@@ -15,13 +16,19 @@ namespace AdvSearcher.Parser.SDK.ConsoleTests
             services = services.AddParserSDK();
             IServiceProvider provider = services.BuildServiceProvider();
             ParserProvider parserProvider = provider.GetRequiredService<ParserProvider>();
-            TestCian(parserProvider).Wait();
+            VkTests tests = new VkTests(services);
+            //tests.TestVkSingle().Wait();
+            //tests.TestVkDateFilter().Wait();
+            //tests.TestVkDateFilterAndNameFilter().Wait();
+            tests.TestWithDateFilterNameFilterCacheFilter().Wait();
+            //TestCian(parserProvider).Wait();
             //TestAvito(parserProvider).Wait();
-            TestOk(parserProvider).Wait();
+            //TestOk(parserProvider).Wait();
             //TestFileInteractions(provider).Wait();
-            TestVk(parserProvider, provider).Wait();
-            TestFastAvito(parserProvider).Wait();
-            TestDomclick(parserProvider).Wait();
+            //TestVk(parserProvider, provider).Wait();
+            //TestVkWithDateFilter(parserProvider, provider).Wait();
+            //TestFastAvito(parserProvider).Wait();
+            //TestDomclick(parserProvider).Wait();
         }
 
         static async Task TestDomclick(ParserProvider provider)
@@ -44,33 +51,6 @@ namespace AdvSearcher.Parser.SDK.ConsoleTests
             await parser.ParseData(url);
             IReadOnlyCollection<IParserResponse> results = parser.Results;
             Console.WriteLine($"Fast Avito Results: {results.Count}");
-        }
-
-        static async Task TestVk(ParserProvider parserProvider, IServiceProvider serviceProvider)
-        {
-            Option serviceAccessToken = new Option(
-                "ServiceToken",
-                "fd04e34ffd04e34ffd04e34f27fe12b5f8ffd04fd04e34f985cba7537322b2a92927c95"
-            );
-            Option oAuthAccessToken = new Option(
-                "OAuthToken",
-                "vk1.a.d2VrBiqiNCRqH51PROF2HR8G3xpfok5NIEg8bGa7x7aPuIOK5-Enr8Es3mtTOZdVxixeFmqukBIuFrf82qLquZtzaHXT17kimqfNqI4O12tRQak55R5MyJfp3ZKNHSRWrWPreUbFmm397R_IXpToVGQ_T0pc7ef14AHj9lgURa7ETz1IaOqdy4Rawd_1ve6N0vcS69EwJdK8BGQbaRv6KQ"
-            );
-            IOptionManager optionManager = serviceProvider.GetRequiredService<IOptionManager>();
-            IOptionProcessor writer = optionManager.CreateWrite("VK_TOKENS.txt");
-            await writer.Process(serviceAccessToken);
-            await writer.Process(oAuthAccessToken);
-            int bpoint = 0;
-            IParser parser = parserProvider.GetParser("VkParser");
-            ServiceUrlMode mode = ServiceUrlMode.Loadable;
-            ServiceUrlValue value = ServiceUrlValue.Create("https://vk.com/les_gorod");
-            ServiceUrlService service = ServiceUrlService.Create("Vk");
-            ServiceUrl url = new ServiceUrl(value, mode, service);
-            await parser.ParseData(url);
-            IReadOnlyCollection<IParserResponse> responses = parser.Results;
-            Console.WriteLine($"Responses results VK: {responses.Count}");
-            IOptionProcessor flusher = optionManager.CreateFlusher("VK_TOKENS.txt");
-            await flusher.Process(serviceAccessToken);
         }
 
         static async Task TestFileInteractions(IServiceProvider provider)

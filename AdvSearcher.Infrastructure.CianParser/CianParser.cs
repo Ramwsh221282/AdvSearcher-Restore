@@ -2,6 +2,7 @@ using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Infrastructure.CianParser.CianParserChains;
 using AdvSearcher.Parser.SDK.Contracts;
+using AdvSearcher.Parser.SDK.Filtering;
 
 namespace AdvSearcher.Infrastructure.CianParser;
 
@@ -13,7 +14,10 @@ internal sealed class CianParser : IParser
 
     public CianParser(ICianParserChain chain) => _chain = chain;
 
-    public async Task<Result<bool>> ParseData(ServiceUrl url)
+    public async Task<Result<bool>> ParseData(
+        ServiceUrl url,
+        List<ParserFilterOption>? options = null
+    )
     {
         _chain.PipeLine.SetServiceUrl(url);
         await _chain.ExecuteAsync();

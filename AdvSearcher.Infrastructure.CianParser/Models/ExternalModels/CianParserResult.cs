@@ -6,4 +6,7 @@ public record CianParserResult(
     IParsedAdvertisement Advertisement,
     IParsedAttachment[] Attachments,
     IParsedPublisher Publisher
-) : IParserResponse { }
+) : IParserResponse
+{
+    public string ServiceName { get; } = "CIAN";
+}

@@ -7,6 +7,7 @@ internal record VkParserResponse : IParserResponse
     public IParsedAdvertisement Advertisement { get; }
     public IParsedAttachment[] Attachments { get; }
     public IParsedPublisher Publisher { get; }
+    public string ServiceName { get; } = "VK";
 
     public VkParserResponse(
         IParsedAdvertisement advertisement,

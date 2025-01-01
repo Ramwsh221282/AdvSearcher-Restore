@@ -6,4 +6,7 @@ internal sealed record DomclickParserResponse(
     IParsedAdvertisement Advertisement,
     IParsedAttachment[] Attachments,
     IParsedPublisher Publisher
-) : IParserResponse;
+) : IParserResponse
+{
+    public string ServiceName { get; } = "DOMCLICK";
+}

@@ -17,4 +17,16 @@ public static class CachedAdvertisementExtensions
 {
     public static CachedAdvertisement ToCachedAdvertisement(this Advertisement advertisement) =>
         new CachedAdvertisement(advertisement);
+
+    public static string GetServiceName(this CachedAdvertisement cachedAdvertisement)
+    {
+        ReadOnlySpan<string> span = cachedAdvertisement.Key.Split('_');
+        return span[0];
+    }
+
+    public static string GetId(this CachedAdvertisement cachedAdvertisement)
+    {
+        ReadOnlySpan<string> span = cachedAdvertisement.Key.Split('_');
+        return span[^1];
+    }
 }

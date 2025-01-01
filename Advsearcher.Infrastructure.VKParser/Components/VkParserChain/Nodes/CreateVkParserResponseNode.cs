@@ -2,9 +2,11 @@ using AdvSearcher.Core.Tools;
 using Advsearcher.Infrastructure.VKParser.Components.Converters;
 using Advsearcher.Infrastructure.VKParser.Components.Requests;
 using Advsearcher.Infrastructure.VKParser.Components.VkParserResponses;
+using Advsearcher.Infrastructure.VKParser.Filtering;
 using Advsearcher.Infrastructure.VKParser.Models.VkParsedData;
 using AdvSearcher.Parser.SDK;
 using AdvSearcher.Parser.SDK.Contracts;
+using AdvSearcher.Parser.SDK.Filtering;
 using AdvSearcher.Parser.SDK.HttpParsing;
 using Newtonsoft.Json.Linq;
 
@@ -52,10 +54,15 @@ internal sealed class CreateVkParserResponseNode : IVkParserNode
             _logger.Log("Json items were null");
             return;
         }
+        ParserFilter filter = new ParserFilter(_pipeLine.FilterOptions);
         foreach (var json in _pipeLine.ItemsJson.Items)
         {
             Result<IParsedAdvertisement> advertisement = CreateAdvertisement(json);
+            if (!IsMatchingDateFilter(advertisement, filter))
+                continue;
             Result<IParsedPublisher> publisher = await CreatePublisher(json);
+            if (!IsMatchingAdvertisementFilters(advertisement, publisher, filter))
+                continue;
             IParsedAttachment[] attachments = CreateAttachments(json);
             AppendInResultsCollection(advertisement, publisher, attachments);
         }
@@ -96,7 +103,7 @@ internal sealed class CreateVkParserResponseNode : IVkParserNode
         }
         if (postOwnerResponse.IsFailure)
             return postOwnerResponse.Error;
-        Result<IParsedPublisher> publisher = VkPublisher.Create(id, postOwnerResponse);
+        Result<IParsedPublisher> publisher = VkPublisher.Create(postOwnerResponse);
         _logger.Log($"Created Vk Publisher: {publisher.Value.Info}");
         return publisher;
     }
@@ -111,6 +118,8 @@ internal sealed class CreateVkParserResponseNode : IVkParserNode
 
     private async Task<Result<string>> GetPostOwnerResponse(Result<string> id)
     {
+        if (_pipeLine.Options == null)
+            return new Error("No options found");
         if (id.IsFailure)
             return id.Error;
         IHttpRequest request = _factory.CreateVkPostOwnerRequest(_pipeLine.Options, id);
@@ -141,5 +150,33 @@ internal sealed class CreateVkParserResponseNode : IVkParserNode
         _pipeLine.AddResponse(
             new VkParserResponse(advertisement.Value, attachments, publisher.Value)
         );
+    }
+
+    private bool IsMatchingDateFilter(
+        Result<IParsedAdvertisement> advertisement,
+        ParserFilter filter
+    )
+    {
+        if (advertisement.IsFailure)
+            return false;
+        IParserFilterVisitor visitor = new VkParserDateOnlyFilterVisitor(advertisement.Value);
+        return filter.IsMatchingFilters(visitor);
+    }
+
+    private bool IsMatchingAdvertisementFilters(
+        Result<IParsedAdvertisement> advertisement,
+        Result<IParsedPublisher> publisher,
+        ParserFilter filter
+    )
+    {
+        if (advertisement.IsFailure)
+            return false;
+        if (publisher.IsFailure)
+            return false;
+        IParserFilterVisitor visitor = new VkParserFilterVisitior(
+            advertisement.Value,
+            publisher.Value
+        );
+        return filter.IsMatchingFilters(visitor);
     }
 }

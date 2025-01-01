@@ -6,4 +6,7 @@ internal sealed record OkParserResults(
     IParsedAdvertisement Advertisement,
     IParsedAttachment[] Attachments,
     IParsedPublisher Publisher
-) : IParserResponse;
+) : IParserResponse
+{
+    public string ServiceName { get; } = "OK";
+}

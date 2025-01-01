@@ -2,6 +2,7 @@ using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Infrastructure.Domclick.DomclickParserChains;
 using AdvSearcher.Parser.SDK.Contracts;
+using AdvSearcher.Parser.SDK.Filtering;
 
 namespace AdvSearcher.Infrastructure.Domclick;
 
@@ -13,7 +14,10 @@ internal sealed class DomclickParser : IParser
 
     public DomclickParser(IDomclickParserChain chain) => _chain = chain;
 
-    public async Task<Result<bool>> ParseData(ServiceUrl url = null!)
+    public async Task<Result<bool>> ParseData(
+        ServiceUrl url = null!,
+        List<ParserFilterOption>? options = null
+    )
     {
         await _chain.Process();
         _results.AddRange(_chain.Pipeline.Responses);
