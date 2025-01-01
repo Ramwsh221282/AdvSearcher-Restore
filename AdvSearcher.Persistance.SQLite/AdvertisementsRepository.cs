@@ -1,3 +1,4 @@
+using AdvSearcher.Application.Models;
 using AdvSearcher.Core.Entities.Advertisements;
 using AdvSearcher.Core.Entities.Publishers;
 using AdvSearcher.Core.Tools;
@@ -66,6 +67,14 @@ internal sealed class AdvertisementsRepository : IAdvertisementsRepository
         await _context.Set<Advertisement>().AddRangeAsync(unique);
         await _context.SaveChangesAsync();
         return RepositoryOperationResult.Success;
+    }
+
+    public async Task<IEnumerable<ExistingAdvertisementTokens>> GetExistingAdvertisementTokens()
+    {
+        var tokens = await _context
+            .Advertisements.Select(ad => new { ad.ServiceName, ad.Id })
+            .ToListAsync();
+        return tokens.Select(t => new ExistingAdvertisementTokens(t.Id, t.ServiceName));
     }
 
     private async Task AttachPublisherIfDuplicated(Advertisement advertisement)

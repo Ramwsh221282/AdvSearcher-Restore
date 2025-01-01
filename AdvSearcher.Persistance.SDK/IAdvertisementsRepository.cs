@@ -1,3 +1,4 @@
+using AdvSearcher.Application.Models;
 using AdvSearcher.Core.Entities.Advertisements;
 using AdvSearcher.Core.Tools;
 
@@ -11,4 +12,5 @@ public interface IAdvertisementsRepository
     Task<IEnumerable<Advertisement>> GetAll();
     Task<Result<bool>> IsDuplicateAdvertisement(Advertisement advertisement);
     Task<Result<RepositoryOperationResult>> AddRange(IEnumerable<Advertisement> advertisements);
+    Task<IEnumerable<ExistingAdvertisementTokens>> GetExistingAdvertisementTokens();
 }
