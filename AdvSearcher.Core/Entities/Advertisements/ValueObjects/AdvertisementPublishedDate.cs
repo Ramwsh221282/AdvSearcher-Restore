@@ -8,6 +8,11 @@ public readonly record struct AdvertisementPublishedDate
 
     private AdvertisementPublishedDate(DateOnly date) => Value = date;
 
+    public AdvertisementPublishedDate()
+    {
+        Value = default;
+    } // ef core constructor
+
     public static Result<AdvertisementPublishedDate> Create(DateOnly date) =>
         new AdvertisementPublishedDate(date);
 };

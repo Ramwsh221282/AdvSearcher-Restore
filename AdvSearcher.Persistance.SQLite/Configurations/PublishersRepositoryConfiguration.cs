@@ -9,19 +9,20 @@ internal sealed class PublishersRepositoryConfiguration : IEntityTypeConfigurati
 {
     public void Configure(EntityTypeBuilder<Publisher> builder)
     {
-        builder.HasKey(p => p.Id).HasAnnotation(SqliteAnnotationNames.Autoincrement, true);
+        builder.HasKey(p => p.Id);
         builder
             .Property(p => p.Id)
-            .HasConversion(id => id.Value, value => PublisherId.Create(value));
-        builder
-            .ComplexProperty(
-                pub => pub.Data,
-                cpb =>
-                {
-                    cpb.Property(val => val.Value);
-                }
-            )
-            .HasIndex()
-            .IsUnique();
+            .HasConversion(id => id.Value, value => PublisherId.Create(value))
+            .HasAnnotation(SqliteAnnotationNames.Autoincrement, true)
+            .ValueGeneratedOnAdd();
+
+        builder.ComplexProperty(
+            pub => pub.Data,
+            cpb =>
+            {
+                cpb.Property(val => val.Value);
+            }
+        );
+        builder.Property(pub => pub.IsIgnored);
     }
 }

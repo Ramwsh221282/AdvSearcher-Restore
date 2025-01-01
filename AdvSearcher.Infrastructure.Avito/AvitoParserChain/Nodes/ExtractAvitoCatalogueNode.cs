@@ -34,7 +34,7 @@ internal sealed class ExtractAvitoCatalogueNode : IAvitoChainNode
         }
         _pipeLine.Provider.InstantiateNewWebDriver();
         _logger.Log("Web driver instance created");
-        await new NavigateOnPageCommand(_pipeLine.Url.Url.Value).ExecuteAsync(_pipeLine.Provider);
+        await new NavigateOnPageCommand(_pipeLine.Url.Value.Value).ExecuteAsync(_pipeLine.Provider);
         _logger.Log("Navigating on avito page");
         await Scroll();
         _logger.Log("Page scrolled");

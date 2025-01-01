@@ -7,6 +7,11 @@ public record AdvertisementType
 {
     public string Type { get; init; }
 
+    private AdvertisementType()
+    {
+        Type = string.Empty;
+    } // ef core constructor
+
     private AdvertisementType(string type) => Type = type;
 
     public static Result<AdvertisementType> Create(string? type)

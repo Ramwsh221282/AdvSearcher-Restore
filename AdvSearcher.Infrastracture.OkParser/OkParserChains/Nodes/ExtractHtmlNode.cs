@@ -36,7 +36,7 @@ internal sealed class ExtractHtmlNode : IOkParserChain
             return;
         }
         _provider.InstantiateNewWebDriver();
-        await new NavigateOnPageCommand(_pipeLine.Url.Url.Value).ExecuteAsync(_provider);
+        await new NavigateOnPageCommand(_pipeLine.Url.Value.Value).ExecuteAsync(_provider);
         await new ScrollToBottomCommand().ExecuteAsync(_provider);
         string html = await new ExtractHtmlQuery().ExecuteAsync(_provider);
         _provider.Dispose();

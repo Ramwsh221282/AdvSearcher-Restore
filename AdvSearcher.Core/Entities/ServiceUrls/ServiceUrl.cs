@@ -9,6 +9,8 @@ public sealed class ServiceUrl
     public ServiceUrlMode Mode { get; init; }
     public ServiceUrlService Service { get; init; }
 
+    private ServiceUrl() { } // ef core constructor
+
     public ServiceUrl(ServiceUrlValue value, ServiceUrlMode mode, ServiceUrlService service)
     {
         Value = value;

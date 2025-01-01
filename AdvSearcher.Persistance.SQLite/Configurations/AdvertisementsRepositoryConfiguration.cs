@@ -20,16 +20,13 @@ internal sealed class AdvertisementsRepositoryConfiguration
             .WithOne(att => att.Advertisement)
             .IsRequired()
             .OnDelete(DeleteBehavior.Cascade);
-        builder
-            .ComplexProperty(
-                ad => ad.Content,
-                cpb =>
-                {
-                    cpb.Property(val => val.Content);
-                }
-            )
-            .HasIndex()
-            .IsUnique();
+        builder.ComplexProperty(
+            ad => ad.Content,
+            cpb =>
+            {
+                cpb.Property(val => val.Content);
+            }
+        );
         builder.ComplexProperty(
             ad => ad.Date,
             cpb =>
@@ -56,6 +53,13 @@ internal sealed class AdvertisementsRepositoryConfiguration
             cpb =>
             {
                 cpb.Property(val => val.Date);
+            }
+        );
+        builder.ComplexProperty(
+            ad => ad.Type,
+            cpb =>
+            {
+                cpb.Property(val => val.Type);
             }
         );
     }

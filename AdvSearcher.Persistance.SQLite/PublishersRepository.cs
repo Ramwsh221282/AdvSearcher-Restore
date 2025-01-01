@@ -7,9 +7,7 @@ namespace AdvSearcher.Persistance.SQLite;
 
 internal sealed class PublishersRepository : IPublishersRepository
 {
-    private readonly AppDbContext _context;
-
-    public PublishersRepository(AppDbContext context) => _context = context;
+    private readonly AppDbContext _context = new AppDbContext();
 
     public async Task<Result<RepositoryOperationResult>> Remove(Publisher publisher)
     {
@@ -30,4 +28,19 @@ internal sealed class PublishersRepository : IPublishersRepository
 
     public async Task<IEnumerable<Publisher>> GetAll() =>
         await _context.Publishers.AsNoTracking().ToListAsync();
+
+    public async Task<IEnumerable<Publisher>> GetOnlyIgnored() =>
+        await _context.Publishers.Where(pub => pub.IsIgnored).AsNoTracking().ToListAsync();
+
+    public async Task<Result<RepositoryOperationResult>> Update(Publisher publisher)
+    {
+        foreach (var entry in _context.ChangeTracker.Entries())
+        {
+            entry.State = EntityState.Detached;
+        }
+        _context.Publishers.Attach(publisher);
+        _context.Entry(publisher).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+        return RepositoryOperationResult.Success;
+    }
 }

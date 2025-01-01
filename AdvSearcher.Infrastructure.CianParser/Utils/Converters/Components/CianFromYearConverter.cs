@@ -42,10 +42,13 @@ internal sealed class CianFromYearConverter : ICianDateConverterComponent
             var date = DateTime.Now.AddYears(-1);
             return DateOnly.FromDateTime(date);
         }
-        else
+
+        if (_isHalfYearAgo)
         {
             var date = DateTime.Now.AddMonths(-6);
             return DateOnly.FromDateTime(date);
         }
+
+        return DateOnly.FromDateTime(DateTime.Now);
     }
 }

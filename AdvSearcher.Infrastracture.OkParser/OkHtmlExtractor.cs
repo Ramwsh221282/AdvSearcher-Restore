@@ -27,15 +27,11 @@ internal sealed class OkHtmlExtractor
         return html;
     }
 
-    private async Task ExecuteNavigation(ServiceUrl url)
-    {
-        await new NavigateOnPageCommand(url.Url.Value).ExecuteAsync(_provider);
-    }
+    private async Task ExecuteNavigation(ServiceUrl url) =>
+        await new NavigateOnPageCommand(url.Value.Value).ExecuteAsync(_provider);
 
-    private async Task ExecuteScrollToBottom()
-    {
+    private async Task ExecuteScrollToBottom() =>
         await new ScrollToBottomCommand().ExecuteAsync(_provider);
-    }
 
     private async Task<Result<string>> ExtractHtml()
     {

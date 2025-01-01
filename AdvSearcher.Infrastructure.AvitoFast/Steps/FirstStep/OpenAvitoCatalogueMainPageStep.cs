@@ -35,7 +35,7 @@ internal sealed class OpenAvitoCatalogueMainPageStep : IAvitoFastParserStep
         _logger.Log("Creating web driver instance");
         _driverProvider.InstantiateNewWebDriver();
         _logger.Log("Navigating on avito catalogue page");
-        await new NavigateOnPageCommand(Pipeline.Url.Url.Value).ExecuteAsync(_driverProvider);
+        await new NavigateOnPageCommand(Pipeline.Url.Value.Value).ExecuteAsync(_driverProvider);
         _logger.Log("Sleeping for cookies initialization");
         await Task.Delay(TimeSpan.FromSeconds(30));
         if (Next != null)

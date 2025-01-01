@@ -7,6 +7,11 @@ public record AdvertisementUrl
 {
     public string Url { get; init; }
 
+    private AdvertisementUrl()
+    {
+        Url = string.Empty;
+    } // ef core constructor
+
     private AdvertisementUrl(string url) => Url = url;
 
     public static Result<AdvertisementUrl> Create(string? url)

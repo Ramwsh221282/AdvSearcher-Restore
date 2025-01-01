@@ -10,6 +10,11 @@ public sealed record ServiceUrlMode
 
     public string Mode { get; init; }
 
+    private ServiceUrlMode()
+    {
+        Mode = string.Empty;
+    } // ef core constructor
+
     private ServiceUrlMode(string mode) => Mode = mode;
 
     public static Result<ServiceUrlMode> Create(string? mode)

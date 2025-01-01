@@ -4,7 +4,7 @@ public readonly record struct AdvertisementAttachmendId
 {
     public int Value { get; }
 
-    private AdvertisementAttachmendId(int value) => Value = value;
+    internal AdvertisementAttachmendId(int value) => Value = value;
 
     internal static AdvertisementAttachmendId CreateEmpty() => new AdvertisementAttachmendId(0);
 

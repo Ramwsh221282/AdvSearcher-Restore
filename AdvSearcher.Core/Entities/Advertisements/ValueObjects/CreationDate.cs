@@ -2,9 +2,14 @@ using AdvSearcher.Core.Tools;
 
 namespace AdvSearcher.Core.Entities.Advertisements.ValueObjects;
 
-public sealed record CreationDate
+public readonly record struct CreationDate
 {
     public DateOnly Date { get; init; }
+
+    public CreationDate()
+    {
+        Date = default;
+    } // ef core constructor
 
     private CreationDate(DateOnly date) => Date = date;
 

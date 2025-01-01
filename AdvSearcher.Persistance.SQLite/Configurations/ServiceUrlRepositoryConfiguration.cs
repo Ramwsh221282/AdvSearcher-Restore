@@ -2,6 +2,7 @@ using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Entities.ServiceUrls.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Sqlite.Metadata.Internal;
 
 namespace AdvSearcher.Persistance.SQLite.Configurations;
 
@@ -10,9 +11,13 @@ internal sealed class ServiceUrlRepositoryConfiguration : IEntityTypeConfigurati
     public void Configure(EntityTypeBuilder<ServiceUrl> builder)
     {
         builder.HasKey(s => s.Id);
+
         builder
             .Property(s => s.Id)
-            .HasConversion(id => id.Value, value => ServiceUrlId.Create(value));
+            .HasConversion(id => id.Value, value => ServiceUrlId.Create(value))
+            .ValueGeneratedOnAdd()
+            .HasAnnotation(SqliteAnnotationNames.Autoincrement, true);
+
         builder.ComplexProperty(
             s => s.Mode,
             cpb =>

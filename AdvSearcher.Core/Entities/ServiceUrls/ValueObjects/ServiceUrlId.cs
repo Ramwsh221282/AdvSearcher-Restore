@@ -4,7 +4,7 @@ public readonly record struct ServiceUrlId
 {
     public int Value { get; init; }
 
-    private ServiceUrlId(int value) => Value = value;
+    internal ServiceUrlId(int value) => Value = value;
 
     internal static ServiceUrlId CreateEmpty() => new ServiceUrlId(0);
 

@@ -15,12 +15,12 @@ namespace AdvSearcher.Parser.SDK.ConsoleTests
             services = services.AddParserSDK();
             IServiceProvider provider = services.BuildServiceProvider();
             ParserProvider parserProvider = provider.GetRequiredService<ParserProvider>();
-            //TestCian(parserProvider).Wait();
+            TestCian(parserProvider).Wait();
             //TestAvito(parserProvider).Wait();
-            //TestOk(parserProvider).Wait();
+            TestOk(parserProvider).Wait();
             //TestFileInteractions(provider).Wait();
-            //TestVk(parserProvider, provider).Wait();
-            //TestFastAvito(parserProvider).Wait();
+            TestVk(parserProvider, provider).Wait();
+            TestFastAvito(parserProvider).Wait();
             TestDomclick(parserProvider).Wait();
         }
 
@@ -38,7 +38,8 @@ namespace AdvSearcher.Parser.SDK.ConsoleTests
             ServiceUrlValue value = ServiceUrlValue.Create(
                 "https://www.avito.ru/lesosibirsk/kvartiry/prodam-ASgBAgICAUSSA8YQ?context=H4sIAAAAAAAA_wEfAOD_YToxOntzOjg6ImZyb21QYWdlIjtzOjM6Im1hcCI7fRd7hMQfAAAA&s=104"
             );
-            ServiceUrl url = ServiceUrl.Create(value, mode);
+            ServiceUrlService service = ServiceUrlService.Create("Avito");
+            ServiceUrl url = new ServiceUrl(value, mode, service);
             IParser parser = parserProvider.GetParser("AvitoFastParser");
             await parser.ParseData(url);
             IReadOnlyCollection<IParserResponse> results = parser.Results;
@@ -63,7 +64,8 @@ namespace AdvSearcher.Parser.SDK.ConsoleTests
             IParser parser = parserProvider.GetParser("VkParser");
             ServiceUrlMode mode = ServiceUrlMode.Loadable;
             ServiceUrlValue value = ServiceUrlValue.Create("https://vk.com/les_gorod");
-            ServiceUrl url = ServiceUrl.Create(value, mode);
+            ServiceUrlService service = ServiceUrlService.Create("Vk");
+            ServiceUrl url = new ServiceUrl(value, mode, service);
             await parser.ParseData(url);
             IReadOnlyCollection<IParserResponse> responses = parser.Results;
             Console.WriteLine($"Responses results VK: {responses.Count}");
@@ -105,8 +107,9 @@ namespace AdvSearcher.Parser.SDK.ConsoleTests
             ServiceUrlValue value = ServiceUrlValue.Create(
                 "https://krasnoyarsk.cian.ru/kupit-kvartiru-krasnoyarskiy-kray-lesosibirsk/"
             );
+            ServiceUrlService service = ServiceUrlService.Create("Cian");
             ServiceUrlMode mode = ServiceUrlMode.Loadable;
-            ServiceUrl url = ServiceUrl.Create(value, mode);
+            ServiceUrl url = new ServiceUrl(value, mode, service);
             await cianParser.ParseData(url);
             IReadOnlyCollection<IParserResponse> responses = cianParser.Results;
             Console.WriteLine($"Cian passed. Cian responses: {responses.Count}");
@@ -120,7 +123,8 @@ namespace AdvSearcher.Parser.SDK.ConsoleTests
             ServiceUrlValue value = ServiceUrlValue.Create(
                 "https://www.avito.ru/lesosibirsk/kvartiry/prodam-ASgBAgICAUSSA8YQ?context=H4sIAAAAAAAA_wEfAOD_YToxOntzOjg6ImZyb21QYWdlIjtzOjM6Im1hcCI7fRd7hMQfAAAA&s=104"
             );
-            ServiceUrl url = ServiceUrl.Create(value, mode);
+            ServiceUrlService service = ServiceUrlService.Create("Avito");
+            ServiceUrl url = new ServiceUrl(value, mode, service);
             await avitoParser.ParseData(url);
             IReadOnlyCollection<IParserResponse> responses = avitoParser.Results;
             int bpoint = 0;
@@ -133,7 +137,8 @@ namespace AdvSearcher.Parser.SDK.ConsoleTests
             ServiceUrlValue value = ServiceUrlValue.Create(
                 "https://ok.ru/group/70000006132389/topics"
             );
-            ServiceUrl url = ServiceUrl.Create(value, mode);
+            ServiceUrlService service = ServiceUrlService.Create("Ok");
+            ServiceUrl url = new ServiceUrl(value, mode, service);
             await okParser.ParseData(url);
             IReadOnlyCollection<IParserResponse> responses = okParser.Results;
             Console.WriteLine($"Ok passed. Ok responses: {responses.Count}");

@@ -4,6 +4,9 @@ public sealed class Publisher
 {
     public PublisherId Id { get; init; }
     public PublisherData Data { get; init; }
+    public bool IsIgnored { get; private set; }
+
+    private Publisher() { } // ef core constructor
 
     public Publisher(PublisherData data)
     {
@@ -19,6 +22,8 @@ public sealed class Publisher
             return false;
         return publisher.Data == this.Data;
     }
+
+    public void MakePublisherIgnored() => IsIgnored = true;
 
     public override int GetHashCode() => HashCode.Combine(Id, Data);
 }

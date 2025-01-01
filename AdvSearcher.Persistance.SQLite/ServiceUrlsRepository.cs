@@ -4,19 +4,17 @@ using AdvSearcher.Core.Tools;
 using AdvSearcher.Persistance.SDK;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdvSearcher.Persistance.SQLite.Configurations;
+namespace AdvSearcher.Persistance.SQLite;
 
-internal sealed class ServiceUrlRepository : IServiceUrlRepository
+internal sealed class ServiceUrlsRepository : IServiceUrlRepository
 {
-    private readonly AppDbContext _context;
-
-    public ServiceUrlRepository(AppDbContext context) => _context = context;
+    private readonly AppDbContext _context = new AppDbContext();
 
     public async Task<Result<RepositoryOperationResult>> Add(ServiceUrl serviceUrl)
     {
         if (
-            await _context.ServiceUrls.AnyAsync(s =>
-                s.Value == serviceUrl.Value && serviceUrl.Mode == s.Mode
+            await _context.ServiceUrls.AnyAsync(url =>
+                url.Value == serviceUrl.Value && url.Mode == serviceUrl.Mode
             )
         )
             return new Error("Such url already exists");
@@ -28,13 +26,13 @@ internal sealed class ServiceUrlRepository : IServiceUrlRepository
     public async Task<Result<RepositoryOperationResult>> Remove(ServiceUrl serviceUrl)
     {
         if (
-            !await _context.ServiceUrls.AnyAsync(s =>
-                s.Value == serviceUrl.Value && serviceUrl.Mode == s.Mode
+            !await _context.ServiceUrls.AnyAsync(url =>
+                url.Value == serviceUrl.Value && url.Mode == serviceUrl.Mode
             )
         )
-            return new Error("Such doesn't already exist");
+            return new Error("Such url doesn't exist");
         await _context
-            .ServiceUrls.Where(s => s.Mode == serviceUrl.Mode && s.Id == serviceUrl.Id)
+            .ServiceUrls.Where(url => url.Value == serviceUrl.Value && url.Mode == serviceUrl.Mode)
             .ExecuteDeleteAsync();
         return RepositoryOperationResult.Success;
     }
@@ -44,7 +42,7 @@ internal sealed class ServiceUrlRepository : IServiceUrlRepository
         ServiceUrlService service
     ) =>
         await _context
-            .ServiceUrls.Where(s => s.Mode == mode && s.Service == service)
+            .ServiceUrls.Where(url => url.Mode == mode && url.Service == service)
             .AsNoTracking()
             .ToListAsync();
 }

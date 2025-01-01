@@ -7,6 +7,11 @@ public sealed record ServiceUrlValue
 {
     public string Value { get; init; }
 
+    private ServiceUrlValue()
+    {
+        Value = string.Empty;
+    } // ef core constructor
+
     private ServiceUrlValue(string value) => Value = value;
 
     public static Result<ServiceUrlValue> Create(string? value)

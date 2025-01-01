@@ -4,6 +4,7 @@ using AdvSearcher.Core.Entities.Publishers;
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Persistance.SQLite.Configurations;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace AdvSearcher.Persistance.SQLite;
 
@@ -15,7 +16,11 @@ internal sealed class AppDbContext : DbContext
     public DbSet<ServiceUrl> ServiceUrls { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder contextOptionsBuilder) =>
-        contextOptionsBuilder.UseSqlite("Data Source=AdvSearcher.db");
+        contextOptionsBuilder
+            .UseSqlite("Data Source=AdvSearcher.db")
+            .ConfigureWarnings(warnings =>
+                warnings.Ignore(RelationalEventId.PendingModelChangesWarning)
+            );
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) =>
         modelBuilder

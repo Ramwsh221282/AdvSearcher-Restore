@@ -33,7 +33,7 @@ internal sealed class OpenCianCataloguePageNode : ICianParserChain
         }
         _pipeLine.Provider.InstantiateNewWebDriver();
         _logger.Log("Web driver instance created");
-        await new NavigateOnPageCommand(_pipeLine.Url.Url.Value).ExecuteAsync(_pipeLine.Provider);
+        await new NavigateOnPageCommand(_pipeLine.Url.Value.Value).ExecuteAsync(_pipeLine.Provider);
         _logger.Log("Navigated on cian page");
         await new ScrollToBottomCommand().ExecuteAsync(_pipeLine.Provider);
         _logger.Log("Scrolled to bottom");

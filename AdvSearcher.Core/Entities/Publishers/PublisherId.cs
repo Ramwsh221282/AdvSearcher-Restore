@@ -8,6 +8,11 @@ public readonly record struct PublisherId
 
     private PublisherId(int value) => Value = value;
 
+    public PublisherId()
+    {
+        Value = 0;
+    } // ef core constructor
+
     internal static Result<PublisherId> CreateEmpty() => new PublisherId(0);
 
     public static PublisherId Create(int value) => new PublisherId(value);

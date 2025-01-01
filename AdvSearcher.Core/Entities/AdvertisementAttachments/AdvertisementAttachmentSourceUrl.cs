@@ -6,6 +6,8 @@ public sealed record AdvertisementAttachmentSourceUrl
 {
     public string Value { get; }
 
+    private AdvertisementAttachmentSourceUrl() { } // ef core constructor
+
     private AdvertisementAttachmentSourceUrl(string value) => Value = value;
 
     public static Result<AdvertisementAttachmentSourceUrl> Create(string? value) =>

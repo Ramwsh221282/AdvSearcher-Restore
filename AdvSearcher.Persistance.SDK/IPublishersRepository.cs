@@ -8,4 +8,6 @@ public interface IPublishersRepository
     Task<Result<RepositoryOperationResult>> Remove(Publisher publisher);
     Task<Result<RepositoryOperationResult>> Add(Publisher publisher);
     Task<IEnumerable<Publisher>> GetAll();
+    Task<IEnumerable<Publisher>> GetOnlyIgnored();
+    Task<Result<RepositoryOperationResult>> Update(Publisher publisher);
 }

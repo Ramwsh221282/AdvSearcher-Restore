@@ -29,13 +29,13 @@ internal sealed class DomclickInitializeMobilePhoneStep : IDomclickParserChain
             return;
         }
         int attempts = 0;
-        int limitAttempts = 5;
+        int limitAttempts = 10;
         foreach (var result in _pipeline.FetchResults)
         {
             if (attempts == limitAttempts)
             {
-                _logger.Log("Stopping process since Domclick is blocking requests.");
-                break;
+                _logger.Log("Attempts reached 10. Sleeping for 1 minute.");
+                await Task.Delay(TimeSpan.FromSeconds(60));
             }
             try
             {
@@ -45,13 +45,14 @@ internal sealed class DomclickInitializeMobilePhoneStep : IDomclickParserChain
                     await initializer.GetResearchApiToken();
                     await initializer.GetPhoneNumber();
                 }
+                attempts++;
             }
             catch
             {
                 _logger.Log(
-                    $"Failed to initialize Domclick advertisement. Requesting for {result.Id}"
+                    $"Failed to initialize Domclick advertisement. Requesting for {result.Id}. Blocked. stopping."
                 );
-                limitAttempts++;
+                break;
             }
         }
 

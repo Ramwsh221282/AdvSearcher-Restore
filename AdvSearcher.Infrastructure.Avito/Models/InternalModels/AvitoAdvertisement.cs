@@ -1,4 +1,3 @@
-using AdvSearcher.Core.Entities.Advertisements.Abstractions;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Infrastructure.Avito.Materials;
 using AdvSearcher.Infrastructure.Avito.Utils.Converters;

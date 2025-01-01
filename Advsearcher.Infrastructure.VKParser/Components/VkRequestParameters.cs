@@ -12,7 +12,7 @@ internal class VkRequestParameters
 
     private VkRequestParameters(ServiceUrl url)
     {
-        BaseUrl = url.Url.Value;
+        BaseUrl = url.Value.Value;
         ScreenName = new Uri(BaseUrl).AbsolutePath.Trim('/');
     }
 

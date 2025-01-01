@@ -54,6 +54,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvSearcher.Persistance.SQL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvSearcher.Persistance.SDK", "AdvSearcher.Persistance.SDK\AdvSearcher.Persistance.SDK.csproj", "{9F57D495-A94B-4B48-9183-5C9CAC16F637}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvSearcher.Persistance.SDK.Tests", "AdvSearcher.Persistance.SDK.Tests\AdvSearcher.Persistance.SDK.Tests.csproj", "{D1DCEE14-A356-42C0-B263-A16EF46DEED4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvSearcher.Persistance.SQLite.Console.Build", "AdvSearcher.Persistance.SQLite.Console.Build\AdvSearcher.Persistance.SQLite.Console.Build.csproj", "{BAA444B5-58E4-443B-A751-DA5647ED43D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvSearcher.Persistance.AdvertisementsCache", "AdvSearcher.Persistance.AdvertisementsCache\AdvSearcher.Persistance.AdvertisementsCache.csproj", "{5B937589-2A7D-4AE6-965B-9844FDEFBAB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvSearcher.Persistance.AdvertisementsCache.Console.Build", "AdvSearcher.Persistance.AdvertisementsCache.Console.Build\AdvSearcher.Persistance.AdvertisementsCache.Console.Build.csproj", "{41E074E9-9A1C-46D9-900D-40BC883B0F87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -140,6 +148,22 @@ Global
 		{9F57D495-A94B-4B48-9183-5C9CAC16F637}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F57D495-A94B-4B48-9183-5C9CAC16F637}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F57D495-A94B-4B48-9183-5C9CAC16F637}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1DCEE14-A356-42C0-B263-A16EF46DEED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1DCEE14-A356-42C0-B263-A16EF46DEED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1DCEE14-A356-42C0-B263-A16EF46DEED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1DCEE14-A356-42C0-B263-A16EF46DEED4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAA444B5-58E4-443B-A751-DA5647ED43D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA444B5-58E4-443B-A751-DA5647ED43D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA444B5-58E4-443B-A751-DA5647ED43D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA444B5-58E4-443B-A751-DA5647ED43D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B937589-2A7D-4AE6-965B-9844FDEFBAB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B937589-2A7D-4AE6-965B-9844FDEFBAB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B937589-2A7D-4AE6-965B-9844FDEFBAB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B937589-2A7D-4AE6-965B-9844FDEFBAB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41E074E9-9A1C-46D9-900D-40BC883B0F87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41E074E9-9A1C-46D9-900D-40BC883B0F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41E074E9-9A1C-46D9-900D-40BC883B0F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41E074E9-9A1C-46D9-900D-40BC883B0F87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{27470E22-2AF1-4341-BDF9-67AFFFE62D16} = {2D008E6D-F6ED-49C9-9DC1-574F58FE4B15}
@@ -163,5 +187,9 @@ Global
 		{1C8BAE3C-E1B7-4EA2-A1F7-14A74D2FAB2C} = {27470E22-2AF1-4341-BDF9-67AFFFE62D16}
 		{55CF44A3-E41D-42CB-A3F7-EC856B852292} = {6FC94000-1CA7-4153-9B7F-5FCE3A8B6219}
 		{9F57D495-A94B-4B48-9183-5C9CAC16F637} = {6FC94000-1CA7-4153-9B7F-5FCE3A8B6219}
+		{D1DCEE14-A356-42C0-B263-A16EF46DEED4} = {6FC94000-1CA7-4153-9B7F-5FCE3A8B6219}
+		{BAA444B5-58E4-443B-A751-DA5647ED43D3} = {6FC94000-1CA7-4153-9B7F-5FCE3A8B6219}
+		{5B937589-2A7D-4AE6-965B-9844FDEFBAB9} = {6FC94000-1CA7-4153-9B7F-5FCE3A8B6219}
+		{41E074E9-9A1C-46D9-900D-40BC883B0F87} = {6FC94000-1CA7-4153-9B7F-5FCE3A8B6219}
 	EndGlobalSection
 EndGlobal

@@ -6,6 +6,8 @@ public record AdvertisementContent
 {
     public string Content { get; init; }
 
+    private AdvertisementContent() { } // ef core constructor
+
     private AdvertisementContent(string content) => Content = content;
 
     public static Result<AdvertisementContent> Create(string? content)

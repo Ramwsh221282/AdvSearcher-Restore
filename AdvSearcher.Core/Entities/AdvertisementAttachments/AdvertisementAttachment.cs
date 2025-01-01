@@ -8,6 +8,8 @@ public sealed class AdvertisementAttachment
     public AdvertisementAttachmentSourceUrl Url { get; init; }
     public Advertisement Advertisement { get; init; }
 
+    private AdvertisementAttachment() { } // ef core constructor
+
     public AdvertisementAttachment(
         AdvertisementAttachmentSourceUrl url,
         Advertisement advertisement

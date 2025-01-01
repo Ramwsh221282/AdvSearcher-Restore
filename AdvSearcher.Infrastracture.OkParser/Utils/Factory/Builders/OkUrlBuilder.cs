@@ -18,7 +18,7 @@ internal sealed class OkUrlBuilder(HtmlNode node, ServiceUrl url) : IOkAdvertise
         if (string.IsNullOrWhiteSpace(urlAttribute))
             return ParserErrors.CantParseUrl;
 
-        var stringBuilder = new StringBuilder(url.Url.Value)
+        var stringBuilder = new StringBuilder(url.Value.Value)
             .Replace("topics", "topic")
             .Append('/')
             .Append(urlAttribute);

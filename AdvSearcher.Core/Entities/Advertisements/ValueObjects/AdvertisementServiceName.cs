@@ -7,6 +7,11 @@ public record AdvertisementServiceName
 {
     public string ServiceName { get; init; }
 
+    private AdvertisementServiceName()
+    {
+        ServiceName = string.Empty;
+    } // ef core constructor
+
     private AdvertisementServiceName(string serviceName) => ServiceName = serviceName;
 
     public static Result<AdvertisementServiceName> Create(string? serviceName)

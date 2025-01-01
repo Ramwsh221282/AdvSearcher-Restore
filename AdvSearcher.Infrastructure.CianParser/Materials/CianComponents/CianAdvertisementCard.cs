@@ -149,29 +149,36 @@ internal static class CianAdvertisementCardExtensions
 
     internal static void InitializePhotos(this CianAdvertisementCard card)
     {
-        var mediaElement = card.Card.FindElement(By.ClassName(PhotosWrapper));
-        var galleryElement = mediaElement?.FindElement(By.ClassName(PhotosContainer));
-        var picturesContainer = galleryElement?.FindElement(By.TagName(UlElement));
-        var pictures = picturesContainer?.FindElements(By.TagName(LiElement));
-        if (pictures == null)
-            return;
-        foreach (var pic in pictures)
+        try
         {
-            IWebElement? image;
-            try
+            var mediaElement = card.Card.FindElement(By.ClassName(PhotosWrapper));
+            var galleryElement = mediaElement?.FindElement(By.ClassName(PhotosContainer));
+            var picturesContainer = galleryElement?.FindElement(By.TagName(UlElement));
+            var pictures = picturesContainer?.FindElements(By.TagName(LiElement));
+            if (pictures == null)
+                return;
+            foreach (var pic in pictures)
             {
-                image = pic?.FindElement(By.TagName(ImgElement));
+                IWebElement? image;
+                try
+                {
+                    image = pic?.FindElement(By.TagName(ImgElement));
+                }
+                catch
+                {
+                    continue;
+                }
+                if (image == null)
+                    continue;
+                var srcValue = image.GetAttribute(SrcElement);
+                if (string.IsNullOrWhiteSpace(srcValue))
+                    continue;
+                card.Details.PhotoUrls.Add(srcValue);
             }
-            catch
-            {
-                continue;
-            }
-            if (image == null)
-                continue;
-            var srcValue = image.GetAttribute(SrcElement);
-            if (string.IsNullOrWhiteSpace(srcValue))
-                continue;
-            card.Details.PhotoUrls.Add(srcValue);
+        }
+        catch
+        {
+            Console.WriteLine("Unable to load photos of card.");
         }
     }
 }

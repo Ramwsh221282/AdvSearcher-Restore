@@ -70,6 +70,13 @@
     &lt;Category&gt;CianParser&lt;/Category&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b73ac60d_002Dc037_002D4df1_002Db300_002Db7bbd7520e6e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests in category 'Publisher'" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;Category&gt;Publisher&lt;/Category&gt;&#xD;
+    &lt;Category&gt;Advertisements&lt;/Category&gt;&#xD;
+    &lt;Category&gt;Cache&lt;/Category&gt;&#xD;
+  &lt;/Or&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c48fc733_002Dfbbc_002D4314_002D9bb1_002D90ed6c489faf/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests in category 'Domclick' #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Or&gt;&#xD;
     &lt;Category&gt;InternalVkTests&lt;/Category&gt;&#xD;
@@ -83,25 +90,9 @@
   &lt;Category&gt;OkParser&lt;/Category&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fbf841fc_002Dd6df_002D427d_002Db1f8_002D769fd0018ad4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestCianParserSinglePage #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Or&gt;&#xD;
-    &lt;TestAncestor&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::AAD94D48-FAE8-4233-B09A-AE8BAD06540E::net9.0::AdvSearcher.CianParser.Tests.CianParserTests.TestCianParserSinglePage&lt;/TestId&gt;&#xD;
-    &lt;/TestAncestor&gt;&#xD;
-    &lt;Category&gt;InternalVkTests&lt;/Category&gt;&#xD;
-    &lt;Category&gt;OkParser&lt;/Category&gt;&#xD;
-    &lt;Category&gt;CianParser&lt;/Category&gt;&#xD;
-    &lt;Category&gt;AvitoParser&lt;/Category&gt;&#xD;
-    &lt;Category&gt;Domclick&lt;/Category&gt;&#xD;
-  &lt;/Or&gt;&#xD;
+  &lt;Category&gt;Publisher&lt;/Category&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fd2b3429_002Dbc04_002D4e8c_002Da488_002De9210ef8ce19/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests in category 'CianParser'" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Or&gt;&#xD;
-    &lt;Category&gt;CianParser&lt;/Category&gt;&#xD;
-    &lt;TestAncestor&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::2E255DE3-D547-4B5A-BBAD-AEEBB49A7866::net9.0::AdvSearcher.AvitoParser.Tests.Tests.AvitoParsingTests&lt;/TestId&gt;&#xD;
-    &lt;/TestAncestor&gt;&#xD;
-    &lt;Category&gt;InternalVkTests&lt;/Category&gt;&#xD;
-    &lt;Category&gt;Domclick&lt;/Category&gt;&#xD;
-  &lt;/Or&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fd2b3429_002Dbc04_002D4e8c_002Da488_002De9210ef8ce19/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests in category 'CianParser'" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Category&gt;Publisher&lt;/Category&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestRunner/SpawnedProcessesKnownList/=chromedriver_002Eexe/@EntryIndexedValue">KillOrphaned</s:String></wpf:ResourceDictionary>

@@ -15,8 +15,11 @@ public sealed class Advertisement
     public AdvertisementUrl Url { get; init; }
     public CreationDate CreationDate { get; init; }
     public Publisher? Publisher { get; set; }
+    public AdvertisementType Type { get; init; }
 
     public IReadOnlyCollection<AdvertisementAttachment> Attachments => _attachments;
+
+    private Advertisement() { } // ef core constructor
 
     public Advertisement(
         AdvertisementId id,
@@ -25,6 +28,7 @@ public sealed class Advertisement
         AdvertisementServiceName serviceName,
         AdvertisementUrl url,
         CreationDate creationDate,
+        AdvertisementType type,
         List<AdvertisementAttachment>? attachments = null
     )
     {
@@ -34,7 +38,25 @@ public sealed class Advertisement
         ServiceName = serviceName;
         Url = url;
         CreationDate = creationDate;
+        Type = type;
         if (attachments != null)
             _attachments = attachments;
+    }
+
+    public void SetAttachments(IEnumerable<AdvertisementAttachment> attachments)
+    {
+        if (_attachments.Any())
+            return;
+        foreach (var attachment in attachments)
+        {
+            _attachments.Add(attachment);
+        }
+    }
+
+    public void SetPublisher(Publisher publisher)
+    {
+        if (this.Publisher != null)
+            return;
+        this.Publisher = publisher;
     }
 }

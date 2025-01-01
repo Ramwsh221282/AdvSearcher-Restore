@@ -10,10 +10,13 @@ internal sealed class AttachmentsRepositoryConfiguration
 {
     public void Configure(EntityTypeBuilder<AdvertisementAttachment> builder)
     {
-        builder.HasKey(at => at.Id).HasAnnotation(SqliteAnnotationNames.Autoincrement, true);
+        builder.HasKey(at => at.Id);
         builder
             .Property(at => at.Id)
-            .HasConversion(id => id.Value, value => AdvertisementAttachmendId.Create(value));
+            .HasConversion(id => id.Value, value => AdvertisementAttachmendId.Create(value))
+            .HasAnnotation(SqliteAnnotationNames.Autoincrement, true)
+            .ValueGeneratedOnAdd();
+
         builder.ComplexProperty(
             att => att.Url,
             cpb =>

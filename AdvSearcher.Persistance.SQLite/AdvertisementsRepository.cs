@@ -1,4 +1,5 @@
 using AdvSearcher.Core.Entities.Advertisements;
+using AdvSearcher.Core.Entities.Publishers;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Persistance.SDK;
 using Microsoft.EntityFrameworkCore;
@@ -7,9 +8,7 @@ namespace AdvSearcher.Persistance.SQLite;
 
 internal sealed class AdvertisementsRepository : IAdvertisementsRepository
 {
-    private readonly AppDbContext _context;
-
-    public AdvertisementsRepository(AppDbContext context) => _context = context;
+    private readonly AppDbContext _context = new AppDbContext();
 
     public async Task<Result<RepositoryOperationResult>> Add(Advertisement advertisement)
     {
@@ -19,6 +18,7 @@ internal sealed class AdvertisementsRepository : IAdvertisementsRepository
             )
         )
             return new Error("Duplicate advertisement");
+        await AttachPublisherIfDuplicated(advertisement);
         await _context.Set<Advertisement>().AddAsync(advertisement);
         await _context.SaveChangesAsync();
         return RepositoryOperationResult.Success;
@@ -66,5 +66,21 @@ internal sealed class AdvertisementsRepository : IAdvertisementsRepository
         await _context.Set<Advertisement>().AddRangeAsync(unique);
         await _context.SaveChangesAsync();
         return RepositoryOperationResult.Success;
+    }
+
+    private async Task AttachPublisherIfDuplicated(Advertisement advertisement)
+    {
+        if (advertisement.Publisher == null)
+            return;
+
+        Publisher? publisher = await _context.Publishers.FirstOrDefaultAsync(pub =>
+            pub.Data == advertisement.Publisher.Data
+        );
+
+        if (publisher == null)
+            return;
+
+        advertisement.Publisher = publisher;
+        _context.Publishers.Attach(publisher);
     }
 }
