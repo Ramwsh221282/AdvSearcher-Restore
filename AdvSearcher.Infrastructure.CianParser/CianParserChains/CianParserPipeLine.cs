@@ -1,9 +1,11 @@
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Infrastructure.CianParser.CianParserChains.PipeLineComponents;
+using AdvSearcher.Infrastructure.CianParser.Filtering;
 using AdvSearcher.Infrastructure.CianParser.Materials.CianComponents;
 using AdvSearcher.Infrastructure.CianParser.Utils.Converters;
 using AdvSearcher.Infrastructure.CianParser.Utils.Factories;
 using AdvSearcher.Parser.SDK.Contracts;
+using AdvSearcher.Parser.SDK.Filtering;
 using AdvSearcher.Parser.SDK.WebDriverParsing;
 
 namespace AdvSearcher.Infrastructure.CianParser.CianParserChains;
@@ -11,9 +13,10 @@ namespace AdvSearcher.Infrastructure.CianParser.CianParserChains;
 internal sealed class CianParserPipeLine
 {
     private readonly CianDateConverter _converter;
-    private readonly List<IParserResponse> _responses = [];
+    private List<IParserResponse> _responses = [];
     public WebDriverProvider Provider { get; }
     public IReadOnlyCollection<IParserResponse> Responses => _responses;
+    public List<ParserFilterOption> Options { get; set; } = [];
 
     public CianParserPipeLine(CianDateConverter converter, WebDriverProvider provider)
     {
@@ -77,5 +80,23 @@ internal sealed class CianParserPipeLine
         if (_factory == null)
             return;
         _responses.AddRange(_factory.Construct());
+    }
+
+    public void ProcessFiltering()
+    {
+        if (!_responses.Any())
+            return;
+        ParserFilter filter = new ParserFilter(Options);
+        List<IParserResponse> filtered = [];
+        foreach (var response in _responses)
+        {
+            IParserFilterVisitor visitor = new CianFiltering(
+                response.Advertisement,
+                response.Publisher
+            );
+            if (filter.IsMatchingFilters(visitor))
+                filtered.Add(response);
+        }
+        _responses = filtered;
     }
 }

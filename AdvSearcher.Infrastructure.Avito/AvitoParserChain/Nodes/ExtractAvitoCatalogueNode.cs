@@ -46,6 +46,7 @@ internal sealed class ExtractAvitoCatalogueNode : IAvitoChainNode
             return;
         }
         _pipeLine.SetCatalogueItems(new AvitoCatalogue(html));
+        _pipeLine.ProcessFilteringByDate();
         if (Next != null)
         {
             _logger.Log("Next step in chain started.");

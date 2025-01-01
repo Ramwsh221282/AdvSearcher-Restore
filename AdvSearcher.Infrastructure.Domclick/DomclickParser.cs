@@ -20,6 +20,8 @@ internal sealed class DomclickParser : IParser
     )
     {
         await _chain.Process();
+        if (options != null)
+            _chain.Pipeline.Options = options;
         _results.AddRange(_chain.Pipeline.Responses);
         return true;
     }

@@ -22,6 +22,8 @@ internal sealed class AvitoFastParser : IParser
     {
         if (url.Mode == ServiceUrlMode.Publicatable)
             return false;
+        if (options != null)
+            _step.Pipeline.Options = options;
         _step.Pipeline.SetServiceUrl(url);
         await _step.ProcessAsync();
         _results.AddRange(_step.Pipeline.Results);

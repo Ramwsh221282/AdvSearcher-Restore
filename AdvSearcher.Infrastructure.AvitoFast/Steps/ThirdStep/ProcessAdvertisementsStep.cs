@@ -39,6 +39,8 @@ internal sealed class ProcessAdvertisementsStep : IAvitoFastParserStep
             return;
         }
 
+        Pipeline.FilterByDate(_logger);
+        Pipeline.FilterByCache();
         foreach (AvitoAdvertisement advertisement in Pipeline)
         {
             await new NavigateOnAdvertisementPage(advertisement).ExecuteAsync(_driver);

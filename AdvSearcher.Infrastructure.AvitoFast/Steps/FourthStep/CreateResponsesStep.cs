@@ -48,6 +48,7 @@ internal sealed class CreateResponsesStep : IAvitoFastParserStep
             IParserResponse response = new AvitoResponse(ad.Value, attachments, publisher.Value);
             Pipeline.Results.Add(response);
         }
+        Pipeline.FilterByPublishers();
         _logger.Log("Response creation finished");
         if (Next != null)
         {

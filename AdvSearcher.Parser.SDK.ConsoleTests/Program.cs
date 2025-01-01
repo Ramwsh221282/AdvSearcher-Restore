@@ -1,5 +1,6 @@
 ﻿using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Entities.ServiceUrls.ValueObjects;
+using AdvSearcher.Parser.SDK.ConsoleTests.ConsoleAvitoTests;
 using AdvSearcher.Parser.SDK.ConsoleTests.ConsoleTestsVk;
 using AdvSearcher.Parser.SDK.Contracts;
 using AdvSearcher.Parser.SDK.DependencyInjection;
@@ -14,13 +15,10 @@ namespace AdvSearcher.Parser.SDK.ConsoleTests
         {
             IServiceCollection services = new ServiceCollection();
             services = services.AddParserSDK();
-            IServiceProvider provider = services.BuildServiceProvider();
-            ParserProvider parserProvider = provider.GetRequiredService<ParserProvider>();
-            VkTests tests = new VkTests(services);
-            //tests.TestVkSingle().Wait();
-            //tests.TestVkDateFilter().Wait();
-            //tests.TestVkDateFilterAndNameFilter().Wait();
-            tests.TestWithDateFilterNameFilterCacheFilter().Wait();
+
+            //InvokeVkTests(services);
+            InvokeAvitoTests(services);
+
             //TestCian(parserProvider).Wait();
             //TestAvito(parserProvider).Wait();
             //TestOk(parserProvider).Wait();
@@ -29,6 +27,21 @@ namespace AdvSearcher.Parser.SDK.ConsoleTests
             //TestVkWithDateFilter(parserProvider, provider).Wait();
             //TestFastAvito(parserProvider).Wait();
             //TestDomclick(parserProvider).Wait();
+        }
+
+        static void InvokeVkTests(IServiceCollection collection)
+        {
+            VkTests tests = new VkTests(collection);
+            tests.TestVkSingle().Wait();
+            tests.TestVkDateFilter().Wait();
+            tests.TestVkDateFilterAndNameFilter().Wait();
+            tests.TestWithDateFilterNameFilterCacheFilter().Wait();
+        }
+
+        static void InvokeAvitoTests(IServiceCollection collection)
+        {
+            AvitoTests tests = new AvitoTests(collection);
+            tests.TestAvitoFastDateFilter().Wait();
         }
 
         static async Task TestDomclick(ParserProvider provider)

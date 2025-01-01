@@ -1,11 +1,13 @@
 using AdvSearcher.Core.Entities.ServiceUrls;
 using AdvSearcher.Core.Tools;
+using AdvSearcher.Infrastracture.OkParser.Filters;
 using AdvSearcher.Infrastracture.OkParser.Models.ExternalModels;
 using AdvSearcher.Infrastracture.OkParser.Models.InternalModels;
 using AdvSearcher.Infrastracture.OkParser.Utils.Converters;
 using AdvSearcher.Infrastracture.OkParser.Utils.Factory.Builders;
 using AdvSearcher.Infrastracture.OkParser.Utils.Materials;
 using AdvSearcher.Parser.SDK.Contracts;
+using AdvSearcher.Parser.SDK.Filtering;
 using AdvSearcher.Parser.SDK.HttpParsing;
 using HtmlAgilityPack;
 
@@ -23,6 +25,8 @@ internal sealed class OkParserPipeLine
     public IReadOnlyCollection<IParserResponse> Responses => _responses;
     public OkTopicNodes? Nodes => _nodes;
     public ServiceUrl? Url => _url;
+
+    public List<ParserFilterOption> Options { get; set; } = [];
 
     private IOkAdvertisementBuilder<DateOnly>? _dateBuilder;
     private IOkAdvertisementBuilder<string>? _urlBuilder;
@@ -44,6 +48,13 @@ internal sealed class OkParserPipeLine
     public void InstantiateDateBuilder(HtmlNode node) =>
         _dateBuilder = _builders.GetDateOnlyBuilder(node, _converter);
 
+    public async Task<Result<DateOnly>> GetAdvertisementDate()
+    {
+        if (_dateBuilder == null)
+            return new Error("Date builder was not instantiated");
+        return await _dateBuilder.Build();
+    }
+
     public void InstantiatePublisherBuilder(HtmlNode node) =>
         _publisherBuilder = _builders.GetPublisherBuilder(node);
 
@@ -64,7 +75,7 @@ internal sealed class OkParserPipeLine
         _attachmentsBuilder = _builders.GetAttachmentsBuilder(doc);
     }
 
-    public async Task AddAdvertisementResponse()
+    public async Task AddAdvertisementResponse(ParserFilter filter)
     {
         Result<IParsedAdvertisement> advertisement = await CreateParsedAdvertisement();
         Result<IParsedPublisher> publisher = await CreateParsedPublisher();
@@ -72,6 +83,12 @@ internal sealed class OkParserPipeLine
         if (advertisement.IsFailure)
             return;
         if (publisher.IsFailure)
+            return;
+        IParserFilterVisitor visitor = new OkAdvertisementsFilterVisitor(
+            publisher.Value.Info,
+            advertisement.Value.Id
+        );
+        if (!filter.IsMatchingFilters(visitor))
             return;
         _responses.Add(new OkParserResults(advertisement.Value, attachments, publisher.Value));
     }

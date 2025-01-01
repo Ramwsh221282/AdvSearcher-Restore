@@ -1,4 +1,7 @@
+using AdvSearcher.Core.Tools;
+using AdvSearcher.Infrastracture.OkParser.Filters;
 using AdvSearcher.Parser.SDK;
+using AdvSearcher.Parser.SDK.Filtering;
 using AdvSearcher.Parser.SDK.HttpParsing;
 
 namespace AdvSearcher.Infrastracture.OkParser.OkParserChains.Nodes;
@@ -32,13 +35,17 @@ internal sealed class CreateAdvertisementResponseNode : IOkParserChain
             _logger.Log("Ok Nodes were null. Stopping process.");
             return;
         }
+
+        ParserFilter filter = new ParserFilter(_pipeLine.Options);
         foreach (var node in _pipeLine.Nodes.Nodes)
         {
             _pipeLine.InstantiateUrlBuilder(node);
             _pipeLine.InstantiateDateBuilder(node);
+            if (!await IsMatchingDate(filter))
+                continue;
             _pipeLine.InstantiateContentBuilder(node, _httpClient);
             _pipeLine.InstantiatePublisherBuilder(node);
-            await _pipeLine.AddAdvertisementResponse();
+            await _pipeLine.AddAdvertisementResponse(filter);
             _logger.Log("Created Ok Advertisement Response");
         }
         _httpClient.Dispose();
@@ -48,5 +55,14 @@ internal sealed class CreateAdvertisementResponseNode : IOkParserChain
             _logger.Log("Processing next chain step.");
             await Next.ExecuteAsync();
         }
+    }
+
+    private async Task<bool> IsMatchingDate(ParserFilter filter)
+    {
+        Result<DateOnly> date = await _pipeLine.GetAdvertisementDate();
+        if (date.IsFailure)
+            return false;
+        IParserFilterVisitor visitor = new OkDateOnlyFilterVisitor(date.Value);
+        return filter.IsMatchingFilters(visitor);
     }
 }

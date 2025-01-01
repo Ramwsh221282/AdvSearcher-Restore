@@ -23,6 +23,7 @@ internal sealed class ConstructAvitoResponseNode : IAvitoChainNode
     public async Task ExecuteAsync()
     {
         _logger.Log("Constructing Avito response node");
+        _pipeLine.ProcessFiltering();
         _pipeLine.ConstructParserResponse();
         _logger.Log($"Avito advertisements constructed. Count {_pipeLine.Responses.Count}");
         if (Next != null)

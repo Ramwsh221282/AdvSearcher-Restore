@@ -25,6 +25,7 @@ internal sealed class ConstructResponseNode : ICianParserChain
         _logger.Log("Constructing Cian Advertisements Response");
         _pipeLine.InstantiateFactory();
         _pipeLine.ConstructResponses();
+        _pipeLine.ProcessFiltering();
         _logger.Log($"Cian Response constructed. Count: {_pipeLine.Responses.Count}");
         if (Next != null)
         {

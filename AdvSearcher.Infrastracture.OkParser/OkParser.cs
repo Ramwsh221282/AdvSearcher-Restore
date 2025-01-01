@@ -20,6 +20,8 @@ internal sealed class OkParser : IParser
     )
     {
         _chain.PipeLine.SetServiceUrl(url);
+        if (options != null)
+            _chain.PipeLine.Options = options;
         await _chain.ExecuteAsync();
         _results.AddRange(_chain.PipeLine.Responses);
         return true;

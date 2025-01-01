@@ -20,6 +20,8 @@ internal sealed class AvitoParser : IParser
     )
     {
         _node.Pipeline.SetServiceUrl(url);
+        if (options != null)
+            _node.Pipeline.Options = options;
         await _node.ExecuteAsync();
         _results.AddRange(_node.Pipeline.Responses);
         return true;

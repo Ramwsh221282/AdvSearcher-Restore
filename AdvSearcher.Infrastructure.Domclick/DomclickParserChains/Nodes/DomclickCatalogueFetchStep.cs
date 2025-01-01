@@ -38,6 +38,7 @@ internal sealed class DomclickCatalogueFetchStep : IDomclickParserChain
             _provider
         );
         await sender.ConstructFetchResults();
+        _pipeline.FilterByCacheAndDate();
         _logger.Log($"Domclick response results created. Count: {_pipeline.Responses.Count}");
         if (Next != null)
         {

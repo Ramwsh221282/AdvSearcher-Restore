@@ -49,6 +49,7 @@ internal sealed class DomclickResultsInitializerStep : IDomclickParserChain
             _pipeline.AddParserResponse(response);
             _logger.Log("Successfully created parser response");
         }
+        _pipeline.FilterByPublishers();
         if (Next != null)
         {
             _logger.Log("Processing next domclick parser chain");
