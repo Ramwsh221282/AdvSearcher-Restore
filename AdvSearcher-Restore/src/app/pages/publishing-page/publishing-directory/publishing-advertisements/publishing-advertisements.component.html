@@ -1,0 +1,6 @@
+<div [ngClass]="{'selected': _service.isAdvertisementAttached(advertisement)}" class="publishing-advertisement-layout">
+    <label>Папка: {{ advertisement.displayName }}</label>
+    <label>Кол-во фото: {{ advertisement.photos.length }}</label>
+    <app-primary-button [label]="'Выбрать'" (onClicked)="select()"></app-primary-button>
+    <app-red-button [label]="'Отменить выбор'" (onClicked)="detach()"></app-red-button>
+</div>

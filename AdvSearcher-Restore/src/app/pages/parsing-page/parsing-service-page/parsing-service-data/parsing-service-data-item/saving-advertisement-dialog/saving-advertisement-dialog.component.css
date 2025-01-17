@@ -1,0 +1,99 @@
+:host {
+  transition: 0.1s;
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+#container {
+  width: 40%;
+  border-radius: 15px;
+  background-color: #24194d;
+  border: solid 1px #edefff;
+  box-shadow: 15px 15px 15px -15px #dfe1ff;
+
+  #header {
+    display: flex;
+    font-size: 32px;
+    font-weight: 800;
+    align-items: center;
+    align-self: center;
+    padding: 10px;
+    color: #50ff5e;
+    border-bottom: solid 1px #edefff;
+  }
+
+  #content {
+    flex-grow: 1;
+    padding: 30px;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #controls {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    border-top: solid 1px #edefff;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+  }
+}
+
+.folders-layout {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: auto;
+  max-height: 300px;
+  min-height: 300px;
+}
+
+.folders-item {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.folder-items-icon {
+  height: 10px;
+  width: 18px;
+  background: #50ff5e;
+}
+
+.folder-items-label {
+  width: 100%;
+  padding: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #50ff5e;
+  text-decoration: underline;
+  cursor: pointer;
+  &:hover {
+    color: yellow;
+  }
+}
+
+.path-label {
+  color: #50ff5e;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 5px;
+}
+
+.controls-panel {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}

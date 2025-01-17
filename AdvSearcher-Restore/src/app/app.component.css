@@ -1,0 +1,6 @@
+.app-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-gap: 0.7rem;
+  height: 100%;
+}

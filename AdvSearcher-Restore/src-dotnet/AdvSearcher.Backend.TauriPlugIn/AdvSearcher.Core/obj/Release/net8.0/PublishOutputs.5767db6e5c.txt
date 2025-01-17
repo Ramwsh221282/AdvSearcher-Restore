@@ -1,0 +1,3 @@
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Core\bin\Release\net8.0\publish\AdvSearcher.Core.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Core\bin\Release\net8.0\publish\AdvSearcher.Core.deps.json
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Core\bin\Release\net8.0\publish\AdvSearcher.Core.pdb

@@ -1,0 +1,27 @@
+<div id="container">
+    <div id="header">
+        <strong>Добавление новой ссылки</strong>
+    </div>
+    <div id="content">
+        <div class="controls-panel">
+            <app-primary-button [label]="'Вернуться на уровень выше'" (onClicked)="moveToParent()"></app-primary-button>
+            <app-primary-button [label]="'Создать папку'" (onClicked)="createDirectory()"></app-primary-button>
+        </div>
+        <label class="path-label">Путь: {{ Path() }}</label>
+        <app-input-control [placeHolder]="'Укажите название файла'"
+                           [textBinding]="advertisementFileName"
+                           [width]="'400px'" (onTextChange)="advertisementFileName = $event">
+        </app-input-control>
+        <div class="folders-layout">
+            <div class="folders-item" *ngFor="let item of folders">
+                <p class="folder-items-icon"></p>
+                <label class="folder-items-label" (click)="moveToDirectory(item)">{{ item }}</label>
+            </div>
+        </div>
+    </div>
+    <div id="controls">
+        <app-primary-button [label]="'Сохранить'" (onClicked)="saveFile()"></app-primary-button>
+        <app-red-button [label]="'Закрыть окно'" (onClicked)="closeWindow()"></app-red-button>
+    </div>
+</div>
+<app-notification *ngIf="notifications.isVisible"></app-notification>

@@ -1,0 +1,22 @@
+<section *ngIf="currentParserPlugin" class="parsing-service-page-layout">
+    <label *ngIf="currentParserPlugin" class="parsing-service-page-title">Парсер {{ currentParserPlugin.displayName }}</label>
+    <div class="parsing-service-page-menu-layout">
+        <app-primary-button [label]="'Ссылки для парсинга'" (onClicked)="selectMenu('links')"></app-primary-button>
+        <app-primary-button [label]="'Результаты парсинга'" (onClicked)="selectMenu('data')"></app-primary-button>
+        <app-primary-button [label]="'Парсинг'" (onClicked)="selectMenu('process')"></app-primary-button>
+    </div>
+    <div class="parsing-service-page-content-layout">
+        @switch (selectedMenu) {
+            @case ('links') {
+                <app-parsing-service-links [parsingSection]="currentParserPlugin"></app-parsing-service-links>
+            }
+            @case ('data') {
+                <app-parsing-service-data [plugin]="currentParserPlugin"></app-parsing-service-data>
+            }
+            @case ('process') {
+                <app-parsing-service-process [section]="currentParserPlugin"></app-parsing-service-process>
+            }
+        }
+    </div>
+</section>
+<app-notification *ngIf="notifications.isVisible"></app-notification>

@@ -1,0 +1,36 @@
+.side-bar-button-layout {
+  display: block;
+  background: #3c2b84;
+  transition: 1s;
+  cursor: pointer;
+  color: #edefff;
+  width: 100%;
+  box-sizing: border-box;
+  user-select: none;
+
+  &:hover {
+    transition: 1s;
+    background: #472ca7;
+    color: #50ff5e;
+  }
+}
+
+.side-bar-button-layout-active {
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  align-items: center;
+  background: #472ca7;
+  color: #50ff5e;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.side-bar-button-content {
+  width: 100%;
+  cursor: pointer;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 14px;
+  display: block;
+}

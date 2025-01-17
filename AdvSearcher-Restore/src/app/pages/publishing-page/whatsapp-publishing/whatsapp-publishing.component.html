@@ -1,0 +1,16 @@
+<div id="container">
+    <div id="header">
+        <strong>Публикация на {{ serviceDisplayName }}</strong>
+    </div>
+    <div id="content">
+        <app-input-control [textBinding]="phone.phoneNumber"
+                           [placeHolder]="'Телефон (71234567890)'"
+                           [width]="'300px'"
+                           (onTextChange)="phone.phoneNumber = $event">
+        </app-input-control>
+    </div>
+    <div id="controls">
+        <app-primary-button [label]="'Опубликовать'" (onClicked)="publish()"></app-primary-button>
+        <app-red-button [label]="'Закрыть окно'" (onClicked)="closeWindow()"></app-red-button>
+    </div>
+</div>

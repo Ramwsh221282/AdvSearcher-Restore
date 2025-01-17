@@ -1,0 +1,12 @@
+<div id="container">
+    <div id="header">
+        <strong>Публикация на {{ serviceDisplayName }}</strong>
+    </div>
+    <div id="content">
+
+    </div>
+    <div id="controls">
+        <app-primary-button [label]="'Опубликовать'" (onClicked)="startPublishing()"></app-primary-button>
+        <app-red-button [label]="'Закрыть окно'" (onClicked)="closeWindow()"></app-red-button>
+    </div>
+</div>

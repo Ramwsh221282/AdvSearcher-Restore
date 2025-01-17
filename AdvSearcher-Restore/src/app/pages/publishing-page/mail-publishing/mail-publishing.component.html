@@ -1,0 +1,13 @@
+<div id="container">
+    <div id="header">
+        <strong>Публикация на {{ serviceDisplayName }}</strong>
+    </div>
+    <div id="content">
+        <app-input-control [textBinding]="address.email" [placeHolder]="'адрес почты'" [width]="'300px'" (onTextChange)="address.email = $event"></app-input-control>
+        <app-input-control [textBinding]="address.subject" [placeHolder]="'тема письма'" [width]="'300px'" (onTextChange)="address.subject = $event"></app-input-control>
+    </div>
+    <div id="controls">
+        <app-primary-button [label]="'Опубликовать'" (onClicked)="publish()"></app-primary-button>
+        <app-red-button [label]="'Закрыть окно'" (onClicked)="closeWindow()"></app-red-button>
+    </div>
+</div>

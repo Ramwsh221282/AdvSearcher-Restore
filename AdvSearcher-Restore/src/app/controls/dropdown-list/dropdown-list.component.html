@@ -1,0 +1,12 @@
+<div id="container">
+    <div id="button" (click)="setVisibility()">
+        {{ selectedOption.length == 0 ? dropDownName : selectedOption }}
+        <div id="dropdown" [ngClass]="{'active': isActive}">
+            <ul>
+                <li *ngFor="let option of options" (click)="selectOption(option.name, option.value, $event)">
+                    <label>{{ option.name }}</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

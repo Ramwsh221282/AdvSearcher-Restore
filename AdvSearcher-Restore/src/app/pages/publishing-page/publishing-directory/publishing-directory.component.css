@@ -1,0 +1,18 @@
+.publishing-directory-container {
+  background: #472ca7;
+  border: solid 1px #462ca7;
+  padding: 0.5rem;
+}
+
+.publishing-directory-controls-container {
+  justify-content: flex-start;
+  text-decoration: underline;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  font-weight: bold;
+  font-size: 14px;
+  color: yellow;
+}

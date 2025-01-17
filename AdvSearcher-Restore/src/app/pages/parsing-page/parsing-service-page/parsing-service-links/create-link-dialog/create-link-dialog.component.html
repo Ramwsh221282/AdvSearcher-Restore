@@ -1,0 +1,17 @@
+<div id="container">
+    <div id="header">
+        <strong>Добавление новой ссылки</strong>
+    </div>
+    <div id="content">
+        <app-input-control [textBinding]="link"
+                           [placeHolder]="'Вставьте ссылку'"
+                           [width]="'400px'"
+                           (onTextChange)="link = $event">
+        </app-input-control>
+    </div>
+    <div id="controls">
+        <app-primary-button [label]="'Добавить'" (onClicked)="appendLink()"></app-primary-button>
+        <app-red-button [label]="'Закрыть окно'" (onClicked)="closeWindow()"></app-red-button>
+    </div>
+</div>
+<app-notification *ngIf="notifications.isVisible"></app-notification>

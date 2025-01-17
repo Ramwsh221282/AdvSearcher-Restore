@@ -1,0 +1,16 @@
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\bin\Debug\net8.0\AdvSearcher.Application.deps.json
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\bin\Debug\net8.0\AdvSearcher.Application.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\bin\Debug\net8.0\AdvSearcher.Application.pdb
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\bin\Debug\net8.0\AdvSearcher.Core.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\bin\Debug\net8.0\AdvSearcher.Core.pdb
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\obj\Debug\net8.0\AdvSearcher.Application.csproj.AssemblyReference.cache
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\obj\Debug\net8.0\AdvSearcher.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\obj\Debug\net8.0\AdvSearcher.Application.AssemblyInfoInputs.cache
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\obj\Debug\net8.0\AdvSearcher.Application.AssemblyInfo.cs
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\obj\Debug\net8.0\AdvSearcher.Application.csproj.CoreCompileInputs.cache
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\obj\Debug\net8.0\AdvSearcher.Application.sourcelink.json
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\obj\Debug\net8.0\AdvSearc.72E620C5.Up2Date
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\obj\Debug\net8.0\AdvSearcher.Application.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\obj\Debug\net8.0\refint\AdvSearcher.Application.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\obj\Debug\net8.0\AdvSearcher.Application.pdb
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\obj\Debug\net8.0\ref\AdvSearcher.Application.dll

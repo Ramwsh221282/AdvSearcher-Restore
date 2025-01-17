@@ -1,0 +1,15 @@
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\bin\Debug\net8.0\AdvSearcher.FileSystem.Plugin.deps.json
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\bin\Debug\net8.0\AdvSearcher.FileSystem.Plugin.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\bin\Debug\net8.0\AdvSearcher.FileSystem.Plugin.pdb
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\AdvSearcher.FileSystem.Plugin.csproj.AssemblyReference.cache
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\AdvSearcher.FileSystem.Plugin.GeneratedMSBuildEditorConfig.editorconfig
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\AdvSearcher.FileSystem.Plugin.AssemblyInfoInputs.cache
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\AdvSearcher.FileSystem.Plugin.AssemblyInfo.cs
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\AdvSearcher.FileSystem.Plugin.csproj.CoreCompileInputs.cache
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\AdvSearcher.FileSystem.Plugin.sourcelink.json
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\AdvSearcher.FileSystem.Plugin.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\refint\AdvSearcher.FileSystem.Plugin.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\AdvSearcher.FileSystem.Plugin.pdb
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\ref\AdvSearcher.FileSystem.Plugin.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\AdvSearcher.FileSystem.Plugin.csproj.Fody.CopyLocal.cache
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\AdvSearcher.FileSystem.Plugin.csproj.Fody.RuntimeCopyLocal.cache

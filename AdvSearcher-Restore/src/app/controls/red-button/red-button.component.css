@@ -1,0 +1,28 @@
+.red-button-layout {
+  padding: 5px 15px;
+  border-radius: 9px;
+  background: transparent;
+  border: solid 2px #ff0019;
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    box-shadow: 5px 10px 10px -10px #ff0019;
+  }
+
+  &:active {
+    box-shadow: 5px 10px 10px -10px #ff0019;
+  }
+}
+
+.red-button-label {
+  cursor: pointer;
+  padding: 5px;
+  color: #ff0019;
+  font-weight: bold;
+  font-size: 14px;
+}

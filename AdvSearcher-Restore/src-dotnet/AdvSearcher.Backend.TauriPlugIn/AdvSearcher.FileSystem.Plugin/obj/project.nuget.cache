@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "EEEM/v2rAsA=",
+  "success": true,
+  "projectFilePath": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.FileSystem.Plugin\\AdvSearcher.FileSystem.Plugin.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\costura.fody\\6.0.0\\costura.fody.6.0.0.nupkg.sha512",
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\fody\\6.8.2\\fody.6.8.2.nupkg.sha512",
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.1\\microsoft.extensions.dependencyinjection.abstractions.8.0.1.nupkg.sha512",
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\microsoft.extensions.dependencymodel\\8.0.2\\microsoft.extensions.dependencymodel.8.0.2.nupkg.sha512",
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\scrutor\\5.1.1\\scrutor.5.1.1.nupkg.sha512",
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\system.drawing.common\\8.0.0\\system.drawing.common.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

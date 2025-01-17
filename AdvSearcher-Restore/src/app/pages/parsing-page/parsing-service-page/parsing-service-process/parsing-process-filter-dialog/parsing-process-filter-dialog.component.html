@@ -1,0 +1,30 @@
+<div id="container">
+    <div id="header">
+        <strong>Параметры фильтра</strong>
+    </div>
+    <div id="content">
+        <app-primary-button *ngIf="!dateInputsVisible" [label]="'Установить период'" (onClicked)="enableDateFiltering()"></app-primary-button>
+        <app-red-button *ngIf="dateInputsVisible" [label]="'Убрать период'" (onClicked)="disableDateFiltering()"></app-red-button>
+        <div *ngIf="dateInputsVisible">
+            <app-input-control [placeHolder]="'Дата начала'"
+                               [textBinding]="startDateInput"
+                               [width]="'100px'"
+                               (onTextChange)="startDateInput = $event">
+            </app-input-control>
+            <app-input-control [placeHolder]="'Дата конца'"
+                               [textBinding]="endDateInput"
+                               [width]="'100px'"
+                               (onTextChange)="endDateInput = $event">
+            </app-input-control>
+        </div>
+        <app-primary-button *ngIf="!options.withIgnoreNames" [label]="'Установить имена авторов'" (onClicked)="turnIgnoreNames()"></app-primary-button>
+        <app-primary-button *ngIf="!options.withCachedAds" [label]="'Установить кеш'" (onClicked)="turnCacheFilter()"></app-primary-button>
+        <app-red-button *ngIf="options.withIgnoreNames" [label]="'Убрать имена авторов'" (onClicked)="turnIgnoreNames()"></app-red-button>
+        <app-red-button *ngIf="options.withCachedAds" [label]="'Убрать кеш'" (onClicked)="turnCacheFilter()"></app-red-button>
+        <app-red-button *ngIf="options.startDate && options.endDate" [label]="'Убрать даты'"></app-red-button>
+    </div>
+    <div id="controls">
+        <app-primary-button [label]="'Добавить'" (onClicked)="applyFilters()"></app-primary-button>
+        <app-red-button [label]="'Закрыть окно'" (onClicked)="closeWindow()"></app-red-button>
+    </div>
+</div>

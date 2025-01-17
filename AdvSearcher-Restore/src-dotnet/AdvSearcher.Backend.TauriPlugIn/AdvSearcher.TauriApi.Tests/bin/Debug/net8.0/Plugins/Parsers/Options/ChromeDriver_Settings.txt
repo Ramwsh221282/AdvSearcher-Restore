@@ -1,0 +1,1 @@
+ChromeDriverPath	D:\AdvSearcher-Restore\AdvSearcher-Restore\src-tauri\Chrome\131.0.6778.264\X64\chromedriver.exe

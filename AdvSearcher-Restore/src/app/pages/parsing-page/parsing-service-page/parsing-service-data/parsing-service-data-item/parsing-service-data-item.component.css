@@ -1,0 +1,60 @@
+.advertisement-data-item-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  background: transparent;
+  border-radius: 5px;
+  border: solid 1px #5733cf;
+  padding: 1rem;
+  overflow: auto;
+  max-height: 68vh;
+}
+
+.advertisement-data-item-data-item-image-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.advertisement-data-image {
+  min-width: 350px;
+  min-height: 350px;
+  max-width: 350px;
+  max-height: 350px;
+  border-radius: 10px;
+  border: solid 2px #25194d;
+}
+
+.arrow {
+  border: solid #50ff5e;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.left {
+  transform: rotate(135deg);
+}
+
+.right {
+  transform: rotate(-45deg);
+}
+
+.advertisement-description {
+  background: #24194d;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #edefff;
+  padding: 0.5rem;
+}
+
+.advertisement-controls {
+  display: inline-flex;
+  background: #24194d;
+  border-radius: 5px;
+  padding: 0.5rem;
+  gap: 1rem;
+}

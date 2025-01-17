@@ -1,0 +1,36 @@
+.pagination-layout {
+  padding: 1rem;
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.pagination-page {
+  border: solid 1px #50ff5e;
+  border-radius: 5px;
+
+  &:hover {
+    border: solid 2px yellow;
+  }
+}
+
+.pagination-page.active {
+  border: solid 2px yellow;
+}
+
+.pagination-page-number-label {
+  padding: 5px;
+  color: #50ff5e;
+  font-weight: bold;
+  font-size: 13px;
+  text-align: center;
+
+  &:hover {
+    color: yellow;
+  }
+}
+
+.pagination-page-number-label.active {
+  color: yellow;
+}

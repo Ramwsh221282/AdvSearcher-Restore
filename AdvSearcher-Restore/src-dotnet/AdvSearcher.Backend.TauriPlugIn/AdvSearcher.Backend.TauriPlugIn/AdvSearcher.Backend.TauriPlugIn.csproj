@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Platforms>AnyCPU;x64</Platforms>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <OutputPath>..\..\..\src-tauri\target\$(Configuration)\dotnet</OutputPath>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="TauriDotNetBridge" Version="2.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AdvSearcher.FileSystem.SDK\AdvSearcher.FileSystem.SDK.csproj" />
+      <ProjectReference Include="..\AdvSearcher.Image.Inpainting.SDK\AdvSearcher.Image.Inpainting.SDK.csproj" />
+      <ProjectReference Include="..\AdvSearcher.Parser.SDK\AdvSearcher.Parser.SDK.csproj" />
+      <ProjectReference Include="..\AdvSearcher.Persistance.SDK\AdvSearcher.Persistance.SDK.csproj" />
+      <ProjectReference Include="..\AdvSearcher.Publishing.SDK\AdvSearcher.Publishing.SDK.csproj" />
+    </ItemGroup>
+
+</Project>

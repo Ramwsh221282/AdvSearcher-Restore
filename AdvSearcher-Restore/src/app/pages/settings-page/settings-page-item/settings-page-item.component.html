@@ -1,0 +1,19 @@
+<section class="settings-page-item-layout">
+    <div class="settings-page-item-controls">
+        <button [ngClass]="{'active': isContentVisible}" class="settings-page-button-border" (click)="turn()">
+            <label style="cursor: pointer">{{ section.sectionName }}</label>
+        </button>
+    </div>
+    <div *ngIf="isContentVisible" class="settings-page-input-border">
+        <app-input-control *ngFor="let key of section.items"
+                           [textBinding]="key.value"
+                           [placeHolder]="key.key"
+                           [width]="'900px'"
+                           (onTextChange)="key.value = $event">
+        </app-input-control>
+        <div class="settings-page-input-controls">
+            <app-primary-button [label]="'Записать'" (onClicked)="setSettings()"></app-primary-button>
+            <app-red-button [label]="'Стереть'" (onClicked)="flushSettings()"></app-red-button>
+        </div>
+    </div>
+</section>

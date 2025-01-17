@@ -1,0 +1,40 @@
+.publishing-page-layout {
+  background: #3c2b84;
+  height: 100%;
+  overflow: auto;
+  border: solid 1px #472ca7;
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 500px;
+}
+
+.publishing-page-title {
+  padding: 1rem;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.data-count-label {
+  font-weight: bold;
+  font-size: 14px;
+  color: #50ff5e;
+}
+
+.publishing-page-tab-layout {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.publishing-page-explorer-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 5px;
+}

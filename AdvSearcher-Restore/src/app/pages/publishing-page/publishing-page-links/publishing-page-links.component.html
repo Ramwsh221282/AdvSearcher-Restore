@@ -1,0 +1,25 @@
+<section class="publishing-links-page-layout">
+    <label class="publishing-links-page-title">Ссылки для публикации</label>
+    <div class="publishing-links-controls-panel">
+        <app-primary-button [label]="'Показать ссылки ВК'" (onClicked)="getLinksByService('VK')"></app-primary-button>
+        <app-primary-button [label]="'Показать ссылки OK'" (onClicked)="getLinksByService('OK')"></app-primary-button>
+    </div>
+    <div *ngIf="currentService.length > 0" class="publishing-links-items-list">
+        <label *ngIf="links.length == 0" class="publishing-links-page-title">Ссылок нет</label>
+        <div class="publishing-links-controls-panel">
+            <app-primary-button [label]="'Добавить ссылку'" (onClicked)="addNewLink()">
+            </app-primary-button>
+        </div>
+        <div class="publishing-links-item" *ngFor="let item of links">
+            <label class="publishing-link-item-link">{{ item.link }}</label>
+            <label class="publishing-link-item-service">{{ item.serviceName }}</label>
+            <app-red-button [label]="'Удалить'" (onClicked)="removeLink(item.link)"></app-red-button>
+        </div>
+    </div>
+</section>
+<app-create-publishing-link-dialog *ngIf="isAddingNewLink"
+                                   [serviceName]="currentService"
+                                   (visibilityChange)="isAddingNewLink = $event"
+                                   (linkAdded)="getLinksByService(currentService)">
+</app-create-publishing-link-dialog>
+<app-notification *ngIf="notifications.isVisible"></app-notification>

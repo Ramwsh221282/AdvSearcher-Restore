@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "7LC5ITu9ftQ=",
+  "success": true,
+  "projectFilePath": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.Persistance.Cache\\AdvSearcher.Persistance.Cache.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\litedb\\5.0.20\\litedb.5.0.20.nupkg.sha512",
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\litedb.async\\0.1.8\\litedb.async.0.1.8.nupkg.sha512",
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.1\\microsoft.extensions.dependencyinjection.abstractions.8.0.1.nupkg.sha512",
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\microsoft.extensions.dependencymodel\\8.0.2\\microsoft.extensions.dependencymodel.8.0.2.nupkg.sha512",
+    "C:\\Users\\Ramwsh\\.nuget\\packages\\scrutor\\5.1.1\\scrutor.5.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}

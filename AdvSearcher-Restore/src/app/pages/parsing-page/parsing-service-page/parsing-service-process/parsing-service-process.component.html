@@ -1,0 +1,18 @@
+<section class="parsing-process-page-layout">
+    <div class="parsing-process-page-content-layout">
+        <app-primary-button [label]="'Начать парсинг'" (onClicked)="invokeParsing()"></app-primary-button>
+        <app-primary-button [label]="'Задать фильтры'" (onClicked)="openFilterOptions()"></app-primary-button>
+        <app-progress-bar *ngIf="_service.currentProgress() > 0" [progress]="_service.currentProgress()" [total]="_service.totalProgress()"></app-progress-bar>
+        <div class="filter-parameters">
+            <label class="filter-parameter">Дата начала: {{ options.startDate == null ? 'Не задана' : options.startDate }}</label>
+            <label class="filter-parameter">Дата окончания: {{ options.endDate == null ? 'Не задана' : options.endDate }}</label>
+            <label class="filter-parameter">Фильтр авторов: {{ options.withIgnoreNames == false ? 'Не задан' : 'Задан' }}</label>
+            <label class="filter-parameter">Использование кеша: {{ options.withCachedAds == false ? 'Не задан' : 'Задан' }}</label>
+        </div>
+    </div>
+</section>
+<app-notification *ngIf="notifications.isVisible"></app-notification>
+<app-parsing-process-filter-dialog *ngIf="isFilterOptionsVisible"
+                                   (visibilityChange)="isFilterOptionsVisible = $event"
+                                   (filtersApplied)="handleOptionsAssigned($event)">
+</app-parsing-process-filter-dialog>

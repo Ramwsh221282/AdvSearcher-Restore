@@ -1,0 +1,9 @@
+.side-bar-layout {
+  display: block;
+  background: #3c2b84;
+  height: auto;
+  border: solid 1px #472ca7;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}

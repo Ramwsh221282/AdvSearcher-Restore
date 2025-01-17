@@ -1,0 +1,9 @@
+<section class="parsing-page-layout">
+    <label class="parsing-page-title">Парсинг</label>
+    <label class="parsing-page-title">Выберите сервис:</label>
+    <div class="parsing-page-content-layout">
+        <app-parsing-page-section *ngFor="let section of parsingSections"
+                                  [section]="section">
+        </app-parsing-page-section>
+    </div>
+</section>

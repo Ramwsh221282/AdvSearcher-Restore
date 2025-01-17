@@ -1,0 +1,13 @@
+<div class="publishing-directory-container">
+    <div class="publishing-directory-controls-container">
+        <label>Папка: {{ directory.displayName }}</label>
+        <label>Объявлений: {{ directory.files.length }}</label>
+        <app-primary-button [label]="'Раскрыть'" (onClicked)="showContent()"></app-primary-button>
+        <app-primary-button [label]="'Выбрать все'" (onClicked)="selectAll()"></app-primary-button>
+        <app-red-button [label]="'Отменить выбор'" (onClicked)="detachAll()"></app-red-button>
+    </div>
+</div>
+<div *ngIf="isFolderContentShown">
+    <app-publishing-advertisements *ngFor="let item of directory.files" [advertisement]="item">
+    </app-publishing-advertisements>
+</div>

@@ -1,0 +1,10 @@
+<input type="file" id="files" name="files" multiple (change)="uploadImage($event)">
+<div *ngIf="images.length > 0">
+    <canvas *ngFor="let image of images" [id]="'canvas-' + image"
+            [width]="canvasWidth" [height]="canvasHeight"
+            (mousedown)="startDrawing($event, 'canvas-' + image)"
+            (mousemove)="draw($event, 'canvas-' + image)"
+            (mouseup)="stopDrawing()"
+            (mouseleave)="stopDrawing()"></canvas>
+</div>
+<button (click)="saveImage()">save button</button>

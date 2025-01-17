@@ -1,0 +1,50 @@
+<section class="publishing-page-layout">
+    <label class="publishing-page-title">Публикация</label>
+    <div class="publishing-page-tab-layout">
+        <app-dropdown-list [dropDownName]="'Выберите сервис'" [options]="
+        [
+            { name: 'Вконтакте', value: 'VkPublishingService' },
+            { name: 'Одноклассники', value: 'OkPublishingService' },
+            { name: 'WhatsApp', value: 'GreenApiService' },
+            { name: 'Mail ru', value: 'MailRuService' }
+        ]" (optionSelected)="optionSelectedHandler($event)">
+        </app-dropdown-list>
+        <app-primary-button [label]="'Вставить ссылки'" (onClicked)="navigateToLinks()">
+
+        </app-primary-button>
+        <label class="data-count-label">Выбрано объявлений: {{ _selectedData.selectedAdvertisements.length }}</label>
+    </div>
+    <div class="publishing-page-explorer-layout">
+        <app-publishing-directory *ngFor="let directory of directories" [directory]="directory">
+        </app-publishing-directory>
+    </div>
+</section>
+@switch (selectedServiceOption) {
+    @case ('VkPublishingService') {
+        <app-social-media-publishing-dialog *ngIf="selectedServiceOption.length > 0"
+                                            [selectedService]="selectedServiceOption"
+                                            (visibilityChange)="selectedServiceOption = ''">
+        </app-social-media-publishing-dialog>
+    }
+    @case ('OkPublishingService') {
+        <app-social-media-publishing-dialog
+                *ngIf="selectedServiceOption.length > 0"
+                [selectedService]="selectedServiceOption"
+                (visibilityChange)="selectedServiceOption = ''">
+        </app-social-media-publishing-dialog>
+    }
+    @case ('MailRuService') {
+        <app-mail-publishing *ngIf="selectedServiceOption.length > 0"
+                             [selectedServiceOption]="selectedServiceOption"
+                             (visibilityChange)="selectedServiceOption = ''">
+        </app-mail-publishing>
+    }
+    @case ('GreenApiService') {
+        <app-whatsapp-publishing *ngIf="selectedServiceOption.length > 0"
+                                 [selectedServiceOption]="selectedServiceOption"
+                                 (visibilityChange)="selectedServiceOption = ''">
+        </app-whatsapp-publishing>
+    }
+}
+<app-notification *ngIf="notifications.isVisible"></app-notification>
+

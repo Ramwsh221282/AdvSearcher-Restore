@@ -1,0 +1,9 @@
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\bin\Release\net8.0\publish\AdvSearcher.Application.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\bin\Release\net8.0\publish\AdvSearcher.Application.deps.json
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\bin\Release\net8.0\publish\AdvSearcher.Application.pdb
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\bin\Release\net8.0\publish\Microsoft.Extensions.DependencyInjection.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\bin\Release\net8.0\publish\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\bin\Release\net8.0\publish\Microsoft.Extensions.DependencyModel.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\bin\Release\net8.0\publish\Scrutor.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\bin\Release\net8.0\publish\AdvSearcher.Core.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Application\bin\Release\net8.0\publish\AdvSearcher.Core.pdb

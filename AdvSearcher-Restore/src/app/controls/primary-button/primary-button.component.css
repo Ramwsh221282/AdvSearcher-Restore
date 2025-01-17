@@ -1,0 +1,31 @@
+.primary-button-layout {
+  padding: 5px 15px;
+  border-radius: 9px;
+  background: transparent;
+  border: solid 2px #50ff5e;
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.4s;
+  position: relative;
+  overflow: visible;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    box-shadow: 5px 10px 10px -10px #50ff5e;
+  }
+
+  &:active {
+    transform: scale(0.97);
+    box-shadow: 5px 10px 10px -10px #50ff5e;
+  }
+}
+
+.primary-button-label {
+  cursor: pointer;
+  padding: 5px;
+  color: #50ff5e;
+  font-weight: bold;
+  font-size: 14px;
+}

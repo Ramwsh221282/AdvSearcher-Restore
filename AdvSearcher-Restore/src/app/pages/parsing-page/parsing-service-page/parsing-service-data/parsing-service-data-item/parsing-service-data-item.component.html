@@ -1,0 +1,19 @@
+<section class="advertisement-data-item-layout">
+    <div *ngIf="advertisement.imageLinks.length > 0" class="advertisement-data-item-data-item-image-layout">
+        <p><i class="arrow left"></i></p>
+        <img class="advertisement-data-image" [src]="advertisement.imageLinks[0]">
+        <p><i class="arrow right"></i></p>
+    </div>
+    <div class="advertisement-description">
+        {{ advertisement.content }}
+    </div>
+    <div class="advertisement-controls">
+        <app-primary-button [label]="'Открыть в браузере'" (onClicked)="openInBrowserClick()"></app-primary-button>
+        <app-primary-button [label]="'Сохранить в файлы'" (onClicked)="saveAsFile()"></app-primary-button>
+    </div>
+    <div class="advertisement-controls">
+        <app-red-button [label]="'Удалить'" (onClicked)="removeClick()"></app-red-button>
+        <app-red-button [label]="'Удалить и кэшировать'" (onClicked)="cacheClick()"></app-red-button>
+    </div>
+</section>
+<app-saving-advertisement-dialog *ngIf="isSaving" [advertisement]="advertisement" (visibilityChange)="isSaving = $event"></app-saving-advertisement-dialog>

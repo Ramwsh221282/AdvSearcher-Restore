@@ -1,0 +1,47 @@
+.input-control-layout {
+  border-radius: 5px;
+  background: transparent;
+  border: 2px solid;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px;
+  color: #edefff;
+  text-decoration: underline;
+
+  &:focus {
+    transition: 0.5s;
+    outline: none;
+    background: #25194d;
+    border-color: #50ff5e;
+    color: #50ff5e;
+
+    &::placeholder {
+      transition: 0.5s;
+      color: #50ff5e;
+      opacity: 1;
+    }
+  }
+
+  &::placeholder {
+    transition: 0.5s;
+    color: #edefff;
+    opacity: 1;
+  }
+
+  &::-webkit-input-placeholder {
+    transition: 0.5s;
+    color: #edefff;
+  }
+  &::-moz-placeholder {
+    transition: 0.5s;
+    color: #edefff;
+  }
+  &:-ms-input-placeholder {
+    transition: 0.5s;
+    color: #edefff;
+  }
+  &:-moz-placeholder {
+    transition: 0.5s;
+    color: #edefff;
+  }
+}

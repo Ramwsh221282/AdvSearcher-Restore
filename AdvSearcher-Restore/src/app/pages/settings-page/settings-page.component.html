@@ -1,0 +1,6 @@
+<section class="settings-page-layout">
+    <label class="settings-page-title">Настройки приложения:</label>
+    <div class="settings-content-layout">
+        <app-settings-page-item *ngFor="let item of settingsSections" [section]="item"></app-settings-page-item>
+    </div>
+</section>

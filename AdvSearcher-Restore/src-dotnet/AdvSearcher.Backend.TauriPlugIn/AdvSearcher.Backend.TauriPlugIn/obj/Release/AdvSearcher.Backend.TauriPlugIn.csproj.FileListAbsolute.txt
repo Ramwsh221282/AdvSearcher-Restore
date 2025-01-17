@@ -1,0 +1,17 @@
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-tauri\target\Release\dotnet\selenium-manager\linux\selenium-manager
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-tauri\target\Release\dotnet\selenium-manager\macos\selenium-manager
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-tauri\target\Release\dotnet\selenium-manager\windows\selenium-manager.exe
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-tauri\target\Release\dotnet\AdvSearcher.Backend.TauriPlugIn.deps.json
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-tauri\target\Release\dotnet\AdvSearcher.Backend.TauriPlugIn.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-tauri\target\Release\dotnet\AdvSearcher.Backend.TauriPlugIn.pdb
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Backend.TauriPlugIn\obj\Release\AdvSearcher.Backend.TauriPlugIn.csproj.AssemblyReference.cache
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Backend.TauriPlugIn\obj\Release\AdvSearcher.Backend.TauriPlugIn.GeneratedMSBuildEditorConfig.editorconfig
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Backend.TauriPlugIn\obj\Release\AdvSearcher.Backend.TauriPlugIn.AssemblyInfoInputs.cache
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Backend.TauriPlugIn\obj\Release\AdvSearcher.Backend.TauriPlugIn.AssemblyInfo.cs
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Backend.TauriPlugIn\obj\Release\AdvSearcher.Backend.TauriPlugIn.csproj.CoreCompileInputs.cache
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Backend.TauriPlugIn\obj\Release\AdvSearcher.Backend.TauriPlugIn.sourcelink.json
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Backend.TauriPlugIn\obj\Release\AdvSearc.C2F64AFC.Up2Date
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Backend.TauriPlugIn\obj\Release\AdvSearcher.Backend.TauriPlugIn.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Backend.TauriPlugIn\obj\Release\refint\AdvSearcher.Backend.TauriPlugIn.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Backend.TauriPlugIn\obj\Release\AdvSearcher.Backend.TauriPlugIn.pdb
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Backend.TauriPlugIn\obj\Release\ref\AdvSearcher.Backend.TauriPlugIn.dll

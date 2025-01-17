@@ -1,0 +1,7 @@
+<section class="side-bar-layout">
+    <app-side-bar-buttons *ngFor="let item of sideBarButtons"
+                          [button]="item"
+                          [isSelected]="isCurrentButton(item)"
+                          (buttonSelected)="setSelectedButton($event)">
+    </app-side-bar-buttons>
+</section>

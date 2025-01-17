@@ -1,0 +1,12 @@
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Core\bin\Release\net8.0\AdvSearcher.Core.deps.json
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Core\bin\Release\net8.0\AdvSearcher.Core.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Core\bin\Release\net8.0\AdvSearcher.Core.pdb
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Core\obj\Release\net8.0\AdvSearcher.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Core\obj\Release\net8.0\AdvSearcher.Core.AssemblyInfoInputs.cache
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Core\obj\Release\net8.0\AdvSearcher.Core.AssemblyInfo.cs
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Core\obj\Release\net8.0\AdvSearcher.Core.csproj.CoreCompileInputs.cache
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Core\obj\Release\net8.0\AdvSearcher.Core.sourcelink.json
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Core\obj\Release\net8.0\AdvSearcher.Core.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Core\obj\Release\net8.0\refint\AdvSearcher.Core.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Core\obj\Release\net8.0\AdvSearcher.Core.pdb
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.Core\obj\Release\net8.0\ref\AdvSearcher.Core.dll

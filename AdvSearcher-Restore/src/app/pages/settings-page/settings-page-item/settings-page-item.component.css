@@ -1,0 +1,67 @@
+.settings-page-item-layout {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.settings-page-item-controls {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.settings-page-button-border {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  background: #25194d;
+  color: #edefff;
+  height: 50px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 5px 5px 0 0;
+  border: none;
+  border-bottom: solid 2px #edefff;
+  transition: 1s;
+
+  &:hover {
+    transition: 1s;
+    color: #50ff5e;
+    border-bottom: solid 2px #50ff5e;
+  }
+}
+
+.settings-page-button-border.active {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  background: #25194d;
+  border: none;
+  color: #50ff5e;
+  border-bottom: solid 2px #50ff5e;
+  height: 50px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 5px 5px 0 0;
+  transition: 1s;
+}
+
+.settings-page-input-border {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 0.5rem;
+}
+
+.settings-page-input-controls {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}

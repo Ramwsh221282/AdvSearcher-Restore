@@ -1,0 +1,5 @@
+<div class="pagination-layout">
+    <div [ngClass]="{'active': isCurrentPage(page)}" class="pagination-page" *ngFor="let page of pages">
+        <label [ngClass]="{'active': isCurrentPage(page)}" class="pagination-page-number-label" (click)="selectPage(page)">{{ page }}</label>
+    </div>
+</div>

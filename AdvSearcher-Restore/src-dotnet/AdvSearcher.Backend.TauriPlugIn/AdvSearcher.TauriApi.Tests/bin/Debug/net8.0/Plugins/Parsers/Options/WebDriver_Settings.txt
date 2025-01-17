@@ -1,0 +1,1 @@
+Путь к браузеру Google Chrome	C:\Program Files\Google\Chrome\Application

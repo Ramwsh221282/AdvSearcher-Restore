@@ -1,0 +1,29 @@
+<section class="parsing-service-links-layout">
+    <app-primary-button [label]="'Добавить ссылку'"
+                        (onClicked)="openLinkCreationDialog()">
+    </app-primary-button>
+    <div class="table">
+        <div class="row header">
+            <div class="cell">
+                Ссылка
+            </div>
+            <div class="cell">
+                Действия
+            </div>
+        </div>
+        <div class="row" *ngFor="let link of links">
+            <div class="cell" data-title="Name">
+                <a>{{ link.link }}</a>
+            </div>
+            <div class="cell" data-title="Name">
+                <app-red-button [label]="'Удалить ссылку'" (onClicked)="remove(link)"></app-red-button>
+            </div>
+        </div>
+    </div>
+</section>
+<app-create-link-dialog *ngIf="isAddingNewLink"
+                        [section]="parsingSection"
+                        (linkAdded)="ngOnInit()"
+                        (closeEmitted)="isAddingNewLink = false">
+</app-create-link-dialog>
+<app-notification *ngIf="notifications.isVisible"></app-notification>
