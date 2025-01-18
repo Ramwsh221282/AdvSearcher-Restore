@@ -8,7 +8,7 @@ namespace AdvSearcher.Parser.SDK.WebDriverParsing;
 public sealed class WebDriverProvider : IDisposable
 {
     public WebDriverFileManager FileManager { get; }
-    public WebDriverOptionsManager Options { get; }
+    public WebDriverOptionsManager Options { get; private set; }
 
     private IWebDriver? _webDriver;
     public IWebDriver? Instance => _webDriver;
@@ -19,7 +19,7 @@ public sealed class WebDriverProvider : IDisposable
         Options = new WebDriverOptionsManager();
     }
 
-    public void InstantiateNewWebDriver()
+    public void InstantiateNewWebDriver(int strategy = 3)
     {
         if (string.IsNullOrWhiteSpace(FileManager.OriginalChromePath))
             return;
@@ -29,6 +29,7 @@ public sealed class WebDriverProvider : IDisposable
         service.HideCommandPromptWindow = true;
         CleanFromChromeProcesses();
         CleanFromChromeDriverProcesses();
+        Options = new WebDriverOptionsManager(strategy);
         _webDriver = new ChromeDriver(service, Options.ChromeOptions);
     }
 

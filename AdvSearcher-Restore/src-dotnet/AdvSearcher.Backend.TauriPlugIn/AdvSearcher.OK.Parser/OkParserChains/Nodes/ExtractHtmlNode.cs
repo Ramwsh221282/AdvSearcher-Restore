@@ -37,11 +37,10 @@ public sealed class ExtractHtmlNode : IOkParserChain
             _listener.Publish(message);
             return;
         }
-        _provider.InstantiateNewWebDriver();
+        _provider.InstantiateNewWebDriver(1);
         await new NavigateOnPageCommand(_pipeLine.Url.Value.Value).ExecuteAsync(_provider);
         await new ScrollToBottomCommand().ExecuteAsync(_provider);
         string html = await new ExtractHtmlQuery().ExecuteAsync(_provider);
-        _provider.Dispose();
         if (string.IsNullOrWhiteSpace(html))
         {
             string message = "HTML веб-страницы не получено. Остановка процесса.";
@@ -50,6 +49,7 @@ public sealed class ExtractHtmlNode : IOkParserChain
             return;
         }
         _pipeLine.SetNodes(new OkPageHtml(html));
+        _provider.Dispose();
         _pipeLine.NotificationsPublisher?.Invoke("Топики ОК проинициализированы.");
         _listener.Publish("Топики ОК проинициализированы.");
         if (Next != null)

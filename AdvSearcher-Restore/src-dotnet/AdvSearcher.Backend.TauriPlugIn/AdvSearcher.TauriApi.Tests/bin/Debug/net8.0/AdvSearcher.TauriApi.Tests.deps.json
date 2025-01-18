@@ -1146,6 +1146,7 @@
         "dependencies": {
           "AdvSearcher.FileSystem.SDK": "1.0.0",
           "AdvSearcher.Image.Inpainting.SDK": "1.0.0",
+          "AdvSearcher.MachineLearning.SDK": "1.0.0",
           "AdvSearcher.Parser.SDK": "1.0.0",
           "AdvSearcher.Persistance.SDK": "1.0.0",
           "AdvSearcher.Publishing.SDK": "1.0.0",
@@ -1186,6 +1187,17 @@
         },
         "runtime": {
           "AdvSearcher.Image.Inpainting.SDK.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "AdvSearcher.MachineLearning.SDK/1.0.0": {
+        "dependencies": {
+          "AdvSearcher.Application": "1.0.0"
+        },
+        "runtime": {
+          "AdvSearcher.MachineLearning.SDK.dll": {
             "assemblyVersion": "1.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1730,6 +1742,11 @@
       "sha512": ""
     },
     "AdvSearcher.Image.Inpainting.SDK/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AdvSearcher.MachineLearning.SDK/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

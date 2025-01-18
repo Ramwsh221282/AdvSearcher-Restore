@@ -20,6 +20,7 @@
     <ItemGroup>
       <ProjectReference Include="..\AdvSearcher.FileSystem.SDK\AdvSearcher.FileSystem.SDK.csproj" />
       <ProjectReference Include="..\AdvSearcher.Image.Inpainting.SDK\AdvSearcher.Image.Inpainting.SDK.csproj" />
+      <ProjectReference Include="..\AdvSearcher.MachineLearning.SDK\AdvSearcher.MachineLearning.SDK.csproj" />
       <ProjectReference Include="..\AdvSearcher.Parser.SDK\AdvSearcher.Parser.SDK.csproj" />
       <ProjectReference Include="..\AdvSearcher.Persistance.SDK\AdvSearcher.Persistance.SDK.csproj" />
       <ProjectReference Include="..\AdvSearcher.Publishing.SDK\AdvSearcher.Publishing.SDK.csproj" />

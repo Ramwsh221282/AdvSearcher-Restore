@@ -1548,6 +1548,7 @@
         "dependencies": {
           "AdvSearcher.FileSystem.SDK": "1.0.0",
           "AdvSearcher.Image.Inpainting.SDK": "1.0.0",
+          "AdvSearcher.MachineLearning.SDK": "1.0.0",
           "AdvSearcher.Parser.SDK": "1.0.0",
           "AdvSearcher.Persistance.SDK": "1.0.0",
           "AdvSearcher.Publishing.SDK": "1.0.0",
@@ -1597,6 +1598,19 @@
         },
         "runtime": {
           "bin/placeholder/AdvSearcher.Image.Inpainting.SDK.dll": {}
+        }
+      },
+      "AdvSearcher.MachineLearning.SDK/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "AdvSearcher.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AdvSearcher.MachineLearning.SDK.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AdvSearcher.MachineLearning.SDK.dll": {}
         }
       },
       "AdvSearcher.Parser.SDK/1.0.0": {
@@ -3776,6 +3790,11 @@
       "type": "project",
       "path": "../AdvSearcher.Image.Inpainting.SDK/AdvSearcher.Image.Inpainting.SDK.csproj",
       "msbuildProject": "../AdvSearcher.Image.Inpainting.SDK/AdvSearcher.Image.Inpainting.SDK.csproj"
+    },
+    "AdvSearcher.MachineLearning.SDK/1.0.0": {
+      "type": "project",
+      "path": "../AdvSearcher.MachineLearning.SDK/AdvSearcher.MachineLearning.SDK.csproj",
+      "msbuildProject": "../AdvSearcher.MachineLearning.SDK/AdvSearcher.MachineLearning.SDK.csproj"
     },
     "AdvSearcher.Parser.SDK/1.0.0": {
       "type": "project",

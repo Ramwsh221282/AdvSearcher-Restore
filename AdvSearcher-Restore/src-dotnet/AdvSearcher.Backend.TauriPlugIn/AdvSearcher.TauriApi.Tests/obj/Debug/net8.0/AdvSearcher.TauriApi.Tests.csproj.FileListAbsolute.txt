@@ -206,3 +206,5 @@ D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriP
 D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.TauriApi.Tests\bin\Debug\net8.0\runtimes\win-x86\native\onnxruntime_providers_shared.lib
 D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.TauriApi.Tests\bin\Debug\net8.0\runtimes\win-x64\native\opencv_videoio_ffmpeg490_64.dll
 D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.TauriApi.Tests\bin\Debug\net8.0\runtimes\win-x86\native\opencv_videoio_ffmpeg490.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.TauriApi.Tests\bin\Debug\net8.0\AdvSearcher.MachineLearning.SDK.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.TauriApi.Tests\bin\Debug\net8.0\AdvSearcher.MachineLearning.SDK.pdb

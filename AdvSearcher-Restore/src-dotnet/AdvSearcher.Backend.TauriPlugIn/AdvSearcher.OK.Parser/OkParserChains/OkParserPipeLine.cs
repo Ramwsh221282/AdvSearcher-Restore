@@ -29,6 +29,16 @@ public sealed class OkParserPipeLine
     public Action<int>? CurrentProgressPublisher { get; set; }
     public Action<string>? NotificationsPublisher { get; set; }
 
+    public int NodesCount
+    {
+        get
+        {
+            if (_nodes == null)
+                return 0;
+            return _nodes.Nodes.Count;
+        }
+    }
+
     public List<ParserFilterOption> Options { get; set; } = [];
 
     private IOkAdvertisementBuilder<DateOnly>? _dateBuilder;

@@ -5,6 +5,7 @@ using AdvSearcher.Backend.TauriPlugIn.Inpainting;
 using AdvSearcher.Backend.TauriPlugIn.MessageListener;
 using AdvSearcher.FileSystem.SDK.Contracts;
 using AdvSearcher.Image.Inpainting.SDK;
+using AdvSearcher.MachineLearning.SDK;
 using AdvSearcher.Parser.SDK.DependencyInjection;
 using AdvSearcher.Persistance.SDK;
 using AdvSearcher.Publishing.SDK.DependencyInjection;
@@ -27,6 +28,7 @@ public class PlugIn : IPlugIn
         services.AddPersistanceSDK();
         services.LoadFileSystemPlugins();
         services.AddPublishingServices();
+        services.LoadML();
         services.AddSingleton<PersistanceServiceFactory>();
         services.AddSingleton<SettingsController>();
         services.AddSingleton<ParserLinksController>();

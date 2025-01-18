@@ -1,0 +1,370 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\SpamClassificationBuild\\SpamClassificationBuild.csproj": {}
+  },
+  "projects": {
+    "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.Application\\AdvSearcher.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.Application\\AdvSearcher.Application.csproj",
+        "projectName": "AdvSearcher.Application",
+        "projectPath": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.Application\\AdvSearcher.Application.csproj",
+        "packagesPath": "C:\\Users\\Ramwsh\\.nuget\\packages\\",
+        "outputPath": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Ramwsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/tgbots/Telegram.Bot/_packaging/release/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.Core\\AdvSearcher.Core.csproj": {
+                "projectPath": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.Core\\AdvSearcher.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Scrutor": {
+              "target": "Package",
+              "version": "[5.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.Core\\AdvSearcher.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.Core\\AdvSearcher.Core.csproj",
+        "projectName": "AdvSearcher.Core",
+        "projectPath": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.Core\\AdvSearcher.Core.csproj",
+        "packagesPath": "C:\\Users\\Ramwsh\\.nuget\\packages\\",
+        "outputPath": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Ramwsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/tgbots/Telegram.Bot/_packaging/release/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.MachineLearning.SDK\\AdvSearcher.MachineLearning.SDK.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.MachineLearning.SDK\\AdvSearcher.MachineLearning.SDK.csproj",
+        "projectName": "AdvSearcher.MachineLearning.SDK",
+        "projectPath": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.MachineLearning.SDK\\AdvSearcher.MachineLearning.SDK.csproj",
+        "packagesPath": "C:\\Users\\Ramwsh\\.nuget\\packages\\",
+        "outputPath": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.MachineLearning.SDK\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Ramwsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/tgbots/Telegram.Bot/_packaging/release/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.Application\\AdvSearcher.Application.csproj": {
+                "projectPath": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.Application\\AdvSearcher.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.MachineLearning.Spam.Classification\\AdvSearcher.MachineLearning.Spam.Classification.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.MachineLearning.Spam.Classification\\AdvSearcher.MachineLearning.Spam.Classification.csproj",
+        "projectName": "AdvSearcher.MachineLearning.Spam.Classification",
+        "projectPath": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.MachineLearning.Spam.Classification\\AdvSearcher.MachineLearning.Spam.Classification.csproj",
+        "packagesPath": "C:\\Users\\Ramwsh\\.nuget\\packages\\",
+        "outputPath": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.MachineLearning.Spam.Classification\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Ramwsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/tgbots/Telegram.Bot/_packaging/release/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.MachineLearning.SDK\\AdvSearcher.MachineLearning.SDK.csproj": {
+                "projectPath": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.MachineLearning.SDK\\AdvSearcher.MachineLearning.SDK.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\SpamClassificationBuild\\SpamClassificationBuild.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\SpamClassificationBuild\\SpamClassificationBuild.csproj",
+        "projectName": "SpamClassificationBuild",
+        "projectPath": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\SpamClassificationBuild\\SpamClassificationBuild.csproj",
+        "packagesPath": "C:\\Users\\Ramwsh\\.nuget\\packages\\",
+        "outputPath": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\SpamClassificationBuild\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Ramwsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/tgbots/Telegram.Bot/_packaging/release/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.MachineLearning.Spam.Classification\\AdvSearcher.MachineLearning.Spam.Classification.csproj": {
+                "projectPath": "D:\\AdvSearcher-Restore\\AdvSearcher-Restore\\src-dotnet\\AdvSearcher.Backend.TauriPlugIn\\AdvSearcher.MachineLearning.Spam.Classification\\AdvSearcher.MachineLearning.Spam.Classification.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

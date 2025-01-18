@@ -31,7 +31,7 @@ public sealed class OpenCianCataloguePageNode : ICianParserChain
             _listener.Publish(message);
             return;
         }
-        _pipeLine.Provider.InstantiateNewWebDriver();
+        _pipeLine.Provider.InstantiateNewWebDriver(1);
         _listener.Publish("Веб драйвер запущен");
         _pipeLine.NotificationsPublisher?.Invoke("Веб драйвер запущен");
         await new NavigateOnPageCommand(_pipeLine.Url.Value.Value).ExecuteAsync(_pipeLine.Provider);

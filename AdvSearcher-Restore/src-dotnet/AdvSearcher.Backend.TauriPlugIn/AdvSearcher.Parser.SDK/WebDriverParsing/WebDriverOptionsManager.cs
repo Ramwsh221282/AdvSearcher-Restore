@@ -10,10 +10,17 @@ public class WebDriverOptionsManager
 
     public ChromeOptions ChromeOptions => _options;
 
-    public WebDriverOptionsManager()
+    // strategies:
+    // default - 0
+    // normal - 1
+    // eager - 2
+    // none - 3
+    public WebDriverOptionsManager(int strategy = 3)
     {
         _options = new ChromeOptions();
-        _options.PageLoadStrategy = PageLoadStrategy.None;
+        if (!Enum.IsDefined(typeof(PageLoadStrategy), strategy))
+            throw new NotSupportedException();
+        _options.PageLoadStrategy = (PageLoadStrategy)strategy;
         _options.AddArgument(GetChromeUserAppDataPath());
         _options.AddArgument("--start-maximized");
         _options.AddArgument("--disable-blink-features=AutomationControlled");

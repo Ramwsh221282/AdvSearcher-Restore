@@ -1,6 +1,7 @@
 using AdvSearcher.Backend.TauriPlugIn.MessageListener;
 using AdvSearcher.Backend.TauriPlugIn.Parsing;
 using AdvSearcher.Backend.TauriPlugIn.Parsing.Strategies;
+using AdvSearcher.MachineLearning.SDK;
 using AdvSearcher.Parser.SDK.DependencyInjection;
 using AdvSearcher.Persistance.SDK;
 using TauriDotNetBridge.Contracts;
@@ -10,7 +11,8 @@ namespace AdvSearcher.Backend.TauriPlugIn.Controllers;
 public class ParsingController(
     ParserResolver resolver,
     PersistanceServiceFactory factory,
-    IEventPublisher publisher
+    IEventPublisher publisher,
+    ISpamClassifier spamClassifier
 )
 {
     private const string Progress = "parser-process-progress";
@@ -28,7 +30,8 @@ public class ParsingController(
         ParsingStrategyResolver resolver = new ParsingStrategyResolver(
             request,
             _resolver,
-            _factory
+            _factory,
+            spamClassifier
         );
         IParsingStrategy strategy = resolver.Resolve();
         ParsingContext context = new ParsingContext(
@@ -37,6 +40,13 @@ public class ParsingController(
             maxProgress,
             notificationsPublisher
         );
-        context.ProcessParsing().Wait();
+        try
+        {
+            context.ProcessParsing().Wait();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 }

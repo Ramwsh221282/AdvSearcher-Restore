@@ -34,7 +34,7 @@ public sealed class OkTopicNodes
         }
         catch
         {
-            _nodes.Clear();
+            // ignored
         }
     }
 }
