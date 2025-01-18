@@ -2,3 +2,53 @@
   height: 512px;
   width: 512px;
 }
+
+.inpainting-page-layout {
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  height: 100%;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.inpainting-page-control-panel {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+inpainting-page-select-files-button {
+  display: inline-block;
+  border-radius: 5px;
+  border: solid 2px yellow;
+  text-align: center;
+  color: yellow;
+  background: transparent;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.inpainting-page-select-files-button:hover {
+  background-color: transparent;
+  color: yellow;
+}
+
+.inpainting-page-select-files-button[type="file"] {
+  display: none;
+}
+
+label.inpainting-page-select-files-button {
+  display: block;
+  cursor: pointer;
+}
+
+.inpainting-page-select-files-button::before {
+  content: "📁";
+  margin-right: 8px;
+  font-size: 18px;
+}

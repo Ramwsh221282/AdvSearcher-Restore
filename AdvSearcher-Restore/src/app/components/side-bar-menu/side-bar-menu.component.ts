@@ -15,7 +15,6 @@ export class SideBarMenuComponent implements OnInit {
   private selectedButton: ISideBarButton | null = null;
 
   public ngOnInit() {
-    this.appendSideBarButton("Домашняя страница", "home");
     this.appendSideBarButton("Парсинг", "parsing");
     this.appendSideBarButton("Постинг", "posting");
     this.appendSideBarButton("Настройки", "settings");

@@ -1,11 +1,19 @@
-import { Component } from "@angular/core";
+import { Component, signal } from "@angular/core";
 import { NgForOf, NgIf } from "@angular/common";
 import { PrimaryButtonComponent } from "../../controls/primary-button/primary-button.component";
 import { TauriApi } from "../../api/tauri-api";
+import { RedButtonComponent } from "../../controls/red-button/red-button.component";
+import { NgxLoadingBar } from "@ngx-loading-bar/core";
 
 @Component({
   selector: "app-inpainting-page",
-  imports: [NgIf, PrimaryButtonComponent, NgForOf],
+  imports: [
+    NgIf,
+    PrimaryButtonComponent,
+    NgForOf,
+    RedButtonComponent,
+    NgxLoadingBar,
+  ],
   templateUrl: "./inpainting-page.component.html",
   styleUrl: "./inpainting-page.component.css",
   standalone: true,
@@ -18,6 +26,8 @@ export class InpaintingPageComponent {
   public isDrawing: boolean = false;
   public canvasWidth: number = 512;
   public canvasHeight: number = 512;
+  public radius: number = 10;
+  public maxProgress = signal(0);
   private ctx: CanvasRenderingContext2D | null = null;
   private lastX: number = 0;
   private lastY: number = 0;
@@ -30,7 +40,7 @@ export class InpaintingPageComponent {
       }
       this.filesDefault.push(file);
       const reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = () => {
         this.images.push(reader.result.toString());
         this.imagesDefault.push(reader.result.toString());
         const img = new Image();
@@ -49,6 +59,20 @@ export class InpaintingPageComponent {
     }
   }
 
+  public resetAll(): void {
+    this.files = [];
+    this.images = [];
+    this.imagesDefault = [];
+    this.filesDefault = [];
+    this.ctx = null;
+    this.lastX = 0;
+    this.lastY = 0;
+  }
+
+  public radiusChange($event: any): void {
+    this.radius = $event.target.value;
+  }
+
   public startDrawing(event: MouseEvent, canvasId: string): void {
     this.isDrawing = true;
     this.lastX = event.offsetX;
@@ -58,13 +82,12 @@ export class InpaintingPageComponent {
     ).getContext("2d");
   }
 
-  public draw(event: MouseEvent, canvasId: string): void {
+  public draw(event: MouseEvent): void {
     if (!this.isDrawing || !this.ctx) return;
     this.ctx.strokeStyle = "#FFF";
     this.ctx.fillStyle = "#FFF";
-    const radius = 10;
     this.ctx.beginPath();
-    this.ctx.arc(event.offsetX, event.offsetY, radius, 0, Math.PI * 2);
+    this.ctx.arc(event.offsetX, event.offsetY, this.radius, 0, Math.PI * 2);
     this.ctx.fillStyle = this.ctx.strokeStyle;
     this.ctx.fill();
     this.ctx.stroke();
@@ -77,8 +100,10 @@ export class InpaintingPageComponent {
   }
 
   public async saveImage(): Promise<void> {
+    this.maxProgress.set(1);
     const canvasElements = document.querySelectorAll("canvas");
     const requestData: InpaintingImageRequest[] = [];
+    this.maxProgress.set(canvasElements.length);
     for (let i = 0; i < canvasElements.length; i++) {
       const canvas = canvasElements[i];
       const maskDataUrl = (canvas as HTMLCanvasElement).toDataURL("image/png");
@@ -87,7 +112,7 @@ export class InpaintingPageComponent {
       const originalFile = this.filesDefault[i];
       const originalFileDataUrl = await new Promise<string>((resolve) => {
         const reader = new FileReader();
-        reader.onload = (e) => resolve(reader.result as string);
+        reader.onload = () => resolve(reader.result as string);
         reader.readAsDataURL(originalFile);
       });
       const stockByteArray = this.dataURLToByteArray(originalFileDataUrl);
@@ -103,6 +128,8 @@ export class InpaintingPageComponent {
       action: "InpaintImages",
       data: { data: requestData },
     });
+    this.maxProgress.set(0);
+    this.resetAll();
   }
 
   private dataURLToByteArray(dataURL: string): Uint8Array {

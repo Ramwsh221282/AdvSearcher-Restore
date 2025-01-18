@@ -11,5 +11,10 @@ D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriP
 D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\refint\AdvSearcher.FileSystem.Plugin.dll
 D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\AdvSearcher.FileSystem.Plugin.pdb
 D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\ref\AdvSearcher.FileSystem.Plugin.dll
-D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\AdvSearcher.FileSystem.Plugin.csproj.Fody.CopyLocal.cache
-D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\AdvSearcher.FileSystem.Plugin.csproj.Fody.RuntimeCopyLocal.cache
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\bin\Debug\net8.0\AdvSearcher.Application.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\bin\Debug\net8.0\AdvSearcher.Core.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\bin\Debug\net8.0\AdvSearcher.FileSystem.SDK.dll
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\bin\Debug\net8.0\AdvSearcher.FileSystem.SDK.pdb
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\bin\Debug\net8.0\AdvSearcher.Application.pdb
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\bin\Debug\net8.0\AdvSearcher.Core.pdb
+D:\AdvSearcher-Restore\AdvSearcher-Restore\src-dotnet\AdvSearcher.Backend.TauriPlugIn\AdvSearcher.FileSystem.Plugin\obj\Debug\net8.0\AdvSearc.99A041D5.Up2Date

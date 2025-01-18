@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdvSearcher.FileSystem.SDK")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+54cc59c938a2dd4db788b577ac4124e0b71b5e8f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f805b2db819cf0262017b1f7878486a268ee877")]
 [assembly: System.Reflection.AssemblyProductAttribute("AdvSearcher.FileSystem.SDK")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AdvSearcher.FileSystem.SDK")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

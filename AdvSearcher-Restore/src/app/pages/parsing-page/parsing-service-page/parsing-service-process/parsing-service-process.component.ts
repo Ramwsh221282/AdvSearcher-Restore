@@ -5,7 +5,6 @@ import { PrimaryButtonComponent } from "../../../../controls/primary-button/prim
 import { ParsingProcessService } from "./parsing-process-service";
 import { NotificationComponent } from "../../../../controls/notification/notification.component";
 import { IParsingSection } from "../../parsing-section.interface";
-import { ProgressBarComponent } from "../../../../controls/progress-bar/progress-bar.component";
 import { FormsModule } from "@angular/forms";
 import { NotificationsService } from "../../../../controls/notification/notifications.service";
 import { ParsingProcessFilterDialogComponent } from "./parsing-process-filter-dialog/parsing-process-filter-dialog.component";
@@ -19,7 +18,6 @@ import { IParsingOptions } from "./parsing-process-filter-dialog/parsing-options
     PrimaryButtonComponent,
     NotificationComponent,
     NgIf,
-    ProgressBarComponent,
     FormsModule,
     ParsingProcessFilterDialogComponent,
   ],

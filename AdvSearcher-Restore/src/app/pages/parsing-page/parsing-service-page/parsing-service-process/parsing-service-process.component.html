@@ -2,7 +2,6 @@
     <div class="parsing-process-page-content-layout">
         <app-primary-button [label]="'Начать парсинг'" (onClicked)="invokeParsing()"></app-primary-button>
         <app-primary-button [label]="'Задать фильтры'" (onClicked)="openFilterOptions()"></app-primary-button>
-        <app-progress-bar *ngIf="_service.currentProgress() > 0" [progress]="_service.currentProgress()" [total]="_service.totalProgress()"></app-progress-bar>
         <div class="filter-parameters">
             <label class="filter-parameter">Дата начала: {{ options.startDate == null ? 'Не задана' : options.startDate }}</label>
             <label class="filter-parameter">Дата окончания: {{ options.endDate == null ? 'Не задана' : options.endDate }}</label>

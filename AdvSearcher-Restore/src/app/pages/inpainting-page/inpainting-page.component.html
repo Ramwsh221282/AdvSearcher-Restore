@@ -1,10 +1,28 @@
-<input type="file" id="files" name="files" multiple (change)="uploadImage($event)">
-<div *ngIf="images.length > 0">
-    <canvas *ngFor="let image of images" [id]="'canvas-' + image"
-            [width]="canvasWidth" [height]="canvasHeight"
-            (mousedown)="startDrawing($event, 'canvas-' + image)"
-            (mousemove)="draw($event, 'canvas-' + image)"
-            (mouseup)="stopDrawing()"
-            (mouseleave)="stopDrawing()"></canvas>
+<div class="inpainting-page-layout">
+    <div class="inpainting-page-control-panel">
+        <label class="inpainting-page-select-files-button" for="files">Выбрать файлы</label>
+        <input type="file" id="files" name="files" class="inpainting-page-select-files-button" multiple (change)="uploadImage($event)">
+        <app-primary-button [label]="'Обработать'" (onClicked)="saveImage()"></app-primary-button>
+        <app-red-button [label]="'Сбросить все'" (onClicked)="resetAll()"></app-red-button>
+        <input type="range" [min]="0" [max]="100" [value]="radius" id="brush-slider" (change)="radiusChange($event)">
+        <ngx-loading-bar
+                *ngIf="maxProgress() > 0"
+                [includeBar]="false"
+                [diameter]="'50px'"
+                [includeSpinner]="true"
+                [color]="'#50ff5e'"
+                [height]="'10px'"
+                [fixed]="false"
+                [value]="1">
+        </ngx-loading-bar>
+    </div>
+    <div *ngIf="images.length > 0">
+        <canvas *ngFor="let image of images" [id]="'canvas-' + image"
+                [width]="canvasWidth" [height]="canvasHeight"
+                (mousedown)="startDrawing($event, 'canvas-' + image)"
+                (mousemove)="draw($event)"
+                (mouseup)="stopDrawing()"
+                (mouseleave)="stopDrawing()">
+        </canvas>
+    </div>
 </div>
-<button (click)="saveImage()">save button</button>
