@@ -8,6 +8,15 @@
                            [width]="'300px'"
                            (onTextChange)="phone.phoneNumber = $event">
         </app-input-control>
+        <ngx-loading-bar
+                [includeBar]="true"
+                [diameter]="'10px'"
+                [includeSpinner]="true"
+                [color]="'#50ff5e'"
+                [height]="'10px'"
+                [fixed]="false"
+                [value]="_service.currentProgress()">
+        </ngx-loading-bar>
     </div>
     <div id="controls">
         <app-primary-button [label]="'Опубликовать'" (onClicked)="publish()"></app-primary-button>

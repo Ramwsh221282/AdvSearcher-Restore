@@ -9,6 +9,7 @@ import { FormsModule } from "@angular/forms";
 import { NotificationsService } from "../../../../controls/notification/notifications.service";
 import { ParsingProcessFilterDialogComponent } from "./parsing-process-filter-dialog/parsing-process-filter-dialog.component";
 import { IParsingOptions } from "./parsing-process-filter-dialog/parsing-options.interface";
+import { NgxLoadingBar } from "@ngx-loading-bar/core";
 
 @Component({
   selector: "app-parsing-service-process",
@@ -20,6 +21,7 @@ import { IParsingOptions } from "./parsing-process-filter-dialog/parsing-options
     NgIf,
     FormsModule,
     ParsingProcessFilterDialogComponent,
+    NgxLoadingBar,
   ],
   standalone: true,
   templateUrl: "./parsing-service-process.component.html",

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdvSearcher.Persistance.SDK.Console")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f805b2db819cf0262017b1f7878486a268ee877")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9b8ca5c06484e57203e77c5d38076aa24bfe0aa4")]
 [assembly: System.Reflection.AssemblyProductAttribute("AdvSearcher.Persistance.SDK.Console")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AdvSearcher.Persistance.SDK.Console")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -13,6 +13,8 @@ public sealed class VkPublishingService : IPublishingService
     private readonly VkPublishingHttpClient _client;
     private readonly PublishingLogger _logger;
     private VkPublishingPipeLine _pipeLine;
+    private Action<int>? _currentProgress;
+    private Action<int>? _maxProgress;
 
     public VkPublishingService(PublishingLogger logger)
     {
@@ -49,6 +51,8 @@ public sealed class VkPublishingService : IPublishingService
         Result<GroupIdResponse> groupId = container.GetResponseOfType<GroupIdResponse>();
         if (groupId.IsFailure)
             return;
+        _maxProgress?.Invoke(responses.Count());
+        int currentProgress = 0;
         foreach (var ad in responses)
         {
             container = new ResponsesContainer();
@@ -61,7 +65,16 @@ public sealed class VkPublishingService : IPublishingService
                     new UploadAdvertisementRequest(container, _client, ad, tokens, groupId, _logger)
                 );
             await _pipeLine.Process();
+            currentProgress = currentProgress + 1;
+            _currentProgress?.Invoke(currentProgress);
+            await Task.Delay(TimeSpan.FromSeconds(5)); // forced delay because VK accepts 1 request per 5 seconds.
         }
         _client.Destroy();
     }
+
+    public void SetCurrentProgressValuePublisher(Action<int> actionPublisher) =>
+        _currentProgress = actionPublisher;
+
+    public void SetMaxProgressValuePublisher(Action<int> actionPublisher) =>
+        _maxProgress = actionPublisher;
 }

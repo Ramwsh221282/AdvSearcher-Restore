@@ -11,6 +11,8 @@ public sealed class GreenApiService : IWhatsAppSender
 {
     private readonly PublishingLogger _logger;
     private readonly GreenApiHttpClient _client = new GreenApiHttpClient();
+    private Action<int>? _currentProgress;
+    private Action<int>? _maxProgress;
 
     public GreenApiService(PublishingLogger logger)
     {
@@ -31,6 +33,8 @@ public sealed class GreenApiService : IWhatsAppSender
             return;
         }
         GreenApiHttpService service = new GreenApiHttpService(_client);
+        _maxProgress?.Invoke(files.Count());
+        int currentProgress = 0;
         foreach (var file in files)
         {
             IRequest sendTextrequest = new SendTextRequest(service, tokens, file, request, _logger);
@@ -43,7 +47,15 @@ public sealed class GreenApiService : IWhatsAppSender
                 _logger
             );
             await sendPhotosRequest.Process();
+            currentProgress = currentProgress + 1;
+            _currentProgress?.Invoke(currentProgress);
         }
         _client.Destroy();
     }
+
+    public void SetCurrentProgressValuePublisher(Action<int> actionPublisher) =>
+        _currentProgress = actionPublisher;
+
+    public void SetMaxProgressValuePublisher(Action<int> actionPublisher) =>
+        _maxProgress = actionPublisher;
 }

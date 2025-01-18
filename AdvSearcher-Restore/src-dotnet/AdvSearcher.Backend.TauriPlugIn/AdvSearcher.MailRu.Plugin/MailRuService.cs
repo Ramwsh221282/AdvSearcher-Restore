@@ -9,6 +9,8 @@ namespace AdvSearcher.MailRu.Plugin;
 public class MailRuService : IMailingClient
 {
     private readonly PublishingLogger _logger;
+    private Action<int>? _currentProgress;
+    private Action<int>? _maxProgress;
 
     public MailRuService(PublishingLogger logger)
     {
@@ -25,10 +27,16 @@ public class MailRuService : IMailingClient
             _logger.Log("No email settings for mail ru service received. Stopping process");
             return;
         }
+        _maxProgress?.Invoke(files.Count());
+        int currentProgress = 0;
         using (SmtpClient client = CreateClient(settings))
             foreach (var file in files)
                 using (MailMessage message = BuildMessage(file, address, settings))
+                {
                     await client.SendMailAsync(message);
+                    currentProgress = currentProgress + 1;
+                    _currentProgress?.Invoke(currentProgress);
+                }
     }
 
     private SmtpClient CreateClient(MailRuSettings settings)
@@ -68,4 +76,10 @@ public class MailRuService : IMailingClient
         _logger.Log("Attachments for photo has been included");
         return message;
     }
+
+    public void SetCurrentProgressValuePublisher(Action<int> actionPublisher) =>
+        _currentProgress = actionPublisher;
+
+    public void SetMaxProgressValuePublisher(Action<int> actionPublisher) =>
+        _maxProgress = actionPublisher;
 }

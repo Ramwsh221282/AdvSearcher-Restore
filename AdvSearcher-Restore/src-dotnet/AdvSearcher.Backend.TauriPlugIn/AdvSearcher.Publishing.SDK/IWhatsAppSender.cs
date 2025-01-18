@@ -1,4 +1,5 @@
 using System.Text;
+using AdvSearcher.Application.Contracts.Progress;
 using AdvSearcher.Core.Tools;
 using AdvSearcher.Publishing.SDK.Models;
 
@@ -21,7 +22,7 @@ public static class WhatsAppSendRequestFactory
     }
 }
 
-public interface IWhatsAppSender
+public interface IWhatsAppSender : IProgressable
 {
     Task Publish(IEnumerable<AdvertisementFileResponse> files, WhatsAppSendRequest request);
 }

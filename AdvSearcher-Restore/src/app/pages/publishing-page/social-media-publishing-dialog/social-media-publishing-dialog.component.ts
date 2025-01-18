@@ -4,10 +4,17 @@ import { PublishingDataSelectedService } from "../publishing-data-selected.servi
 import { InputControlComponent } from "../../../controls/input-control/input-control.component";
 import { PrimaryButtonComponent } from "../../../controls/primary-button/primary-button.component";
 import { RedButtonComponent } from "../../../controls/red-button/red-button.component";
+import { NgxLoadingBar } from "@ngx-loading-bar/core";
+import { NotificationsService } from "../../../controls/notification/notifications.service";
 
 @Component({
   selector: "app-social-media-publishing-dialog",
-  imports: [InputControlComponent, PrimaryButtonComponent, RedButtonComponent],
+  imports: [
+    InputControlComponent,
+    PrimaryButtonComponent,
+    RedButtonComponent,
+    NgxLoadingBar,
+  ],
   templateUrl: "./social-media-publishing-dialog.component.html",
   styleUrl: "./social-media-publishing-dialog.component.css",
   standalone: true,
@@ -19,8 +26,11 @@ export class SocialMediaPublishingDialogComponent implements OnInit {
 
   constructor(
     private readonly _selectedData: PublishingDataSelectedService,
-    private readonly _publishing: SocialMediaPublishingService,
-  ) {}
+    protected readonly _publishing: SocialMediaPublishingService,
+    protected readonly notifications: NotificationsService,
+  ) {
+    this._publishing.notifications = this.notifications;
+  }
 
   public ngOnInit() {
     this.serviceDisplayName = this.getDisplayName(this.selectedService);

@@ -39,7 +39,9 @@ export class ParsingProcessService {
 
   private createMaxProgressListener(): Promise<UnlistenFn> {
     return listen<string>("parser-max-progress", (event) => {
-      this.totalProgress.set(Number(event.payload.toString()));
+      const receivedNumber = Number(event.payload.toString());
+      const calculatedNumber = (receivedNumber / this.totalProgress()) * 100;
+      this.totalProgress.set(calculatedNumber);
     });
   }
 

@@ -13,6 +13,8 @@ namespace AdvSearcher.OkPublishing.Plugin;
 public sealed class OkPublishingService : IPublishingService
 {
     private readonly PublishingLogger _logger;
+    private Action<int>? _currentProgress;
+    private Action<int>? _maxProgress;
 
     public OkPublishingService(PublishingLogger logger)
     {
@@ -35,6 +37,8 @@ public sealed class OkPublishingService : IPublishingService
         OkHttpClient client = new OkHttpClient();
         OkHttpService service = new OkHttpService(client);
         ResponseContainer container = new ResponseContainer();
+        _maxProgress?.Invoke(selectedFiles.Count());
+        int currentProgress = 0;
         foreach (var file in selectedFiles)
         {
             OkRequestsPipeLine pipeLine = new OkRequestsPipeLine();
@@ -45,7 +49,15 @@ public sealed class OkPublishingService : IPublishingService
                 .AddRequest(new CreateMediaTopicRequest(container, file, tokens, _logger));
             await pipeLine.ProcessAll();
             container.CleanContainer();
+            currentProgress = currentProgress + 1;
+            _currentProgress?.Invoke(currentProgress);
         }
         client.Destroy();
     }
+
+    public void SetCurrentProgressValuePublisher(Action<int> actionPublisher) =>
+        _currentProgress = actionPublisher;
+
+    public void SetMaxProgressValuePublisher(Action<int> actionPublisher) =>
+        _maxProgress = actionPublisher;
 }

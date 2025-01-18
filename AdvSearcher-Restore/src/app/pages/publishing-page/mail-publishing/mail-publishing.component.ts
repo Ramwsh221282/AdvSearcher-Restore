@@ -5,10 +5,16 @@ import { PrimaryButtonComponent } from "../../../controls/primary-button/primary
 import { RedButtonComponent } from "../../../controls/red-button/red-button.component";
 import { InputControlComponent } from "../../../controls/input-control/input-control.component";
 import { PublishingDataSelectedService } from "../publishing-data-selected.service";
+import { NgxLoadingBar } from "@ngx-loading-bar/core";
 
 @Component({
   selector: "app-mail-publishing",
-  imports: [PrimaryButtonComponent, RedButtonComponent, InputControlComponent],
+  imports: [
+    PrimaryButtonComponent,
+    RedButtonComponent,
+    InputControlComponent,
+    NgxLoadingBar,
+  ],
   templateUrl: "./mail-publishing.component.html",
   styleUrl: "./mail-publishing.component.css",
   standalone: true,
@@ -20,13 +26,14 @@ export class MailPublishingComponent implements OnInit {
   @Output() visibilityChange: EventEmitter<void> = new EventEmitter();
 
   constructor(
-    private readonly _service: MailPublishingService,
+    protected readonly _service: MailPublishingService,
     private readonly _selectedData: PublishingDataSelectedService,
     protected readonly notifications: NotificationsService,
   ) {
     this.address = {} as MailAddress;
     this.address.email = "";
     this.address.subject = "";
+    this._service.notifications = this.notifications;
   }
 
   public ngOnInit() {
@@ -48,6 +55,10 @@ export class MailPublishingComponent implements OnInit {
       this._selectedData.selectedAdvertisements,
       this.address,
     );
+    this.notifications.setTitle("Уведомление");
+    this.notifications.setMessage("Завершено");
+    this.notifications.turnOn();
+    this.closeWindow();
   }
 
   private getDisplayName(serviceName: string): string {

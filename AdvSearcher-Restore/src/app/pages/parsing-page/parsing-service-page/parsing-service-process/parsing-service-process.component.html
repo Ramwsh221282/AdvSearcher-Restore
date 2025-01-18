@@ -9,6 +9,15 @@
             <label class="filter-parameter">Использование кеша: {{ options.withCachedAds == false ? 'Не задан' : 'Задан' }}</label>
         </div>
     </div>
+    <ngx-loading-bar
+            [includeBar]="true"
+            [diameter]="'50px'"
+            [includeSpinner]="true"
+            [color]="'#50ff5e'"
+            [height]="'10px'"
+            [fixed]="false"
+            [value]="_service.currentProgress()">
+    </ngx-loading-bar>
 </section>
 <app-notification *ngIf="notifications.isVisible"></app-notification>
 <app-parsing-process-filter-dialog *ngIf="isFilterOptionsVisible"

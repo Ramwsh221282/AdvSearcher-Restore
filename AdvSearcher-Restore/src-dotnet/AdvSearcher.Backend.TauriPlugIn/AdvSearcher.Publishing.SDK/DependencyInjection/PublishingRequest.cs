@@ -27,20 +27,34 @@ public static class PublishingRequestExtensions
     public static async Task Handle(
         this PublishingRequest request,
         PublishingServiceProvider provider,
-        ServiceUrl url
+        ServiceUrl url,
+        Action<int> currentProgress,
+        Action<int> maxProgress
     )
     {
         Task operation = request switch
         {
-            SocialMediaPublishRequest socialMedia => provider
-                .GetService(socialMedia.ServiceName)
-                .Publish(socialMedia.Files, url),
-            EmailPublishRequest emailRequest => provider
-                .GetMailingClient(emailRequest.ServiceName)
-                .Send(emailRequest.Files, emailRequest.Address),
-            WhatsAppPublishRequest waRequest => provider
-                .GetWhatsAppService(waRequest.ServiceName)
-                .Publish(waRequest.Files, waRequest.PhoneNumber),
+            SocialMediaPublishRequest socialMedia => Task.Run(() =>
+            {
+                IPublishingService service = provider.GetService(socialMedia.ServiceName);
+                service.SetCurrentProgressValuePublisher(currentProgress);
+                service.SetMaxProgressValuePublisher(maxProgress);
+                service.Publish(socialMedia.Files, url);
+            }),
+            EmailPublishRequest emailRequest => Task.Run(() =>
+            {
+                IMailingClient client = provider.GetMailingClient(emailRequest.ServiceName);
+                client.SetCurrentProgressValuePublisher(currentProgress);
+                client.SetMaxProgressValuePublisher(maxProgress);
+                client.Send(emailRequest.Files, emailRequest.Address);
+            }),
+            WhatsAppPublishRequest waRequest => Task.Run(() =>
+            {
+                IWhatsAppSender sender = provider.GetWhatsAppService(waRequest.ServiceName);
+                sender.SetCurrentProgressValuePublisher(currentProgress);
+                sender.SetMaxProgressValuePublisher(maxProgress);
+                sender.Publish(waRequest.Files, waRequest.PhoneNumber);
+            }),
             _ => Task.CompletedTask,
         };
         await operation;
