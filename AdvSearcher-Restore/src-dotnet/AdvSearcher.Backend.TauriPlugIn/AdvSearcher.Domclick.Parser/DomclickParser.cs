@@ -21,12 +21,12 @@ public sealed class DomclickParser : IParser
         List<ParserFilterOption>? options = null
     )
     {
-        await _chain.Process();
         if (options != null)
         {
             _listener?.Publish("Фильтры применены.");
             _chain.Pipeline.Options = options;
         }
+        await _chain.Process();
         _results.AddRange(_chain.Pipeline.Responses);
         return true;
     }

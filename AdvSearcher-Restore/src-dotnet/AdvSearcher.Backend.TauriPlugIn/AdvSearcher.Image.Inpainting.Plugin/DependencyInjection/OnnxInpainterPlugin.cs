@@ -9,6 +9,8 @@ public sealed class OnnxInpainterPlugin
     public IServiceCollection Load(IServiceCollection servives)
     {
         servives = servives.AddScoped<IInpaintingProcessor, InpaintingProcessor>();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("ONNX Inpainting plugin loaded");
         return servives;
     }
 }

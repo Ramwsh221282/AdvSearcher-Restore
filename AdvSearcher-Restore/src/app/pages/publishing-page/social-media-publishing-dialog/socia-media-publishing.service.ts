@@ -29,7 +29,6 @@ export class SocialMediaPublishingService {
     });
     await maxProgressListener;
     await currentProgressListener;
-    this.resetProgress();
   }
 
   private createMaxProgressListener(): Promise<UnlistenFn> {
@@ -47,6 +46,7 @@ export class SocialMediaPublishingService {
         this.notifications.setTitle("Прогресс");
         this.notifications.setMessage("Завершено");
         this.notifications.turnOn();
+        this.resetProgress();
       } else {
         this.notifications.setTitle("Прогресс");
         this.notifications.setMessage(`${value} из ${this.maxProgress()}`);

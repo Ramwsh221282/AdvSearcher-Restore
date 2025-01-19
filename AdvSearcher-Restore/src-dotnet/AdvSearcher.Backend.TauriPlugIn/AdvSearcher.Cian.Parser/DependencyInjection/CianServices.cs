@@ -55,7 +55,8 @@ public class CianServices : IParserDiServicesInitializer
                 );
                 return openPage;
             });
-        _listener.Publish("Парсер Циан подгружен");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        _listener.Publish("Cian parser loaded.");
         return services;
     }
 

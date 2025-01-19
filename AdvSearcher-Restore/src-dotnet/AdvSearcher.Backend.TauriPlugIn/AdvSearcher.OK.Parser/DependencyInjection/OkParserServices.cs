@@ -52,7 +52,8 @@ public class OkParserServices : IParserDiServicesInitializer
                 );
                 return extractHtmlNode;
             });
-        _listener.Publish("Парсер ОК подгружен");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        _listener.Publish("OK Parser loaded");
         return services;
     }
 

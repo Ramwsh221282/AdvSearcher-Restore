@@ -8,6 +8,8 @@ public sealed class GreenApiPluginLoader : IPublishingPluginsLoader
     public IServiceCollection Load(IServiceCollection services)
     {
         services = services.AddTransient<IWhatsAppSender, GreenApiService>();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("Green Api Publishing Service loaded.");
         return services;
     }
 }

@@ -24,6 +24,8 @@ public sealed class SQLitePersistanceDIService : IRepositoryPluginInitializer
                 AppDbContext context = p.GetRequiredService<AppDbContext>();
                 return new ServiceUrlsRepository(context);
             });
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("SQLite Database service loaded");
         return services;
     }
 }

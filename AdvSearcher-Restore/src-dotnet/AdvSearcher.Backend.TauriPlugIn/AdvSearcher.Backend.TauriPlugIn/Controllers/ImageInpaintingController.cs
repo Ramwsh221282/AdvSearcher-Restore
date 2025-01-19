@@ -21,9 +21,19 @@ public class ImageInpaintingController
 
     public void InpaintImages(InpaintingDataRequest request)
     {
-        Action<int> currentProgress = (value) => _publisher.Publish(CurrentProgressListener, value);
-        Action<int> maxProgress = (value) => _publisher.Publish(MaxProgressListener, value);
-        string workspaceDirectoryName = DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss");
-        _provider.ProcessImage(workspaceDirectoryName, request, currentProgress, maxProgress);
+        try
+        {
+            Action<int> currentProgress = (value) =>
+                _publisher.Publish(CurrentProgressListener, value);
+            Action<int> maxProgress = (value) => _publisher.Publish(MaxProgressListener, value);
+            string workspaceDirectoryName = DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss");
+            _provider.ProcessImage(workspaceDirectoryName, request, currentProgress, maxProgress);
+        }
+        catch (Exception ex)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+        }
     }
 }

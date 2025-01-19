@@ -39,7 +39,6 @@ internal sealed class DomclickCatalogueFetchStep : IDomclickParserChain
             _provider
         );
         await sender.ConstructFetchResults();
-        _pipeline.FilterByCacheAndDate();
         _pipeline.NotificationsPublisher?.Invoke("Данные каталога ДомКлик получены.");
         _listener.Publish("Данные каталога ДомКлик получены.");
         if (Next != null)

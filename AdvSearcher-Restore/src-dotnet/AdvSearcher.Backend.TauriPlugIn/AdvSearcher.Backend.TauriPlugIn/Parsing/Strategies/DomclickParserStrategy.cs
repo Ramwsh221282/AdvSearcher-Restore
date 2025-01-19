@@ -22,7 +22,7 @@ public sealed class DomclickParserStrategy : IParsingStrategy
     {
         _factory = factory;
         _resolver = resolver;
-        _options = options.CreateOptions(factory);
+        _options = options.CreateOptions(_factory);
     }
 
     public async Task Perform(

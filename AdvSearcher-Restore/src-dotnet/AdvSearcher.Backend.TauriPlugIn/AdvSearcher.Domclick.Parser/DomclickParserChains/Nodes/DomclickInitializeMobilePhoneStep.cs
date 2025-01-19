@@ -35,6 +35,8 @@ internal sealed class DomclickInitializeMobilePhoneStep : IDomclickParserChain
         int attempts = 0;
         int limitAttempts = 10;
         _pipeline.MaxProgressPublisher?.Invoke(_pipeline.FetchResults.Count);
+        _pipeline.FilterByDate();
+        _pipeline.FilterByCache();
         foreach (var result in _pipeline.FetchResults)
         {
             if (attempts == limitAttempts)

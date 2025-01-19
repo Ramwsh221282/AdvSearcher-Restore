@@ -21,6 +21,8 @@
     "@ngx-loading-bar/core": "^7.0.0",
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-opener": "^2",
+    "jsonwebtoken": "^9.0.2",
+    "jsrsasign": "^11.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

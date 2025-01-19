@@ -20,7 +20,8 @@ public sealed class OptionsExtensionDIServices : IParserDiServicesInitializer
             .AddScoped<PathManager>()
             .AddScoped<TxtOptionLogger>()
             .AddScoped<IOptionManager, TxtFileOptionManager>();
-        _listener.Publish("Плагин настроек подгружен");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        _listener.Publish("Options plugin loaded.");
         return services;
     }
 

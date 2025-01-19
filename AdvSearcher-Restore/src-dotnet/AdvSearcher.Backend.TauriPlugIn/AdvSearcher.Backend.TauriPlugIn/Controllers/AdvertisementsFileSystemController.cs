@@ -24,48 +24,86 @@ public sealed class AdvertisementsFileSystemController(
 
     public IReadOnlyCollection<string> MoveToFolder(AdvertisementFolder folder)
     {
-        _system.MoveToSubfolder(folder);
-        return _system.GetFolderNames();
+        try
+        {
+            _system.MoveToSubfolder(folder);
+            return _system.GetFolderNames();
+        }
+        catch (Exception ex)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+            return [];
+        }
     }
 
     public IReadOnlyCollection<string> MoveToParent()
     {
-        _system.MoveToParent();
-        return _system.GetFolderNames();
+        try
+        {
+            _system.MoveToParent();
+            return _system.GetFolderNames();
+        }
+        catch (Exception ex)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+            return [];
+        }
     }
 
     public void SaveAdvertisement(SaveAdvertisementRequest request)
     {
-        Result<AdvertisementId> id = AdvertisementId.Create(request.Id);
-        if (id.IsFailure)
+        try
         {
-            _publisher.Publish(Listener, id.Error.Description);
-            return;
+            Result<AdvertisementId> id = AdvertisementId.Create(request.Id);
+            if (id.IsFailure)
+            {
+                _publisher.Publish(Listener, id.Error.Description);
+                return;
+            }
+            Result<Advertisement> advertisement = _repository.GetById(id).Result;
+            if (advertisement.IsFailure)
+            {
+                _publisher.Publish(Listener, advertisement.Error.Description);
+                return;
+            }
+            AdvertisementFileSystemResult result = _system.SaveAdvertisementAsFile(
+                advertisement,
+                new AdvertisementFolder(request.FolderName)
+            );
+            if (!result.IsSuccess)
+                _publisher.Publish(Listener, result.ErrorMessage);
+            else
+                _publisher.Publish(Listener, "Объявление сохранено");
         }
-        Result<Advertisement> advertisement = _repository.GetById(id).Result;
-        if (advertisement.IsFailure)
+        catch (Exception ex)
         {
-            _publisher.Publish(Listener, advertisement.Error.Description);
-            return;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
         }
-        AdvertisementFileSystemResult result = _system.SaveAdvertisementAsFile(
-            advertisement,
-            new AdvertisementFolder(request.FolderName)
-        );
-        if (!result.IsSuccess)
-            _publisher.Publish(Listener, result.ErrorMessage);
-        else
-            _publisher.Publish(Listener, "Объявление сохранено");
     }
 
     public void CreateDirectory(AdvertisementFolder folder)
     {
-        AdvertisementFileSystemResult result = _system.CreateDirectory(folder);
-        if (!result.IsSuccess)
+        try
         {
-            _publisher.Publish(Listener, result.ErrorMessage);
-            return;
+            AdvertisementFileSystemResult result = _system.CreateDirectory(folder);
+            if (!result.IsSuccess)
+            {
+                _publisher.Publish(Listener, result.ErrorMessage);
+                return;
+            }
+            _publisher.Publish(Listener, "Папка создана");
         }
-        _publisher.Publish(Listener, "Папка создана");
+        catch (Exception ex)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+        }
     }
 }

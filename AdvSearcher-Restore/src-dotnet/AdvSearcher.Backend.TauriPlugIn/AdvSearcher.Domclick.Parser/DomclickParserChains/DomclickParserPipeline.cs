@@ -21,33 +21,43 @@ public sealed class DomclickParserPipeline
             FetchResults.Add(result);
     }
 
-    public void FilterByCacheAndDate()
+    public void FilterByDate()
     {
-        List<DomclickFetchResult> filtered = [];
+        List<DomclickFetchResult> catalogueItems = [];
         ParserFilter filter = new ParserFilter(Options);
-        foreach (var result in FetchResults)
+        foreach (var item in FetchResults)
         {
-            IParserFilterVisitor visitor = new DomclickDateAndCacheFiltering(
-                result.PublishedDate,
-                result.Id
-            );
+            IParserFilterVisitor visitor = new DomclickDateOnlyFilter(item.PublishedDate);
             if (filter.IsMatchingFilters(visitor))
-                filtered.Add(result);
+                catalogueItems.Add(item);
         }
-        FetchResults = filtered;
+        FetchResults = catalogueItems;
+    }
+
+    public void FilterByCache()
+    {
+        List<DomclickFetchResult> catalogueItems = [];
+        ParserFilter filter = new ParserFilter(Options);
+        foreach (var item in FetchResults)
+        {
+            IParserFilterVisitor visitor = new DomclickCacheOnlyFilter(item.Id);
+            if (filter.IsMatchingFilters(visitor))
+                catalogueItems.Add(item);
+        }
+        FetchResults = catalogueItems;
     }
 
     public void FilterByPublishers()
     {
-        List<IParserResponse> filtered = [];
+        List<IParserResponse> responses = [];
         ParserFilter filter = new ParserFilter(Options);
-        foreach (var result in _responses)
+        foreach (var response in _responses)
         {
-            IParserFilterVisitor visitor = new DomclickPublisherFiltering(result.Publisher.Info);
+            IParserFilterVisitor visitor = new DomclickPublisherFiltering(response.Publisher.Info);
             if (filter.IsMatchingFilters(visitor))
-                filtered.Add(result);
+                responses.Add(response);
         }
-        _responses = filtered;
+        _responses = responses;
     }
 
     public void AddParserResponse(IParserResponse response) => _responses.Add(response);

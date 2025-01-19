@@ -19,28 +19,56 @@ public class SettingsController(IOptionManager manager)
     // Method for creating section of settings.
     public void SetSettings(SettingsRequest request)
     {
-        IOptionProcessor processor = _manager.CreateWrite(request.Section.FileName);
-        List<Option> options = request.CreateOptionsFromRequest();
-        options.ForEach(option => processor.Process(option).Wait());
+        try
+        {
+            IOptionProcessor processor = _manager.CreateWrite(request.Section.FileName);
+            List<Option> options = request.CreateOptionsFromRequest();
+            options.ForEach(option => processor.Process(option).Wait());
+        }
+        catch (Exception ex)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+        }
     }
 
     // Method for reading settings from section.
     public SettingsRequest ReadSettings(SettingsRequest request)
     {
-        IOptionProcessor processor = _manager.CreateReader(request.Section.FileName);
-        List<Option> options = request.CreateOptionsFromRequest();
-        List<Option> readedOptions = new List<Option>(options.Count);
-        options.ForEach(option => readedOptions.Add(processor.Process(option).Result));
-        List<SettingsSectionItem> responseItems = readedOptions.CreateSettingsFromOptions();
-        return new SettingsRequest(request.Section, responseItems);
+        try
+        {
+            IOptionProcessor processor = _manager.CreateReader(request.Section.FileName);
+            List<Option> options = request.CreateOptionsFromRequest();
+            List<Option> readedOptions = new List<Option>(options.Count);
+            options.ForEach(option => readedOptions.Add(processor.Process(option).Result));
+            List<SettingsSectionItem> responseItems = readedOptions.CreateSettingsFromOptions();
+            return new SettingsRequest(request.Section, responseItems);
+        }
+        catch (Exception ex)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+            return null!;
+        }
     }
 
     // Method for flushing (deleting) section of settings.
     public void FlushSettings(SettingsRequest request)
     {
-        IOptionProcessor processor = _manager.CreateFlusher(request.Section.FileName);
-        List<Option> options = request.CreateOptionsFromRequest();
-        options.ForEach(option => processor.Process(option).Wait());
+        try
+        {
+            IOptionProcessor processor = _manager.CreateFlusher(request.Section.FileName);
+            List<Option> options = request.CreateOptionsFromRequest();
+            options.ForEach(option => processor.Process(option).Wait());
+        }
+        catch (Exception ex)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+        }
     }
 }
 

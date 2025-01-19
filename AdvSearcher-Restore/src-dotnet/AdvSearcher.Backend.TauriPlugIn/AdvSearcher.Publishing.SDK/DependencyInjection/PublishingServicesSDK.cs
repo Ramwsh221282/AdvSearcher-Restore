@@ -26,6 +26,13 @@ public static class PublishingServicesSDK
         IServiceProvider provider = services.BuildServiceProvider();
         IEnumerable<IPublishingPluginsLoader> loaders =
             provider.GetServices<IPublishingPluginsLoader>();
+
+        if (!loaders.Any())
+        {
+            Console.WriteLine("ERROR. Publishing plugins were not loaded.");
+            throw new ApplicationException();
+        }
+
         foreach (var loader in loaders)
             loader.Load(services);
 

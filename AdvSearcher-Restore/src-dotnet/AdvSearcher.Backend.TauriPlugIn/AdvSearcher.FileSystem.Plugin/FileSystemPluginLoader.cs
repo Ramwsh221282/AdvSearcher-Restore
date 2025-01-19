@@ -16,15 +16,17 @@ public sealed class FileSystemPluginLoader : IFileSystemPluginLoader, IListenabl
 
     public IServiceCollection Load(IServiceCollection services)
     {
-        _listener.Publish("Подгрузка плагинов файловой системы...");
         services.AddSingleton<IFileSystem, AdvertisementFileSystem>();
         IServiceProvider provider = services.BuildServiceProvider();
         IFileSystem[] plugins = provider.GetServices<IFileSystem>().ToArray();
-        if (plugins.Any())
+        if (!plugins.Any())
         {
-            _listener.Publish("Плагины файловой системы добавлен");
-            _listener.Publish($"Количество плагинов файловой системы: {plugins.Length}");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("ERROR. File system plugins were not loaded");
+            throw new ApplicationException();
         }
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("File system plugins were loaded");
         return services;
     }
 

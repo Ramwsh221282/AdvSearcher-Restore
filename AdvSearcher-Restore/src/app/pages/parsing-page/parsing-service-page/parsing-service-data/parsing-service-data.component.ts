@@ -30,6 +30,8 @@ export class ParsingServiceDataComponent implements OnInit {
   protected page: number = 1;
   protected pageSize: number = 12;
   protected selectedAdvertisement: IParsedAdvertisement | null = null;
+  protected currentImageIndex = 0;
+  protected maxImageIndex = 0;
 
   constructor(
     private readonly _service: ParsedAdvertisementsDataService,
@@ -47,16 +49,16 @@ export class ParsingServiceDataComponent implements OnInit {
     this.advertisements.set(response);
   }
 
-  protected isCurrentlySelected(advertisement: IParsedAdvertisement): boolean {
-    if (!this.selectedAdvertisement) return false;
-    return this.selectedAdvertisement.id == advertisement.id;
-  }
-
   protected select(advertisement: IParsedAdvertisement): void {
-    this.selectedAdvertisement = advertisement;
+    this.selectedAdvertisement = { ...advertisement };
+    this.currentImageIndex = 0;
+    this.maxImageIndex = this.selectedAdvertisement.imageLinks.length - 1;
+    console.log(this.currentImageIndex);
+    console.log(this.maxImageIndex);
   }
 
   protected async handlePageChangedEvent(pageChanged$: number) {
+    window.scroll(0, 0);
     this.page = pageChanged$;
     await this.ngOnInit();
   }

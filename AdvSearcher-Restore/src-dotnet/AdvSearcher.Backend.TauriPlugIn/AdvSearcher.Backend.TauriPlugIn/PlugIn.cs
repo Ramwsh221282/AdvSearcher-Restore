@@ -18,28 +18,36 @@ public class PlugIn : IPlugIn
 {
     public void Initialize(IServiceCollection services)
     {
-        CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
-        CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
-        IMessageListener consoleListener = new ConsoleMessageListener();
-        CompositeMessageListener composite = new CompositeMessageListener();
-        composite.AddListener(consoleListener);
-        services.AddSingleton<IMessageListener>(composite);
-        services.AddParserSDK();
-        services.AddPersistanceSDK();
-        services.LoadFileSystemPlugins();
-        services.AddPublishingServices();
-        services.LoadML();
-        services.AddSingleton<PersistanceServiceFactory>();
-        services.AddSingleton<SettingsController>();
-        services.AddSingleton<ParserLinksController>();
-        services.AddSingleton<ParsingController>();
-        services.AddSingleton<ParsedDataController>();
-        services.AddScoped<AdvertisementsFileSystemController>();
-        services.AddSingleton<PublishingLinksController>();
-        services.AddSingleton<PublishingDataController>();
-        services.AddSingleton<PublishDataController>();
-        services.AddSingleton<ImageInpaintingController>();
-        services.LoadInpainting();
-        services.AddSingleton<InpaintingProvider>();
+        try
+        {
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+            IMessageListener consoleListener = new ConsoleMessageListener();
+            CompositeMessageListener composite = new CompositeMessageListener();
+            composite.AddListener(consoleListener);
+            services.AddSingleton<IMessageListener>(composite);
+            services.AddParserSDK();
+            services.AddPersistanceSDK();
+            services.LoadFileSystemPlugins();
+            services.AddPublishingServices();
+            services.LoadML();
+            services.AddSingleton<PersistanceServiceFactory>();
+            services.AddSingleton<SettingsController>();
+            services.AddSingleton<ParserLinksController>();
+            services.AddSingleton<ParsingController>();
+            services.AddSingleton<ParsedDataController>();
+            services.AddScoped<AdvertisementsFileSystemController>();
+            services.AddSingleton<PublishingLinksController>();
+            services.AddSingleton<PublishingDataController>();
+            services.AddSingleton<PublishDataController>();
+            services.AddSingleton<ImageInpaintingController>();
+            services.LoadInpainting();
+            services.AddSingleton<InpaintingProvider>();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+        }
     }
 }

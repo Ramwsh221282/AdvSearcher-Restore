@@ -6,7 +6,17 @@ public class PublishingDataController
 {
     public IEnumerable<AdvertisementDirectoryResponse> GetDirectories()
     {
-        PublishingAdvertisementsFileSystem system = new PublishingAdvertisementsFileSystem();
-        return system.GetAdvertisementDirectories();
+        try
+        {
+            PublishingAdvertisementsFileSystem system = new PublishingAdvertisementsFileSystem();
+            return system.GetAdvertisementDirectories();
+        }
+        catch (Exception ex)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+            return [];
+        }
     }
 }

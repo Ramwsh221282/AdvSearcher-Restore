@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { IParsedAdvertisement } from "../parsed-advertisement.interface";
-import { NgIf } from "@angular/common";
+import { NgForOf, NgIf } from "@angular/common";
 import { PrimaryButtonComponent } from "../../../../../controls/primary-button/primary-button.component";
 import { RedButtonComponent } from "../../../../../controls/red-button/red-button.component";
 import { SavingAdvertisementDialogComponent } from "./saving-advertisement-dialog/saving-advertisement-dialog.component";
@@ -12,6 +12,7 @@ import { SavingAdvertisementDialogComponent } from "./saving-advertisement-dialo
     PrimaryButtonComponent,
     RedButtonComponent,
     SavingAdvertisementDialogComponent,
+    NgForOf,
   ],
   templateUrl: "./parsing-service-data-item.component.html",
   styleUrl: "./parsing-service-data-item.component.css",
@@ -27,6 +28,7 @@ export class ParsingServiceDataItemComponent {
     new EventEmitter();
 
   protected isSaving: boolean = false;
+  protected isShowText: boolean = false;
 
   protected saveAsFile(): void {
     this.isSaving = true;
@@ -42,5 +44,9 @@ export class ParsingServiceDataItemComponent {
 
   protected openInBrowserClick(): void {
     this.openInBrowserRequested.emit(this.advertisement);
+  }
+
+  protected manageText(): void {
+    this.isShowText = !this.isShowText;
   }
 }

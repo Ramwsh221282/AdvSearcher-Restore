@@ -9,6 +9,8 @@ public sealed class CachePersistanceDiInitializer : ICachedAdvertisementsPluginD
     public IServiceCollection AddCache(IServiceCollection services)
     {
         services = services.AddSingleton<ICachedAdvertisementsRepository, CachedAdvertisements>();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("Cache persistance load");
         return services;
     }
 }

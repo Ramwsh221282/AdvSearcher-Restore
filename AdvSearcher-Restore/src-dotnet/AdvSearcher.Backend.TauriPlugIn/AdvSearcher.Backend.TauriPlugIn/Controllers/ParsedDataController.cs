@@ -34,111 +34,185 @@ public sealed class ParsedDataController(
 
     public IEnumerable<ParsedDataResponse> GetParsedData(GetAdvertisementsQuery query)
     {
-        using PersistanceContext context = _factory.CreateContext();
-        IAdvertisementsRepository repository = _factory.CreateAdvertisementsRepository(context);
-        IEnumerable<Advertisement> advertisements = repository.GetAll(query).Result;
-        return advertisements.ToResponse();
+        try
+        {
+            using PersistanceContext context = _factory.CreateContext();
+            IAdvertisementsRepository repository = _factory.CreateAdvertisementsRepository(context);
+            IEnumerable<Advertisement> advertisements = repository.GetAll(query).Result;
+            return advertisements.ToResponse();
+        }
+        catch (Exception ex)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+            return [];
+        }
     }
 
     public int GetCountQuery(GetAdvertisementsCountByServiceQuery query)
     {
-        using PersistanceContext context = _factory.CreateContext();
-        IAdvertisementsRepository repository = _factory.CreateAdvertisementsRepository(context);
-        _count = repository.GetCount(query).Result;
-        return _count;
+        try
+        {
+            using PersistanceContext context = _factory.CreateContext();
+            IAdvertisementsRepository repository = _factory.CreateAdvertisementsRepository(context);
+            _count = repository.GetCount(query).Result;
+            return _count;
+        }
+        catch (Exception ex)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+            return 0;
+        }
     }
 
     public int[] GetPagesQuery(PaginationRequest request)
     {
-        int totalPages = (int)Math.Ceiling((double)_count / request.PageSize);
-        int[] pages = new int[totalPages];
-        for (int index = 0; index < totalPages; index++)
-            pages[index] = index + 1;
-        return pages;
+        try
+        {
+            int totalPages = (int)Math.Ceiling((double)_count / request.PageSize);
+            int[] pages = new int[totalPages];
+            for (int index = 0; index < totalPages; index++)
+                pages[index] = index + 1;
+            return pages;
+        }
+        catch (Exception ex)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+            return [];
+        }
     }
 
     public void RemoveAdvertisement(AdvertisementRequest request)
     {
-        using PersistanceContext context = _factory.CreateContext();
-        IAdvertisementsRepository repository = _factory.CreateAdvertisementsRepository(context);
-        AdvertisementId id = AdvertisementId.Create(request.AdvertisementId);
-        Result<Advertisement> advertisement = repository.GetById(id).Result;
-        if (advertisement.IsFailure)
+        try
         {
-            _publisher.Publish(Listener, advertisement.Error.Description);
-            return;
+            using PersistanceContext context = _factory.CreateContext();
+            IAdvertisementsRepository repository = _factory.CreateAdvertisementsRepository(context);
+            AdvertisementId id = AdvertisementId.Create(request.AdvertisementId);
+            Result<Advertisement> advertisement = repository.GetById(id).Result;
+            if (advertisement.IsFailure)
+            {
+                _publisher.Publish(Listener, advertisement.Error.Description);
+                return;
+            }
+            repository.Delete(advertisement).Wait();
+            _publisher.Publish(Listener, $"Запись ID: {request.AdvertisementId} удалена");
         }
-        repository.Delete(advertisement).Wait();
-        _publisher.Publish(Listener, $"Запись ID: {request.AdvertisementId} удалена");
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+        }
     }
 
     public void RemoveAndCacheAdvertisement(AdvertisementRequest request)
     {
-        using PersistanceContext context = _factory.CreateContext();
-        IAdvertisementsRepository repository = _factory.CreateAdvertisementsRepository(context);
-        ICachedAdvertisementsRepository cache = _factory.CreateCachedAdvertisementsRepository(
-            context
-        );
-        AdvertisementId id = AdvertisementId.Create(request.AdvertisementId);
-        Result<Advertisement> advertisement = repository.GetById(id).Result;
-        if (advertisement.IsFailure)
+        try
         {
-            _publisher.Publish(Listener, advertisement.Error.Description);
-            return;
+            using PersistanceContext context = _factory.CreateContext();
+            IAdvertisementsRepository repository = _factory.CreateAdvertisementsRepository(context);
+            ICachedAdvertisementsRepository cache = _factory.CreateCachedAdvertisementsRepository(
+                context
+            );
+            AdvertisementId id = AdvertisementId.Create(request.AdvertisementId);
+            Result<Advertisement> advertisement = repository.GetById(id).Result;
+            if (advertisement.IsFailure)
+            {
+                _publisher.Publish(Listener, advertisement.Error.Description);
+                return;
+            }
+            CachedAdvertisement cached = advertisement.Value.ToCachedAdvertisement();
+            Result<CachedAdvertisementOperationType> caching = cache.Add(cached).Result;
+            if (caching.IsFailure)
+            {
+                _publisher.Publish(Listener, caching.Error.Description);
+                return;
+            }
+            repository.Delete(advertisement).Wait();
+            _publisher.Publish(Listener, $"Запись ID: {request.AdvertisementId} кеширована");
         }
-        CachedAdvertisement cached = advertisement.Value.ToCachedAdvertisement();
-        Result<CachedAdvertisementOperationType> caching = cache.Add(cached).Result;
-        if (caching.IsFailure)
+        catch (Exception ex)
         {
-            _publisher.Publish(Listener, caching.Error.Description);
-            return;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
         }
-        repository.Delete(advertisement).Wait();
-        _publisher.Publish(Listener, $"Запись ID: {request.AdvertisementId} кеширована");
     }
 
     public void RemoveAllAdvertisements(GetAdvertisementsByServiceNameOnlyQuery query)
     {
-        using PersistanceContext context = _factory.CreateContext();
-        IAdvertisementsRepository repository = _factory.CreateAdvertisementsRepository(context);
-        Advertisement[] advertisements = repository.GetAll(query).Result.ToArray();
-        for (int index = 0; index < advertisements.Length; index++)
-            repository.Delete(advertisements[index]).Wait();
-        _publisher.Publish(Listener, $"Записи {query.ServiceName} удалены");
+        try
+        {
+            using PersistanceContext context = _factory.CreateContext();
+            IAdvertisementsRepository repository = _factory.CreateAdvertisementsRepository(context);
+            Advertisement[] advertisements = repository.GetAll(query).Result.ToArray();
+            for (int index = 0; index < advertisements.Length; index++)
+                repository.Delete(advertisements[index]).Wait();
+            _publisher.Publish(Listener, $"Записи {query.ServiceName} удалены");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+        }
     }
 
     public void RemoveAndCacheAllAdvertisements(GetAdvertisementsByServiceNameOnlyQuery query)
     {
-        using PersistanceContext context = _factory.CreateContext();
-        IAdvertisementsRepository repository = _factory.CreateAdvertisementsRepository(context);
-        ICachedAdvertisementsRepository cache = _factory.CreateCachedAdvertisementsRepository(
-            context
-        );
-        Advertisement[] advertisements = repository.GetAll(query).Result.ToArray();
-        CachedAdvertisement[] cached = advertisements
-            .Select(ad => ad.ToCachedAdvertisement())
-            .ToArray();
-        for (int index = 0; index < advertisements.Length; index++)
+        try
         {
-            repository.Delete(advertisements[index]).Wait();
-            cache.Add(cached[index]).Wait();
+            using PersistanceContext context = _factory.CreateContext();
+            IAdvertisementsRepository repository = _factory.CreateAdvertisementsRepository(context);
+            ICachedAdvertisementsRepository cache = _factory.CreateCachedAdvertisementsRepository(
+                context
+            );
+            Advertisement[] advertisements = repository.GetAll(query).Result.ToArray();
+            CachedAdvertisement[] cached = advertisements
+                .Select(ad => ad.ToCachedAdvertisement())
+                .ToArray();
+            for (int index = 0; index < advertisements.Length; index++)
+            {
+                repository.Delete(advertisements[index]).Wait();
+                cache.Add(cached[index]).Wait();
+            }
+            _publisher.Publish(Listener, $"Записи {query.ServiceName} кешированы");
         }
-        _publisher.Publish(Listener, $"Записи {query.ServiceName} кешированы");
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+        }
     }
 
     public void OpenAdvertisementInBrowser(AdvertisementRequest request)
     {
-        Result<AdvertisementId> id = AdvertisementId.Create(request.AdvertisementId);
-        if (id.IsFailure)
-            return;
-        using PersistanceContext context = _factory.CreateContext();
-        IAdvertisementsRepository repository = _factory.CreateAdvertisementsRepository(context);
-        Result<Advertisement> advertisement = repository.GetById(id).Result;
-        if (advertisement.IsFailure)
-            return;
-        Process.Start(
-            new ProcessStartInfo { FileName = advertisement.Value.Url.Url, UseShellExecute = true }
-        );
+        try
+        {
+            Result<AdvertisementId> id = AdvertisementId.Create(request.AdvertisementId);
+            if (id.IsFailure)
+                return;
+            using PersistanceContext context = _factory.CreateContext();
+            IAdvertisementsRepository repository = _factory.CreateAdvertisementsRepository(context);
+            Result<Advertisement> advertisement = repository.GetById(id).Result;
+            if (advertisement.IsFailure)
+                return;
+            Process.Start(
+                new ProcessStartInfo
+                {
+                    FileName = advertisement.Value.Url.Url,
+                    UseShellExecute = true,
+                }
+            );
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+        }
     }
 }
 

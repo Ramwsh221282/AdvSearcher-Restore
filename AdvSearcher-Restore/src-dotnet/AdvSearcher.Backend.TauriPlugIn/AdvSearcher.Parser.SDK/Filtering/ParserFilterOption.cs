@@ -55,8 +55,10 @@ public sealed class ParserFilter
 
     public bool IsMatchingFilters(IParserFilterVisitor visitor)
     {
+        Console.WriteLine(_options.Count);
         foreach (ParserFilterOption option in _options)
         {
+            Console.WriteLine(option.GetType().Name);
             bool result = option switch
             {
                 ParserFilterWithDate date => visitor.Visit(date),

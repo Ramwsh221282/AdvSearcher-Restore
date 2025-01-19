@@ -28,57 +28,85 @@ public class PublishingLinksController
 
     public void CreatePublishingLink(CreatePublishingLinkRequest request)
     {
-        ServiceUrlMode mode = ServiceUrlMode.Publicatable;
-        Result<ServiceUrlService> service = ServiceUrlService.Create(request.ServiceName);
-        if (service.IsFailure)
+        try
         {
-            _publisher.Publish(Listener, service.Error.Description);
-            return;
+            ServiceUrlMode mode = ServiceUrlMode.Publicatable;
+            Result<ServiceUrlService> service = ServiceUrlService.Create(request.ServiceName);
+            if (service.IsFailure)
+            {
+                _publisher.Publish(Listener, service.Error.Description);
+                return;
+            }
+            Result<ServiceUrlValue> value = ServiceUrlValue.Create(request.Link);
+            if (value.IsFailure)
+            {
+                _publisher.Publish(Listener, service.Error.Description);
+                return;
+            }
+            ServiceUrl url = new ServiceUrl(value, mode, service);
+            Result<RepositoryOperationResult> result = _factory.AppendServiceUrl(url).Result;
+            if (result.IsFailure)
+                _publisher.Publish(Listener, service.Error.Description);
+            else
+                _publisher.Publish(Listener, "Ссылка публикации добавлена");
         }
-        Result<ServiceUrlValue> value = ServiceUrlValue.Create(request.Link);
-        if (value.IsFailure)
+        catch (Exception ex)
         {
-            _publisher.Publish(Listener, service.Error.Description);
-            return;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
         }
-        ServiceUrl url = new ServiceUrl(value, mode, service);
-        Result<RepositoryOperationResult> result = _factory.AppendServiceUrl(url).Result;
-        if (result.IsFailure)
-            _publisher.Publish(Listener, service.Error.Description);
-        else
-            _publisher.Publish(Listener, "Ссылка публикации добавлена");
     }
 
     public void RemovePublishingLink(RemovePublishingLinkRequest request)
     {
-        ServiceUrlMode mode = ServiceUrlMode.Publicatable;
-        Result<ServiceUrlService> service = ServiceUrlService.Create(request.ServiceName);
-        if (service.IsFailure)
+        try
         {
-            _publisher.Publish(Listener, service.Error.Description);
-            return;
+            ServiceUrlMode mode = ServiceUrlMode.Publicatable;
+            Result<ServiceUrlService> service = ServiceUrlService.Create(request.ServiceName);
+            if (service.IsFailure)
+            {
+                _publisher.Publish(Listener, service.Error.Description);
+                return;
+            }
+            Result<ServiceUrlValue> value = ServiceUrlValue.Create(request.Link);
+            if (value.IsFailure)
+            {
+                _publisher.Publish(Listener, service.Error.Description);
+                return;
+            }
+            ServiceUrl url = new ServiceUrl(value, mode, service);
+            Result<RepositoryOperationResult> result = _factory.RemoveServiceUrl(url).Result;
+            if (result.IsFailure)
+                _publisher.Publish(Listener, service.Error.Description);
+            else
+                _publisher.Publish(Listener, "Ссылка публикации добавлена");
         }
-        Result<ServiceUrlValue> value = ServiceUrlValue.Create(request.Link);
-        if (value.IsFailure)
+        catch (Exception ex)
         {
-            _publisher.Publish(Listener, service.Error.Description);
-            return;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
         }
-        ServiceUrl url = new ServiceUrl(value, mode, service);
-        Result<RepositoryOperationResult> result = _factory.RemoveServiceUrl(url).Result;
-        if (result.IsFailure)
-            _publisher.Publish(Listener, service.Error.Description);
-        else
-            _publisher.Publish(Listener, "Ссылка публикации добавлена");
     }
 
     public IEnumerable<PublishingLinksResponse> GetPublishingLinksOfService(
         GetPublishingLinksRequest request
     )
     {
-        IEnumerable<ServiceUrl> urls = _factory
-            .GetAllUploadableServiceUrlsOfService(request.ServiceName)
-            .Result;
-        return urls.Select(u => new PublishingLinksResponse(u.Service.Name, u.Value.Value));
+        try
+        {
+            IEnumerable<ServiceUrl> urls = _factory
+                .GetAllUploadableServiceUrlsOfService(request.ServiceName)
+                .Result;
+            return urls.Select(u => new PublishingLinksResponse(u.Service.Name, u.Value.Value));
+        }
+        catch (Exception ex)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+            return [];
+        }
     }
 }

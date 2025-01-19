@@ -38,6 +38,14 @@ public static class ParserSDK
         IServiceProvider provider = services.BuildServiceProvider();
         IEnumerable<IParserDiServicesInitializer> initializers =
             provider.GetServices<IParserDiServicesInitializer>();
+
+        if (!initializers.Any())
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("ERROR. Parser plugins were not loaded");
+            throw new ApplicationException();
+        }
+
         foreach (IParserDiServicesInitializer initializer in initializers)
         {
             initializer.ModifyServices(services);

@@ -8,6 +8,8 @@ public sealed class IsAdvertisementPluginLoader : IMLPluginLoader
     public IServiceCollection LoadML(IServiceCollection services)
     {
         services = services.AddSingleton<ISpamClassifier, IsAdvertisementClassifier>();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("Anti spam classification ML Model loaded");
         return services;
     }
 }

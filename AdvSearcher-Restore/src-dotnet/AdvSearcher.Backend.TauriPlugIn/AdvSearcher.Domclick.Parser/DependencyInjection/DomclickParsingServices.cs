@@ -57,7 +57,8 @@ public class DomclickParsingServices : IParserDiServicesInitializer
                 );
                 return firstStep;
             });
-        _listener.Publish("Парсер ДомКлик подгружен");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        _listener.Publish("Domclick parser loaded.");
         return services;
     }
 

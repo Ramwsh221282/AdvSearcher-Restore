@@ -26,45 +26,74 @@ public class PublishDataController
 
     public void PublishToSocialMedia(SocialMediaPublishRequest request)
     {
-        string serviceName = request.ServiceName;
-        IEnumerable<ServiceUrl> urls = serviceName switch
+        try
         {
-            null => [],
-            not null when string.IsNullOrWhiteSpace(serviceName) => [],
-            not null when serviceName.Contains("VK", StringComparison.CurrentCultureIgnoreCase) =>
-                _factory.GetAllUploadableServiceUrlsOfService("VK").Result,
-            not null when serviceName.Contains("OK", StringComparison.OrdinalIgnoreCase) => _factory
-                .GetAllUploadableServiceUrlsOfService("OK")
-                .Result,
-            _ => [],
-        };
-        Action<int> currentProgress = (value) => _publisher.Publish(CurrentProgressListener, value);
-        Action<int> maxProgress = (value) => _publisher.Publish(MaxProgressListener, value);
-        foreach (ServiceUrl url in urls)
+            string serviceName = request.ServiceName;
+            IEnumerable<ServiceUrl> urls = serviceName switch
+            {
+                null => [],
+                not null when string.IsNullOrWhiteSpace(serviceName) => [],
+                not null
+                    when serviceName.Contains("VK", StringComparison.CurrentCultureIgnoreCase) =>
+                    _factory.GetAllUploadableServiceUrlsOfService("VK").Result,
+                not null when serviceName.Contains("OK", StringComparison.OrdinalIgnoreCase) =>
+                    _factory.GetAllUploadableServiceUrlsOfService("OK").Result,
+                _ => [],
+            };
+            Action<int> currentProgress = (value) =>
+                _publisher.Publish(CurrentProgressListener, value);
+            Action<int> maxProgress = (value) => _publisher.Publish(MaxProgressListener, value);
+            foreach (ServiceUrl url in urls)
+            {
+                request.Handle(_provider, url, currentProgress, maxProgress).Wait();
+                currentProgress.Invoke(0);
+                maxProgress.Invoke(0);
+            }
+        }
+        catch (Exception ex)
         {
-            request.Handle(_provider, url, currentProgress, maxProgress).Wait();
-            currentProgress.Invoke(0);
-            maxProgress.Invoke(0);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
         }
     }
 
     // email services don't require service Urls;
     public void PublishToEmail(EmailPublishRequest request)
     {
-        Action<int> currentProgress = (value) => _publisher.Publish(CurrentProgressListener, value);
-        Action<int> maxProgress = (value) => _publisher.Publish(MaxProgressListener, value);
-        request.Handle(_provider, null!, currentProgress, maxProgress).Wait();
-        currentProgress.Invoke(0);
-        maxProgress.Invoke(0);
+        try
+        {
+            Action<int> currentProgress = (value) =>
+                _publisher.Publish(CurrentProgressListener, value);
+            Action<int> maxProgress = (value) => _publisher.Publish(MaxProgressListener, value);
+            request.Handle(_provider, null!, currentProgress, maxProgress).Wait();
+            currentProgress.Invoke(0);
+            maxProgress.Invoke(0);
+        }
+        catch (Exception ex)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+        }
     }
 
     // whats app services don't require service Urls;
     public void PublishToWhatsApp(WhatsAppPublishRequest request)
     {
-        Action<int> currentProgress = (value) => _publisher.Publish(CurrentProgressListener, value);
-        Action<int> maxProgress = (value) => _publisher.Publish(MaxProgressListener, value);
-        request.Handle(_provider, null!, currentProgress, maxProgress).Wait();
-        currentProgress.Invoke(0);
-        maxProgress.Invoke(0);
+        try
+        {
+            Action<int> currentProgress = (value) =>
+                _publisher.Publish(CurrentProgressListener, value);
+            Action<int> maxProgress = (value) => _publisher.Publish(MaxProgressListener, value);
+            request.Handle(_provider, null!, currentProgress, maxProgress).Wait();
+            currentProgress.Invoke(0);
+            maxProgress.Invoke(0);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
+        }
     }
 }

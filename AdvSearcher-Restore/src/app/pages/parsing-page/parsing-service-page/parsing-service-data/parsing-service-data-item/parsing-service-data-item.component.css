@@ -1,60 +1,75 @@
 .advertisement-data-item-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
-  background: transparent;
-  border-radius: 5px;
-  border: solid 1px #5733cf;
-  padding: 1rem;
-  overflow: auto;
-  max-height: 68vh;
-}
-
-.advertisement-data-item-data-item-image-layout {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.advertisement-data-image {
-  min-width: 350px;
-  min-height: 350px;
-  max-width: 350px;
-  max-height: 350px;
-  border-radius: 10px;
-  border: solid 2px #25194d;
-}
-
-.arrow {
-  border: solid #50ff5e;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-}
-
-.left {
-  transform: rotate(135deg);
-}
-
-.right {
-  transform: rotate(-45deg);
-}
-
-.advertisement-description {
-  background: #24194d;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 13px;
-  color: #edefff;
-  padding: 0.5rem;
-}
-
-.advertisement-controls {
   display: inline-flex;
-  background: #24194d;
-  border-radius: 5px;
+  flex-direction: row;
   padding: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px #1a1a1a;
+  width: 98%;
+}
+
+.sub-controls-wrapper {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.advertisement-data-item-short-info,
+.advertisement-data-controls {
+  padding: 1rem;
+  border-radius: 10px;
+  display: inline-flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  background-color: #462ca7;
+  color: #50ff5e;
+}
+
+.advertisement-data-item-short-info label,
+.advertisement-data-controls label {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 0.25rem;
+}
+
+.data-item-text-info {
+  font-weight: bold;
+  font-size: 14px;
+  color: #50ff5e;
+  background-color: #462ca7;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.advertisement-data-controls {
+  align-items: center;
+  margin-left: 1rem;
+  background-color: #25194d;
+}
+
+.advertisements-image-viewer {
+  background-color: #25194d;
+  border-radius: 5px;
+  display: inline-flex;
+  flex-direction: row;
+  overflow: auto;
+  margin-left: 1rem;
+  max-width: 550px;
   gap: 1rem;
+  align-items: center;
+}
+
+.advertisement-image {
+  min-width: 200px;
+  min-height: 200px;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.no-photo-wrapper {
+  font-size: 18px;
+  font-weight: bold;
+  color: yellow;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
 }

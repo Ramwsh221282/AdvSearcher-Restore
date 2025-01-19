@@ -7,9 +7,9 @@
 }
 
 .parsing-service-content-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .parsing-service-data-title {

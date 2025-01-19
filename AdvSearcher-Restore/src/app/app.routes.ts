@@ -1,4 +1,5 @@
 import { Routes } from "@angular/router";
+import { canActivateAuth } from "./guards/auth-guard";
 
 export const routes: Routes = [
   {
@@ -14,6 +15,7 @@ export const routes: Routes = [
       import("./pages/parsing-page/parsing-page.component").then(
         (component) => component.ParsingPageComponent,
       ),
+    canActivate: [canActivateAuth],
   },
   {
     path: "parse/:name/:displayName/:pluginName",
@@ -28,6 +30,7 @@ export const routes: Routes = [
       import("./pages/publishing-page/publishing-page.component").then(
         (component) => component.PublishingPageComponent,
       ),
+    canActivate: [canActivateAuth],
   },
   {
     path: "posting-links",
@@ -35,6 +38,7 @@ export const routes: Routes = [
       import(
         "./pages/publishing-page/publishing-page-links/publishing-page-links.component"
       ).then((component) => component.PublishingPageLinksComponent),
+    canActivate: [canActivateAuth],
   },
   {
     path: "inpainting",
@@ -42,5 +46,6 @@ export const routes: Routes = [
       import("./pages/inpainting-page/inpainting-page.component").then(
         (component) => component.InpaintingPageComponent,
       ),
+    canActivate: [canActivateAuth],
   },
 ];

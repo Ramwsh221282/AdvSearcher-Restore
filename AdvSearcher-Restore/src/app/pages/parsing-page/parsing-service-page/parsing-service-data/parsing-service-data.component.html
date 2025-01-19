@@ -4,28 +4,8 @@
         <app-red-button [label]="'Кешировать все'" (onClicked)="cacheAll()"></app-red-button>
     </div>
     <div class="parsing-service-content-layout">
-        <table class="parsed-advertisements-table">
-            <thead class="parsed-advertisements-table-header">
-            <tr>
-                <th class="parsed-advertisements-table-header-cell">ID</th>
-                <th class="parsed-advertisements-table-header-cell">Автор</th>
-                <th class="parsed-advertisements-table-header-cell">Дата публикации</th>
-                <th class="parsed-advertisements-table-header-cell">Дата парсинга</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr [ngClass]="{'active': isCurrentlySelected(advertisement)}"
-                (click)="select(advertisement)"
-                class="parsed-advertisements-table-row" *ngFor="let advertisement of advertisements()">
-                <td class="parsed-advertisements-table-cell">{{ advertisement.id }}</td>
-                <td class="parsed-advertisements-table-cell">{{ advertisement.publisher }}</td>
-                <td class="parsed-advertisements-table-cell">{{ advertisement.publishDate }}</td>
-                <td class="parsed-advertisements-table-cell">{{ advertisement.parsedDate }}</td>
-            </tr>
-            </tbody>
-        </table>
-        <app-parsing-service-data-item *ngIf="selectedAdvertisement"
-                                       [advertisement]="selectedAdvertisement"
+        <app-parsing-service-data-item *ngFor="let advertisement of advertisements()"
+                                       [advertisement]="advertisement"
                                        (removeClicked)="handleDeletion($event)"
                                        (removeAndCacheClicked)="handleCaching($event)"
                                        (openInBrowserRequested)="handleOpenInBrowser($event)">

@@ -21,6 +21,14 @@ public static class InpaintingSdkLoader
                 .WithScopedLifetime()
         );
 
+        IServiceProvider provider = services.BuildServiceProvider();
+        if (!provider.GetServices<IInpaintingProcessor>().Any())
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("ERROR. Inpainting services were not loaded");
+            throw new ApplicationException();
+        }
+
         return services;
     }
 }

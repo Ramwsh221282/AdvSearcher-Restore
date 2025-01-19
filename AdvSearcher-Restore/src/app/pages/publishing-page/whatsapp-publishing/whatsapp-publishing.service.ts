@@ -51,6 +51,7 @@ export class WhatsappPublishingService {
         this.notifications.setTitle("Прогресс");
         this.notifications.setMessage("Завершено");
         this.notifications.turnOn();
+        this.resetProgress();
       } else {
         this.notifications.setTitle("Прогресс");
         this.notifications.setMessage(`${value} из ${this.maxProgress()}`);

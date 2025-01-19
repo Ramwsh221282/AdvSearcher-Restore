@@ -23,30 +23,32 @@ public class ParsingController(
 
     public void ProcessParsing(ParsingRequest request)
     {
-        Action<int> currentProgress = (value) => _publisher.Publish(Progress, value);
-        Action<int> maxProgress = (value) => _publisher.Publish(MaxProgress, value);
-        Action<string> notificationsPublisher = (value) =>
-            _publisher.Publish(TauriMessageListener.NotificationsListener, value);
-        ParsingStrategyResolver resolver = new ParsingStrategyResolver(
-            request,
-            _resolver,
-            _factory,
-            spamClassifier
-        );
-        IParsingStrategy strategy = resolver.Resolve();
-        ParsingContext context = new ParsingContext(
-            strategy,
-            currentProgress,
-            maxProgress,
-            notificationsPublisher
-        );
         try
         {
+            Action<int> currentProgress = (value) => _publisher.Publish(Progress, value);
+            Action<int> maxProgress = (value) => _publisher.Publish(MaxProgress, value);
+            Action<string> notificationsPublisher = (value) =>
+                _publisher.Publish(TauriMessageListener.NotificationsListener, value);
+            ParsingStrategyResolver resolver = new ParsingStrategyResolver(
+                request,
+                _resolver,
+                _factory,
+                spamClassifier
+            );
+            IParsingStrategy strategy = resolver.Resolve();
+            ParsingContext context = new ParsingContext(
+                strategy,
+                currentProgress,
+                maxProgress,
+                notificationsPublisher
+            );
             context.ProcessParsing().Wait();
         }
         catch (Exception ex)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Source);
         }
     }
 }

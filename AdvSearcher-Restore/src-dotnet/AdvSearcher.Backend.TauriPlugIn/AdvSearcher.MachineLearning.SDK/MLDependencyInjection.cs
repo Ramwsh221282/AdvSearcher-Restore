@@ -9,12 +9,10 @@ public static class MLDependencyInjection
 
     public static IServiceCollection LoadML(this IServiceCollection services)
     {
-        Console.WriteLine("Loading ML Plugins");
         Assembly[] assemblies = Directory
             .GetFiles(PluginsPath, "*.dll")
             .Select(Assembly.LoadFrom)
             .ToArray();
-        Console.WriteLine($"ML Assemblies count: {assemblies.Length}");
         services = services.Scan(x =>
             x.FromAssemblies(assemblies)
                 .AddClasses(classes => classes.AssignableTo<IMLPluginLoader>())
@@ -23,12 +21,13 @@ public static class MLDependencyInjection
         );
         IServiceProvider provider = services.BuildServiceProvider();
         IEnumerable<IMLPluginLoader> loaders = provider.GetServices<IMLPluginLoader>();
-        Console.WriteLine($"Plugins Count: {loaders.Count()}");
-        foreach (IMLPluginLoader loader in loaders)
+        if (!loaders.Any())
         {
-            Console.WriteLine(loader.GetType().Name);
-            loader.LoadML(services);
+            Console.ForegroundColor = ConsoleColor.Red;
+            throw new ApplicationException();
         }
+        foreach (IMLPluginLoader loader in loaders)
+            loader.LoadML(services);
         return services;
     }
 }

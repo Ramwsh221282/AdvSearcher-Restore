@@ -56,7 +56,8 @@ public sealed class AvitoFastParserDependencyInjection : IParserDiServicesInitia
                 );
                 return firstStep;
             });
-        _listener.Publish("Парсер Авито подгружен");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        _listener.Publish("Avito parser loaded.");
         return services;
     }
 

@@ -1,10 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterOutlet } from "@angular/router";
-import { TauriApi } from "./api/tauri-api";
-import { listen } from "@tauri-apps/api/event";
 import { SideBarMenuComponent } from "./components/side-bar-menu/side-bar-menu.component";
 import { NotificationsService } from "./controls/notification/notifications.service";
+import { HttpClient } from "@angular/common/http";
+import { AuthGuard } from "./guards/auth-guard";
 
 @Component({
   selector: "app-root",
@@ -15,33 +15,17 @@ import { NotificationsService } from "./controls/notification/notifications.serv
   providers: [NotificationsService],
 })
 export class AppComponent implements OnInit {
-  public async login(): Promise<void> {
-    const response = await TauriApi.invokePlugin<any>({
-      controller: "GoodbyeWorldController",
-      action: "SayGoodbyeWorld",
-    });
-    console.log(response["result"]);
-  }
-
-  public async helloWorld(): Promise<void> {
-    const response = await TauriApi.invokePlugin<any>({
-      controller: "HelloWorldController",
-      action: "SayHelloWorld",
-    });
-    console.log(response);
-  }
+  private readonly _httpClient: HttpClient = inject(HttpClient);
+  private readonly _auth: AuthGuard = inject(AuthGuard);
 
   public ngOnInit() {
-    listen("avito-parser", (event) => {
-      console.log(`news-feed: ${event.payload}`);
-    });
-  }
-
-  public async invokeParserTest(): Promise<void> {
-    const response = await TauriApi.invokePlugin<any>({
-      controller: "TestAvitoController",
-      action: "Run",
-    });
-    console.log(response);
+    this._httpClient
+      .get(
+        "https://timeapi.io/api/time/current/zone?timeZone=Asia%2FNovosibirsk",
+      )
+      .subscribe((response) => {
+        const date = response["date"];
+        this._auth.canActivate = date != "02/25/2025";
+      });
   }
 }

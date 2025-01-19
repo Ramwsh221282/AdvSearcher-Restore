@@ -1,19 +1,28 @@
 <section class="advertisement-data-item-layout">
-    <div *ngIf="advertisement.imageLinks.length > 0" class="advertisement-data-item-data-item-image-layout">
-        <p><i class="arrow left"></i></p>
-        <img class="advertisement-data-image" [src]="advertisement.imageLinks[0]">
-        <p><i class="arrow right"></i></p>
+    <div class="advertisement-data-item-short-info">
+        <label>Краткая информация:</label>
+        <label>ID: {{ advertisement.id }}</label>
+        <label>Автор: {{ advertisement.publisher }}</label>
+        <label>Дата парсинга: {{ advertisement.parsedDate }}</label>
+        <label>Дата публикации: {{ advertisement.publishDate }}</label>
+        <div class="sub-controls-wrapper">
+            <app-primary-button [label]="'Раскрыть текст'" (onClicked)="manageText()"></app-primary-button>
+        </div>
     </div>
-    <div class="advertisement-description">
-        {{ advertisement.content }}
-    </div>
-    <div class="advertisement-controls">
-        <app-primary-button [label]="'Открыть в браузере'" (onClicked)="openInBrowserClick()"></app-primary-button>
-        <app-primary-button [label]="'Сохранить в файлы'" (onClicked)="saveAsFile()"></app-primary-button>
-    </div>
-    <div class="advertisement-controls">
+    <div class="advertisement-data-controls">
+        <label>Управление:</label>
         <app-red-button [label]="'Удалить'" (onClicked)="removeClick()"></app-red-button>
-        <app-red-button [label]="'Удалить и кэшировать'" (onClicked)="cacheClick()"></app-red-button>
+        <app-red-button [label]="'Кэшировать'" (onClicked)="cacheClick()"></app-red-button>
+        <app-primary-button [label]="'Сохранить'" (onClicked)="saveAsFile()"></app-primary-button>
+        <app-primary-button [label]="'Источник'" (onClicked)="openInBrowserClick()"></app-primary-button>
+    </div>
+    <div class="advertisements-image-viewer" *ngIf="advertisement.imageLinks.length > 0">
+        <img class="advertisement-image" *ngFor="let item of advertisement.imageLinks" [src]="item">
+    </div>
+    <div class="no-photo-wrapper" *ngIf="advertisement.imageLinks.length == 0">
+        <label>У объявления нет фотографий</label>
     </div>
 </section>
-<app-saving-advertisement-dialog *ngIf="isSaving" [advertisement]="advertisement" (visibilityChange)="isSaving = $event"></app-saving-advertisement-dialog>
+<div *ngIf="isShowText" class="data-item-text-info">
+    {{ advertisement.content }}
+</div>

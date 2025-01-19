@@ -74,7 +74,8 @@ public class VkParserServices : IParserDiServicesInitializer
                 );
                 return parametersNode;
             });
-        _listener.Publish("Парсер ВК подргужен.");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        _listener.Publish("VK Parser loaded.");
         return services;
     }
 
